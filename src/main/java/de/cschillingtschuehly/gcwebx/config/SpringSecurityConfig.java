@@ -1,4 +1,4 @@
-package de.cschilingtschuehly.gcwebx.config;
+package de.cschillingtschuehly.gcwebx.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -24,10 +24,16 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/getMember").hasRole("USER")
+                .antMatchers("/console/**")//TODO: Remove access to H2 Console
+                .permitAll()
+                .and()
+                .authorizeRequests()
+                .antMatchers(HttpMethod.GET, "/getMemberTable").hasRole("ADMIN")
                 .and()
                 .csrf().disable()
                 .formLogin().disable();
+        http.headers().frameOptions().disable();
+
     }
 
 }
