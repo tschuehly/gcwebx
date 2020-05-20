@@ -1,6 +1,7 @@
 package de.cschillingtschuehly.gcwebx.modell;
 
 import lombok.*;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,10 +14,11 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @Setter
 @Getter
+@DynamicUpdate
 public class Member {
     @Id
     @GeneratedValue
-    private Long id;
+    private Long memberId;
     private String name;
     private String teamspeakId;
     private String generalInfo;
@@ -26,6 +28,7 @@ public class Member {
     private LocalDate acceptanceDate;
     private String editor;
     private Integer warnings;
+    private String uplayId;
 
     public Member(String name, String teamspeakId, LocalDate dateOfBirth, LocalDate joinDate) {
         this.name = name;
