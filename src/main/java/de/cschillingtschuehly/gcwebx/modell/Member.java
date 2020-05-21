@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.time.LocalDate;
 import javax.persistence.Entity;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @ToString
@@ -19,6 +20,7 @@ public class Member {
     @Id
     @GeneratedValue
     private Long memberId;
+    @NotEmpty
     private String name;
     private String teamspeakId;
     private String generalInfo;

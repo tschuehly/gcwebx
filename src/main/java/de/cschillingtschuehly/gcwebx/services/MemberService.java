@@ -31,4 +31,15 @@ public class MemberService {
         memberRepository.save(member);
         return jacksonMapper.writeValueAsString(member);
     }
+
+    public String createMember(Member memberParam) throws JsonProcessingException {
+        ObjectMapper jacksonMapper = mapperService.jacksonMapper();
+        memberRepository.save(memberParam);
+        Member member = memberRepository.findById(memberParam.getMemberId()).get();
+        return jacksonMapper.writeValueAsString(member);
+    }
+    public void deleteMember(Member memberParam){
+        memberRepository.delete(memberParam);
+
+    }
 }

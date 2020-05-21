@@ -25,9 +25,14 @@ public class WebController {
         String updatedMember = memberService.updateMember(member);
         return ResponseEntity.ok().body(updatedMember);
     }
-    @RequestMapping(value="/findMember",method = RequestMethod.GET,produces = {"application/json"})
-    public ResponseEntity findMember(@RequestParam(value="memberId") String memberId){
-        String returnBody = "{hello:true}";
-        return ResponseEntity.ok().body(returnBody);
+    @PostMapping(value="/createMember",produces = {"application/json"})
+    public ResponseEntity createMember(@RequestBody Member member) throws JsonProcessingException {
+        String createdMember = memberService.createMember(member);
+        return ResponseEntity.ok().body(createdMember);
+    }
+    @DeleteMapping(value="/deleteMember",produces = {"application/json"})
+    public ResponseEntity deleteMember(@RequestBody Member member) throws JsonProcessingException {
+        memberService.deleteMember(member);
+        return ResponseEntity.ok().body("{\"memberDeleted\":\"true\"}");
     }
 }
