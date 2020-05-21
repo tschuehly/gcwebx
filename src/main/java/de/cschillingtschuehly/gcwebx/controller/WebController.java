@@ -1,6 +1,7 @@
 package de.cschillingtschuehly.gcwebx.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import de.cschillingtschuehly.gcwebx.modell.Member;
 import de.cschillingtschuehly.gcwebx.services.MemberService;
 import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,19 +20,9 @@ public class WebController {
         String memberTable = memberService.getMemberTable();
         return ResponseEntity.ok().body(memberTable);
     }
-    @GetMapping(value="/updateMember",produces = {"application/json"}) //TODO: Make POST
-    public ResponseEntity editMember(@RequestParam(value="memberId") Long memberId,
-                                     @RequestParam(value="name",required = false) String name,
-                                     @RequestParam(value="teamspeakId",required = false) String teamspeakId,
-                                     @RequestParam(value="generalInfo",required = false) String generalInfo,
-                                     @RequestParam(value="dateOfBirth",required = false) LocalDate dateOfBirth,
-                                     @RequestParam(value="desblTeam",required = false) String desblTeam,
-                                     @RequestParam(value="joinDate",required = false) LocalDate joinDate,
-                                     @RequestParam(value="acceptanceDate",required = false) LocalDate acceptanceDate,
-                                     @RequestParam(value="editor",required = false) String editor,
-                                     @RequestParam(value="warnings",required = false) Integer warnings,
-                                     @RequestParam(value="uplayId",required = false) String uplayId) throws JsonProcessingException {
-        String updatedMember = memberService.updateMember(memberId, name, teamspeakId, generalInfo, dateOfBirth, desblTeam, joinDate, acceptanceDate, editor,warnings,uplayId);
+    @PutMapping(value="/updateMember",produces = {"application/json"})
+    public ResponseEntity editMember(@RequestBody Member member) throws JsonProcessingException {
+        String updatedMember = memberService.updateMember(member);
         return ResponseEntity.ok().body(updatedMember);
     }
     @RequestMapping(value="/findMember",method = RequestMethod.GET,produces = {"application/json"})
