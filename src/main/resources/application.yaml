@@ -10,8 +10,12 @@ spring:
 
     #TODO: CHANGE Password to not appear in GIT
 
+    initialization-mode: always
+#TODO: CHANGE Password to not appear in GIT
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: none
   h2:
     console:
       enabled: true

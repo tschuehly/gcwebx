@@ -15,8 +15,7 @@ import java.time.LocalDate;
 public class WebController {
     @Autowired
     private MemberService memberService;
-    @CrossOrigin()
-    @GetMapping(value = "/getMemberTable",produces = {"application/json"})
+    @GetMapping(value = "/getMembers",produces = {"application/json"})
     public ResponseEntity getMember(){
         String memberTable = memberService.getMemberTable();
         return ResponseEntity.ok().body(memberTable);
