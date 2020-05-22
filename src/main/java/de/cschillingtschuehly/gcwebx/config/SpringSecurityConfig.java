@@ -34,29 +34,25 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-   /* @Override
+    @Override
     protected void configure(HttpSecurity http)
             throws Exception {
 
-
-    }*/
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-                //HTTP Basic authentication
-                .httpBasic()
-                .and()
+        http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/**")//TODO: Remove access to H2 Console
-                .permitAll()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/login*").permitAll()
+                .anyRequest().authenticated()
                 .and()
-                .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/getMemberTable").hasRole("ADMIN")
+                .formLogin()
+                //.loginPage("/login")
+                //.loginProcessingUrl("/perform_login")
+                .defaultSuccessUrl("/home.html", true)
+                //.failureUrl("/login.html?error=true")
                 .and()
-                .csrf().disable()
-                .formLogin().disable();
-        http.headers().frameOptions().disable();
-
+                .logout()
+                .logoutUrl("/logout")
+                .deleteCookies("JSESSIONID");
     }
 
 }
