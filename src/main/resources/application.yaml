@@ -4,7 +4,11 @@ spring:
     driverClassName: org.h2.Driver
     username: sa
     password: password
-#TODO: CHANGE Password to not appear in GIT
+  profiles:
+    active: development
+
+    #TODO: CHANGE Password to not appear in GIT
+
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
   h2:

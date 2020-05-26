@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
-@CrossOrigin
 @RestController
+@CrossOrigin()
 public class WebController {
     @Autowired
     private MemberService memberService;
+    @CrossOrigin()
     @GetMapping(value = "/getMemberTable",produces = {"application/json"})
     public ResponseEntity getMember(){
         String memberTable = memberService.getMemberTable();

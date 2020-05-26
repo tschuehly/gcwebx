@@ -34,7 +34,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/console/**")//TODO: Remove access to H2 Console
+                .antMatchers("/**")//TODO: Remove access to H2 Console
                 .permitAll()
                 .and()
                 .authorizeRequests()
