@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
@@ -34,6 +35,7 @@ export const routerConfig: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    LoginFormComponent,
     MemberTableComponent,
     NgbdSortableHeader,
     EditMemberComponent,
