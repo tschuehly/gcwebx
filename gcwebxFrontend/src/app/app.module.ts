@@ -7,23 +7,25 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import { MemberTableComponent } from './member-table/member-table.component';
+import {NgbdSortableHeader} from './directives/sortable.directive';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MemberTableComponent
+    MemberTableComponent, NgbdSortableHeader
   ],
-  exports: [],
+  exports: [MemberTableComponent],
   imports: [
     BrowserModule,
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
+    NgbModule,
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent, ]
+  bootstrap: [AppComponent, MemberTableComponent ]
 })
 export class AppModule { }
