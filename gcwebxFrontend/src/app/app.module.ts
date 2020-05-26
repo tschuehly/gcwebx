@@ -32,10 +32,14 @@ export const routerConfig: Routes = [
     component: TeamspeakComponent
   }
 ];
+
+import {AppRoutingModule} from "../app-routing.module";
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginFormComponent,
+    AppComponent,
     MemberTableComponent,
     NgbdSortableHeader,
     EditMemberComponent,
@@ -53,6 +57,7 @@ export const routerConfig: Routes = [
     CommonModule,
     NgbModule,
     HttpClientModule,
+    AppRoutingModule,
     VirtualScrollerModule,
     VirtualScrollModule,
     NoopAnimationsModule,

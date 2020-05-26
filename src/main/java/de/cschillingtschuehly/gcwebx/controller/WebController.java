@@ -2,19 +2,26 @@ package de.cschillingtschuehly.gcwebx.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import de.cschillingtschuehly.gcwebx.modell.Member;
+import de.cschillingtschuehly.gcwebx.modell.User;
 import de.cschillingtschuehly.gcwebx.services.MemberService;
+import de.cschillingtschuehly.gcwebx.services.UserService;
 import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 
 import java.time.LocalDate;
 
 @RestController
-@CrossOrigin()
+@CrossOrigin(origins="*",allowedHeaders = "*")
 public class WebController {
     @Autowired
     private MemberService memberService;
+    @Autowired
+    private UserService userService;
+    @CrossOrigin()
     @GetMapping(value = "/getMembers",produces = {"application/json"})
     public ResponseEntity getMember(){
         String memberTable = memberService.getMemberTable();
@@ -37,5 +44,17 @@ public class WebController {
     public ResponseEntity deleteMember(@RequestBody Member member) throws JsonProcessingException {
         memberService.deleteMember(member);
         return ResponseEntity.ok().body("{\"memberDeleted\":\"true\"}");
+    }
+
+    /*@GetMapping("/login")
+    public String showRegistrationForm(WebRequest request, Model model) {
+        User user = new User();
+        model.addAttribute("user", user);
+        return "registration";
+    }*/
+    @CrossOrigin(origins="*",allowedHeaders = "*")
+    @PostMapping("/login")
+    public void createAccount(@RequestBody User user) {
+        userService.createUser(user);
     }
 }
