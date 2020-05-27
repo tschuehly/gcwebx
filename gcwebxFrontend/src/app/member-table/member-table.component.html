@@ -1,10 +1,6 @@
 
-<form>
-  <div class="form-group form-inline">
-    Full text search: <input class="form-control ml-2" type="text" [formControl]="filter"/>
-  </div>
-</form>
-
+<input type="text" [formControl]="filter" placeholder="Filter member">
+<!-- TODO: https://github.com/rintoj/ngx-virtual-scroller/issues/51 -->
 <table class="table table-striped table-bordered table-dark">
 
   <thead class="thead-dark">
@@ -12,12 +8,13 @@
       <th *ngFor="let item of member">{{item}}</th>
     </tr>
   </thead>
-  <tbody>
-    <tr *ngFor="let memberobj of members$ | async;">
+    <tbody>
+    <tr *ngFor="let memberobj of filteredMemberTable$ | async">
       <td *ngFor="let item of memberobj | keyvalue : originalOrder">
-        <ngb-highlight [result]="item.value" [term]="filter.value"></ngb-highlight>
+        {{item.value}}
       </td>
     </tr>
-  </tbody>
+    </tbody>
+
 
 </table>

@@ -2,19 +2,10 @@ import {Component, OnInit, PipeTransform, QueryList, ViewChildren} from '@angula
 import {BackendService} from '../services/backend.service';
 import {Member} from '../model/member';
 import {DecimalPipe, KeyValue} from '@angular/common';
-import {Observable} from 'rxjs';
-import {debounceTime, map, startWith} from 'rxjs/operators';
+import {Observable, combineLatest, of} from 'rxjs';
 import {FormControl} from '@angular/forms';
+import {map, startWith, tap} from 'rxjs/operators';
 
-let memberTable: Member[] = [];
-
-
-function search(text: string, pipe: PipeTransform): Member[] {
-  return memberTable.filter(member => {
-    const term = text.toLowerCase();
-    return member.name.toLowerCase().includes(term);
-  });
-}
 @Component({
   selector: 'app-member-table',
   templateUrl: './member-table.component.html',
@@ -22,34 +13,30 @@ function search(text: string, pipe: PipeTransform): Member[] {
   providers: [ DecimalPipe ]
 })
 export class MemberTableComponent implements OnInit{
-  members$: Observable<Member[]>;
+
   member: Array<string>;
-  filter = new FormControl('');
+  memberTable$: Observable<Member[]>;
+  filteredMemberTable$: Observable<Member[]>;
+  filter: FormControl;
+  filter$: Observable<string>;
 
-  constructor(private backendService: BackendService, pipe: DecimalPipe) {
-
+  constructor(private backendService: BackendService) {
+    this.memberTable$ = this.backendService.getMemberTable();
     this.backendService.getMemberTable().
     subscribe(memberTableResponse => {
-      memberTable = memberTableResponse;
-      console.log(memberTable);
-      this.member = Object.keys(memberTable[0]);
-      console.log(this.member);
+      this.member = Object.keys(memberTableResponse[4]);
     });
-
-    this.members$ = this.filter.valueChanges.pipe(
-      startWith('test'),
-      map(text => search(text, pipe)) // TODO: entries only start showing after typing
-
-    );
-    console.log(this.filter);
+    this.filter = new FormControl('');
+    this.filter$ = this.filter.valueChanges.pipe(startWith(''));
+    this.filteredMemberTable$ = combineLatest([this.memberTable$, this.filter$])
+      .pipe(map(([members, filterString]) =>
+        members.filter(member => member.name.toLowerCase()
+          .indexOf(filterString.toLowerCase()) !== -1))
+      );
   }
 
   ngOnInit(): void {
-    }
-
-
-
-
+  }
 
   originalOrder = (a: KeyValue<number, string>, b: KeyValue<number, string>): number => {
     return 0;
