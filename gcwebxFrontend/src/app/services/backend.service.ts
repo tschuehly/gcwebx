@@ -13,7 +13,7 @@ export class BackendService {
     private http: HttpClient
   ) { }
   getMemberTable(): Observable<any>{
-    return this.http.get(this.backendUrl + '/getMemberTable');
+    return this.http.get(this.backendUrl + '/getMembers');
   }
   updateMember(member: Member): Observable<any>{
     return this.http.put(this.backendUrl + '/updateMember', member);
