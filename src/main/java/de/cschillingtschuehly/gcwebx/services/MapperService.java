@@ -9,6 +9,9 @@ import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 import org.dozer.loader.api.BeanMappingBuilder;
 import org.springframework.stereotype.Service;
+import io.craftsman.Jdk8CompatibilityConverter;
+
+import java.util.Collections;
 
 import static org.dozer.loader.api.TypeMappingOptions.mapNull;
 
@@ -24,6 +27,8 @@ public class MapperService {
     public DozerBeanMapper dozerMapper(){
         DozerBeanMapper dozerBeanMapper = new DozerBeanMapper();
         dozerBeanMapper.addMapping(beanMappingBuilder());
+        dozerBeanMapper.setMappingFiles(Collections.singletonList("dozerJdk8Converters.xml"));
+
         return dozerBeanMapper;
     }
     private BeanMappingBuilder beanMappingBuilder() {

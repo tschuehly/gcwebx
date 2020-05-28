@@ -19,11 +19,6 @@ public class GcwebxApplication implements CommandLineRunner{
 		SpringApplication.run(GcwebxApplication.class, args);
 	}
 	@Override
-	public void run(String... args) throws Exception{
-		memberRepository.deleteAll();
-		memberRepository.save(new Member("Apu","d9ujps1UeZNwOaHFbo=",LocalDate.of(1970, Month.JANUARY,1),LocalDate.of(2018, Month.SEPTEMBER,15)));
-		memberRepository.save(new Member("Dave","ucJeEsgVuJgimq0=", LocalDate.of(1980, Month.JANUARY,15),LocalDate.of(2018, Month.DECEMBER,15)));
-		memberRepository.save(new Member("Cytex","hierstehteinecooleTeamspeakID", LocalDate.of(1990, Month.JANUARY,30),LocalDate.of(2019, Month.JANUARY,1)));
-	}
+	public void run(String... args) throws Exception{}
 
 }

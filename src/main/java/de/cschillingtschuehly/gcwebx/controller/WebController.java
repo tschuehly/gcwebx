@@ -23,6 +23,8 @@ public class WebController {
     }
     @PutMapping(value="/updateMember",produces = {"application/json"})
     public ResponseEntity editMember(@RequestBody Member member) throws JsonProcessingException {
+        System.out.println(member);
+
         String updatedMember = memberService.updateMember(member);
         return ResponseEntity.ok().body(updatedMember);
     }

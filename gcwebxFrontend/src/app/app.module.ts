@@ -6,14 +6,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
-import { MemberTableComponent } from './member-table/member-table.component';
+import { MemberTableComponent } from './components/member-table/member-table.component';
 import {NgbdSortableHeader} from './directives/sortable.directive';
-
+import { EditMemberComponent } from './components/edit-member/edit-member.component';
+import { VirtualScrollerModule } from 'ngx-virtual-scroller';
+import {VirtualScrollModule} from 'od-virtualscroll';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MemberTableComponent, NgbdSortableHeader
+    MemberTableComponent, NgbdSortableHeader, EditMemberComponent
   ],
   exports: [MemberTableComponent],
   imports: [
@@ -23,7 +27,11 @@ import {NgbdSortableHeader} from './directives/sortable.directive';
     ReactiveFormsModule,
     CommonModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    VirtualScrollerModule,
+    VirtualScrollModule,
+    NoopAnimationsModule,
+    ScrollingModule
   ],
   providers: [],
   bootstrap: [AppComponent, MemberTableComponent ]

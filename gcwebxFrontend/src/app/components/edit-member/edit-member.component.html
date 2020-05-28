@@ -1,0 +1,64 @@
+<div class="modal-header">
+  <h4 class="modal-title">Edit Member: {{member.name}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="container-fluid">
+  <label class="form">
+    <form [formGroup]="EditForm" class="form-group">
+
+
+
+      <div class="row">
+
+        <div class="col-lg-auto">
+          <label for>Name:</label>
+          <input class="form-control" type="text" formControlName="name">
+        </div>
+        <div class="col-lg-auto">
+          <label>TeamspeakId:</label>
+          <input class="form-control" type="text" formControlName="teamspeakId">
+        </div>
+        <div class="col-lg-auto">
+          <label>Generelle Info:</label>
+          <input class="form-control" type="text" formControlName="generalInfo">
+        </div>
+        <div class="col-lg-auto">
+          <label>Geburtstag:</label>
+          <input class="form-control" type="date" formControlName="dateOfBirth">
+        </div>
+        <div class="col-lg-auto"><label>DESBL TEAM:</label>
+          <input class="form-control" type="text" formControlName="desblTeam">
+        </div>
+        <div class="col-lg-auto"><label>Aufnahmedatum:</label>
+          <input class="form-control" type="date" formControlName="joinDate">
+        </div>
+        <div class="col-lg-auto"><label>Übernahmedatum:</label>
+          <input class="form-control" type="date" formControlName="acceptanceDate">
+        </div>
+        <div class="col-lg-auto"><label>Bearbeiter:</label>
+          <input class="form-control" type="text" formControlName="editor">
+        </div>
+        <div class="col-lg-auto"><label>Verwarnungen:</label>
+          <input class="form-control" type="text" formControlName="warnings">
+        </div>
+        <div class="col-lg-auto"><label>UplayId:</label>
+          <input class="form-control" type="text" formControlName="uplayId">
+        </div>
+      </div>
+
+    </form>
+  </label>
+
+  <form [formGroup]="EditForm"></form>
+  </div>
+</div>
+<div class="modal-footer">
+  <div class="mr-auto">
+    <button type="button" class="btn btn-danger" (click)="activeModal.close('Close click')">Close</button>
+  </div>
+
+  <button type="button" class="btn btn-success" (click)="updateMember()">Save</button>
+ </div>
