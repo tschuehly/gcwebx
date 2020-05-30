@@ -3,6 +3,7 @@ package de.cschillingtschuehly.gcwebx.modell;
 import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.time.LocalDate;
@@ -31,6 +32,8 @@ public class Member {
     private String editor;
     private Integer warnings;
     private String uplayId;
+    @Column(columnDefinition = "boolean default false")
+    private Boolean deleted;
 
     public Member(String name, String teamspeakId, LocalDate dateOfBirth, LocalDate joinDate) {
         this.name = name;

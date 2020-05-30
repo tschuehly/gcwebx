@@ -30,6 +30,7 @@ public class WebController {
     }
     @PostMapping(value="/createMember",produces = {"application/json"})
     public ResponseEntity createMember(@RequestBody Member member) throws JsonProcessingException {
+        System.out.println(member);
         String createdMember = memberService.createMember(member);
         return ResponseEntity.ok().body(createdMember);
     }

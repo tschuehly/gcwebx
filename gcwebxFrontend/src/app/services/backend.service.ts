@@ -18,4 +18,7 @@ export class BackendService {
   updateMember(member: Member): Observable<any>{
     return this.http.put(this.backendUrl + '/updateMember', member);
   }
+  createMember(member: Member): Observable<any>{
+    return this.http.post(this.backendUrl + '/createMember', member);
+  }
 }

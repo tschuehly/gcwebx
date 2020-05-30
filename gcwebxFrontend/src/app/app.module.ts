@@ -34,6 +34,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     ScrollingModule
   ],
   providers: [],
-  bootstrap: [AppComponent, MemberTableComponent ]
+  bootstrap: [AppComponent, MemberTableComponent ],
+  entryComponents:[EditMemberComponent]
 })
 export class AppModule { }

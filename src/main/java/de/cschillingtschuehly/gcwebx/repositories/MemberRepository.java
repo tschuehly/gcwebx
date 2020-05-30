@@ -9,4 +9,5 @@ public interface MemberRepository extends CrudRepository<Member,Long> {
     List<Member> findByTeamspeakId(String teamspeakId);
     List<Member> findAll();
 
+
 }

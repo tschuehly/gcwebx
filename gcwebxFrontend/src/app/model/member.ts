@@ -11,6 +11,6 @@ export interface Member {
   editor: string;
   warnings: number;
   uplayId: string;
-
+  deleted: boolean;
 
 }

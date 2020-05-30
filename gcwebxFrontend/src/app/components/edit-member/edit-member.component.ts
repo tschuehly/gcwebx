@@ -11,7 +11,8 @@ import {MemberTableComponent} from '../member-table/member-table.component';
   styleUrls: ['./edit-member.component.css']
 })
 export class EditMemberComponent implements OnInit {
-  @Input() member;
+  @Input() member: Member;
+  @Input() create: boolean;
   @Output() memberUpdated = new EventEmitter<boolean>();
   editMember: Member;
   EditForm: FormGroup;
@@ -41,5 +42,19 @@ export class EditMemberComponent implements OnInit {
     this.backendService.updateMember(this.editMember).subscribe( data => console.log(data));
     this.memberUpdated.emit(true);
     this.activeModal.close();
+  }
+  createMember(){
+    this.member = (this.EditForm.value as Member);
+    this.member.deleted = false;
+    console.log(this.member);
+    this.backendService.createMember(this.member).subscribe( data => console.log(data));
+    this.memberUpdated.emit(true);
+    this.activeModal.close();
+  }
+
+  deleteMember(){
+    this.editMember = (this.EditForm.value as Member);
+    this.editMember.deleted = true;
+    this.backendService.updateMember(this.editMember).subscribe( data => console.log(data));
   }
 }

@@ -15,6 +15,7 @@ import java.util.Date;
 public class GcwebxApplication implements CommandLineRunner{
 	@Autowired
 	private MemberRepository memberRepository;
+	@Autowired MemberRepository deletedMemberRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(GcwebxApplication.class, args);
 	}
