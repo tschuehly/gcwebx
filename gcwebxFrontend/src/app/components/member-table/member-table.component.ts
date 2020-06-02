@@ -15,7 +15,7 @@ import {EditMemberComponent} from '../edit-member/edit-member.component';
   providers: [ DecimalPipe ]
 })
 export class MemberTableComponent implements OnInit{
-  member: Array<string>;
+  member: Member;
   memberTable$: Observable<Member[]>;
   filteredMemberTable$: Observable<Member[]>;
   searchFilter: FormControl;
@@ -26,7 +26,7 @@ export class MemberTableComponent implements OnInit{
     this.memberTable$ = this.backendService.getMemberTable();
     this.backendService.getMemberTable().
     subscribe(memberTableResponse => {
-      this.member = Object.keys(memberTableResponse[4]);
+      this.member = memberTableResponse[4];
     });
     this.searchFilter = new FormControl('');
     this.searchFilter$ = this.searchFilter.valueChanges.pipe(startWith(''));

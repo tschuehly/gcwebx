@@ -13,14 +13,37 @@ import { VirtualScrollerModule } from 'ngx-virtual-scroller';
 import {VirtualScrollModule} from 'od-virtualscroll';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-
+import { NavigationComponent } from './components/navigation/navigation.component';
+import {RouterModule, Routes} from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
+import { TeamspeakComponent } from './components/teamspeak/teamspeak.component';
+export const routerConfig: Routes = [
+  {
+    path: 'memberTable',
+    component: MemberTableComponent,
+  },
+  {
+    path: 'home',
+    component: HomeComponent
+  },
+  {
+    path: 'teamspeak',
+    component: TeamspeakComponent
+  }
+];
 @NgModule({
   declarations: [
     AppComponent,
-    MemberTableComponent, NgbdSortableHeader, EditMemberComponent
+    MemberTableComponent,
+    NgbdSortableHeader,
+    EditMemberComponent,
+    NavigationComponent,
+    HomeComponent,
+    TeamspeakComponent
   ],
-  exports: [MemberTableComponent],
+  exports: [MemberTableComponent, HomeComponent],
   imports: [
+    RouterModule.forRoot(routerConfig),
     BrowserModule,
     NgbModule,
     FormsModule,
@@ -31,10 +54,11 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     VirtualScrollerModule,
     VirtualScrollModule,
     NoopAnimationsModule,
-    ScrollingModule
+    ScrollingModule,
+    RouterModule,
   ],
   providers: [],
-  bootstrap: [AppComponent, MemberTableComponent ],
-  entryComponents:[EditMemberComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [HomeComponent, MemberTableComponent, EditMemberComponent]
 })
 export class AppModule { }

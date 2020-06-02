@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {ModalDismissReasons, NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {BackendService} from '../../services/backend.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Member} from '../../model/member';
@@ -16,7 +16,8 @@ export class EditMemberComponent implements OnInit {
   @Output() memberUpdated = new EventEmitter<boolean>();
   editMember: Member;
   EditForm: FormGroup;
-  constructor(public activeModal: NgbActiveModal, private backendService: BackendService) { }
+  closeResult = '';
+  constructor(public activeModal: NgbActiveModal, private backendService: BackendService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.EditForm = new FormGroup({
@@ -52,9 +53,30 @@ export class EditMemberComponent implements OnInit {
     this.activeModal.close();
   }
 
-  deleteMember(){
+  deleteMember(modal){
+    modal.close();
     this.editMember = (this.EditForm.value as Member);
     this.editMember.deleted = true;
     this.backendService.updateMember(this.editMember).subscribe( data => console.log(data));
+    this.memberUpdated.emit(true);
+    this.activeModal.close();
+  }
+
+  openConfirm(content){
+    this.modalService.open(content, {centered: true, size: 'sm', ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 }

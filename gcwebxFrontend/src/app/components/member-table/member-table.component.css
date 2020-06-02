@@ -25,3 +25,14 @@
 {
   background-color: #000000;
 }
+#backgroundimg{
+  background-image: url('https://static-dm.akamaized.net/siege/prod/r6-siege-home-operators-bg.jpg');
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-attachment: local;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

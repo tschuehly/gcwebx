@@ -1,0 +1,35 @@
+
+<nav class="navbar bg-transparent navbar-expand-lg navbar-dark bg-dark nav-fill p-0 fixed-top">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="navbar-nav ">
+      <ul ngbNav #nav="ngbNav" >
+        <li ngbNavItem class="my-auto">
+          <a  ngbNavLink class="navbar-brand p-2" routerLink="home" ><img src="https://ts.xperience-gaming.de/preview/images/logo.png" height="60"  ></a>
+        </li>
+        <li ngbNavItem class="my-auto">
+          <a ngbNavLink routerLink="home">Home</a>
+        </li>
+
+        <li ngbNavItem class="my-auto">
+          <a ngbNavLink>Mitglied werden</a>
+        </li>
+        <li ngbNavItem class="my-auto">
+          <a ngbNavLink>Teams</a>
+        </li>
+        <li ngbNavItem class="my-auto">
+          <a ngbNavLink>News</a>
+        </li>
+        <li ngbNavItem class="my-auto">
+          <a ngbNavLink routerLink="teamspeak">Teamspeak</a>
+        </li>
+        <li ngbNavItem class="my-auto">
+          <a ngbNavLink routerLink="memberTable">Membertable</a>
+        </li>
+      </ul>
+    </div>
+</nav>
+
+
+<router-outlet></router-outlet>
