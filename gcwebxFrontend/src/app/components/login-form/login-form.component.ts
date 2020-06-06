@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Router} from "@angular/router";
-import {User} from "../models/user";
-import {UserService} from "../services/user.service";
+import {User} from "../../model/user";
+import {UserService} from "../../services/user.service";
 import {HttpClient} from "@angular/common/http";
-import {AuthenticationService} from "../services/authentication.service";
+import {AuthenticationService} from "../../services/authentication.service";
 
 @Component({
   selector: 'app-login-form',
