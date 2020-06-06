@@ -3,6 +3,8 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {Router} from "@angular/router";
 import {User} from "../models/user";
 import {UserService} from "../services/user.service";
+import {HttpClient} from "@angular/common/http";
+import {AuthenticationService} from "../services/authentication.service";
 
 @Component({
   selector: 'app-login-form',
@@ -12,39 +14,27 @@ import {UserService} from "../services/user.service";
 export class LoginFormComponent implements OnInit {
 
 
-  constructor(private userservice: UserService, private router:Router) { }
+  constructor(private router:Router, private authenticationService: AuthenticationService, private http: HttpClient, ) { }
 
-  newUser: any;
-  users: User[] =[];
+  credential: User;
 
   UserForm = new FormGroup({
-    username: new FormControl('usernam'),
-    email: new FormControl('emailadresse'),
-    password: new FormControl('passwd'),
-    password_repeat: new FormControl('passwd wiederholt')
+    username: new FormControl('admin'),
+    password: new FormControl('admin')
 
   });
 
   ngOnInit(): void {
   }
 
-  zurueck(){
-    this.router.navigateByUrl('/getMembers');
+  logIn() {
+    this.credential = this.UserForm.value;
+    console.log(this.credential);
+    this.authenticationService.authenticate(this.credential, () => {
+      this.router.navigateByUrl('/getMembers');
+    });
+    return false;
   }
 
-  erstelleAcc(){
-
-    console.log(this.UserForm.value);
-    this.newUser = this.UserForm.value;
-
-    this.userservice
-      .createAccount(this.newUser)
-      .subscribe(data => {
-        this.users.push(data)
-      });
-
-    //this.router.navigateByUrl('/getMembers');
-    console.log(this.users);
-  }
 
 }

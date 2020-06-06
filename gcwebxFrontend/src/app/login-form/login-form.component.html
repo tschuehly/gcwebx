@@ -1,7 +1,11 @@
-<!--  -->
+<!-- <div class="alert alert-danger" [hidden]="!error">
+  There was a problem logging in. Please try again.
+</div>
+ -->
 
 {{UserForm.value | json}}
-<div class="heading"><h3>Neuen Account erstellen:</h3></div>
+<div class="heading"><h3>Log in</h3></div>
+
 
 <div class="form"><form [formGroup]="UserForm">
   <label>
@@ -12,29 +16,15 @@
   <p></p>
 
   <label>
-    <div class="label">e-Mail:</div>
-    <div class="input"><input type="text" formControlName="email"></div>
-  </label>
-
-  <p></p>
-
-  <label>
     <div class="label">Passwort:</div>
     <div class="input"><input type="text" formControlName="password"></div>
   </label>
 
-  <p></p>
-
-  <label>
-    <div class="label">Passwort wiederholen:</div>
-    <div class="input"><input type="text" formControlName="password_repeat"></div>
-  </label>
 
 </form>
   <p></p>
-  <form [formGroup]="UserForm" (click)="erstelleAcc()"></form>
+  <!-- <form [formGroup]="UserForm" (click)="logIn()"></form> -->
 </div>
 
-  <button type="submit"  (click)="zurueck()">zurück</button>
-  <button type="submit" formmethod="post" (click)="erstelleAcc()">Erstelle Account</button>
+  <button type="submit" formmethod="post" (click)="logIn()">Log in</button>
 

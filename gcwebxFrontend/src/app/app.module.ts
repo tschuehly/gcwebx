@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {Injectable, NgModule} from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
+import {HTTP_INTERCEPTORS, HttpClientModule, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {HttpClientModule} from '@angular/common/http';
 import { MemberTableComponent } from './components/member-table/member-table.component';
 import {NgbdSortableHeader} from './directives/sortable.directive';
@@ -34,6 +35,20 @@ export const routerConfig: Routes = [
 ];
 
 import {AppRoutingModule} from "../app-routing.module";
+import { RegistrationFormComponent } from './registration-form/registration-form.component';
+import {AuthenticationService} from "./services/authentication.service";
+import {BasicAuthInterceptService} from "./services/basic-auth-intercept.service";
+
+@Injectable()
+export class XhrInterceptor implements HttpInterceptor {
+
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
+    const xhr = req.clone({
+      headers: req.headers.set('X-Requested-With', 'XMLHttpRequest')
+    });
+    return next.handle(xhr);
+  }
+}
 
 @NgModule({
   declarations: [
@@ -45,7 +60,7 @@ import {AppRoutingModule} from "../app-routing.module";
     EditMemberComponent,
     NavigationComponent,
     HomeComponent,
-    TeamspeakComponent
+    TeamspeakComponent, NgbdSortableHeader, RegistrationFormComponent
   ],
   exports: [MemberTableComponent, HomeComponent],
   imports: [
@@ -64,8 +79,9 @@ import {AppRoutingModule} from "../app-routing.module";
     ScrollingModule,
     RouterModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent],
+  providers: [AuthenticationService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true },{ provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptService, multi: true }],
+  bootstrap: [AppComponent, MemberTableComponent ],
+
   entryComponents: [HomeComponent, MemberTableComponent, EditMemberComponent]
 })
 export class AppModule { }

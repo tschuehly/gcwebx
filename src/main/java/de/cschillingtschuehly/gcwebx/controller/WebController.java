@@ -12,16 +12,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
+import java.security.Principal;
 import java.time.LocalDate;
 
 @RestController
-@CrossOrigin(origins="*",allowedHeaders = "*")
+@CrossOrigin()
 public class WebController {
     @Autowired
     private MemberService memberService;
     @Autowired
     private UserService userService;
-    @CrossOrigin()
+    //@CrossOrigin(origins="http://localhost:4200/getMembers",allowedHeaders = "*")
     @GetMapping(value = "/getMembers",produces = {"application/json"})
     public ResponseEntity getMember(){
         String memberTable = memberService.getMemberTable();
@@ -52,9 +53,26 @@ public class WebController {
         model.addAttribute("user", user);
         return "registration";
     }*/
-    @CrossOrigin(origins="*",allowedHeaders = "*")
-    @PostMapping("/login")
-    public void createAccount(@RequestBody User user) {
-        userService.createUser(user);
+
+
+    //@CrossOrigin("http://localhost:4200/*")
+    @RequestMapping("/user")
+    public Principal user(Principal user) {
+        System.out.println(user);
+        return user;
     }
+
+    ///@CrossOrigin()
+    @GetMapping("/admin")
+    public ResponseEntity getAdmin(){
+        return ResponseEntity.ok().body("Hello Admin");
+    }
+
+
+    ///@CrossOrigin()
+    @PostMapping("/logout")
+    public ResponseEntity logout(){
+        return ResponseEntity.ok().body("Successfully logged out");
+    }
+
 }

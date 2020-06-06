@@ -1,51 +1,41 @@
 package de.cschillingtschuehly.gcwebx.modell;
 
+import de.cschillingtschuehly.gcwebx.repositories.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
-public class UserPrincipal implements UserDetails {
+public class AuthenticatedUser extends User implements UserDetails {
 
-    private User user;
-
-    public UserPrincipal(User user){
-            this.user = user;
+    public AuthenticatedUser(User user){
+        super(user.getUsername(),user.getPassword(),user.getRole());
     }
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
-
-    @Override
-    public String getPassword() {
-        return null;
-    }
-
-    @Override
-    public String getUsername() {
-        return null;
+        return AuthorityUtils.createAuthorityList(getRole());
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }
