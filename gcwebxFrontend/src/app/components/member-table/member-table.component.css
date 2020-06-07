@@ -1,32 +1,29 @@
 .viewport {
   height: 500px;
   width: 100%;
-  border: 1px solid black;
-}
 
+}
 .tablerow{
   height: 30px;
 }
-
 ::-webkit-scrollbar-track
 {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-  background-color: #F5F5F5;
-}
+  background: transparent url("/src/assets/transparent.png") repeat-y;
 
+}
 ::-webkit-scrollbar
 {
-  width: 8px;
-  height: 8px;
-  background-color: #F5F5F5;
+  width: 10px;
+  height: 0px;
+  background: transparent url("/src/assets/transparent.png") repeat-y;
 }
 
 ::-webkit-scrollbar-thumb
 {
-  background-color: #000000;
+  background-color: #F5F5F5;
 }
 #backgroundimg{
-  background-image: url('https://static-dm.akamaized.net/siege/prod/r6-siege-home-operators-bg.jpg');
+  background-image: url('https://i.ibb.co/vYLCZsF/Alibi-KEYART.jpg');
   /* Full height */
   height: 100%;
 

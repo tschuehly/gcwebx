@@ -19,7 +19,7 @@
 {
   width: 8px;
   height: 8px;
-  background-color: #F5F5F5;
+  background: transparent url('src/assets/transparent.png');
 }
 
 ::-webkit-scrollbar-thumb

@@ -28,7 +28,7 @@ export class RegistrationFormComponent implements OnInit {
   }
 
   zurueck(){
-    this.router.navigateByUrl('/getMembers');
+    this.router.navigateByUrl('/home');
   }
 
   erstelleAcc(){

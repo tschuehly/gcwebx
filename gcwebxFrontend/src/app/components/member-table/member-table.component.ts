@@ -7,7 +7,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {map, startWith, tap, filter} from 'rxjs/operators';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {EditMemberComponent} from '../edit-member/edit-member.component';
-import {AuthenticationService} from "../../services/authentication.service";
+import {AuthenticationService} from '../../services/authentication.service';
 
 
 @Component({
@@ -24,12 +24,14 @@ export class MemberTableComponent implements OnInit{
   searchFilter$: Observable<string>;
   deletedFilter: FormControl;
   deletedFilter$: Observable<boolean>;
-  constructor(private backendService: BackendService, private modalService: NgbModal,private authenticationService: AuthenticationService) {
+  constructor(private backendService: BackendService,
+              private modalService: NgbModal,
+              private authenticationService: AuthenticationService) {
     this.memberTable$ = this.backendService.getMemberTable();
     this.backendService.getMemberTable().
     subscribe(memberTableResponse => {
       this.member = memberTableResponse[4];
-      console.log(this.member);
+      console.log(memberTableResponse);
       console.log(this.memberTable$);
     });
     this.searchFilter = new FormControl('');
@@ -63,7 +65,7 @@ export class MemberTableComponent implements OnInit{
       }
     });
   }
-  authenticated() { return this.authenticationService.authenticated;}
+  authenticated() { return this.authenticationService.authenticated; }
 
   logout() {
     this.authenticationService.logout();

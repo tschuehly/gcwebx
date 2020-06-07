@@ -31,7 +31,7 @@ export class LoginFormComponent implements OnInit {
     this.credential = this.UserForm.value;
     console.log(this.credential);
     this.authenticationService.authenticate(this.credential, () => {
-      this.router.navigateByUrl('/getMembers');
+      this.router.navigateByUrl('/home');
     });
     return false;
   }

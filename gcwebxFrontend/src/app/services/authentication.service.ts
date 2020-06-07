@@ -38,15 +38,15 @@ export class AuthenticationService {
   }
 
   logout() {
-    this.http.post(this.backendUrl+'/logout', {}).pipe(finalize(() => {
+    this.http.post(this.backendUrl +'/logout', {}).pipe(finalize(() => {
       this.authenticated = false;
-      sessionStorage.removeItem('username')
+      sessionStorage.removeItem('username');
       //this.router.navigateByUrl('/login');
     })).subscribe();
   }
 
   isUserLogginId(){
-    let user = sessionStorage.getItem('username')
+    let user = sessionStorage.getItem('username');
     return !(user === null)
   }
 

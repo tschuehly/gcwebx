@@ -35,8 +35,8 @@ export const routerConfig: Routes = [
 ];
 
 import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
-import {AuthenticationService} from "./services/authentication.service";
-import {BasicAuthInterceptService} from "./services/basic-auth-intercept.service";
+import {AuthenticationService} from './services/authentication.service';
+import {BasicAuthInterceptService} from './services/basic-auth-intercept.service';
 
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor {
@@ -73,11 +73,11 @@ export class XhrInterceptor implements HttpInterceptor {
     HttpClientModule,
     NoopAnimationsModule,
     ScrollingModule,
-    RouterModule,
+    RouterModule
   ],
   providers: [AuthenticationService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true },{ provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptService, multi: true }],
   bootstrap: [AppComponent ],
 
-  entryComponents: [HomeComponent, MemberTableComponent, EditMemberComponent]
+  entryComponents: [HomeComponent, MemberTableComponent, EditMemberComponent, NavigationComponent]
 })
 export class AppModule { }
