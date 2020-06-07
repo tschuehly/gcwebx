@@ -30,7 +30,8 @@ export const routerConfig: Routes = [
     component: TeamspeakComponent
   },
   {path: 'login', component: LoginFormComponent},
-  {path: 'register', component: RegistrationFormComponent}
+  {path: 'register', component: RegistrationFormComponent},
+  {path: '', pathMatch: 'full', component: HomeComponent}
 ];
 
 import { RegistrationFormComponent } from './components/registration-form/registration-form.component';

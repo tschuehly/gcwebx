@@ -29,6 +29,8 @@ export class MemberTableComponent implements OnInit{
     this.backendService.getMemberTable().
     subscribe(memberTableResponse => {
       this.member = memberTableResponse[4];
+      console.log(this.member);
+      console.log(this.memberTable$);
     });
     this.searchFilter = new FormControl('');
     this.searchFilter$ = this.searchFilter.valueChanges.pipe(startWith(''));
