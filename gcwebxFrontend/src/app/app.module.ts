@@ -16,27 +16,22 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import {RouterModule, Routes} from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { TeamspeakComponent } from './components/teamspeak/teamspeak.component';
+import { QuillModule } from 'ngx-quill';
+
 export const routerConfig: Routes = [
-  {
-    path: 'memberTable',
-    component: MemberTableComponent,
-  },
-  {
-    path: 'home',
-    component: HomeComponent
-  },
-  {
-    path: 'teamspeak',
-    component: TeamspeakComponent
-  },
+  {path: 'memberTable', component: MemberTableComponent},
+  {path: 'home', component: HomeComponent},
+  {path: 'teamspeak', component: TeamspeakComponent},
   {path: 'login', component: LoginFormComponent},
   {path: 'register', component: RegistrationFormComponent},
+  {path: 'edit', component: EditorComponent},
   {path: '', pathMatch: 'full', component: HomeComponent}
 ];
 
 import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
 import {AuthenticationService} from './services/authentication.service';
 import {BasicAuthInterceptService} from './services/basic-auth-intercept.service';
+import { EditorComponent } from './components/editor/editor.component';
 
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor {
@@ -59,7 +54,7 @@ export class XhrInterceptor implements HttpInterceptor {
     EditMemberComponent,
     NavigationComponent,
     HomeComponent,
-    TeamspeakComponent, NgbdSortableHeader, RegistrationFormComponent
+    TeamspeakComponent, NgbdSortableHeader, RegistrationFormComponent, EditorComponent
   ],
   exports: [MemberTableComponent, HomeComponent],
   imports: [
@@ -73,7 +68,8 @@ export class XhrInterceptor implements HttpInterceptor {
     HttpClientModule,
     NoopAnimationsModule,
     ScrollingModule,
-    RouterModule
+    RouterModule,
+    QuillModule.forRoot({})
   ],
   providers: [AuthenticationService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true },{ provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptService, multi: true }],
   bootstrap: [AppComponent ],

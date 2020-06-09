@@ -17,11 +17,10 @@ import java.time.LocalDate;
 
 @RestController
 @CrossOrigin()
-public class WebController {
+public class MemberController {
     @Autowired
     private MemberService memberService;
-    @Autowired
-    private UserService userService;
+
     //@CrossOrigin(origins="http://localhost:4200/getMembers",allowedHeaders = "*")
     @GetMapping(value = "/getMembers",produces = {"application/json"})
     public ResponseEntity getMember(){
@@ -47,32 +46,5 @@ public class WebController {
         return ResponseEntity.ok().body("{\"memberDeleted\":\"true\"}");
     }
 
-    /*@GetMapping("/login")
-    public String showRegistrationForm(WebRequest request, Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
-        return "registration";
-    }*/
-
-
-    //@CrossOrigin("http://localhost:4200/*")
-    @RequestMapping("/user")
-    public Principal user(Principal user) {
-        System.out.println(user);
-        return user;
-    }
-
-    ///@CrossOrigin()
-    @GetMapping("/admin")
-    public ResponseEntity getAdmin(){
-        return ResponseEntity.ok().body("Hello Admin");
-    }
-
-
-    ///@CrossOrigin()
-    @PostMapping("/logout")
-    public ResponseEntity logout(){
-        return ResponseEntity.ok().body("Successfully logged out");
-    }
 
 }
