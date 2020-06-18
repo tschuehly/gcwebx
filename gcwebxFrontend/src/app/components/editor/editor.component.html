@@ -1,11 +1,25 @@
-<div class="row" id="backgroundimg">
 
-  <div class="container my-auto text-light">
-    <div class="container-fluid ">
-      <div class="row pl-2 py-2">
-      <quill-editor ></quill-editor>
-    </div>
-  </div>
+
+
+<div class="row">
+
+
+
+<div class="mb-5 mt-auto  mx-auto">
+  <form class="form" [formGroup]="EditContent" class="bg-light">
+
+    <p-editor formControlName="text" [style]="{'height':'320px'}"></p-editor>
+
+    <button type="button" class="btn btn-dark" (click)="save()">Save</button>
+    <button type="button" class="btn btn-dark" (click)="save()">Delete</button>
+    <button type="button" class="btn btn-dark" (click)="save()">Create</button>
+
+  </form>
 </div>
+
+
+
+
 </div>
+
 

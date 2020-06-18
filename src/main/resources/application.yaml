@@ -17,6 +17,13 @@ spring:
   h2:
     console:
       enabled: true
-security:
-  ignored:
-    - "*.bundle.*"
+logging:
+  level:
+    org.springframework.security: DEBUG
+server:
+  ssl:
+    key-store-type: PKCS12
+    key-store: classpath:keystore/cschillingtschuehly.p12
+    key-store-password: marcisstbananen
+    key-alias: cschillingtschuehly
+    enabled: true

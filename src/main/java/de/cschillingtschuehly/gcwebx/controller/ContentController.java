@@ -18,24 +18,24 @@ public class ContentController {
 
 
     //@CrossOrigin(origins="http://localhost:4200/getContent",allowedHeaders = "*")
-    @GetMapping(value = "/getContent",produces = {"application/json"})
+    @GetMapping(value = "/api/getContent",produces = {"application/json"})
     public ResponseEntity getContent(){
         String contentTable = contentService.getContentTable();
         return ResponseEntity.ok().body(contentTable);
     }
-    @PutMapping(value="/updateContent",produces = {"application/json"})
+    @PutMapping(value="/api/updateContent",produces = {"application/json"})
     public ResponseEntity editContent(@RequestBody Content content) throws JsonProcessingException {
         System.out.println(content);
         String updatedContent = contentService.updateContent(content);
         return ResponseEntity.ok().body(updatedContent);
     }
-    @PostMapping(value="/createContent",produces = {"application/json"})
+    @PostMapping(value="/api/createContent",produces = {"application/json"})
     public ResponseEntity createContent(@RequestBody Content content) throws JsonProcessingException {
         System.out.println(content);
         String createdContent = contentService.createContent(content);
         return ResponseEntity.ok().body(createdContent);
     }
-    @DeleteMapping(value="/deleteContent",produces = {"application/json"})
+    @DeleteMapping(value="/api/deleteContent",produces = {"application/json"})
     public ResponseEntity deleteContent(@RequestBody Content content) throws JsonProcessingException {
         contentService.deleteContent(content);
         return ResponseEntity.ok().body("{\"contentDeleted\":\"true\"}");

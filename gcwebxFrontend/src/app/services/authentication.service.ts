@@ -9,7 +9,7 @@ import {User} from "../model/user";
 })
 
 export class AuthenticationService {
-  private backendUrl = 'http://localhost:8080';
+  private backendUrl = '/api';
   authenticated = false;
   constructor(private http: HttpClient) {
 

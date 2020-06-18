@@ -41,6 +41,7 @@ public class ContentService {
         ObjectMapper mapper = mapperService.jacksonMapper();
         contentRepository.save(pcontent);
         Content content = contentRepository.findById(pcontent.getId()).get();
+        System.out.println(content.toString());
         return mapper.writeValueAsString(content);
     }
     public void deleteContent(Content pContent){
