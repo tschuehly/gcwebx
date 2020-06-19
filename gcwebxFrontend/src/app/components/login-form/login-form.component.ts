@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {Router} from "@angular/router";
-import {User} from "../../model/user";
-import {UserService} from "../../services/user.service";
-import {HttpClient} from "@angular/common/http";
-import {AuthenticationService} from "../../services/authentication.service";
+import {Router} from '@angular/router';
+import {User} from '../../model/user';
+import {UserService} from '../../services/user.service';
+import {HttpClient} from '@angular/common/http';
+import {AuthenticationService} from '../../services/authentication.service';
 
 @Component({
   selector: 'app-login-form',
@@ -14,13 +14,13 @@ import {AuthenticationService} from "../../services/authentication.service";
 export class LoginFormComponent implements OnInit {
 
 
-  constructor(private router:Router, private authenticationService: AuthenticationService, private http: HttpClient, ) { }
+  constructor(private router: Router, private authenticationService: AuthenticationService, private http: HttpClient, ) { }
 
   credential: User;
 
   UserForm = new FormGroup({
-    username: new FormControl('admin'),
-    password: new FormControl('admin')
+    username: new FormControl(),
+    password: new FormControl()
 
   });
 
@@ -32,6 +32,7 @@ export class LoginFormComponent implements OnInit {
     console.log(this.credential);
     this.authenticationService.authenticate(this.credential, () => {
       this.router.navigateByUrl('/home');
+
     });
     return false;
   }

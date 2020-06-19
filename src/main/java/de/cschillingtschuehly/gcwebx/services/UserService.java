@@ -1,5 +1,8 @@
 package de.cschillingtschuehly.gcwebx.services;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import de.cschillingtschuehly.gcwebx.modell.Member;
 import de.cschillingtschuehly.gcwebx.modell.User;
 import de.cschillingtschuehly.gcwebx.modell.AuthenticatedUser;
 import de.cschillingtschuehly.gcwebx.repositories.UserRepository;
@@ -21,7 +24,14 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
-
+    @Autowired
+    private MapperService mapperService;
+    public String getUserTable(){
+        ObjectMapper mapper = mapperService.jacksonMapper();
+        List<User> userList = userRepository.findAll();
+        ArrayNode userTable = mapper.valueToTree(userList);
+        return userTable.toString();
+    }
     @Override
     public UserDetails loadUserByUsername(String username) {
         User user = userRepository.findByUsername(username);
@@ -45,7 +55,13 @@ public class UserService implements UserDetailsService {
 
         return authorities;
     }
-
+    public String getRoleByUsername(String username){
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("User " + username + " not found");
+        }
+        return user.getRole();
+    }
     public void createUser(User user) {
         userRepository.save(user);
     }

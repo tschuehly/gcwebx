@@ -1,21 +1,22 @@
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule} from '@angular/platform-browser';
 import {Injectable, NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { LoginFormComponent } from './components/login-form/login-form.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {AppComponent} from './app.component';
+import {LoginFormComponent} from './components/login-form/login-form.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {HTTP_INTERCEPTORS, HttpClientModule, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import { MemberTableComponent } from './components/member-table/member-table.component';
+import {MemberTableComponent} from './components/member-table/member-table.component';
 import {NgbdSortableHeader} from './directives/sortable.directive';
-import { EditMemberComponent } from './components/edit-member/edit-member.component';
-import { ScrollingModule } from '@angular/cdk/scrolling';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { NavigationComponent } from './components/navigation/navigation.component';
+import {EditMemberComponent} from './components/edit-member/edit-member.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {NavigationComponent} from './components/navigation/navigation.component';
 import {RouterModule, Routes} from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { TeamspeakComponent } from './components/teamspeak/teamspeak.component';
+import {HomeComponent} from './components/home/home.component';
+import {TeamspeakComponent} from './components/teamspeak/teamspeak.component';
+
 export const routerConfig: Routes = [
   {
     path: 'memberTable',
@@ -30,13 +31,13 @@ export const routerConfig: Routes = [
     component: TeamspeakComponent
   },
   {path: 'login', component: LoginFormComponent},
-  {path: 'register', component: RegistrationFormComponent},
   {path: '', pathMatch: 'full', component: HomeComponent}
 ];
 
-import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
 import {AuthenticationService} from './services/authentication.service';
 import {BasicAuthInterceptService} from './services/basic-auth-intercept.service';
+import { UserTableComponent } from './components/user-table/user-table.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor {
@@ -59,7 +60,10 @@ export class XhrInterceptor implements HttpInterceptor {
     EditMemberComponent,
     NavigationComponent,
     HomeComponent,
-    TeamspeakComponent, NgbdSortableHeader, RegistrationFormComponent
+    TeamspeakComponent,
+    NgbdSortableHeader,
+    UserTableComponent,
+    EditUserComponent,
   ],
   exports: [MemberTableComponent, HomeComponent],
   imports: [
@@ -75,9 +79,12 @@ export class XhrInterceptor implements HttpInterceptor {
     ScrollingModule,
     RouterModule
   ],
-  providers: [AuthenticationService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true },{ provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptService, multi: true }],
-  bootstrap: [AppComponent ],
+  providers: [AuthenticationService,
+    {provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptService, multi: true}],
+  bootstrap: [AppComponent],
 
   entryComponents: [HomeComponent, MemberTableComponent, EditMemberComponent, NavigationComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

@@ -5,6 +5,8 @@ export class User{
 
   password: string;
 
-  matching_password: string;
+  matchingPassword: string;
+
+  role: string;
 
 }

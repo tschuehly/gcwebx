@@ -34,6 +34,7 @@ public class Member {
     private String uplayId;
     @Column(columnDefinition = "boolean default false")
     private Boolean deleted;
+    private String rank;
 
     public Member(String name, String teamspeakId, LocalDate dateOfBirth, LocalDate joinDate) {
         this.name = name;

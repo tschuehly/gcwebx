@@ -1,29 +1,14 @@
 <div class='container-fluid p-0'>
   <ngb-carousel>
-    <ng-template ngbSlide>
-      <div class="picsum-img-wrapper">
-        <img class="img-fluid mx-auto" [src]=img1>
-      </div>
+      <ng-template *ngFor="let imgsrc of images" ngbSlide >
+        <div  class="picsum-img-wrapper">
+          <img class="img-fluid mx-auto" src="{{imgsrc}}">
+          {{imgsrc}}
 
-      <div class="carousel-caption">
-      </div>
-    </ng-template>
-    <ng-template ngbSlide>
-      <div class="picsum-img-wrapper">
-        <img class="img-fluid mx-auto" [src]=img2>
-      </div>
-      <div class="carousel-caption">
-      </div>
-    </ng-template>
-    <ng-template ngbSlide>
-      <div class="picsum-img-wrapper">
-        <img class="img-fluid mx-auto" [src]=img3>
-      </div>
-      <div class="carousel-caption">
-      </div>
-    </ng-template>
+        </div>
+        <div class="carousel-caption"></div>
+      </ng-template>
   </ngb-carousel>
-
 
 </div>
 

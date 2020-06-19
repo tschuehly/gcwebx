@@ -3,7 +3,7 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-    <div class="navbar-nav ">
+    <div class="navbar-nav text-light my-auto">
       <ul ngbNav #nav="ngbNav" >
         <li ngbNavItem class="my-auto">
           <a  ngbNavLink class="navbar-brand p-2" routerLink="home" ><img src="https://ts.xperience-gaming.de/preview/images/logo.png" height="60"  ></a>
@@ -11,25 +11,46 @@
         <li ngbNavItem class="my-auto">
           <a ngbNavLink routerLink="home">Home</a>
         </li>
-
+          <li class="nav-item nav-link my-auto" ngbDropdown ngbDropdownToggle>
+            <a class="nav-link">Esport</a>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem>Rainbow Six Siege</button>
+            <button ngbDropdownItem>Valorant</button>
+          </div>
+          </li>
         <li ngbNavItem class="my-auto">
-          <a ngbNavLink>Mitglied werden</a>
+          <a ngbNavLink>Mitmachen</a>
         </li>
         <li ngbNavItem class="my-auto">
-          <a ngbNavLink>Teams</a>
-        </li>
-        <li ngbNavItem class="my-auto">
-          <a ngbNavLink>News</a>
+          <a ngbNavLink>Über</a>
         </li>
         <li ngbNavItem class="my-auto">
           <a ngbNavLink routerLink="teamspeak">Teamspeak</a>
         </li>
         <li ngbNavItem class="my-auto">
+          <a ngbNavLink>News</a>
+        </li>
+        <li ngbNavItem class="my-auto">
+          <a ngbNavLink>Events</a>
+        </li>
+        <li ngbNavItem class="my-auto">
+          <a ngbNavLink>Partner</a>
+        </li>
+        <li *ngIf="authenticationService.currentRole == 'ROLE_ADMIN'" ngbNavItem class="my-auto">
           <a ngbNavLink routerLink="memberTable">Membertable</a>
         </li>
+        <li *ngIf="!authenticationService.currentRole" ngbNavItem class="my-auto">
+          <a ngbNavLink routerLink="login">Login</a>
+        </li>
+        <li *ngIf="authenticationService.currentRole" ngbNavItem class="my-auto">
+          <a ngbNavLink routerLink="home" (click)="logout()">Logout</a>
+        </li>
+
+
       </ul>
     </div>
 </nav>
 
 
 <router-outlet></router-outlet>
+<h1>{{this.authenticationService.currentRole}}</h1>

@@ -8,9 +8,11 @@ import {Router} from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  img1 = 'https://ts.xperience-gaming.de/preview/images/background.jpg';
-  img2 = 'https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/1Bg0RXEfNZM1nOiufjbj0O/fdd5eb79c5353ad9499bf4dde0a20bb0/r6s-home-operators-y5s2.png';
-  img3 = 'https://i.imgur.com/W5Tq6YD.jpg';
+
+  images = ['https://ts.xperience-gaming.de/preview/images/background.jpg',
+            'https://i.imgur.com/fTa59Lw.jpg',
+            'https://i.imgur.com/W5Tq6YD.jpg',
+            'https://i.imgur.com/0Nqqv5J.jpg'];
   paused = false;
   unpauseOnArrow = false;
   pauseOnIndicator = false;

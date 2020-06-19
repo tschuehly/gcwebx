@@ -2,29 +2,31 @@
   There was a problem logging in. Please try again.
 </div>
  -->
+<div class="row">
+  <div class="my-auto container-fluid">
+    <div class="modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Login</h4>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="UserForm" >
+              <div class="input-group mb-3">
+                <input class="form-control" placeholder="Username" type="text" formControlName="username">
+              </div>
+              <div class="input-group">
+                <input class="form-control" placeholder="Password" type="password" formControlName="password">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" type="submit" formmethod="post" (click)="logIn()" >Log in</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-{{UserForm.value | json}}
-<div class="heading"><h3>Log in</h3></div>
-
-
-<div class="form"><form [formGroup]="UserForm">
-  <label>
-    <div class="label">Username:</div>
-    <div class="input"><input type="text" formControlName="username"></div>
-  </label>
-
-  <p></p>
-
-  <label>
-    <div class="label">Passwort:</div>
-    <div class="input"><input type="text" formControlName="password"></div>
-  </label>
-
-
-</form>
-  <p></p>
-  <!-- <form [formGroup]="UserForm" (click)="logIn()"></form> -->
 </div>
-
-  <button type="submit" formmethod="post" (click)="logIn()">Log in</button>
 

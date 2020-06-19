@@ -8,6 +8,7 @@ import de.cschillingtschuehly.gcwebx.services.UserService;
 import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
@@ -54,12 +55,20 @@ public class WebController {
         return "registration";
     }*/
 
-
+    @GetMapping(value = "/getUsers",produces = {"application/json"})
+    public ResponseEntity getUsers(){
+        String userTable = userService.getUserTable();
+        return ResponseEntity.ok().body(userTable);
+    }
     //@CrossOrigin("http://localhost:4200/*")
     @RequestMapping("/user")
     public Principal user(Principal user) {
         System.out.println(user);
         return user;
+    }
+    @GetMapping("/getRole/{username}")
+    public ResponseEntity getRole(@PathVariable String username){
+        return ResponseEntity.ok().body("{\"role\":\"" + userService.getRoleByUsername(username)+ "\"}");
     }
 
     ///@CrossOrigin()
@@ -68,11 +77,5 @@ public class WebController {
         return ResponseEntity.ok().body("Hello Admin");
     }
 
-
-    ///@CrossOrigin()
-    @PostMapping("/logout")
-    public ResponseEntity logout(){
-        return ResponseEntity.ok().body("Successfully logged out");
-    }
 
 }
