@@ -23,8 +23,8 @@ export class BackendService {
     return this.http.post(this.backendUrl + '/createMember', member);
   }
 
-  getContent(): Observable<any>{
-    return this.http.get(this.backendUrl + '/getContent');
+  getContentById(id: number): Observable<any>{
+    return this.http.post(this.backendUrl + '/getContent', id);
   }
   updateContent(content: Content): Observable<any>{
     return this.http.put(this.backendUrl + '/updateContent', content);
