@@ -1,5 +1,6 @@
 .nav a{
   font-size: 1.4em;
+  padding: 4px;
 }
 .dropdown-toggle::after {
   display:none;
@@ -11,4 +12,9 @@
   color: white;
   text-shadow:
     1px 1px 3px black,1px 1px 3px black,1px 1px 5px black,1px 1px 4px black;
+}
+.navbar-collapse{
+  z-index: 2000;
+  height: 100vh!important;
+  background-color: rgba(52, 58, 64, 0.95);
 }

@@ -1,0 +1,35 @@
+.viewport {
+  height: 500px;
+  width: 100%;
+
+}
+.tablerow{
+  height: 30px;
+}
+::-webkit-scrollbar-track
+{
+  background: transparent url("/src/assets/transparent.png") repeat-y;
+
+}
+::-webkit-scrollbar
+{
+  width: 10px;
+  height: 0px;
+  background: transparent url("/src/assets/transparent.png") repeat-y;
+}
+
+::-webkit-scrollbar-thumb
+{
+  background-color: #F5F5F5;
+}
+#backgroundimg{
+  background-image: url('https://i.imgur.com/0XjfMHg.png');
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-attachment: local;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

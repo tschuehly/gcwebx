@@ -31,13 +31,15 @@ export const routerConfig: Routes = [
     component: TeamspeakComponent
   },
   {path: 'login', component: LoginFormComponent},
-  {path: '', pathMatch: 'full', component: HomeComponent}
+  {path: '', pathMatch: 'full', component: HomeComponent},
+  {path : 'userTable', pathMatch: 'full', component: UserTableComponent}
 ];
 
 import {AuthenticationService} from './services/authentication.service';
 import {BasicAuthInterceptService} from './services/basic-auth-intercept.service';
 import { UserTableComponent } from './components/user-table/user-table.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import {User} from './model/user';
 
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor {

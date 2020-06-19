@@ -48,7 +48,8 @@ public class WebController {
         return ResponseEntity.ok().body("{\"memberDeleted\":\"true\"}");
     }
 
-    /*@GetMapping("/login")
+    /*
+    @GetMapping("/login")
     public String showRegistrationForm(WebRequest request, Model model) {
         User user = new User();
         model.addAttribute("user", user);

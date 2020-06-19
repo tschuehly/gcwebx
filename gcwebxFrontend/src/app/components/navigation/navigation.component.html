@@ -1,24 +1,82 @@
 
-<nav class="navbar bg-transparent navbar-expand-lg navbar-dark bg-dark nav-fill p-0 fixed-top">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-    <div class="navbar-nav text-light my-auto">
-      <ul ngbNav #nav="ngbNav" >
+<nav class="navbar bg-transparent navbar-expand-sm navbar-dark nav-fill p-0 fixed-top d-none d-md-block">
+  <div  class=" navbar-nav text-light my-auto">
+    <ul ngbNav #nav="ngbNav" class=" navbar-nav mx-auto">
+      <li ngbNavItem class="my-auto">
+        <a  ngbNavLink class="navbar-brand pt-2 mr-0" routerLink="home" >
+          <img src="https://ts.xperience-gaming.de/preview/images/logo.png" height="60">
+        </a>
+      </li>
+      <li ngbNavItem class="my-auto p-0">
+        <a ngbNavLink routerLink="home">Home</a>
+      </li>
+        <li class="nav-item nav-link my-auto p-0" ngbDropdown ngbDropdownToggle>
+          <a class="nav-link">Esport</a>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem>Rainbow Six Siege</button>
+          <button ngbDropdownItem>Valorant</button>
+        </div>
+        </li>
+      <li ngbNavItem class="my-auto p-0">
+        <a ngbNavLink>Join</a>
+      </li>
+      <li ngbNavItem class="my-auto p-0">
+        <a ngbNavLink>Über</a>
+      </li>
+      <li ngbNavItem class="my-auto p-0">
+        <a ngbNavLink routerLink="teamspeak">Teamspeak</a>
+      </li>
+      <li ngbNavItem class="my-auto p-0">
+        <a ngbNavLink>News</a>
+      </li>
+      <li ngbNavItem class="my-auto p-0">
+        <a ngbNavLink>Events</a>
+      </li>
+      <li ngbNavItem class="my-auto p-0">
+        <a ngbNavLink>Partner</a>
+      </li>
+      <li *ngIf="authenticationService.currentRole == 'ROLE_ADMIN'" ngbNavItem class="my-auto p-0">
+        <a ngbNavLink routerLink="memberTable">Membertable</a>
+      </li>
+      <li *ngIf="!authenticationService.currentRole" ngbNavItem class="my-auto p-0">
+        <a ngbNavLink routerLink="login">Login</a>
+      </li>
+      <li *ngIf="authenticationService.currentRole" ngbNavItem class="my-auto p-0">
+        <a ngbNavLink routerLink="home" (click)="logout()">Logout</a>
+      </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-dark position-absolute d-sm-flex d-md-none m-0 p-0 h-100 w-100">
+  <div class="container-fluid fixed-top ">
+    <button class="navbar-toggler bg-dark m-3" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+  </div>
+
+  <div class="container-fluid">
+    <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse navbar-nav text-light h-100">
+      <ul ngbNav #nav="ngbNav" class=" navbar-nav mx-auto my-5 text-center"(click)="isMenuCollapsed = true">
         <li ngbNavItem class="my-auto">
-          <a  ngbNavLink class="navbar-brand p-2" routerLink="home" ><img src="https://ts.xperience-gaming.de/preview/images/logo.png" height="60"  ></a>
+          <a  ngbNavLink class="navbar-brand p-2 my-auto"  routerLink="home" >
+            <img src="https://ts.xperience-gaming.de/preview/images/logo.png" height="120">
+          </a>
         </li>
         <li ngbNavItem class="my-auto">
           <a ngbNavLink routerLink="home">Home</a>
         </li>
-          <li class="nav-item nav-link my-auto" ngbDropdown ngbDropdownToggle>
-            <a class="nav-link">Esport</a>
+        <li class="nav-item nav-link my-auto" ngbDropdown ngbDropdownToggle>
+          <a class="nav-link text-center">Esport</a>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <button ngbDropdownItem>Rainbow Six Siege</button>
             <button ngbDropdownItem>Valorant</button>
           </div>
-          </li>
-        <li ngbNavItem class="my-auto">
+        </li>
+        <li ngbNavItem class="my-auto ">
           <a ngbNavLink>Mitmachen</a>
         </li>
         <li ngbNavItem class="my-auto">
@@ -49,8 +107,9 @@
 
       </ul>
     </div>
-</nav>
+  </div>
 
+</nav>
 
 <router-outlet></router-outlet>
 <h1>{{this.authenticationService.currentRole}}</h1>

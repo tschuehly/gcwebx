@@ -16,8 +16,7 @@ import {Observable} from 'rxjs';
 })
 
 export class NavigationComponent implements OnInit {
-  public isNavbarCollapsed = true;
-
+  public isMenuCollapsed = true;
   constructor(private router: Router, public authenticationService: AuthenticationService) {
 
 

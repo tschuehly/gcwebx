@@ -1,0 +1,48 @@
+<div class="row" id="backgroundimg">
+
+  <div class="container my-auto">
+    <div class="container-fluid ">
+      <div class="row pl-2 py-2">
+        <div class="col-4">
+          <input class="form-control" type="text" [formControl]="searchFilter" placeholder="Filter user">
+        </div>
+        <div class="col-4 ml-auto">
+          <button class="btn btn-outline-light" (click)="createUser()">Create New User</button>
+        </div>
+
+      </div>
+      <div class="row">
+        <!-- TODO: Header stays fixed https://github.com/rintoj/ngx-virtual-scroller/issues/51 -->
+        <div class="table-responsive">
+          <table class="table table-borderless text-light">
+            <cdk-virtual-scroll-viewport itemSize='5' class="viewport" minBufferPx="1200" maxBufferPx="1500">
+              <thead class="thead">
+              <tr>
+                <th>Name</th>
+                <th>Rolle</th>
+              </tr>
+              <!-- TODO: Custom Header with simple and complex info -->
+              </thead>
+
+              <tbody>
+
+
+              <tr *cdkVirtualFor="let userobj of filteredUserTable$ | async" class="tablerow">
+                <td>
+                  <button type="button" class="btn btn-outline-light bt n-block" (click)="editUser(userobj)">
+                    {{userobj.username}}
+                  </button>
+                </td>
+                <td>{{userobj.role}}</td>
+
+              </tr>
+
+              </tbody>
+            </cdk-virtual-scroll-viewport>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
