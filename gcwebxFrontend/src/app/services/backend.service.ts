@@ -24,7 +24,11 @@ export class BackendService {
   }
 
   getContentById(id: number): Observable<any>{
-    return this.http.post(this.backendUrl + '/getContent', id);
+    return this.http.post(this.backendUrl + '/getContentByID', id);
+  }
+
+  getContent(): Observable<any>{
+    return this.http.get(this.backendUrl + '/getContent');
   }
   updateContent(content: Content): Observable<any>{
     return this.http.put(this.backendUrl + '/updateContent', content);
@@ -33,7 +37,7 @@ export class BackendService {
     return this.http.post(this.backendUrl + '/createContent', content);
   }
 
-  deleteContent(content: Content): Observable<any>{
-    return this.http.delete(this.backendUrl + '/deleteContent');
+  deleteContent(id: number): Observable<any>{
+    return this.http.delete(`${this.backendUrl + '/deleteContent/'}${id}`);
   }
 }

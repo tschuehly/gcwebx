@@ -1,6 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgbCarousel, NgbCarouselConfig, NgbSlideEvent, NgbSlideEventSource} from '@ng-bootstrap/ng-bootstrap';
 import {Router} from '@angular/router';
+import {Content} from "../../model/content";
+import {Observable} from "rxjs";
+import {BackendService} from "../../services/backend.service";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,7 +18,12 @@ export class HomeComponent implements OnInit {
   unpauseOnArrow = false;
   pauseOnIndicator = false;
   pauseOnHover = true;
-  constructor(config: NgbCarouselConfig) {
+
+  content: Content;
+  contentList: Content[];
+  contentList$: Observable<Content[]>;
+  index: number;
+  constructor(config: NgbCarouselConfig, private backendService: BackendService) {
     config.interval = 20000;
     config.wrap = true;
     config.pauseOnHover = false;
@@ -23,6 +31,14 @@ export class HomeComponent implements OnInit {
   @ViewChild('carousel', {static : true}) carousel: NgbCarousel;
 
   ngOnInit(): void {
+
+    this.contentList$ = this.backendService.getContent();
+    this.backendService.getContent().
+    subscribe(data => {
+      this.contentList = data;
+      console.log(data);
+      console.log(this.contentList);
+    });
   }
 
   togglePaused() {

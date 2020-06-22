@@ -1,13 +1,24 @@
 
 
 
+
+
 <div class="row">
 
 
 
 <div class="mb-5 mt-auto  mx-auto">
 
-  <button type="button" class="btn btn-dark" (click)="getContent(1)">Text[1]</button>
+  <label *ngFor="let contentItem of contentList">
+     <button type="button" class="btn btn-dark" (click)="getContentByID(contentItem.id)">Text[{{contentItem.id}}]</button>
+    <p></p>
+  </label>
+
+
+  <!--<button type="button" class="btn btn-dark" (click)="getContentByID(1)">Text[1]</button>
+  <button type="button" class="btn btn-dark" (click)="getContentByID(2)">Text[2]</button>
+  <p>{{contentItem.id}} von {{contentItem.text}}</p>
+  -->
 
   <form class="form" [formGroup]="EditContent" class="bg-light">
 

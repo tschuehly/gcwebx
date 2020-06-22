@@ -17,8 +17,9 @@ export class EditorComponent implements OnInit {
   newContent: Content;
   content: Content;
   editContent: Content;
-  contentID: number;
-  private text: String;
+  contentList: Content[];
+  contentList$: Observable<Content[]>;
+  index: number;
 
   public EditContent: FormGroup;
 
@@ -31,39 +32,47 @@ export class EditorComponent implements OnInit {
       id: new FormControl(''),
       text: new FormControl('')
     });
+
+    this.contentList$ = this.backendService.getContent();
+    this.backendService.getContent().
+    subscribe(data => {
+      this.contentList = data;
+      console.log(data);
+      console.log(this.contentList);
+    });
+
+    //this.backendService.getContent().subscribe(data => this.contentList$ = <Content>data)
+
+
   }
 
   updateContent(){
-
-
-    console.log('content: ' + JSON.stringify(this.newContent));
-    this.editContent = this.newContent;
-    this.editContent = (this.EditContent.value as Content);
-    console.log('editcontent: ' + JSON.stringify(this.editContent));
+    console.log('content: ' + JSON.stringify(this.EditContent.getRawValue()));
+    this.editContent = this.EditContent.getRawValue() as Content;
     this.backendService.updateContent(this.editContent).subscribe( data => console.log(data));
 
   }
 
   createContent(){
-    this.text = this.EditContent.getRawValue();
-    //console.log(FormControl[("text")].value);
-    console.log(this.text);
+    this.EditContent.patchValue({id: "null"});
     this.newContent = this.EditContent.getRawValue() as Content;
-    console.log(this.newContent.text);
-
-    this.backendService.createContent(this.newContent).subscribe( data => console.log(data));
+    console.log((this.EditContent.getRawValue() as Content));
+    this.backendService.createContent(this.newContent).subscribe( data => this.contentList.push(data));
   }
 
   deleteContent(){
-    this.editContent = (this.EditContent.value as Content);
-    this.backendService.deleteContent(this.editContent).subscribe( data => console.log(data));
+    this.content = (this.EditContent.getRawValue() as Content);
+    console.log("zu löschendes Element" + JSON.stringify(this.content));
+    this.index = this.contentList.findIndex(content => content.id === this.content.id);
+
+    this.backendService.deleteContent(this.content.id).subscribe();
+    this.contentList.splice(this.index, 1);
   }
 
-
-  getContent(id:number){
+  getContentByID(id:number){
     this.backendService.getContentById(id).subscribe(data => {
       this.content = data;
-      console.log(this.content);
+      console.log(this.content.text);
       this.EditContent.setValue(this.content);
     });
 

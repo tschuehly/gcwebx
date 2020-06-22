@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin()
 public class ContentController {
@@ -18,26 +20,35 @@ public class ContentController {
 
 
     //@CrossOrigin(origins="http://localhost:4200/getContent",allowedHeaders = "*")
+    @PostMapping(value = "/api/getContentByID",produces = {"application/json"})
+    public ResponseEntity getContentById(@RequestBody Integer id){
+        Content content = contentService.getContentById(id);
+        System.out.println(content);
+        return ResponseEntity.ok().body(content);
+    }
+
     @GetMapping(value = "/api/getContent",produces = {"application/json"})
     public ResponseEntity getContent(){
-        String contentTable = contentService.getContentTable();
-        return ResponseEntity.ok().body(contentTable);
+        List<Content> contentList = contentService.getContent();
+        System.out.println(contentList);
+        return ResponseEntity.ok().body(contentList);
     }
     @PutMapping(value="/api/updateContent",produces = {"application/json"})
     public ResponseEntity editContent(@RequestBody Content content) throws JsonProcessingException {
         System.out.println(content);
-        String updatedContent = contentService.updateContent(content);
+        Content updatedContent = contentService.updateContent(content);
+        System.out.println(updatedContent);
         return ResponseEntity.ok().body(updatedContent);
     }
     @PostMapping(value="/api/createContent",produces = {"application/json"})
     public ResponseEntity createContent(@RequestBody Content content) throws JsonProcessingException {
         System.out.println(content);
-        String createdContent = contentService.createContent(content);
+        Content createdContent = contentService.createContent(content);
         return ResponseEntity.ok().body(createdContent);
     }
-    @DeleteMapping(value="/api/deleteContent",produces = {"application/json"})
-    public ResponseEntity deleteContent(@RequestBody Content content) throws JsonProcessingException {
-        contentService.deleteContent(content);
+    @DeleteMapping(value="/api/deleteContent/{contentId}",produces = {"application/json"})
+    public ResponseEntity deleteContent(@PathVariable Integer contentId) throws JsonProcessingException {
+        contentService.deleteContent(contentId);
         return ResponseEntity.ok().body("{\"contentDeleted\":\"true\"}");
     }
 
