@@ -2,7 +2,7 @@ package de.cschillingtschuehly.gcwebx.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-import de.cschillingtschuehly.gcwebx.modell.Member;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import de.cschillingtschuehly.gcwebx.modell.User;
 import de.cschillingtschuehly.gcwebx.modell.AuthenticatedUser;
 import de.cschillingtschuehly.gcwebx.repositories.UserRepository;
@@ -30,6 +30,10 @@ public class UserService implements UserDetailsService {
         ObjectMapper mapper = mapperService.jacksonMapper();
         List<User> userList = userRepository.findAll();
         ArrayNode userTable = mapper.valueToTree(userList);
+        userTable.forEach( jsonNode -> {
+            ObjectNode objNode = (ObjectNode) jsonNode;
+            objNode.remove("password");
+        });
         return userTable.toString();
     }
     @Override
@@ -55,12 +59,12 @@ public class UserService implements UserDetailsService {
 
         return authorities;
     }
-    public String getRoleByUsername(String username){
+    public String getRolesByUsername(String username){
         User user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("User " + username + " not found");
         }
-        return user.getRole();
+        return user.getRoles();
     }
     public void createUser(User user) {
         userRepository.save(user);

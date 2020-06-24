@@ -2,19 +2,13 @@ package de.cschillingtschuehly.gcwebx.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import de.cschillingtschuehly.gcwebx.modell.Member;
-import de.cschillingtschuehly.gcwebx.modell.User;
 import de.cschillingtschuehly.gcwebx.services.MemberService;
 import de.cschillingtschuehly.gcwebx.services.UserService;
-import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.WebRequest;
 
 import java.security.Principal;
-import java.time.LocalDate;
 
 @RestController
 @CrossOrigin()
@@ -69,7 +63,7 @@ public class WebController {
     }
     @GetMapping("/getRole/{username}")
     public ResponseEntity getRole(@PathVariable String username){
-        return ResponseEntity.ok().body("{\"role\":\"" + userService.getRoleByUsername(username)+ "\"}");
+        return ResponseEntity.ok().body("{\"roles\":\"" + userService.getRolesByUsername(username).toString()+ "\"}");
     }
 
     ///@CrossOrigin()

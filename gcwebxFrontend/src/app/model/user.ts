@@ -7,6 +7,6 @@ export class User{
 
   matchingPassword: string;
 
-  role: string;
+  role: string[];
 
 }

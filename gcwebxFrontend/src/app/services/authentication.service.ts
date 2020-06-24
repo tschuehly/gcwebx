@@ -11,7 +11,7 @@ import {UserService} from './user.service';
 
 export class AuthenticationService {
   private backendUrl = 'http://localhost:8080';
-  public currentRole;
+  public currentRole = [];
   authenticated = false;
   constructor(private http: HttpClient, private userService: UserService) {
 
@@ -30,7 +30,7 @@ export class AuthenticationService {
         this.authenticated = true;
         sessionStorage.setItem('username', credentials.username);
         sessionStorage.setItem('basicauth', authString);
-        this.currentRole = response['principal']['role'];
+        this.currentRole = response['principal']['roles'];
         console.log(this.authenticated);
 
       } else {
@@ -41,15 +41,17 @@ export class AuthenticationService {
     });
 
   }
-  getRole(){
+  public getRole(): any {
     const username = sessionStorage.getItem('username');
     if (username){
       this.http.get(this.backendUrl + '/getRole/' + username ).subscribe(response => {
-        this.currentRole = response['role'];
+        console.log(response);
+        this.currentRole = response['roles'];
         console.log(this.currentRole);
+        return this.currentRole;
       });
     }else{
-
+      return null;
     }
 
   }

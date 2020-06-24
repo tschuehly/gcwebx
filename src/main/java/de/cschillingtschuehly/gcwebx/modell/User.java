@@ -2,7 +2,8 @@ package de.cschillingtschuehly.gcwebx.modell;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User {
@@ -18,7 +19,7 @@ public class User {
     @NotEmpty(message = "password is required")
     private String password;
     @NotEmpty(message = "role is required")
-    private String role;
+    private String roles;
 
     public String getUsername() {
         return username;
@@ -37,20 +38,21 @@ public class User {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
+    public String getRoles() {
+
+        return this.roles;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoles(String roles) {
+        this.roles = roles;
     }
     public User(){
 
     }
-    public User(@NotEmpty(message = "username is required") String username, @NotEmpty(message = "password is required") String password, @NotEmpty(message = "role is required") String role) {
+    public User(@NotEmpty(message = "username is required") String username, @NotEmpty(message = "password is required") String password, @NotEmpty(message = "role is required") String roles) {
         this.username = username;
         this.password = password;
-        this.role = role;
+        this.roles = roles;
     }
     //public User(String username, String email, String password){
         //this.username = username;

@@ -26,12 +26,6 @@ export class UserTableComponent implements OnInit{
               private modalService: NgbModal,
               private authenticationService: AuthenticationService) {
     this.userTable$ = this.backendService.getUserTable();
-    this.backendService.getUserTable().
-    subscribe(userTableResponse => {
-      this.user = userTableResponse[4];
-      console.log(userTableResponse);
-      console.log(this.userTable$);
-    });
     this.searchFilter = new FormControl('');
     this.searchFilter$ = this.searchFilter.valueChanges.pipe(startWith(''));
     this.filteredUserTable$ = combineLatest([this.userTable$, this.searchFilter$])
@@ -50,14 +44,7 @@ export class UserTableComponent implements OnInit{
     modalRef.componentInstance.userUpdated.subscribe((data) => {
       if (data === true) {
         window.location.reload();
-
-        /*
-        this.userTable$ = this.backendService.getUserTable();
-        this.filteredUserTable$ = combineLatest([this.userTable$, this.filter$])
-          .pipe(map(([users, filterString]) =>
-            users.filter(user => user.name.toLowerCase()
-              .indexOf(filterString.toLowerCase()) !== -1))
-          ); */// TODO: Besserer Weg upzudaten?
+      // TODO: Besserer Weg upzudaten?
       }
     });
   }

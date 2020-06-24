@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    url: jdbc:h2:file:./data/demo
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+    data: classpath:userTest.sql
+  profiles:
+    active: development
+
+    #TODO: CHANGE Password to not appear in GIT
+
+    initialization-mode: always
+  #TODO: CHANGE Password to not appear in GIT
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    #show-sql: true
+    #properties:
+      #hibernate:
+        #format_sql: true
+  h2:
+    console:
+      enabled: true
+  logging:
+    level:
+      org.springframework.security: DEBUG
+security:
+  ignored:
+    - "*.bundle.*"

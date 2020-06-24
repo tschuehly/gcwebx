@@ -1,6 +1,5 @@
 package de.cschillingtschuehly.gcwebx.modell;
 
-import de.cschillingtschuehly.gcwebx.repositories.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,13 +9,13 @@ import java.util.Collection;
 public class AuthenticatedUser extends User implements UserDetails {
 
     public AuthenticatedUser(User user){
-        super(user.getUsername(),user.getPassword(),user.getRole());
+        super(user.getUsername(),user.getPassword(),user.getRoles());
     }
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return AuthorityUtils.createAuthorityList(getRole());
+        return AuthorityUtils.commaSeparatedStringToAuthorityList(getRoles());
     }
 
     @Override

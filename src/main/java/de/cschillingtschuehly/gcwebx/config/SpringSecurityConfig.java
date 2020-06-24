@@ -88,6 +88,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")
                 .and()
                 .csrf()
+                .ignoringAntMatchers("/h2-console/**")
                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
 
     }

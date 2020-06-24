@@ -24,6 +24,7 @@ export class NavigationComponent implements OnInit {
 
   ngOnInit(): void {
     this.authenticationService.getRole();
+    console.log(this.authenticationService.currentRole);
   }
 
   logout(){
