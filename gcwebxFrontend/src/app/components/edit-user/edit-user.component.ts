@@ -22,7 +22,13 @@ export class EditUserComponent implements OnInit {
   ngOnInit(): void {
     this.EditForm = new FormGroup({
       username: new FormControl(null, [Validators.required]),
-      role: new FormControl(null)
+      roles: new FormGroup({
+        role_user: new FormControl(null),
+        role_editor: new FormControl(null),
+        role_support: new FormControl(null),
+        role_moderator: new FormControl(null),
+        role_admin: new FormControl(null)
+      })
     });
     this.EditForm.patchValue(this.user);
   }

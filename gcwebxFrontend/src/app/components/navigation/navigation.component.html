@@ -35,18 +35,19 @@
       <li ngbNavItem class="my-auto p-0">
         <a ngbNavLink>Partner</a>
       </li>
-      <li *ngIf="this.authenticationService.currentRole && this.authenticationService.currentRole.includes('ROLE_ADMIN',0)" ngbNavItem class="my-auto">
-        <a ngbNavLink routerLink="memberTable">Membertable</a>
+      <li *ngIf="this.authenticationService.currentRoles && this.authenticationService.currentRoles.roleAdmin" ngbNavItem class="my-auto">
+        <a ngbNavLink routerLink="memberTable">Membertable</a><!--.indexOf('ROLE_ADMIN',0) != -1 -->
       </li>
-      <li *ngIf="this.authenticationService.currentRole && this.authenticationService.currentRole.includes('ROLE_ADMIN',0)" ngbNavItem class="my-auto">
-        <a ngbNavLink routerLink="userTable">Usertable</a>
+      <li *ngIf="this.authenticationService.currentRoles && this.authenticationService.currentRoles.roleAdmin" ngbNavItem class="my-auto">
+        <a ngbNavLink routerLink="userTable">Usertable</a><!--.indexOf('ROLE_ADMIN',0) != -1 -->
       </li>
-      <li *ngIf="this.authenticationService.currentRole && this.authenticationService.currentRole.length > 0" ngbNavItem class="my-auto">
+      <li *ngIf="this.authenticationService.currentRoles" ngbNavItem class="my-auto">
         <a ngbNavLink routerLink="home" (click)="logout()">Logout</a>
       </li>
-      <li *ngIf="(this.authenticationService.currentRole && this.authenticationService.currentRole.length == 0) || !this.authenticationService.currentRole" ngbNavItem class="my-auto">
+      <li *ngIf="!this.authenticationService.currentRoles" ngbNavItem class="my-auto">
         <a ngbNavLink routerLink="login">Login</a>
       </li>
+
 
 
     </ul>
@@ -98,13 +99,13 @@
           <a ngbNavLink>Partner</a>
         </li>
 
-        <li *ngIf="this.authenticationService.currentRole && this.authenticationService.currentRole.includes('ROLE_ADMIN',0)" ngbNavItem class="my-auto">
+        <li *ngIf="this.authenticationService.currentRoles && this.authenticationService.currentRoles.roleAdmin" ngbNavItem class="my-auto">
           <a ngbNavLink routerLink="memberTable">Membertable</a><!--.indexOf('ROLE_ADMIN',0) != -1 -->
         </li>
-        <li *ngIf="this.authenticationService.currentRole && this.authenticationService.currentRole.length > 0" ngbNavItem class="my-auto">
+        <li *ngIf="this.authenticationService.currentRoles" ngbNavItem class="my-auto">
           <a ngbNavLink routerLink="home" (click)="logout()">Logout</a>
         </li>
-        <li *ngIf="(this.authenticationService.currentRole && this.authenticationService.currentRole.length == 0) || !this.authenticationService.currentRole" ngbNavItem class="my-auto">
+        <li *ngIf="!this.authenticationService.currentRoles" ngbNavItem class="my-auto">
           <a ngbNavLink routerLink="login">Login</a>
         </li>
 

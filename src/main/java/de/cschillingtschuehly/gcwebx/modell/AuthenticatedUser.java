@@ -9,13 +9,13 @@ import java.util.Collection;
 public class AuthenticatedUser extends User implements UserDetails {
 
     public AuthenticatedUser(User user){
-        super(user.getUsername(),user.getPassword(),user.getRoles());
+        super(user.getUsername(),user.getPassword(),user.isRoleUser(),user.isRoleEditor(),user.isRoleSupport(),user.isRoleModerator(),user.isRoleAdmin());
     }
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return AuthorityUtils.commaSeparatedStringToAuthorityList(getRoles());
+        return AuthorityUtils.commaSeparatedStringToAuthorityList(getRolesAsCSV());
     }
 
     @Override

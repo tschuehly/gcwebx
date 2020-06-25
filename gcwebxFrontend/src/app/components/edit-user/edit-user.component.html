@@ -34,7 +34,19 @@
               <input class="form-control" type="text" formControlName="username">
             </div>
             <div class="col-lg-4"><label>Role:</label>
-              <input class="form-control" type="text" formControlName="role">
+              <form formGroupName="roles">
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label" >User
+                  </label>
+                    <input type="checkbox" formControlName="role_user">
+                  <label class="form-check-label"> Editor
+                  </label>
+                    <input type="checkbox" formControlName="role_editor">
+                  <label class="form-check-label">Support
+                  </label>
+                    <input type="checkbox" formControlName="role_support">
+                </div>
+              </form>
             </div>
           </div>
 

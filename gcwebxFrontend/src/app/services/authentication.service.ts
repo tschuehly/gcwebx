@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {finalize, map} from 'rxjs/operators';
 import {User} from '../model/user';
 import {UserService} from './user.service';
+import {Roles} from '../model/roles';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ import {UserService} from './user.service';
 export class AuthenticationService {
   private backendUrl = 'http://localhost:8080';
   public currentRole = [];
+  public currentRoles: Roles;
   authenticated = false;
   constructor(private http: HttpClient, private userService: UserService) {
 
@@ -46,8 +48,9 @@ export class AuthenticationService {
     if (username){
       this.http.get(this.backendUrl + '/getRole/' + username ).subscribe(response => {
         console.log(response);
-        this.currentRole = response['roles'];
-        console.log(this.currentRole);
+        this.currentRoles = response['roles'];
+        console.log(this.currentRoles);
+        console.log(this.currentRoles.roleAdmin);
         return this.currentRole;
       });
     }else{

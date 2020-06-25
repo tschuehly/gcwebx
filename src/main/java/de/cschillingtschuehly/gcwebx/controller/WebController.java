@@ -63,7 +63,7 @@ public class WebController {
     }
     @GetMapping("/getRole/{username}")
     public ResponseEntity getRole(@PathVariable String username){
-        return ResponseEntity.ok().body("{\"roles\":\"" + userService.getRolesByUsername(username).toString()+ "\"}");
+        return ResponseEntity.ok().body("{\n \"roles\": \n" + userService.getRolesByUsername(username)+ "\n}");
     }
 
     ///@CrossOrigin()
