@@ -9,7 +9,7 @@ import {User} from '../model/user';
 })
 
 export class BackendService {
-  private backendUrl = 'http://localhost:8080';
+  private backendUrl = 'http://localhost:8080/admin';
   constructor(
     private http: HttpClient
   ) { }
@@ -26,9 +26,12 @@ export class BackendService {
     return this.http.get(this.backendUrl + '/getUsers');
   }
   updateUser(user: User): Observable<any>{
-    return this.http.put(this.backendUrl + '/updateUser', User);
+    return this.http.put(this.backendUrl + '/updateUser', user);
   }
   createUser(user: User): Observable<any>{
-    return this.http.post(this.backendUrl + '/createUser', User);
+    return this.http.post(this.backendUrl + '/createUser', user);
+  }
+  deleteUser(user: User): Observable<any>{
+    return this.http.post(this.backendUrl + '/deleteUser', user );
   }
 }

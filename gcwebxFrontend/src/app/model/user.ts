@@ -5,8 +5,9 @@ export class User{
 
   password: string;
 
-  matchingPassword: string;
-
-  roles: string;
-
+  roleUser: boolean ;
+  roleEditor: boolean ;
+  roleSupport: boolean ;
+  roleModerator: boolean ;
+  roleAdmin: boolean ;
 }

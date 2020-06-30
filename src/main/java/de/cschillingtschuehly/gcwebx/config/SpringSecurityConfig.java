@@ -25,7 +25,7 @@ import javax.sql.DataSource;
 import java.util.Arrays;
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity()
 @ComponentScan(basePackageClasses = UserService.class)
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -64,6 +64,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().ignoringAntMatchers("/h2-console/**").and().headers().frameOptions().sameOrigin();
 */
         http
+
                 .cors().
                 and().
                 headers().frameOptions().disable().and().
@@ -78,8 +79,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers( "/h2-console/*").permitAll()
                 .antMatchers( "/h2-console/**").permitAll()
                 //.antMatchers( "/getMembers").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")//hasAnyRole("ADMIN", "USER")
-                .antMatchers( "/getMembers").hasRole("ADMIN")
-                .antMatchers( "/admin").hasRole("ADMIN")
+                .antMatchers( "/admin/getMembers","/admin/updateMember","/admin/createMember","/admin/deleteMember").hasAnyRole("SUPPORTER","MODERATOR","ADMIN")
+                .antMatchers( "/admin/getUsers","/admin/updateUser","/admin/createUser","/admin/deleteUser").hasAnyRole("ADMIN")
                 //.anyRequest().authenticated()
                 .and()
                 .sessionManagement()
@@ -88,8 +89,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")
                 .and()
                 .csrf()
-                .ignoringAntMatchers("/h2-console/**")
-                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+                .disable();
 
     }
     @Bean

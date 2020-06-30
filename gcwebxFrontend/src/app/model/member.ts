@@ -12,5 +12,6 @@ export interface Member {
   warnings: number;
   uplayId: string;
   deleted: boolean;
+  rank: string;
 
 }

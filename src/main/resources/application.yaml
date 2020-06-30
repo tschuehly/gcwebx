@@ -21,9 +21,14 @@ spring:
   h2:
     console:
       enabled: true
-  logging:
-    level:
-      org.springframework.security: DEBUG
+
 security:
   ignored:
     - "*.bundle.*"
+logging:
+  level:
+    org:
+      springframework:
+        security:
+          web:
+            FilterChainProxy: DEBUG

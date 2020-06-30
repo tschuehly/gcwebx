@@ -4,6 +4,7 @@ import {BackendService} from '../../services/backend.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../model/user';
 import {UserTableComponent} from '../user-table/user-table.component';
+import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'app-edit-user',
@@ -21,14 +22,14 @@ export class EditUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.EditForm = new FormGroup({
+      id: new FormControl(),
       username: new FormControl(null, [Validators.required]),
-      roles: new FormGroup({
-        role_user: new FormControl(null),
-        role_editor: new FormControl(null),
-        role_support: new FormControl(null),
-        role_moderator: new FormControl(null),
-        role_admin: new FormControl(null)
-      })
+      roleUser: new FormControl(null),
+      roleEditor: new FormControl(null),
+      roleSupport: new FormControl(null),
+      roleModerator: new FormControl(null),
+      roleAdmin: new FormControl(null),
+      password: new FormControl()
     });
     this.EditForm.patchValue(this.user);
   }
@@ -36,13 +37,21 @@ export class EditUserComponent implements OnInit {
     console.log('user: ' + JSON.stringify(this.user));
     this.editUser = this.user;
     this.editUser = (this.EditForm.value as User);
+    if (this.editUser.password != null){
+      const salt = bcrypt.genSaltSync(10);
+      this.editUser.password = bcrypt.hashSync(this.editUser.password, 10);
+    }
     console.log('edituser: ' + JSON.stringify(this.editUser));
-    this.backendService.updateUser(this.editUser).subscribe( data => console.log(data));
+    this.backendService.updateUser(this.editUser).subscribe(
+      data => console.log(data));
     this.userUpdated.emit(true);
     this.activeModal.close();
   }
   createUser(){
     this.user = (this.EditForm.value as User);
+    const salt = bcrypt.genSaltSync(10);
+    this.user.password = bcrypt.hashSync(this.user.password, 10);
+
     console.log(this.user);
     this.backendService.createUser(this.user).subscribe( data => console.log(data));
     this.userUpdated.emit(true);
@@ -52,9 +61,11 @@ export class EditUserComponent implements OnInit {
   deleteUser(modal){
     modal.close();
     this.editUser = (this.EditForm.value as User);
-    this.backendService.updateUser(this.editUser).subscribe( data => console.log(data));
-    this.userUpdated.emit(true);
-    this.activeModal.close();
+    this.backendService.deleteUser(this.editUser).subscribe( data => {
+      console.log(data);
+      this.userUpdated.emit(true);
+      this.activeModal.close();
+    });
   }
 
   openConfirm(content){

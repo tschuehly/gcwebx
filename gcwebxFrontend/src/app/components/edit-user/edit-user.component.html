@@ -1,6 +1,6 @@
 <ng-template #content let-modal>
   <div class="modal-body">
-    <p><strong>Are you sure you want to delete <span class="text-danger">{{user.username}}</span></strong></p>
+    <p><strong>Are you sure you want to delete User <span class="text-danger">{{user.username}}</span></strong></p>
   </div>
   <div class="modal-footer">
     <div class="mr-auto">
@@ -14,8 +14,8 @@
 
 <div *ngIf="user || create == true">
   <div class="modal-header">
-    <h4 class="modal-title" *ngIf="user.username">Edit Member: {{user.username}}</h4>
-    <h4 class="modal-title" *ngIf="create == true">Create New Member</h4>
+    <h4 class="modal-title" *ngIf="user.username">Edit User: {{user.username}}</h4>
+    <h4 class="modal-title" *ngIf="create == true">Create New User</h4>
     <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -29,25 +29,31 @@
 
           <div class="form-row">
 
-            <div class="col-lg-4">
+            <div class="col-lg-6">
               <label for>Name:</label>
               <input class="form-control" type="text" formControlName="username">
             </div>
-            <div class="col-lg-4"><label>Role:</label>
-              <form formGroupName="roles">
+            <div class="col-lg-6">
+              <label for>Password:</label>
+              <input class="form-control" type="password" formControlName="password">
+            </div>
+            <div class="col-lg-12"><label>Role:</label>
+              <form [formGroup]="EditForm">
                 <div class="form-check form-check-inline">
-                  <label class="form-check-label" >User
-                  </label>
-                    <input type="checkbox" formControlName="role_user">
-                  <label class="form-check-label"> Editor
-                  </label>
-                    <input type="checkbox" formControlName="role_editor">
-                  <label class="form-check-label">Support
-                  </label>
-                    <input type="checkbox" formControlName="role_support">
+                  <label class=" m-2 form-check-label" >User</label>
+                  <input class="m-2" type="checkbox" formControlName="roleUser">
+                  <label class="m-2 form-check-label"> Editor</label>
+                  <input class="m-2" type="checkbox" formControlName="roleEditor">
+                  <label class="m-2 form-check-label">Support</label>
+                  <input class="m-2" type="checkbox" formControlName="roleSupport">
+                  <label class="m-2 form-check-label">Moderator</label>
+                  <input class="m-2"type="checkbox" formControlName="roleModerator">
+                  <label class="m-2 form-check-label">Admin</label>
+                  <input class="m-2" type="checkbox" formControlName="roleAdmin">
                 </div>
               </form>
             </div>
+
           </div>
 
         </form>
@@ -58,14 +64,14 @@
   </div>
   <div class="modal-footer">
     <div class="ml-0">
-      <button type="button" class="btn btn-danger" (click)="openConfirm(content)">Delete Member</button>
+      <button type="button" class="btn btn-danger" (click)="openConfirm(content)">Delete User</button>
     </div>
     <div class="m-auto">
       <button type="button" class="btn btn-info" (click)="activeModal.close('Close click')">Close</button>
     </div>
-    <button *ngIf="create; else elseBlock" type="button" class="btn btn-success" (click)="createUser()">Create Member</button>
+    <button *ngIf="create; else elseBlock" type="button" class="btn btn-success" (click)="createUser()">Create User</button>
     <ng-template #elseBlock >
-      <button type="button" class="btn btn-success" (click)="updateUser()">Save Member</button>
+      <button type="button" class="btn btn-success" (click)="updateUser()">Save User</button>
     </ng-template>
   </div>
 </div>

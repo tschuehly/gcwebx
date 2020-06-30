@@ -1,11 +1,14 @@
 package de.cschillingtschuehly.gcwebx.services;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import de.cschillingtschuehly.gcwebx.modell.Member;
 import de.cschillingtschuehly.gcwebx.modell.User;
 import de.cschillingtschuehly.gcwebx.modell.AuthenticatedUser;
 import de.cschillingtschuehly.gcwebx.repositories.UserRepository;
+import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -66,9 +69,26 @@ public class UserService implements UserDetailsService {
         }
         return user.getRoles();
     }
-    public void createUser(User user) {
+    public String updateUser(User userParam) throws JsonProcessingException {
+        ObjectMapper jacksonMapper = mapperService.jacksonMapper();
+        Mapper dozerMapper = mapperService.dozerMapper();
+
+        User user = userRepository.findById(userParam.getId()).get();
+        if(userParam.getPassword() == null){
+            userParam.setPassword(user.getPassword());
+        }
+        dozerMapper.map(userParam,user);
         userRepository.save(user);
+        return jacksonMapper.writeValueAsString(user);
     }
+    public String createUser(User userParam) throws JsonProcessingException {
+        ObjectMapper jacksonMapper = mapperService.jacksonMapper();
+        userRepository.save(userParam);
+        User user = userRepository.findById(userParam.getId()).get();
+        return jacksonMapper.writeValueAsString(user);
+    }
+    public void deleteUser(User userParam){
+        userRepository.delete(userParam);
 
-
+    }
 }

@@ -5,4 +5,9 @@ export class Roles{
   roleSupport: boolean;
   roleModerator: boolean;
   roleAdmin: boolean;
+
+  toString(): string{
+    return 'roleUser: ' + this.roleUser + ', roleEditor: ' + this.roleEditor + ', roleSupport: ' + this.roleSupport +
+           ', roleModerator: ' + this.roleModerator + ', roleAdmin: ' + this.roleAdmin;
+  }
 }

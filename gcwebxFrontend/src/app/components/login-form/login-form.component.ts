@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ApplicationRef, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 import {User} from '../../model/user';
@@ -14,7 +14,10 @@ import {AuthenticationService} from '../../services/authentication.service';
 export class LoginFormComponent implements OnInit {
 
 
-  constructor(private router: Router, private authenticationService: AuthenticationService, private http: HttpClient, ) { }
+  constructor(private router: Router,
+              private authenticationService: AuthenticationService,
+              private http: HttpClient,
+              private changeDetectorRef: ChangeDetectorRef) { }
 
   credential: User;
 
@@ -32,6 +35,7 @@ export class LoginFormComponent implements OnInit {
     console.log(this.credential);
     this.authenticationService.authenticate(this.credential, () => {
       this.router.navigateByUrl('/home');
+      this.authenticationService.getRole();
 
     });
     return false;

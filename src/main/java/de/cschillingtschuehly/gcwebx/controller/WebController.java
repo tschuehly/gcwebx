@@ -2,10 +2,12 @@ package de.cschillingtschuehly.gcwebx.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import de.cschillingtschuehly.gcwebx.modell.Member;
+import de.cschillingtschuehly.gcwebx.modell.User;
 import de.cschillingtschuehly.gcwebx.services.MemberService;
 import de.cschillingtschuehly.gcwebx.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -17,26 +19,25 @@ public class WebController {
     private MemberService memberService;
     @Autowired
     private UserService userService;
-    //@CrossOrigin(origins="http://localhost:4200/getMembers",allowedHeaders = "*")
-    @GetMapping(value = "/getMembers",produces = {"application/json"})
+    @GetMapping(value = "/admin/getMembers",produces = {"application/json"})
     public ResponseEntity getMember(){
         String memberTable = memberService.getMemberTable();
         return ResponseEntity.ok().body(memberTable);
     }
-    @PutMapping(value="/updateMember",produces = {"application/json"})
+    @PutMapping(value="/admin/updateMember",produces = {"application/json"})
     public ResponseEntity editMember(@RequestBody Member member) throws JsonProcessingException {
         System.out.println(member);
 
         String updatedMember = memberService.updateMember(member);
         return ResponseEntity.ok().body(updatedMember);
     }
-    @PostMapping(value="/createMember",produces = {"application/json"})
+    @PostMapping(value="/admin/createMember",produces = {"application/json"})
     public ResponseEntity createMember(@RequestBody Member member) throws JsonProcessingException {
         System.out.println(member);
         String createdMember = memberService.createMember(member);
         return ResponseEntity.ok().body(createdMember);
     }
-    @DeleteMapping(value="/deleteMember",produces = {"application/json"})
+    @PostMapping(value="/admin/deleteMember",produces = {"application/json"})
     public ResponseEntity deleteMember(@RequestBody Member member) throws JsonProcessingException {
         memberService.deleteMember(member);
         return ResponseEntity.ok().body("{\"memberDeleted\":\"true\"}");
@@ -50,10 +51,25 @@ public class WebController {
         return "registration";
     }*/
 
-    @GetMapping(value = "/getUsers",produces = {"application/json"})
+    @GetMapping(value = "/admin/getUsers",produces = {"application/json"})
     public ResponseEntity getUsers(){
         String userTable = userService.getUserTable();
         return ResponseEntity.ok().body(userTable);
+    }
+    @PutMapping(value="/admin/updateUser",produces = {"application/json"})
+    public ResponseEntity editUser(@RequestBody User user) throws JsonProcessingException {
+        String updatedUser = userService.updateUser(user);
+        return ResponseEntity.ok().body(updatedUser);
+    }
+    @PostMapping(value="/admin/createUser",produces = {"application/json"})
+    public ResponseEntity createUser(@RequestBody User user) throws JsonProcessingException {
+        String createdUser = userService.createUser(user);
+        return ResponseEntity.ok().body(createdUser);
+    }
+    @PostMapping(value="/admin/deleteUser",produces = {"application/json"})
+    public ResponseEntity deleteUser(@RequestBody User user) throws JsonProcessingException {
+        userService.deleteUser(user);
+        return ResponseEntity.ok().body("{\"userDeleted\":\"true\"}");
     }
     //@CrossOrigin("http://localhost:4200/*")
     @RequestMapping("/user")
@@ -66,11 +82,6 @@ public class WebController {
         return ResponseEntity.ok().body("{\n \"roles\": \n" + userService.getRolesByUsername(username)+ "\n}");
     }
 
-    ///@CrossOrigin()
-    @GetMapping("/admin")
-    public ResponseEntity getAdmin(){
-        return ResponseEntity.ok().body("Hello Admin");
-    }
 
 
 }
