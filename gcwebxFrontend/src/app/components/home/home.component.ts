@@ -1,14 +1,17 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, Pipe, PipeTransform, ViewChild} from '@angular/core';
 import {NgbCarousel, NgbCarouselConfig, NgbSlideEvent, NgbSlideEventSource} from '@ng-bootstrap/ng-bootstrap';
 import {Router} from '@angular/router';
 import {Content} from "../../model/content";
 import {Observable} from "rxjs";
 import {BackendService} from "../../services/backend.service";
+import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
+
 export class HomeComponent implements OnInit {
 
   img1 = 'https://ts.xperience-gaming.de/preview/images/background.jpg';
@@ -23,12 +26,15 @@ export class HomeComponent implements OnInit {
   contentList: Content[];
   contentList$: Observable<Content[]>;
   index: number;
-  constructor(config: NgbCarouselConfig, private backendService: BackendService) {
+  staticText1: SafeHtml;
+  constructor(config: NgbCarouselConfig, private backendService: BackendService, protected sanitizer: DomSanitizer) {
     config.interval = 20000;
     config.wrap = true;
     config.pauseOnHover = false;
   }
   @ViewChild('carousel', {static : true}) carousel: NgbCarousel;
+
+
 
   ngOnInit(): void {
 
@@ -39,6 +45,8 @@ export class HomeComponent implements OnInit {
       console.log(data);
       console.log(this.contentList);
     });
+
+   // this.staticText1 = this.sanitizer.bypassSecurityTrustHtml(this.contentList[1].text);
   }
 
   togglePaused() {
@@ -58,5 +66,19 @@ export class HomeComponent implements OnInit {
     if (this.pauseOnIndicator && !slideEvent.paused && slideEvent.source === NgbSlideEventSource.INDICATOR) {
       this.togglePaused();
     }
+  }
+
+}
+
+
+@Pipe({name: 'safeHtml'})
+export class Safe {
+  constructor(private sanitizer: DomSanitizer) {
+  }
+
+  transform(value: any, args?: any): any {
+    return this.sanitizer.bypassSecurityTrustHtml(value);
+    // return this.sanitizer.bypassSecurityTrustStyle(style);
+    // return this.sanitizer.bypassSecurityTrustXxx(style); - see docs
   }
 }

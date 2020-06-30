@@ -22,6 +22,8 @@ public class Content{
     @Lob
     @Column(columnDefinition = "text")
     String text;
+    private LocalDate creationDate;
+    private LocalDate lastUpdatedDate;
 
 
 

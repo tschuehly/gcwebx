@@ -32,11 +32,11 @@ public class GcwebxApplication implements CommandLineRunner{
 		userRepository.deleteAll();
 		userRepository.save(new User("user","$2y$12$g.0oBcNDKnbNzJRD16a/ZeQFAERFRb3Wv2mNISLiRf7KBQmNJXR36","ROLE_USER"));
 		userRepository.save(new User("admin","$2y$12$D2XjQoR1K/b.1nPdjenPzezMMlQ69l6kDkSkb12l5M3S.RTER.ozC","ROLE_ADMIN"));
-
+/*
 		contentRepository.deleteAll();
 		contentRepository.save(new Content(1, "<p>test1</p>"));
 		contentRepository.save(new Content(2, "<p>test2</p>"));
-
+*/
 
 	}
 

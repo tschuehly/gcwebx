@@ -25,7 +25,12 @@
   </ngb-carousel>
 
 
-  <p>{{contentList[0].text}}</p>
+
+  <div  *ngFor="let contentobj of contentList$ | async" class="mx-auto">
+    <p [innerHTML]="contentobj.text"></p>
+  </div>
+
+
 
 
 </div>
