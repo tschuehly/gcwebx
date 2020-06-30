@@ -11,7 +11,6 @@ import {Roles} from '../model/roles';
 })
 
 export class AuthenticationService {
-  private backendUrl = 'http://localhost:8080';
   public currentRole = [];
   public currentRoles: Roles;
   public currentRoles$: BehaviorSubject<Roles>;
@@ -69,4 +68,3 @@ export class AuthenticationService {
   }
 
 
-}

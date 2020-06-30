@@ -19,25 +19,25 @@ public class WebController {
     private MemberService memberService;
     @Autowired
     private UserService userService;
-    @GetMapping(value = "/admin/getMembers",produces = {"application/json"})
+    @GetMapping(value = "/api/getMembers",produces = {"application/json"})
     public ResponseEntity getMember(){
         String memberTable = memberService.getMemberTable();
         return ResponseEntity.ok().body(memberTable);
     }
-    @PutMapping(value="/admin/updateMember",produces = {"application/json"})
+    @PutMapping(value="/api/updateMember",produces = {"application/json"})
     public ResponseEntity editMember(@RequestBody Member member) throws JsonProcessingException {
         System.out.println(member);
 
         String updatedMember = memberService.updateMember(member);
         return ResponseEntity.ok().body(updatedMember);
     }
-    @PostMapping(value="/admin/createMember",produces = {"application/json"})
+    @PostMapping(value="/api/createMember",produces = {"application/json"})
     public ResponseEntity createMember(@RequestBody Member member) throws JsonProcessingException {
         System.out.println(member);
         String createdMember = memberService.createMember(member);
         return ResponseEntity.ok().body(createdMember);
     }
-    @PostMapping(value="/admin/deleteMember",produces = {"application/json"})
+    @PostMapping(value="/api/deleteMember",produces = {"application/json"})
     public ResponseEntity deleteMember(@RequestBody Member member) throws JsonProcessingException {
         memberService.deleteMember(member);
         return ResponseEntity.ok().body("{\"memberDeleted\":\"true\"}");
@@ -51,33 +51,28 @@ public class WebController {
         return "registration";
     }*/
 
-    @GetMapping(value = "/admin/getUsers",produces = {"application/json"})
+    @GetMapping(value = "/api/getUsers",produces = {"application/json"})
     public ResponseEntity getUsers(){
         String userTable = userService.getUserTable();
         return ResponseEntity.ok().body(userTable);
     }
-    @PutMapping(value="/admin/updateUser",produces = {"application/json"})
+    @PutMapping(value="/api/updateUser",produces = {"application/json"})
     public ResponseEntity editUser(@RequestBody User user) throws JsonProcessingException {
         String updatedUser = userService.updateUser(user);
         return ResponseEntity.ok().body(updatedUser);
     }
-    @PostMapping(value="/admin/createUser",produces = {"application/json"})
+    @PostMapping(value="/api/createUser",produces = {"application/json"})
     public ResponseEntity createUser(@RequestBody User user) throws JsonProcessingException {
         String createdUser = userService.createUser(user);
         return ResponseEntity.ok().body(createdUser);
     }
-    @PostMapping(value="/admin/deleteUser",produces = {"application/json"})
+    @PostMapping(value="/api/deleteUser",produces = {"application/json"})
     public ResponseEntity deleteUser(@RequestBody User user) throws JsonProcessingException {
         userService.deleteUser(user);
         return ResponseEntity.ok().body("{\"userDeleted\":\"true\"}");
     }
-    //@CrossOrigin("http://localhost:4200/*")
-    @RequestMapping("/user")
-    public Principal user(Principal user) {
-        System.out.println(user);
-        return user;
-    }
-    @GetMapping("/getRole/{username}")
+
+    @GetMapping("/api/getRole/{username}")
     public ResponseEntity getRole(@PathVariable String username){
         return ResponseEntity.ok().body("{\n \"roles\": \n" + userService.getRolesByUsername(username)+ "\n}");
     }

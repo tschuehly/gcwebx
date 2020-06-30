@@ -79,24 +79,19 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/user").permitAll()
-                .antMatchers(HttpMethod.GET, "/user").permitAll()
-                .antMatchers("/getRole").permitAll()
                 .antMatchers( "/login").permitAll()
-                .antMatchers( "/h2-console/*").permitAll()
                 .antMatchers( "/h2-console/**").permitAll()
                 //.antMatchers( "/getMembers").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")//hasAnyRole("ADMIN", "USER")
                 .antMatchers( "/api/getMembers").hasRole("ADMIN")
                 .antMatchers( "/api/admin").hasRole("ADMIN")
                 .anyRequest().authenticated()
-                .antMatchers( "/admin/getMembers","/admin/updateMember","/admin/createMember","/admin/deleteMember").hasAnyRole("SUPPORTER","MODERATOR","ADMIN")
-                .antMatchers( "/admin/getUsers","/admin/updateUser","/admin/createUser","/admin/deleteUser").hasAnyRole("ADMIN")
-                //.anyRequest().authenticated()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .formLogin()
                 .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login");
-    }
+ }
+
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();

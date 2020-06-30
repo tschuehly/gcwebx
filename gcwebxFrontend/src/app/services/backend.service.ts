@@ -10,7 +10,7 @@ import {Content} from "../model/content";
 })
 
 export class BackendService {
-  private backendUrl = '/api/admin';
+  private backendUrl = '/api';
   constructor(
     private http: HttpClient
   ) { }

@@ -29,7 +29,7 @@ export class BasicAuthIntercept implements  HttpInterceptor{
 
   }
 }
-@Injectable() // TODO: move to intercept Service
+@Injectable()
 export class XhrInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
