@@ -16,6 +16,7 @@ export class AuthenticationService {
   public currentRoles: Roles;
   public currentRoles$: BehaviorSubject<Roles>;
   public isAdmin$: BehaviorSubject<boolean>;
+  private backendUrl = '/api';
   authenticated = false;
   constructor(private http: HttpClient, private userService: UserService) {
     this.currentRoles$ = new BehaviorSubject<Roles>(null);
@@ -28,7 +29,6 @@ export class AuthenticationService {
       authorization: authString
     } : {});
     this.http.get(this.backendUrl + '/user', {headers}).subscribe(response => {
-
       if (response['name']) {
         this.authenticated = true;
         sessionStorage.setItem('username', credentials.username);
@@ -68,3 +68,5 @@ export class AuthenticationService {
 
   }
 
+
+}

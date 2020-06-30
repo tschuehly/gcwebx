@@ -42,4 +42,9 @@ public class Member {
         this.dateOfBirth = dateOfBirth;
         this.joinDate = joinDate;
     }
+
+    public long getMemberId(){
+        return memberId;
+    }
+
 }

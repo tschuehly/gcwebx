@@ -25,7 +25,7 @@ import javax.sql.DataSource;
 import java.util.Arrays;
 
 @Configuration
-@EnableWebSecurity()
+@EnableWebSecurity
 @ComponentScan(basePackageClasses = UserService.class)
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -63,22 +63,31 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().logout().permitAll();
         http.csrf().ignoringAntMatchers("/h2-console/**").and().headers().frameOptions().sameOrigin();
 */
+        final CookieCsrfTokenRepository tokenRepository = CookieCsrfTokenRepository.withHttpOnlyFalse();
+        tokenRepository.setCookiePath("/");
         http
-
+                .csrf()
+                //.disable() //TODO: für h2 console
+                .csrfTokenRepository(tokenRepository)
+                .and()
                 .cors().
                 and().
                 headers().frameOptions().disable().and().
                 httpBasic()
-
+                .and().requiresChannel().anyRequest().requiresSecure()
                 .and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/user").permitAll()
                 .antMatchers(HttpMethod.GET, "/user").permitAll()
                 .antMatchers("/getRole").permitAll()
                 .antMatchers( "/login").permitAll()
                 .antMatchers( "/h2-console/*").permitAll()
                 .antMatchers( "/h2-console/**").permitAll()
                 //.antMatchers( "/getMembers").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")//hasAnyRole("ADMIN", "USER")
+                .antMatchers( "/api/getMembers").hasRole("ADMIN")
+                .antMatchers( "/api/admin").hasRole("ADMIN")
+                .anyRequest().authenticated()
                 .antMatchers( "/admin/getMembers","/admin/updateMember","/admin/createMember","/admin/deleteMember").hasAnyRole("SUPPORTER","MODERATOR","ADMIN")
                 .antMatchers( "/admin/getUsers","/admin/updateUser","/admin/createUser","/admin/deleteUser").hasAnyRole("ADMIN")
                 //.anyRequest().authenticated()
@@ -86,11 +95,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .formLogin()
-                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")
-                .and()
-                .csrf()
-                .disable();
-
+                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login");
     }
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {

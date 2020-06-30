@@ -1,0 +1,11 @@
+.row{
+  background-image: url('https://images.hdqwalls.com/download/ela-r6-tom-clancys-rainbow-six-siege-4r-1920x1080.jpg');
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-attachment: local;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

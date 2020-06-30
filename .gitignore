@@ -15,6 +15,7 @@ desktop.ini
 .springBeans
 .sts4-cache
 /src/main/resources/static
+/src/main/resources/keystore/**
 ### IntelliJ IDEA ###
 .idea
 *.iws
