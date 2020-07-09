@@ -27,7 +27,7 @@
         <a ngbNavLink routerLink="teamspeak">Teamspeak</a>
       </li>
       <li ngbNavItem class="my-auto p-0">
-        <a ngbNavLink>News</a>
+        <a ngbNavLink routerLink="news">News</a>
       </li>
       <li ngbNavItem class="my-auto p-0">
         <a ngbNavLink>Events</a>
@@ -41,6 +41,9 @@
       </li>
       <li *ngIf="this.currentRoles && this.currentRoles.roleAdmin" ngbNavItem class="my-auto">
         <a ngbNavLink routerLink="userTable">Usertable</a>
+      </li>
+      <li *ngIf="this.currentRoles && this.currentRoles.roleAdmin" ngbNavItem class="my-auto">
+        <a ngbNavLink routerLink="edit">Editor</a>
       </li>
       <li *ngIf="this.currentRoles" ngbNavItem class="my-auto">
         <a ngbNavLink routerLink="home" (click)="logout()">Logout</a>
@@ -91,7 +94,7 @@
           <a ngbNavLink routerLink="teamspeak">Teamspeak</a>
         </li>
         <li ngbNavItem class="my-auto">
-          <a ngbNavLink>News</a>
+          <a ngbNavLink routerLink="news">News</a>
         </li>
         <li ngbNavItem class="my-auto">
           <a ngbNavLink>Events</a>

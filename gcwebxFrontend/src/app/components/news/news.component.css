@@ -1,0 +1,15 @@
+.bg_pic{
+  background-image: url('https://images.wallpapersden.com/image/download/mozzie-rainbow-six-siege_65092_2560x1440.jpg');
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-attachment: scroll;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card{
+  background-color: rgba(255,255,255,0.7);
+}

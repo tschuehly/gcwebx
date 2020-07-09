@@ -28,7 +28,8 @@ export const routerConfig: Routes = [
   {path: 'login', component: LoginFormComponent},
   {path: 'edit', component: EditorComponent},
   {path: '', pathMatch: 'full', component: HomeComponent},
-  {path : 'userTable', pathMatch: 'full', component: UserTableComponent}
+  {path : 'userTable', pathMatch: 'full', component: UserTableComponent},
+  {path : 'news', pathMatch: 'full', component: NewsComponent}
 ];
 
 import {AuthenticationService} from './services/authentication.service';
@@ -37,6 +38,7 @@ import {BasicAuthInterceptService} from './services/basic-auth-intercept.service
 import { UserTableComponent } from './components/user-table/user-table.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import {User} from './model/user';
+import { NewsComponent } from './components/news/news.component';
 
 
 
@@ -54,7 +56,8 @@ import {User} from './model/user';
     NgbdSortableHeader,
     UserTableComponent,
     EditUserComponent,
-    EditorComponent
+    EditorComponent,
+    NewsComponent
   ],
   exports: [MemberTableComponent, HomeComponent],
   imports: [
@@ -64,7 +67,6 @@ import {User} from './model/user';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    NgbModule,
     HttpClientModule,
     NoopAnimationsModule,
     ScrollingModule,

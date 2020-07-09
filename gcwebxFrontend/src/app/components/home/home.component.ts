@@ -5,6 +5,7 @@ import {Content} from "../../model/content";
 import {Observable} from "rxjs";
 import {BackendService} from "../../services/backend.service";
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
+import {map} from "rxjs/operators";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -26,10 +27,18 @@ export class HomeComponent implements OnInit {
 
   content: Content;
   contentList: Content[];
+  news: Content[];
   contentList$: Observable<Content[]>;
+  newsList$: Observable<Content[]>;
+
   index: number;
+  newsIndex: number = 0;
   staticText1: SafeHtml;
-  constructor(config: NgbCarouselConfig, private backendService: BackendService, protected sanitizer: DomSanitizer) {
+  staticTitle1: SafeHtml;
+  news1: Content;
+  news2: Content;
+  news3: Content;
+  constructor(config: NgbCarouselConfig, private backendService: BackendService, private sanitizer: DomSanitizer) {
     config.interval = 20000;
     config.wrap = true;
     config.pauseOnHover = false;
@@ -46,10 +55,26 @@ export class HomeComponent implements OnInit {
       this.contentList = data;
       console.log(data);
       console.log(this.contentList);
+
+      this.staticText1 = this.sanitizer.bypassSecurityTrustHtml(this.contentList[0].text);
+      this.staticTitle1 = this.sanitizer.bypassSecurityTrustHtml(this.contentList[0].title);
+      this.sortNewsArray();
+
     });
 
-   // this.staticText1 = this.sanitizer.bypassSecurityTrustHtml(this.contentList[1].text);
+
   }
+
+  sortNewsArray(){
+    this.newsList$ = this.contentList$.pipe(map((data) => {
+      data.sort((a, b) => {
+
+        return a.lastUpdatedDate > b.lastUpdatedDate ? -1 : 1;
+      });
+      return data;
+    }));
+    }
+
 
   togglePaused() {
     if (this.paused) {
