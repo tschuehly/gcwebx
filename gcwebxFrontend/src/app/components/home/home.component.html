@@ -21,4 +21,23 @@
 
 </div>
 
+<div class="overlay row overflow-hidden">
+  <video class="col-12 p-0 my-n5" playsinline="playsinline" autoplay="autoplay" [muted]="true" loop="loop">
+    <source src="assets/tournamentOfChampions.mp4">
+  </video>
+  <div class="position-absolute ">
+    <div class="w-100 text-white mt-auto mb-1">
+      <h1 class="display-3">Video Header</h1>
+      <p class="lead mb-0">With HTML5 Video and Bootstrap 4</p>
+    </div>
+  </div>
+</div>
+
+<div id="logo" class="logocontainer">
+  <p>{{logoName}}</p>
+</div>
+
+<input [(ngModel)]="logoName" type="text">
+
+<button (click)="downloadLogo()" class="btn btn-primary">Generiere Bild</button>
 
