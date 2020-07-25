@@ -28,7 +28,8 @@ export const routerConfig: Routes = [
   {path: 'login', component: LoginFormComponent},
   {path: 'edit', component: EditorComponent},
   {path: '', pathMatch: 'full', component: HomeComponent},
-  {path : 'userTable', pathMatch: 'full', component: UserTableComponent}
+  {path : 'userTable', pathMatch: 'full', component: UserTableComponent},
+  {path : 'esport/:game',  component: EsportComponent}
 ];
 
 import {AuthenticationService} from './services/authentication.service';
@@ -37,6 +38,7 @@ import {BasicAuthInterceptService} from './services/basic-auth-intercept.service
 import { UserTableComponent } from './components/user-table/user-table.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import {User} from './model/user';
+import {EsportComponent} from './components/esport/esport.component';
 
 
 
@@ -54,7 +56,8 @@ import {User} from './model/user';
     NgbdSortableHeader,
     UserTableComponent,
     EditUserComponent,
-    EditorComponent
+    EditorComponent,
+    EsportComponent
   ],
   exports: [MemberTableComponent, HomeComponent],
   imports: [

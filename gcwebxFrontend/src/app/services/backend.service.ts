@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Member} from '../model/member';
 import {User} from '../model/user';
-import {Content} from "../model/content";
+import {Content} from '../model/content';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,10 @@ export class BackendService {
   constructor(
     private http: HttpClient
   ) { }
+  getTeams(): Observable<any>{
+    return this.http.get(this.backendUrl + '/getTeams');
+  }
+
   getMemberTable(): Observable<any>{
     return this.http.get(this.backendUrl + '/getMembers');
   }

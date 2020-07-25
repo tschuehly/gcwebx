@@ -5,7 +5,7 @@ export interface Member {
   teamspeakId: string;
   generalInfo: string;
   dateOfBirth: any;
-  desblTeam: string;
+  team: string;
   joinDate: any;
   acceptanceDate: any;
   editor: string;
@@ -13,5 +13,8 @@ export interface Member {
   uplayId: string;
   deleted: boolean;
   rank: string;
+  cardImg: string;
+  twitter: URL;
+  youtube: URL;
 
 }

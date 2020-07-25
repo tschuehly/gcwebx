@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import de.cschillingtschuehly.gcwebx.modell.Member;
 import de.cschillingtschuehly.gcwebx.modell.User;
 import de.cschillingtschuehly.gcwebx.services.MemberService;
+import de.cschillingtschuehly.gcwebx.services.TeamService;
 import de.cschillingtschuehly.gcwebx.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,10 @@ public class WebController {
     private MemberService memberService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private TeamService teamService;
+
+
     @GetMapping(value = "/api/getMembers",produces = {"application/json"})
     public ResponseEntity getMember(){
         String memberTable = memberService.getMemberTable();
@@ -77,6 +82,11 @@ public class WebController {
         return ResponseEntity.ok().body("{\n \"roles\": \n" + userService.getRolesByUsername(username)+ "\n}");
     }
 
+    @GetMapping("/api/getTeams")
+    public ResponseEntity getTeams(){
+        return ResponseEntity.ok().body(teamService.getTeams());
+
+    }
 
 
 }

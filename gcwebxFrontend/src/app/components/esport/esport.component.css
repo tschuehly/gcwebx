@@ -1,0 +1,22 @@
+#backgroundimg{
+  background-image: url('https://i.imgur.com/DOwZgVP.jpg');
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-attachment: scroll;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.card {
+  display:inline-block;
+  width: 18rem
+}
+.card img{
+  max-height: 300px;
+  object-fit: cover;
+}
+.topspace{
+  height: 10%;
+}

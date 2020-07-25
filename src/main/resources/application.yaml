@@ -4,7 +4,7 @@ spring:
     driverClassName: org.h2.Driver
     username: sa
     password: password
-    data: classpath:userTest.sql
+    #data: classpath:userTest.sql
   profiles:
     active: development
 

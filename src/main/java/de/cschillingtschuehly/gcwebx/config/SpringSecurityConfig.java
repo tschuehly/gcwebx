@@ -67,9 +67,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         tokenRepository.setCookiePath("/");
         http
                 .csrf()
-                //.disable() //TODO: für h2 console
-                .csrfTokenRepository(tokenRepository)
-                .and()
+                .disable() //TODO: für h2 console
+                //.csrfTokenRepository(tokenRepository).and()
                 .cors().
                 and().
                 headers().frameOptions().disable().and().
@@ -84,7 +83,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 //.antMatchers( "/getMembers").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")//hasAnyRole("ADMIN", "USER")
                 .antMatchers( "/api/getMembers").hasRole("ADMIN")
                 .antMatchers( "/api/admin").hasRole("ADMIN")
-                .anyRequest().authenticated()
+                //.anyRequest().authenticated()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()

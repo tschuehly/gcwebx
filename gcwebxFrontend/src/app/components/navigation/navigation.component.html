@@ -4,17 +4,17 @@
     <ul ngbNav #nav="ngbNav" class=" navbar-nav mx-auto">
       <li ngbNavItem class="my-auto">
         <a  ngbNavLink class="navbar-brand pt-2 mr-0" routerLink="home" >
-          <img src="https://ts.xperience-gaming.de/preview/images/logo.png" height="60">
+          <img src="https://i.imgur.com/D5mrccA.png" height="40">
         </a>
       </li>
       <li ngbNavItem class="my-auto p-0">
         <a ngbNavLink routerLink="home">Home</a>
       </li>
         <li class="nav-item nav-link my-auto p-0" ngbDropdown ngbDropdownToggle>
-          <a class="nav-link">Esport</a>
+          <a class="nav-link" >Esport</a>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <button ngbDropdownItem>Rainbow Six Siege</button>
-          <button ngbDropdownItem>Valorant</button>
+          <button ngbDropdownItem routerLink="esport/rainbowsix">Rainbow Six Siege</button>
+          <button ngbDropdownItem routerLink="esport/valorant">Valorant</button>
         </div>
         </li>
       <li ngbNavItem class="my-auto p-0">
@@ -55,6 +55,7 @@
   </div>
 </nav>
 
+
 <nav class="navbar navbar-expand-lg navbar-dark position-absolute d-sm-flex d-md-none m-0 p-0 h-100 w-100">
   <div class="container-fluid fixed-top ">
     <button class="navbar-toggler bg-dark m-3" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
@@ -68,16 +69,16 @@
       <ul ngbNav #nav="ngbNav" class=" navbar-nav mx-auto my-5 text-center"(click)="isMenuCollapsed = true">
         <li ngbNavItem class="my-auto">
           <a  ngbNavLink class="navbar-brand p-2 my-auto"  routerLink="home" >
-            <img src="https://ts.xperience-gaming.de/preview/images/logo.png" height="120">
+            <img src="https://i.imgur.com/D5mrccA.png" height="80">
           </a>
         </li>
         <li ngbNavItem class="my-auto">
           <a ngbNavLink routerLink="home">Home</a>
         </li>
         <li class="nav-item nav-link my-auto" ngbDropdown ngbDropdownToggle>
-          <a class="nav-link text-center">Esport</a>
+          <a class="nav-link text-center" >Esport</a>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button ngbDropdownItem>Rainbow Six Siege</button>
+            <button ngbDropdownItem > Rainbow Six Siege</button>
             <button ngbDropdownItem>Valorant</button>
           </div>
         </li>
@@ -123,3 +124,5 @@
 </nav>
 
 <router-outlet></router-outlet>
+
+<footer></footer>

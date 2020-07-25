@@ -26,7 +26,7 @@ export class EditMemberComponent implements OnInit {
       teamspeakId: new FormControl(null),
       generalInfo: new FormControl(),
       dateOfBirth: new FormControl(),
-      desblTeam: new FormControl(),
+      team: new FormControl(),
       joinDate: new FormControl(),
       acceptanceDate: new FormControl(),
       editor: new FormControl(),
