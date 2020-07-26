@@ -26,9 +26,11 @@ export class NavigationComponent implements OnInit {
     });
 
   }
+  date :Date;
 
   ngOnInit(): void {
     this.authenticationService.getRole();
+    this.date = new Date();
   }
 
   logout(){

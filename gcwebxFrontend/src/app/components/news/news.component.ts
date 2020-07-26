@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Content} from "../../model/content";
 import {Observable} from "rxjs";
 import {BackendService} from "../../services/backend.service";
 import {map} from "rxjs/operators";
+import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-news',
@@ -12,10 +13,13 @@ import {map} from "rxjs/operators";
 export class NewsComponent implements OnInit {
 
   contentList: Content[];
+  content:Content;
   contentList$: Observable<Content[]>;
   newsList$: Observable<Content[]>;
+  firstTwentyWords$: Observable<Content[]>;
+  closeResult = '';
 
-  constructor(private backendService: BackendService) { }
+  constructor(private backendService: BackendService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
 
@@ -29,6 +33,13 @@ export class NewsComponent implements OnInit {
 
     });
   }
+
+  getFirstTwentyWords(){
+    this.firstTwentyWords$ = this.contentList$;
+    console.log(this.firstTwentyWords$[1].split(''));
+
+  }
+
 
   sortNewsArray(){
     this.newsList$ = this.contentList$.pipe(map((data) => {
@@ -47,5 +58,27 @@ export class NewsComponent implements OnInit {
       this.EditContent.setValue(this.content);
     });
   }*/
+
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title',size: "xl",centered: true}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+  closeModal(){
+    console.log("close modal")
+    this.modalService.dismissAll();
+  }
 
 }

@@ -39,6 +39,8 @@ import { UserTableComponent } from './components/user-table/user-table.component
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import {User} from './model/user';
 import { NewsComponent } from './components/news/news.component';
+import {FirstTwentyWords} from "./services/first-twenty-words.pipe";
+import {DateFormat} from "./services/date-format.pipe";
 
 
 
@@ -57,7 +59,9 @@ import { NewsComponent } from './components/news/news.component';
     UserTableComponent,
     EditUserComponent,
     EditorComponent,
-    NewsComponent
+    NewsComponent,
+    FirstTwentyWords,
+    DateFormat
   ],
   exports: [MemberTableComponent, HomeComponent],
   imports: [

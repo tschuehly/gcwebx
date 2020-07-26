@@ -18,3 +18,28 @@
   height: 100vh!important;
   background-color: rgba(52, 58, 64, 0.95);
 }
+
+a:hover{
+  text-decoration: none;
+}
+
+.fa-twitter{
+  color:white;
+  height: 2em;
+  width: 2em;
+}
+
+h5{
+  line-height: inherit;
+  margin: 0;
+
+}
+
+.socials a{
+  display:block;
+  text-align:center;
+}
+svg {
+  display: inline-block;
+  vertical-align: middle;
+}

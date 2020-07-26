@@ -11,23 +11,23 @@
   </ngb-carousel>
 
 
+  <div class="row container-fluid">
+    <ng-container  *ngFor="let contentobj of contentList$ | async" >
+      <div *ngIf="contentobj.id == 1" class="mx-auto">
+        <h2><strong  [innerHTML]="staticTitle1"></strong></h2>
+        <p  [innerHTML]="staticText1"></p>
+      </div>
 
-<div class="row">
-  <div  *ngFor="let contentobj of contentList$ | async" class="mx-auto">
 
-    <h2><strong *ngIf="contentList[0].id == contentobj.id" [innerHTML]="staticTitle1"></strong></h2>
-    <p *ngIf="contentList[0].id == contentobj.id" [innerHTML]="staticText1"></p>
+    </ng-container>
 
   </div>
 
-</div>
 
+  <div class="row container-fluid">
 
-  <div class="row">
-
-    <div  *ngFor="let contentobj of newsList$ | async; let i=index" class="mx-auto">
-
-      <div *ngIf="contentobj.news && i<4 ">
+    <ng-container  *ngFor="let contentobj of newsList$ | async; let i=index">
+      <div *ngIf="contentobj.news && i<4"  class="mx-auto">
         <div class="card" style="width: 18rem;">
           <img class="card-img-top" src="https://ts.xperience-gaming.de/preview/images/logo.png" alt="Card image cap">
           <div class="card-body">
@@ -35,15 +35,10 @@
             <p class="card-text" [innerHTML]="contentobj.text"></p>
             <a href="#" class="btn btn-info">mehr lesen..</a>
           </div>
+
         </div>
       </div>
-
-
-
-    </div>
-
-
-
+    </ng-container>
   </div>
 
 
