@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges,HostListener,Inject} from '@angular/core';
 import {Routes} from '@angular/router';
 import {MemberTableComponent} from '../member-table/member-table.component';
 import {HomeComponent} from '../home/home.component';
@@ -8,7 +8,8 @@ import {UserService} from '../../services/user.service';
 import {Observable} from 'rxjs';
 import {AuthenticationService} from '../../services/authentication.service';
 import {Roles} from '../../model/roles';
-
+import {DOCUMENT} from "@angular/common";
+declare const window: any;
 
 @Component({
   selector: 'app-navigation',
@@ -25,14 +26,31 @@ export class NavigationComponent implements OnInit {
     });
 
   }
+  date :Date;
 
   ngOnInit(): void {
     this.authenticationService.getRole();
+    this.date = new Date();
   }
 
   logout(){
     this.authenticationService.logout();
     this.router.navigateByUrl('/home');
     this.authenticationService.getRole();
+  }
+
+  @HostListener("window:scroll",[])
+  onWindowScroll(){
+    const number = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    if (number > 20) {
+      document.querySelectorAll('.navbar').forEach((nav) =>{
+        nav.classList.remove('bg-transparent');
+        nav.classList.add('bg-dark');
+      })
+    } else if (number < 20) {
+      document.querySelectorAll('.navbar').forEach((nav) =>{
+        nav.classList.add('bg-transparent');
+        nav.classList.remove('bg-dark');
+      })}
   }
 }

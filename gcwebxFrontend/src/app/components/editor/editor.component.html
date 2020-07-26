@@ -3,38 +3,105 @@
 
 
 
+
 <div class="row">
+  <div class="container-fluid mt-auto mb-0">
+    <div class="col-3 mr-3 ml-auto">
+      <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="showNews" >
+        <label ngbButtonLabel class="btn-primary">
+          <input ngbButton type="radio" [value]="true"> News
+        </label>
+        <label ngbButtonLabel class="btn-primary">
+          <input ngbButton type="radio" [value]="false"> Static
+        </label>
+      </div>
+    </div>
 
 
+  </div>
 
-<div class="mb-5 mt-auto  mx-auto">
+  <div class="container mb-5 mt-auto  mx-auto">
 
-  <label *ngFor="let contentItem of contentList">
-     <button type="button" class="btn btn-dark" (click)="getContentByID(contentItem.id)">Text[{{contentItem.id}}]</button>
-    <p></p>
-  </label>
+    <div class="pb-sm-4  my-center">
 
+    </div>
 
-  <!--<button type="button" class="btn btn-dark" (click)="getContentByID(1)">Text[1]</button>
-  <button type="button" class="btn btn-dark" (click)="getContentByID(2)">Text[2]</button>
-  <p>{{contentItem.id}} von {{contentItem.text}}</p>
+    <!--<label *ngFor="let contentItem of contentList">
+
+      <div *ngIf="contentItem.news"><h3 class="label font">News</h3></div>
+      <div *ngIf="!contentItem.news"><h3 class="label font">Static</h3></div>
+
+      <br>
+    </label>
   -->
+    <label *ngFor="let contentItem of contentList">
+      <button *ngIf="contentItem.news && showNews" type="button" class="btn btn-dark ml-2 mb-2" (click)="getContentByID(contentItem.id)">
 
-  <form class="form" [formGroup]="EditContent" class="bg-light">
+        <div><span class="label font">News</span></div>
+        <h3>{{contentItem.title}}</h3>
+      </button>
+
+      <button *ngIf="!contentItem.news && !showNews" type="button" class="btn btn-dark ml-2 mb-2" (click)="getContentByID(contentItem.id)">
+
+        <div *ngIf="!contentItem.news && !showNews"><span class="label font ">Static</span></div>
+        <h3>{{contentItem.title}}</h3>
+
+      </button>
+      <br>
+    </label>
 
 
-    <p-editor formControlName="text" [style]="{'height':'320px'}"></p-editor>
 
-    <button type="button" class="btn btn-dark" (click)="updateContent()">Update</button>
-    <button type="button" class="btn btn-dark" (click)="deleteContent()">Delete</button>
-    <button type="button" class="btn btn-dark" (click)="createContent()">Create</button>
+    <form class="form" [formGroup]="EditContent" >
 
-  </form>
+      <h2 class="label font mb-3">Titel: <input formControlName="title" type="text" class="ml-2"></h2>
+
+
+      <div class="bg-light">
+
+        <p-editor formControlName="text" [style]="{'height':'320px'}"></p-editor>
+
+        <button type="button" class="btn btn-dark" (click)="updateContent()">Update</button>
+        <button *ngIf="showNews"  type="button" class="btn btn-dark" (click)="deleteContent()">Delete</button>
+
+
+
+
+
+        <ng-template #content let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Erstelle neuen Inhalt</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="news" >
+                  <label ngbButtonLabel class="btn-primary">
+                    <input ngbButton type="radio" [value]="true"> News
+                  </label>
+                  <label ngbButtonLabel class="btn-primary">
+                    <input ngbButton type="radio" [value]="false"> Static
+                  </label>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="createContent()">Create</button>
+          </div>
+
+        </ng-template>
+
+        <button class="btn btn btn-dark" (click)="open(content)">Create</button>
+
+        <hr>
+
+
+      </div>
+    </form>
+  </div>
+
 </div>
-
-
-
-
-</div>
-
-

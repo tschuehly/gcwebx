@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, Pipe, PipeTransform, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit,  ViewChild} from '@angular/core';
 import {NgbCarousel, NgbCarouselConfig, NgbSlideEvent, NgbSlideEventSource} from '@ng-bootstrap/ng-bootstrap';
 import {Router} from '@angular/router';
 import {Content} from '../../model/content';
@@ -6,14 +6,13 @@ import {Observable} from 'rxjs';
 import {BackendService} from '../../services/backend.service';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 declare let html2canvas: any;
-import { saveAs } from 'file-saver';
 import domtoimage from 'dom-to-image';
+import {map} from "rxjs/operators";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-
 
 export class HomeComponent implements OnInit {
 
@@ -29,30 +28,51 @@ export class HomeComponent implements OnInit {
   private elementRef: ElementRef;
   content: Content;
   contentList: Content[];
+  news: Content[];
   contentList$: Observable<Content[]>;
+  newsList$: Observable<Content[]>;
+  staticTitle1: SafeHtml;
+
   index: number;
+  newsIndex: number = 0;
   staticText1: SafeHtml;
   logoName: string;
   public logoUrl;
-  constructor(config: NgbCarouselConfig, private backendService: BackendService, protected sanitizer: DomSanitizer) {
+
+  constructor(config: NgbCarouselConfig, private backendService: BackendService, private sanitizer: DomSanitizer) {
     config.interval = 20000;
     config.wrap = true;
     config.pauseOnHover = false;
   }
   @ViewChild('carousel', {static : true}) carousel: NgbCarousel;
 
-
   ngOnInit(): void {
+
     this.contentList$ = this.backendService.getContent();
     this.backendService.getContent().
     subscribe(data => {
       this.contentList = data;
       console.log(data);
       console.log(this.contentList);
+
+      this.staticText1 = this.sanitizer.bypassSecurityTrustHtml(this.contentList[0].text);
+      this.staticTitle1 = this.sanitizer.bypassSecurityTrustHtml(this.contentList[0].title);
+      this.sortNewsArray();
+
     });
 
-   // this.staticText1 = this.sanitizer.bypassSecurityTrustHtml(this.contentList[1].text);
   }
+
+  sortNewsArray(){
+    this.newsList$ = this.contentList$.pipe(map((data) => {
+      data.sort((a, b) => {
+
+        return a.lastUpdatedDate > b.lastUpdatedDate ? -1 : 1;
+      });
+      return data;
+    }));
+    }
+
 
   downloadLogo(){
     domtoimage.toPng(document.querySelector('#logo')).then((dataUrl) => {
@@ -90,14 +110,4 @@ export class HomeComponent implements OnInit {
 }
 
 
-@Pipe({name: 'safeHtml'})
-export class Safe {
-  constructor(private sanitizer: DomSanitizer) {
-  }
 
-  transform(value: any, args?: any): any {
-    return this.sanitizer.bypassSecurityTrustHtml(value);
-    // return this.sanitizer.bypassSecurityTrustStyle(style);
-    // return this.sanitizer.bypassSecurityTrustXxx(style); - see docs
-  }
-}

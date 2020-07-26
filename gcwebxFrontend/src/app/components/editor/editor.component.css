@@ -9,3 +9,12 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.btn.active{
+  background-color: chocolate!important;
+}
+
+.label{
+  color: white;
+
+}

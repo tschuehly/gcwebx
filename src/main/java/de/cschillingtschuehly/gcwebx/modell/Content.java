@@ -5,8 +5,8 @@ import lombok.*;
 import org.hibernate.engine.jdbc.spi.ConnectionObserverAdapter;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
-import java.time.LocalDate;
+import java.awt.*;
+import java.time.LocalDateTime;
 
 @Entity
 @NoArgsConstructor
@@ -19,11 +19,13 @@ public class Content{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private String title;
     @Lob
     @Column(columnDefinition = "text")
-    String text;
-    private LocalDate creationDate;
-    private LocalDate lastUpdatedDate;
+    private String text;
+    private Boolean news;
+    private LocalDateTime creationDate;
+    private LocalDateTime lastUpdatedDate;
 
 
 

@@ -1,6 +1,4 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {Injectable, NgModule} from '@angular/core';
-
 import {AppComponent} from './app.component';
 import {LoginFormComponent} from './components/login-form/login-form.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -20,6 +18,16 @@ import {EditorModule} from 'primeng/editor';
 import {XhrInterceptor} from './services/interceptor.service';
 import {BasicAuthIntercept} from './services/interceptor.service';
 import {HttpXsrfInterceptor} from './services/interceptor.service';
+import {AuthenticationService} from './services/authentication.service';
+import { EditorComponent } from './components/editor/editor.component';
+import { UserTableComponent } from './components/user-table/user-table.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
+import {EsportComponent} from './components/esport/esport.component';
+import { NewsComponent } from './components/news/news.component';
+import {FirstTwentyWords} from "./services/first-twenty-words.pipe";
+import {DateFormat} from "./services/date-format.pipe";
+import {NgModule} from "@angular/core";
+import {SafeHtml} from "./services/safe-Html.pipe";
 
 export const routerConfig: Routes = [
   {path: 'memberTable', component: MemberTableComponent},
@@ -29,16 +37,11 @@ export const routerConfig: Routes = [
   {path: 'edit', component: EditorComponent},
   {path: '', pathMatch: 'full', component: HomeComponent},
   {path : 'userTable', pathMatch: 'full', component: UserTableComponent},
-  {path : 'esport/:game',  component: EsportComponent}
+  {path : 'esport/:game',  component: EsportComponent},
+  {path : 'news', pathMatch: 'full', component: NewsComponent}
 ];
 
-import {AuthenticationService} from './services/authentication.service';
-import { EditorComponent } from './components/editor/editor.component';
-import {BasicAuthInterceptService} from './services/basic-auth-intercept.service';
-import { UserTableComponent } from './components/user-table/user-table.component';
-import { EditUserComponent } from './components/edit-user/edit-user.component';
-import {User} from './model/user';
-import {EsportComponent} from './components/esport/esport.component';
+
 
 
 
@@ -57,7 +60,10 @@ import {EsportComponent} from './components/esport/esport.component';
     UserTableComponent,
     EditUserComponent,
     EditorComponent,
-    EsportComponent
+    NewsComponent,
+    FirstTwentyWords,
+    DateFormat,
+    SafeHtml
   ],
   exports: [MemberTableComponent, HomeComponent],
   imports: [
