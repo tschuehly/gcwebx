@@ -24,7 +24,16 @@ public class Team {
     @NotEmpty
     private String teamName;
     private String game;
-    @OneToMany(targetEntity = Member.class)
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, targetEntity = Member.class ,orphanRemoval = true,fetch = FetchType.EAGER)
     private List members;
+
+    public List<Member> addMember(Member pmember){
+        this.members.add(pmember);
+        return this.members;
+    }
+    public List<Member> removeMember(Member pmember){
+        this.members.remove(pmember);
+        return this.members;
+    }
+
 }

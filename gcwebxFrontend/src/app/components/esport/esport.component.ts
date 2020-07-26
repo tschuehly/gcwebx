@@ -13,6 +13,7 @@ export class EsportComponent implements OnInit {
 
   public teams: Array<Team> = new Array<Team>();
   public teams$: Observable<any>;
+  public page: string;
   constructor(
     private route: ActivatedRoute,
     private backendService: BackendService,
@@ -23,6 +24,8 @@ export class EsportComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       console.log(params['game']);
+      this.page = params['game'];
+
     });
     this.teams$.subscribe(pteams => {
       let team: Team;

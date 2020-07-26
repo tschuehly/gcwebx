@@ -2,23 +2,27 @@
 
   <div class="container-fluid topspace"></div>
   <div class="container m-auto mt-5">
-    <ng-container *ngFor="let team of teams">
-      <div class="container-fluid">
-        <h1 class="text-light text-center">{{team.teamName}}</h1>
-      </div>
-      <ng-container *ngFor="let member of team.members;index as i">
-        <div class="card m-3 p-2" >
-          <img class="card-img-top" src="assets/operators/{{member.cardImg}}" alt="Card image cap">
-          <div class="card-body">
-            <h2>{{member.name}}</h2>
-            <p class="card-text">
-              <a href="{{member.twitter}}">Twitter</a>
-              <a href="{{member.youtube}}">Youtube</a>
-            </p>
 
-          </div>
+    <ng-container *ngFor="let team of teams">
+      <ng-container *ngIf="page == team.game">
+        <div class="container-fluid">
+          <h1 class="text-light text-center">{{team.teamName}}</h1>
         </div>
+        <ng-container *ngFor="let member of team.members;index as i">
+          <div class="card m-3 p-2" >
+            <img class="card-img-top" src="assets/operators/{{member.cardImg}}" alt="Card image cap">
+            <div class="card-body">
+              <h2>{{member.name}}</h2>
+              <p class="card-text">
+                <a href="{{member.twitter}}">Twitter</a>
+                <a href="{{member.youtube}}">Youtube</a>
+              </p>
+
+            </div>
+          </div>
+        </ng-container>
       </ng-container>
+
 
 
     </ng-container>
