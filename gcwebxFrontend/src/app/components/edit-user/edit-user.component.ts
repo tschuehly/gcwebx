@@ -43,8 +43,10 @@ export class EditUserComponent implements OnInit {
     }
     console.log('edituser: ' + JSON.stringify(this.editUser));
     this.backendService.updateUser(this.editUser).subscribe(
-      data => console.log(data));
-    this.userUpdated.emit(true);
+      data => {
+        console.log(data);
+        this.userUpdated.emit(true);
+      });
     this.activeModal.close();
   }
   createUser(){
@@ -53,8 +55,10 @@ export class EditUserComponent implements OnInit {
     this.user.password = bcrypt.hashSync(this.user.password, 10);
 
     console.log(this.user);
-    this.backendService.createUser(this.user).subscribe( data => console.log(data));
-    this.userUpdated.emit(true);
+    this.backendService.createUser(this.user).subscribe( data => {
+      console.log(data);
+      this.userUpdated.emit(true);
+    });
     this.activeModal.close();
   }
 

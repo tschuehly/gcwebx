@@ -37,7 +37,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());;
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
         //jdbcAuthentication()
                 //.dataSource(dataSource);
                 //.withDefaultSchema()
@@ -54,21 +54,12 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-/*
-        http.authorizeRequests()
-                .antMatchers("/h2-console/**").hasRole("ADMIN")
-                .anyRequest().authenticated()
-                //and().formLogin().loginPage("/login").permitAll()
-                .and().httpBasic()
-                .and().logout().permitAll();
-        http.csrf().ignoringAntMatchers("/h2-console/**").and().headers().frameOptions().sameOrigin();
-*/
         final CookieCsrfTokenRepository tokenRepository = CookieCsrfTokenRepository.withHttpOnlyFalse();
         tokenRepository.setCookiePath("/");
         http
                 .csrf()
-                .disable() //TODO: für h2 console
-                //.csrfTokenRepository(tokenRepository).and()
+                //.disable() //TODO: für h2 console
+                .csrfTokenRepository(tokenRepository).and()
                 .cors().
                 and().
                 headers().frameOptions().disable().and().
@@ -82,7 +73,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers( "/login").permitAll()
                 .antMatchers( "/h2-console/**").permitAll()
                 //.antMatchers( "/getMembers").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")//hasAnyRole("ADMIN", "USER")
-                .antMatchers( "/api/getMembers").hasRole("ADMIN")
+                .antMatchers( "/api/getMembers","/api/updateMember","/api/createMember","/api/deleteMember").hasAnyRole("ADMIN", "MODERATOR","SUPPORT")
+                .antMatchers( "/api/getUsers","/api/updateUser","/api/createUser","/api/deleteUser").hasAnyRole("ADMIN")
                 .antMatchers( "/api/admin").hasRole("ADMIN")
                 //.anyRequest().authenticated()
                 .and()
@@ -91,17 +83,5 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login");
  }
-
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(Arrays.asList("authorization", "content-type","x-requested-with", "x-auth-token", "Cache-Control", "Content-Type"));
-        configuration.setExposedHeaders(Arrays.asList("x-auth-token"));
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
-    }
 
 }

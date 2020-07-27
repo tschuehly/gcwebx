@@ -54,15 +54,15 @@
 
     <form class="form" [formGroup]="EditContent" >
 
-      <h2 class="label font mb-3">Titel: <input formControlName="title" type="text" class="ml-2"></h2>
+      <h2 class="label font mb-3 text-dark">Titel: <input formControlName="title" type="text" class="ml-2"></h2>
 
 
       <div class="bg-light">
 
         <p-editor formControlName="text" [style]="{'height':'320px'}"></p-editor>
 
-        <button type="button" class="btn btn-dark" (click)="updateContent()">Update</button>
-        <button *ngIf="showNews"  type="button" class="btn btn-dark" (click)="deleteContent()">Delete</button>
+        <button type="button" class="btn btn-dark m-1" (click)="updateContent()">Update</button>
+        <button *ngIf="showNews"  type="button m-1" class="btn btn-dark" (click)="deleteContent()">Delete</button>
 
 
 
@@ -95,7 +95,7 @@
 
         </ng-template>
 
-        <button class="btn btn btn-dark" (click)="open(content)">Create</button>
+        <button class="btn btn btn-dark m-1" (click)="open(content)">Create</button>
 
         <hr>
 
