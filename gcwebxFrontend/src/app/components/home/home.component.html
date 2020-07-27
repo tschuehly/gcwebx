@@ -1,5 +1,16 @@
 <div class='container-fluid p-0'>
   <ngb-carousel>
+    <ng-template ngbSlide>
+      <video class="col-12 p-0  img-fluid mx-auto" playsinline="playsinline" autoplay="autoplay" [muted]="true" loop="loop">
+        <source src="assets/tournamentOfChampionsCropped.mp4">
+      </video>
+      <div class="position-absolute ">
+        <div class="w-100 text-white mt-auto mb-1">
+          <h1 class="display-3">Video Header</h1>
+          <p class="lead mb-0">With HTML5 Video and Bootstrap 4</p>
+        </div>
+      </div>
+    </ng-template>
       <ng-template *ngFor="let imgsrc of images" ngbSlide >
         <div  class="picsum-img-wrapper">
           <img class="img-fluid mx-auto" src="{{imgsrc}}">
@@ -10,33 +21,19 @@
           <h1>Xperience Gaming Clan</h1>
         </div>
       </ng-template>
-      <ng-template ngbSlide>
-          <video class="col-12 p-0  img-fluid mx-auto" playsinline="playsinline" autoplay="autoplay" [muted]="true" loop="loop">
-            <source src="assets/tournamentOfChampionsCropped.mp4">
-          </video>
-          <div class="position-absolute ">
-            <div class="w-100 text-white mt-auto mb-1">
-              <h1 class="display-3">Video Header</h1>
-              <p class="lead mb-0">With HTML5 Video and Bootstrap 4</p>
-            </div>
-          </div>
-      </ng-template>
+
   </ngb-carousel>
 
 
   <div class="row container-fluid">
     <ng-container  *ngFor="let contentobj of contentList$ | async" >
-      <div *ngIf="contentobj.id == 1" class="mx-auto">
+      <div *ngIf="contentobj.id == 1" class="mx-auto p-2">
         <h2><strong  [innerHTML]="staticTitle1"></strong></h2>
         <p  [innerHTML]="staticText1"></p>
       </div>
-
-
     </ng-container>
 
   </div>
-
-
   <div class="row container-fluid">
 
     <ng-container  *ngFor="let contentobj of newsList$ | async; let i=index">
@@ -46,26 +43,11 @@
           <div class="card-body">
             <h5 class="card-title">{{contentobj.title}}</h5>
             <p class="card-text" [innerHTML]="contentobj.text"></p>
-            <a href="#" class="btn btn-info">mehr lesen..</a>
+            <a routerLink="/news" class="btn btn-info">mehr lesen..</a>
           </div>
 
         </div>
       </div>
     </ng-container>
   </div>
-
-
-  <!--<h3 class="ql-align-center"><span style="color: rgb(107, 36, 178);"><br></span></h3><p class="ql-align-center"><br></p><p class="ql-align-center"><span style="color: rgb(107, 36, 178);">Unser Clan hat sich entschlossen eine Community zugründen die nicht ist wie jede andere. Bei uns hast DU das sagen.</span></p><p class="ql-align-center"><span style="color: rgb(107, 36, 178);">Weder gibt es einen Diktator der alles tut was er für richtig hält, noch eine Clanführung die nur ihren Willen durchsetzten möchte.</span></p><p class="ql-align-center"><span style="color: rgb(107, 36, 178);">Hier hat die Community die Macht um etwas zu bewegen und zu ändern. Xperience´s Maingame ist zurzeit Rainbow Six Siege.</span></p><p class="ql-align-center"><span style="color: rgb(107, 36, 178);">Dennoch sind wir auch für andere Spiele zuhaben und können uns in anderen Kategorien weiter entwickeln.</span></p><p class="ql-align-center"><span style="color: rgb(107, 36, 178);">Jeder Gamer der sich älter als 18 Jahre bezeichnen kann, darf sich jeder Zeit anschließen um etwas großes zu bewirken. Elo und Skill sind Nebensache.</span></p><p class="ql-align-center"><span style="color: rgb(107, 36, 178);">Sobald du dich angesprochen fühlst, besuch uns doch einfach auf unserem Teamspeak um genaueres zu erfahren.</span></p><p class="ql-align-center"><br></p><p class="ql-align-center"><span style="color: rgb(107, 36, 178);">Wir warten auf dich!!</span></p>
--->
 </div>
-
-
-
-<div id="logo" class="logocontainer">
-  <p>{{logoName}}</p>
-</div>
-
-<input [(ngModel)]="logoName" type="text">
-
-<button (click)="downloadLogo()" class="btn btn-primary">Generiere Bild</button>
-

@@ -24,10 +24,11 @@ import { UserTableComponent } from './components/user-table/user-table.component
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import {EsportComponent} from './components/esport/esport.component';
 import { NewsComponent } from './components/news/news.component';
-import {FirstTwentyWords} from "./services/first-twenty-words.pipe";
-import {DateFormat} from "./services/date-format.pipe";
-import {NgModule} from "@angular/core";
-import {SafeHtml} from "./services/safe-Html.pipe";
+import {FirstTwentyWords} from './services/first-twenty-words.pipe';
+import {DateFormat} from './services/date-format.pipe';
+import {NgModule} from '@angular/core';
+import {SafeHtml} from './services/safe-Html.pipe';
+import { LogoComponent } from './components/logo/logo.component';
 
 export const routerConfig: Routes = [
   {path: 'memberTable', component: MemberTableComponent},
@@ -38,7 +39,8 @@ export const routerConfig: Routes = [
   {path: '', pathMatch: 'full', component: HomeComponent},
   {path : 'userTable', pathMatch: 'full', component: UserTableComponent},
   {path : 'esport/:game',  component: EsportComponent},
-  {path : 'news', pathMatch: 'full', component: NewsComponent}
+  {path : 'news', pathMatch: 'full', component: NewsComponent},
+  {path : 'logo', pathMatch: 'full', component: LogoComponent}
 ];
 
 
@@ -63,7 +65,9 @@ export const routerConfig: Routes = [
     NewsComponent,
     FirstTwentyWords,
     DateFormat,
-    SafeHtml
+    SafeHtml,
+    LogoComponent,
+    EsportComponent
   ],
   exports: [MemberTableComponent, HomeComponent],
   imports: [

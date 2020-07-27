@@ -6,8 +6,7 @@ import {Observable} from 'rxjs';
 import {BackendService} from '../../services/backend.service';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 declare let html2canvas: any;
-import domtoimage from 'dom-to-image';
-import {map} from "rxjs/operators";
+import {map} from 'rxjs/operators';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -34,10 +33,7 @@ export class HomeComponent implements OnInit {
   staticTitle1: SafeHtml;
 
   index: number;
-  newsIndex: number = 0;
   staticText1: SafeHtml;
-  logoName: string;
-  public logoUrl;
 
   constructor(config: NgbCarouselConfig, private backendService: BackendService, private sanitizer: DomSanitizer) {
     config.interval = 20000;
@@ -74,18 +70,7 @@ export class HomeComponent implements OnInit {
     }
 
 
-  downloadLogo(){
-    domtoimage.toPng(document.querySelector('#logo')).then((dataUrl) => {
-      this.logoUrl = dataUrl;
-      let link = document.createElement('a');
-      link.download = this.logoName;
-      link.href = dataUrl;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    });
 
-  }
 
 
   togglePaused() {

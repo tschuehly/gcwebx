@@ -4,7 +4,6 @@ import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import java.net.URL;
 import java.time.LocalDate;
 import javax.validation.constraints.NotEmpty;
 @Entity
@@ -27,16 +26,16 @@ public class Member {
     private LocalDate acceptanceDate;
     private String editor;
     private Integer warnings;
-    private String uplayId;
+    private String gamerTag;
     @Column(columnDefinition = "boolean default false")
     private Boolean deleted;
     private String rank;
-    private URL twitter;
-    private URL twitch;
-    private URL youtube;
+    private String twitter;
+    private String twitch;
+    private String youtube;
     private String cardImg;
 
-    public Member(String name, String teamspeakId, LocalDate dateOfBirth, LocalDate joinDate,URL twitter,URL youtube) {
+    public Member(String name, String teamspeakId, LocalDate dateOfBirth, LocalDate joinDate,String twitter,String youtube) {
         this.name = name;
         this.teamspeakId = teamspeakId;
         this.dateOfBirth = dateOfBirth;
@@ -44,19 +43,17 @@ public class Member {
         this.twitter = twitter;
         this.youtube = youtube;
     }
-    public Member(Long memberId,String name, String teamspeakId, LocalDate dateOfBirth, LocalDate joinDate,URL twitter,URL youtube,String cardImg) {
-        this.memberId = memberId;
+
+    public Member(@NotEmpty String name, String twitter, String youtube, String cardImg) {
         this.name = name;
-        this.teamspeakId = teamspeakId;
-        this.dateOfBirth = dateOfBirth;
-        this.joinDate = joinDate;
         this.twitter = twitter;
         this.youtube = youtube;
         this.cardImg = cardImg;
+        this.deleted = false;
     }
-
+    /*
     public long getMemberId(){
         return memberId;
-    }
+    }*/
 
 }

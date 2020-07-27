@@ -31,7 +31,7 @@ export class EditMemberComponent implements OnInit {
       acceptanceDate: new FormControl(),
       editor: new FormControl(),
       warnings: new FormControl(),
-      uplayId: new FormControl()
+      gamerTag: new FormControl()
     });
     this.EditForm.patchValue(this.member);
   }
@@ -40,16 +40,20 @@ export class EditMemberComponent implements OnInit {
     this.editMember = this.member;
     this.editMember = (this.EditForm.value as Member);
     console.log('editmember: ' + JSON.stringify(this.editMember));
-    this.backendService.updateMember(this.editMember).subscribe( data => console.log(data));
-    this.memberUpdated.emit(true);
+    this.backendService.updateMember(this.editMember).subscribe( data =>{
+      console.log(data);
+      this.memberUpdated.emit(true);
+    } );
     this.activeModal.close();
   }
   createMember(){
     this.member = (this.EditForm.value as Member);
     this.member.deleted = false;
     console.log(this.member);
-    this.backendService.createMember(this.member).subscribe( data => console.log(data));
-    this.memberUpdated.emit(true);
+    this.backendService.createMember(this.member).subscribe( data =>{
+      console.log(data);
+      this.memberUpdated.emit(true);
+    });
     this.activeModal.close();
   }
 
@@ -57,8 +61,10 @@ export class EditMemberComponent implements OnInit {
     modal.close();
     this.editMember = (this.EditForm.value as Member);
     this.editMember.deleted = true;
-    this.backendService.updateMember(this.editMember).subscribe( data => console.log(data));
-    this.memberUpdated.emit(true);
+    this.backendService.updateMember(this.editMember).subscribe( data => {
+      console.log(data);
+      this.memberUpdated.emit(true);
+    });
     this.activeModal.close();
   }
 

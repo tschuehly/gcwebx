@@ -17,21 +17,7 @@ ngb-carousel .picsum-img-wrapper>img {
   right: 0;
 
 }
-.logocontainer{
-  position: relative;
-  display: inline-block;
-  background-image: url("https://i.imgur.com/JTzPWOP.png");
-  width: 500px;
-  height: 500px;
-}
-.logocontainer p{
-  text-align:center;
-  padding-top: 76%;
-  bottom: 20px;
-  font-family: techno_hideoregular;
-  color: white;
-  font-size: 60px;
-}
+
 .centered{
 
 }

@@ -1,0 +1,29 @@
+.bg_pic{
+  background-image: url('https://images.wallpapersden.com/image/download/mozzie-rainbow-six-siege_65092_2560x1440.jpg');
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-attachment: scroll;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.logocontainer{
+  position: relative;
+  display: inline-block;
+  background-image: url("https://i.imgur.com/JTzPWOP.png");
+  width: 500px;
+  height: 500px;
+}
+.logocontainer p{
+  text-align:center;
+  padding-top: 76%;
+  bottom: 20px;
+  font-family: techno_hideoregular;
+  color: white;
+  font-size: 60px;
+}
+.topspace{
+  height: 10%;
+}
