@@ -30,7 +30,6 @@ public class GcwebxApplication implements CommandLineRunner{
 	private UserRepository userRepository;
 	@Autowired
 	private ContentRepository contentRepository;
-	@Autowired MemberRepository deletedMemberRepository;
 	@Autowired
 	TeamRepository teamRepository;
 	public static void main(String[] args) {
@@ -56,19 +55,24 @@ public class GcwebxApplication implements CommandLineRunner{
 		userRepository.save(new User("moderator","$2y$12$4zdceAF0Q95ot.TeaXqEzubqITfpIgvXNS02qKylWrDkIHzE0nTQm",true,false,false,true,false));
 
 
+/*
 		memberRepository.save(new Member("Name1","twitter.com","youtube.com","ash.jpg"));
 		memberRepository.save(new Member("Name2","twitter.com","youtube.com","iq.jpg"));
 		memberRepository.save(new Member("Name3","twitter.com","youtube.com","mute.jpg"));
+*/
 
-		List<Member> members;
-		members = memberRepository.findAll();
+		final List<Member> members = new ArrayList<>();
+		memberRepository.findById(1L).ifPresent(member -> members.add(member));
+		memberRepository.findById(2L).ifPresent(member -> members.add(member));
+		memberRepository.findById(3L).ifPresent(member -> members.add(member));
 		teamRepository.save(new Team(1L,"Silentpeak","rainbowsix",members));
 		members.clear();
-		memberRepository.save(new Member("Name4","twitter.com","youtube.com","fuze.jpg"));
-		memberRepository.save(new Member("Name5","twitter.com","youtube.com","pulse.jpg"));
-		memberRepository.save(new Member("Name6","twitter.com","youtube.com","bandit.jpg"));
 
-		//teamRepository.save(new Team(2L,"xp.exe","valorant",members));
+		memberRepository.findById(4L).ifPresent(member -> members.add(member));
+		memberRepository.findById(5L).ifPresent(member -> members.add(member));
+		memberRepository.findById(6L).ifPresent(member -> members.add(member));
+
+		teamRepository.save(new Team(2L,"xp.exe","valorant",members));
 		/*System.out.println(teamRepository.findAll());*/
 
 

@@ -4,7 +4,6 @@ target/
 !**/src/main/**
 !**/src/test/**
 desktop.ini
-/src/main/resources/userTest.sql
 /data/*
 ### STS ###
 .apt_generated
