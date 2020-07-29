@@ -13,9 +13,10 @@ import javax.validation.constraints.NotEmpty;
 @Setter
 @Getter
 @DynamicUpdate
+@SequenceGenerator(name = "seq",initialValue = 201)
 public class Member {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq")
     private Long memberId;
     @NotEmpty
     private String name;

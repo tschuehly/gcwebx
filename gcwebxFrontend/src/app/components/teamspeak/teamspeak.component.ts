@@ -1,10 +1,11 @@
-import {Component, ElementRef, OnInit, AfterViewInit, ViewChild, Input, Renderer2, Inject} from '@angular/core';
+import {Component, ElementRef, OnInit, AfterViewInit, ViewChild, Input, Renderer2, Inject, ViewEncapsulation} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 
 @Component({
   selector: 'app-teamspeak',
   templateUrl: './teamspeak.component.html',
-  styleUrls: ['./teamspeak.component.css']
+  styleUrls: ['./teamspeak.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class TeamspeakComponent implements OnInit{
 

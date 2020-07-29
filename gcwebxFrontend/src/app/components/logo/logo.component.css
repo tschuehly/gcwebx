@@ -12,7 +12,7 @@
 .logocontainer{
   position: relative;
   display: inline-block;
-  background-image: url("https://i.imgur.com/JTzPWOP.png");
+  background-image: url("https://i.imgur.com/GYW5mo3.png");
   width: 500px;
   height: 500px;
 }
@@ -23,7 +23,4 @@
   font-family: techno_hideoregular;
   color: white;
   font-size: 60px;
-}
-.topspace{
-  height: 10%;
 }

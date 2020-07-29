@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {BackendService} from '../../services/backend.service';
 import {Team} from '../../model/team';
@@ -7,7 +7,8 @@ import {Observable} from 'rxjs';
 @Component({
   selector: 'app-esport',
   templateUrl: './esport.component.html',
-  styleUrls: ['./esport.component.css']
+  styleUrls: ['./esport.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class EsportComponent implements OnInit {
 

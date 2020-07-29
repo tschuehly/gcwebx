@@ -1,8 +1,15 @@
-<div class="row" id="backgroundimg">
-
+<div>
   <div class="container-fluid topspace"></div>
+  <div class="container-fluid">
+    <ng-container *ngFor="let team of teams" >
+      <ng-container *ngIf="page == team.game">
+        <div class="btn-group p-2 bg-light">
+          <a class="btn"><h5 class="m-0">{{team.teamName}}</h5></a>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
   <div class="container m-auto mt-5">
-
     <ng-container *ngFor="let team of teams">
       <ng-container *ngIf="page == team.game">
         <div class="container-fluid">
@@ -10,12 +17,22 @@
         </div>
         <ng-container *ngFor="let member of team.members;index as i">
           <div class="card m-3 p-2" >
+
+
             <img class="card-img-top" src="assets/operators/{{member.cardImg}}" alt="Card image cap">
-            <div class="card-body">
+            <div class="card-img-overlay text-light d-flex flex-column justify-content-between">
+
+              <div>
+                <h4 class="card-title">Max Mustermann</h4>
+                <p>Alter: 18 Jahre</p>
+              </div>
+            </div>
+            <div class="card-body text-center">
               <h2>{{member.name}}</h2>
-              <p class="card-text">
-                <a href="{{member.twitter}}">Twitter</a>
-                <a href="{{member.youtube}}">Youtube</a>
+              <p class="card-text text-center">
+                <a href="https://{{member.twitter}}" class="mr-4"><i class="fab fa-twitter fa-2x"></i></a>
+
+                <a href="https://{{member.youtube}}" class="ml-4"><i class="fab fa-youtube fa-2x"></i></a>
               </p>
 
             </div>

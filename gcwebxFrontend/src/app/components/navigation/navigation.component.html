@@ -1,4 +1,3 @@
-
 <nav class="navbar bg-transparent navbar-expand-sm navbar-dark nav-fill p-0 fixed-top d-none d-md-block">
   <div  class=" navbar-nav text-light my-auto">
     <ul ngbNav #nav="ngbNav" class=" navbar-nav mx-auto">
@@ -10,32 +9,32 @@
       <li ngbNavItem class="my-auto p-0">
         <a ngbNavLink routerLink="home">Home</a>
       </li>
-        <li class="nav-item nav-link my-auto p-0" ngbDropdown ngbDropdownToggle>
-          <a class="nav-link">Esport</a>
+      <li class="nav-item nav-link my-auto p-0" ngbDropdown ngbDropdownToggle>
+        <a class="nav-link">Esport</a>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
           <button ngbDropdownItem routerLink="esport/rainbowsix">Rainbow Six Siege</button>
           <button ngbDropdownItem routerLink="esport/valorant">Valorant</button>
         </div>
-        </li>
+      </li>
 
       <li ngbNavItem class="my-auto p-0">
         <a ngbNavLink  routerLink="logo">Logo</a>
       </li>
-<!--      <li ngbNavItem class="my-auto p-0">-->
-<!--        <a ngbNavLink>Über</a>-->
-<!--      </li>-->
+      <!--      <li ngbNavItem class="my-auto p-0">-->
+      <!--        <a ngbNavLink>Über</a>-->
+      <!--      </li>-->
       <li ngbNavItem class="my-auto p-0">
         <a ngbNavLink routerLink="teamspeak">Teamspeak</a>
       </li>
       <li ngbNavItem class="my-auto p-0">
         <a ngbNavLink routerLink="news">News</a>
       </li>
-<!--      <li ngbNavItem class="my-auto p-0">-->
-<!--        <a ngbNavLink>Events</a>-->
-<!--      </li>-->
-<!--      <li ngbNavItem class="my-auto p-0">-->
-<!--        <a ngbNavLink>Partner</a>-->
-<!--      </li>-->
+      <!--      <li ngbNavItem class="my-auto p-0">-->
+      <!--        <a ngbNavLink>Events</a>-->
+      <!--      </li>-->
+      <!--      <li ngbNavItem class="my-auto p-0">-->
+      <!--        <a ngbNavLink>Partner</a>-->
+      <!--      </li>-->
 
       <li *ngIf="this.currentRoles  && (this.currentRoles.roleAdmin || this.currentRoles.roleModerator || this.currentRoles.roleSupport)" ngbNavItem class="my-auto">
         <a ngbNavLink routerLink="memberTable">Membertable</a>
@@ -129,26 +128,26 @@
 <router-outlet></router-outlet>
 
 
-  <footer class="bg-dark">
-    <div class="container-fluid">
-      <div class="align-items-center row">
+<footer class="bg-dark fixed-bottom">
+  <div class="container-fluid">
+    <div class="align-items-center row">
 
       <div class="col-md-4 p-3">
         <h5 class="text-center text-light align-middle">© {{date|dateFormat}} Xperience Gaming e.V.</h5>
 
       </div>
       <div class="col-md-4 p-3">
-        <span class=" align-middle">
-        <h5 class="text-center text-light my-auto">
-          <a class="text-light" routerLink="impressum">Impressum</a> &nbsp; | &nbsp;
-          <a class="text-light" routerLink="datenschutz">Datenschutz</a>&nbsp; | &nbsp;
-          <a class="text-light" routerLink="regeln">Regeln</a>
-        </h5>
-          </span>
+    <span class=" align-middle">
+    <h5 class="text-center text-light my-auto">
+      <a class="text-light" routerLink="impressum">Impressum</a> &nbsp; | &nbsp;
+      <a class="text-light" routerLink="datenschutz">Datenschutz</a>&nbsp; | &nbsp;
+      <a class="text-light" routerLink="regeln">Regeln</a>
+    </h5>
+      </span>
       </div>
       <div class="col-md-4 p-2">
         <div class="mx-auto socials">
-          <a href="https://twitter.com/Xperience_Orga" target="_blank"><i class="fab fa-twitter "></i></a>
+          <a href="https://twitter.com/Xperience_Orga" target="_blank"><i class="fab fa-twitter fa-2x "></i></a>
         </div>
 
 
@@ -157,8 +156,8 @@
 
       </div>
     </div>
-    </div>
-  </footer>
+  </div>
+</footer>
 
 
 

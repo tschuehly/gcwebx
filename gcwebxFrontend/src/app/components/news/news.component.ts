@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Content} from "../../model/content";
-import {Observable} from "rxjs";
-import {BackendService} from "../../services/backend.service";
-import {map} from "rxjs/operators";
-import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {Content} from '../../model/content';
+import {Observable} from 'rxjs';
+import {BackendService} from '../../services/backend.service';
+import {map} from 'rxjs/operators';
+import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-news',
@@ -13,7 +13,7 @@ import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 export class NewsComponent implements OnInit {
 
   contentList: Content[];
-  content:Content;
+  content: Content;
   contentList$: Observable<Content[]>;
   newsList$: Observable<Content[]>;
   firstTwentyWords$: Observable<Content[]>;
@@ -60,7 +60,7 @@ export class NewsComponent implements OnInit {
   }*/
 
   open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title',size: "xl",centered: true}).result.then((result) => {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title', size: 'xl', centered: true}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -77,7 +77,7 @@ export class NewsComponent implements OnInit {
     }
   }
   closeModal(){
-    console.log("close modal")
+    console.log('close modal');
     this.modalService.dismissAll();
   }
 
