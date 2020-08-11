@@ -19,7 +19,7 @@ spring:
       enabled: true
 logging:
   level:
-    org.springframework.security: DEBUG
+    org.springframework: DEBUG
 server:
   ssl:
     key-store-type: PKCS12

@@ -64,7 +64,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 and().
                 headers().frameOptions().disable().and().
                 httpBasic()
-                .and().requiresChannel().anyRequest().requiresSecure()
+                //.and().requiresChannel().anyRequest().requiresSecure() TODO: required if run inside docker?
                 .and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()

@@ -31,6 +31,7 @@ public class GcwebxApplication implements CommandLineRunner{
 	@Autowired
 	private ContentRepository contentRepository;
 	@Autowired
+	private
 	TeamRepository teamRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(GcwebxApplication.class, args);

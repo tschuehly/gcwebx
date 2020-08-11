@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json --ssl --ssl-key '../src/main/resources/keystore/cschillingtschuehly.p12' --ssl-cert '../src/main/resources/keystore/myCert.crt'",
     "build": "ng build",
+    "build:app": "ng build --prod --build-optimizer",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

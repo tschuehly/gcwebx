@@ -20,7 +20,7 @@
             ],
             "index": "src/index.html",
             "main": "src/main.ts",
-            "outputPath": "../src/main/resources/static",
+            "outputPath": "dist/gcwebxFrontend",
             "polyfills": "src/polyfills.ts",
             "scripts": [
               "./node_modules/quill/dist/quill.js",

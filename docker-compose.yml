@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  gcwebx:
+    build: .
+    ports:
+      - "8080:8080"
+
+  gcwebxfrontend:
+    build: gcwebxfrontend
+    ports:
+      - "80:80"
+    depends_on:
+      - gcwebx
+    command: [nginx-debug, '-g', 'daemon off;']
