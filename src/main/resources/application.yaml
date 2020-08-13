@@ -20,10 +20,4 @@ spring:
 logging:
   level:
     org.springframework: DEBUG
-server:
-  ssl:
-    key-store-type: PKCS12
-    key-store: classpath:keystore/cschillingtschuehly.p12
-    key-store-password: marcisstbananen
-    key-alias: cschillingtschuehly
-    enabled: true
+    #senabled: true
