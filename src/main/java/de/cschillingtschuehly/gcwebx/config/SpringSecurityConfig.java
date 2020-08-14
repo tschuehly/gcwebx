@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -23,6 +24,8 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import javax.sql.DataSource;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 @EnableWebSecurity
@@ -65,14 +68,18 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 */
         final CookieCsrfTokenRepository tokenRepository = CookieCsrfTokenRepository.withHttpOnlyFalse();
         tokenRepository.setCookiePath("/");
+
+        Map<String, String> responseBody = new HashMap<>();
+        responseBody.put("error", "unauthorized");
+
         http
                 .csrf()
                 .disable() //TODO: für h2 console
                 //.csrfTokenRepository(tokenRepository).and()
                 .cors().
                 and().
-                headers().frameOptions().disable().and().
-                httpBasic()
+                headers().frameOptions().disable().and()
+                .httpBasic()
                 .and().requiresChannel().anyRequest().requiresSecure()
                 .and()
                 .authorizeRequests()

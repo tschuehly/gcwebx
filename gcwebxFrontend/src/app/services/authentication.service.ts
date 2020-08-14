@@ -36,8 +36,9 @@ export class AuthenticationService {
         this.currentRoles$.next(this.currentRoles);
       } else {
         this.authenticated = false;
+
       }
-      return callback && callback();
+      return callback(this.authenticated);
     });
 
   }

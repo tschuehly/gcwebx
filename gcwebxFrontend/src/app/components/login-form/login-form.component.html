@@ -18,8 +18,12 @@
               <div class="input-group">
                 <input class="form-control" placeholder="Password" type="password" formControlName="password" (keydown.enter)="onEnterPressed()">
               </div>
+              <div [hidden]="successfulLogin" class="alert-danger mt-3">
+              Username or password wrong!
+              </div>
             </form>
           </div>
+
           <div class="modal-footer">
             <button class="btn btn-primary" type="submit" formmethod="post" (click)="onSubmitClicked()" >Log in</button>
 <!--            <button class="btn btn-primary" type="submit" formmethod="post" (keyup.enter)="logIn()" >Log in</button>-->
