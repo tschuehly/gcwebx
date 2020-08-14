@@ -69,9 +69,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         final CookieCsrfTokenRepository tokenRepository = CookieCsrfTokenRepository.withHttpOnlyFalse();
         tokenRepository.setCookiePath("/");
 
-        Map<String, String> responseBody = new HashMap<>();
-        responseBody.put("error", "unauthorized");
-
         http
                 .csrf()
                 .disable() //TODO: für h2 console
