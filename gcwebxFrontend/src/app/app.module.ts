@@ -41,10 +41,6 @@ export const routerConfig: Routes = [
   {path : 'news', pathMatch: 'full', component: NewsComponent}
 ];
 
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +59,8 @@ export const routerConfig: Routes = [
     NewsComponent,
     FirstTwentyWords,
     DateFormat,
-    SafeHtml
+    SafeHtml,
+    EsportComponent
   ],
   exports: [MemberTableComponent, HomeComponent],
   imports: [

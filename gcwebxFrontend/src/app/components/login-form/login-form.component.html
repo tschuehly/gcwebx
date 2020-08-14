@@ -13,15 +13,17 @@
           <div class="modal-body">
             <form [formGroup]="UserForm" >
               <div class="input-group mb-3">
-                <input class="form-control" placeholder="Username" type="text" formControlName="username">
+                <input class="form-control" placeholder="Username" type="text" formControlName="username" (keydown.enter)="onEnterPressed()">
               </div>
               <div class="input-group">
-                <input class="form-control" placeholder="Password" type="password" formControlName="password">
+                <input class="form-control" placeholder="Password" type="password" formControlName="password" (keydown.enter)="onEnterPressed()">
               </div>
             </form>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-primary" type="submit" formmethod="post" (click)="logIn()" >Log in</button>
+            <button class="btn btn-primary" type="submit" formmethod="post" (click)="onSubmitClicked()" >Log in</button>
+<!--            <button class="btn btn-primary" type="submit" formmethod="post" (keyup.enter)="logIn()" >Log in</button>-->
+<!--            <input type="button" (keyup.enter)="onEnter($event)">-->
           </div>
         </div>
       </div>

@@ -41,5 +41,15 @@ export class LoginFormComponent implements OnInit {
     return false;
   }
 
+  onEnterPressed() {
+    console.log("Enter pressed");
+    this.logIn();
+  }
+
+  onSubmitClicked() {
+    console.log("Button clicked");
+    this.logIn();
+  }
+
 
 }
