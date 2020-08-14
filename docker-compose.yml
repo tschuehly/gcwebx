@@ -4,6 +4,8 @@ services:
     build: .
     expose:
       - "8080"
+    depends_on:
+      - db
 
   gcwebxfrontend:
     build: gcwebxfrontend
@@ -12,3 +14,11 @@ services:
     depends_on:
       - gcwebx
     command: [nginx-debug, '-g', 'daemon off;']
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=password
+    expose:
+      - "5432"
+    #volumes:
+      #- ./userTest.sql:/docker-entrypoint-initdb.d/userTest.sql

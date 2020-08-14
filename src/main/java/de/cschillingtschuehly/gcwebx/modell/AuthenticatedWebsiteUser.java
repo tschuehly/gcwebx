@@ -6,9 +6,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
-public class AuthenticatedUser extends User implements UserDetails {
+public class AuthenticatedWebsiteUser extends WebsiteUser implements UserDetails {
 
-    public AuthenticatedUser(User user){
+    public AuthenticatedWebsiteUser(WebsiteUser user){
         super(user.getUsername(),user.getPassword(),user.isRoleUser(),user.isRoleEditor(),user.isRoleSupport(),user.isRoleModerator(),user.isRoleAdmin());
     }
 

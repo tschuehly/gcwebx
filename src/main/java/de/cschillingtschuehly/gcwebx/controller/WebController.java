@@ -2,16 +2,13 @@ package de.cschillingtschuehly.gcwebx.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import de.cschillingtschuehly.gcwebx.modell.Member;
-import de.cschillingtschuehly.gcwebx.modell.User;
+import de.cschillingtschuehly.gcwebx.modell.WebsiteUser;
 import de.cschillingtschuehly.gcwebx.services.MemberService;
 import de.cschillingtschuehly.gcwebx.services.TeamService;
 import de.cschillingtschuehly.gcwebx.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.web.bind.annotation.*;
-
-import java.security.Principal;
 
 @RestController
 @CrossOrigin()
@@ -62,17 +59,17 @@ public class WebController {
         return ResponseEntity.ok().body(userTable);
     }
     @PutMapping(value="/api/updateUser",produces = {"application/json"})
-    public ResponseEntity editUser(@RequestBody User user) throws JsonProcessingException {
+    public ResponseEntity editUser(@RequestBody WebsiteUser user) throws JsonProcessingException {
         String updatedUser = userService.updateUser(user);
         return ResponseEntity.ok().body(updatedUser);
     }
     @PostMapping(value="/api/createUser",produces = {"application/json"})
-    public ResponseEntity createUser(@RequestBody User user) throws JsonProcessingException {
+    public ResponseEntity createUser(@RequestBody WebsiteUser user) throws JsonProcessingException {
         String createdUser = userService.createUser(user);
         return ResponseEntity.ok().body(createdUser);
     }
     @PostMapping(value="/api/deleteUser",produces = {"application/json"})
-    public ResponseEntity deleteUser(@RequestBody User user) throws JsonProcessingException {
+    public ResponseEntity deleteUser(@RequestBody WebsiteUser user) throws JsonProcessingException {
         userService.deleteUser(user);
         return ResponseEntity.ok().body("{\"userDeleted\":\"true\"}");
     }

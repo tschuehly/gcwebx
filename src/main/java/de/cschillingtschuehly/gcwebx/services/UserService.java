@@ -4,9 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import de.cschillingtschuehly.gcwebx.modell.Member;
-import de.cschillingtschuehly.gcwebx.modell.User;
-import de.cschillingtschuehly.gcwebx.modell.AuthenticatedUser;
+import de.cschillingtschuehly.gcwebx.modell.WebsiteUser;
+import de.cschillingtschuehly.gcwebx.modell.AuthenticatedWebsiteUser;
 import de.cschillingtschuehly.gcwebx.repositories.UserRepository;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +30,7 @@ public class UserService implements UserDetailsService {
     private MapperService mapperService;
     public String getUserTable(){
         ObjectMapper mapper = mapperService.jacksonMapper();
-        List<User> userList = userRepository.findAll();
+        List<WebsiteUser> userList = userRepository.findAll();
         ArrayNode userTable = mapper.valueToTree(userList);
         userTable.forEach( jsonNode -> {
             ObjectNode objNode = (ObjectNode) jsonNode;
@@ -41,11 +40,11 @@ public class UserService implements UserDetailsService {
     }
     @Override
     public UserDetails loadUserByUsername(String username) {
-        User user = userRepository.findByUsername(username);
+        WebsiteUser user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("User " + username + " not found");
         }
-        return new AuthenticatedUser(user);
+        return new AuthenticatedWebsiteUser(user);
     }
 
     private Collection<? extends GrantedAuthority> getAuthorities(
@@ -63,17 +62,17 @@ public class UserService implements UserDetailsService {
         return authorities;
     }
     public String getRolesByUsername(String username){
-        User user = userRepository.findByUsername(username);
+        WebsiteUser user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("User " + username + " not found");
         }
         return user.getRoles();
     }
-    public String updateUser(User userParam) throws JsonProcessingException {
+    public String updateUser(WebsiteUser userParam) throws JsonProcessingException {
         ObjectMapper jacksonMapper = mapperService.jacksonMapper();
         Mapper dozerMapper = mapperService.dozerMapper();
 
-        User user = userRepository.findById(userParam.getId()).get();
+        WebsiteUser user = userRepository.findById(userParam.getId()).get();
         if(userParam.getPassword() == null){
             userParam.setPassword(user.getPassword());
         }
@@ -81,13 +80,13 @@ public class UserService implements UserDetailsService {
         userRepository.save(user);
         return jacksonMapper.writeValueAsString(user);
     }
-    public String createUser(User userParam) throws JsonProcessingException {
+    public String createUser(WebsiteUser userParam) throws JsonProcessingException {
         ObjectMapper jacksonMapper = mapperService.jacksonMapper();
         userRepository.save(userParam);
-        User user = userRepository.findById(userParam.getId()).get();
+        WebsiteUser user = userRepository.findById(userParam.getId()).get();
         return jacksonMapper.writeValueAsString(user);
     }
-    public void deleteUser(User userParam){
+    public void deleteUser(WebsiteUser userParam){
         userRepository.delete(userParam);
 
     }

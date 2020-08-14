@@ -9,7 +9,7 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 @Getter
 @Setter
-public class User {
+public class WebsiteUser {
 
 
     @Id
@@ -37,7 +37,7 @@ public class User {
         return password;
     }
 
-    public User(String username, String password) {
+    public WebsiteUser(String username, String password) {
         this.username = username;
         this.password = password;
     }
@@ -66,11 +66,11 @@ public class User {
         return returnString;
     }
 
-    public User(){
+    public WebsiteUser(){
 
     }
 
-    public User(@NotEmpty(message = "username is required") String username, @NotEmpty(message = "password is required") String password, boolean role_user, boolean role_editor, boolean role_support, boolean role_moderator, boolean role_admin) {
+    public WebsiteUser(@NotEmpty(message = "username is required") String username, @NotEmpty(message = "password is required") String password, boolean role_user, boolean role_editor, boolean role_support, boolean role_moderator, boolean role_admin) {
         this.id = id;
         this.username = username;
         this.password = password;

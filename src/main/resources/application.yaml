@@ -1,10 +1,9 @@
 spring:
   datasource:
-    url: jdbc:h2:file:./data/demo
-    driverClassName: org.h2.Driver
-    username: sa
+    url: jdbc:postgresql://db:5432/postgres
+    username: postgres
     password: password
-    data: classpath:userTest.sql
+    #data: classpath:userTest.sql
   profiles:
     active: development
 
@@ -13,8 +12,9 @@ spring:
     initialization-mode: always
   #TODO: CHANGE Password to not appear in GIT
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: create
     console:
       enabled: true
 logging:
