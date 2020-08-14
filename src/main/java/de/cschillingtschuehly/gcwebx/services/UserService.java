@@ -17,6 +17,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.management.relation.Role;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -90,4 +91,5 @@ public class UserService implements UserDetailsService {
         userRepository.delete(userParam);
 
     }
+
 }

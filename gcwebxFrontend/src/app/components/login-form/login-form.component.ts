@@ -20,6 +20,7 @@ export class LoginFormComponent implements OnInit {
               private changeDetectorRef: ChangeDetectorRef) { }
 
   credential: User;
+  successfulLogin = true;
 
   UserForm = new FormGroup({
     username: new FormControl(),
@@ -34,11 +35,22 @@ export class LoginFormComponent implements OnInit {
     this.credential = this.UserForm.value;
     console.log(this.credential);
     this.authenticationService.authenticate(this.credential, () => {
+      this.successfulLogin = true;
       this.router.navigateByUrl('/home');
       this.authenticationService.getRole();
-
     });
+    this.successfulLogin = false;
     return false;
+  }
+
+  onEnterPressed() {
+    console.log("Enter pressed");
+    this.logIn();
+  }
+
+  onSubmitClicked() {
+    console.log("Button clicked");
+    this.logIn();
   }
 
 

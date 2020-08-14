@@ -37,7 +37,7 @@ export class AuthenticationService {
       } else {
         this.authenticated = false;
       }
-      return callback && callback();
+      return callback();
     });
 
   }

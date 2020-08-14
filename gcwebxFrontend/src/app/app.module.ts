@@ -43,10 +43,6 @@ export const routerConfig: Routes = [
   {path : 'logo', pathMatch: 'full', component: LogoComponent}
 ];
 
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
