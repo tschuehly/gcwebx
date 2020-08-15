@@ -1,5 +1,7 @@
 name: Docker Build and Deploy
 on: [pull_request] 
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -7,5 +9,10 @@ jobs:
       - uses: actions/checkout@v2
       - name: docker build
         run: | 
-          docker build . -t tschuehly/gcwebx
-          docker build ./gcwebxFrontend
+          docker build . -t docker.pkg.github.com/tschuehly/gcwebx:latest
+          docker build ./gcwebxFrontend -t docker.pkg.github.com/tschuehly/gcwebxfrontend:latest
+      - name: docker push
+        run: |
+          echo ${GITHUB_TOKEN} | docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY_OWNER} --password-stdin
+          docker push docker.pkg.github.com/tschuehly/gcwebx:latest
+          docker push docker.pkg.github.com/tschuehly/gcwebxfrontend:latest
