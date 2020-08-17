@@ -43,14 +43,14 @@ export class NavigationComponent implements OnInit {
   onWindowScroll(){
     const number = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
     if (number > 20) {
-      document.querySelectorAll('.navbar').forEach((nav) =>{
+      document.querySelectorAll('.navbar').forEach((nav) => {
         nav.classList.remove('bg-transparent');
-        nav.classList.add('bg-dark');
+        nav.classList.add('nav_bg');
       })
     } else if (number < 20) {
-      document.querySelectorAll('.navbar').forEach((nav) =>{
+      document.querySelectorAll('.navbar').forEach((nav) => {
         nav.classList.add('bg-transparent');
-        nav.classList.remove('bg-dark');
+        nav.classList.remove('nav_bg');
       })}
   }
 }

@@ -1,7 +1,7 @@
 FROM node:14.7.0-alpine3.10 AS build
 WORKDIR /usr/src/gcwebxFrontend
 COPY package.json package-lock.json /usr/src/gcwebxFrontend/
-RUN npm install --loglevel verbose
+RUN npm install -d
 COPY . /usr/src/gcwebxFrontend/
 RUN npm run build:app --prod --aot=true --buildOptimizer=true
 #RUN node --max_old_space_size=4192 ./node_modules/@angular/cli/bin/ng build --prod --aot=true --buildOptimizer=true

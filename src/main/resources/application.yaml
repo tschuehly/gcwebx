@@ -3,7 +3,6 @@ spring:
     url: jdbc:postgresql://db:5432/postgres
     username: postgres
     password: password
-    #data: classpath:userTest.sql
   profiles:
     active: development
 
@@ -17,7 +16,7 @@ spring:
       ddl-auto: create
     console:
       enabled: true
-logging:
-  level:
-    org.springframework: DEBUG
+#logging:
+ # level:
+    #org.springframework: DEBUG
     #senabled: true

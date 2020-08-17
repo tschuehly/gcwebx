@@ -1,13 +1,10 @@
 package de.cschillingtschuehly.gcwebx.modell;
 
 import lombok.*;
-import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity

@@ -13,6 +13,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +39,7 @@ public class GcwebxApplication implements CommandLineRunner{
 		contentRepository.deleteAll();
 
 		contentRepository.save(new Content(1, "Willkommen bei Xperience Gaming", "<p>Unser Clan hat sich entschlossen eine Community zugründen die nicht ist wie jede andere. Bei uns hast <strong>DU </strong>das sagen.</p><p>Weder gibt es einen Diktator der alles tut was er für richtig hält, noch eine Clanführung die nur ihren Willen durchsetzten möchte.</p><p>Hier hat die Community die Macht um etwas zu bewegen und zu ändern. Xperience´s Maingame ist zurzeit Rainbow Six Siege.</p><p>Dennoch sind wir auch für andere Spiele zuhaben und können uns in anderen Kategorien weiter entwickeln.</p><p>Jeder Gamer der sich älter als 18 Jahre bezeichnen kann, darf sich jeder Zeit anschließen um etwas großes zu bewirken. Elo und Skill sind Nebensache.</p><p>Sobald du dich angesprochen fühlst, besuch uns doch einfach auf unserem Teamspeak um genaueres zu erfahren.</p><p><br></p><p>Wir warten auf dich!!</p>", false, LocalDateTime.parse("2020-07-02T10:51:48.283"),  LocalDateTime.parse("2020-07-09T11:55:56.135")));
-		contentRepository.save(new Content(2, "Aufstieg für Silentpeak ", "<h2><em>Silentpeak steigt in die Advanced league auf!!</em></h2>", true, LocalDateTime.parse("2020-07-02T10:53:48.283"),  LocalDateTime.parse("2020-07-02T11:46:56.135")));
+		contentRepository.save(new Content(2, "Aufstieg für Silentpeak ", "<em>Silentpeak steigt in die Advanced league auf!!</em>", true, LocalDateTime.parse("2020-07-02T10:53:48.283"),  LocalDateTime.parse("2020-07-02T11:46:56.135")));
 		contentRepository.save(new Content(4, "Welcome Zero21by9", "<p>Ein neuer <em>Streamer</em> wagt sich an die Xperience Community ran!!</p>", true, LocalDateTime.parse("2020-07-02T10:44:38.283"),  LocalDateTime.parse("2020-07-02T11:22:54.135")));
 		contentRepository.save(new Content(5, "News5", "<p>test5</p>", true, LocalDateTime.parse("2020-07-02T10:44:37.283"),  LocalDateTime.parse("2020-07-02T10:13:24.135")));
 		contentRepository.save(new Content(6, "News6", "<p>test6</p>", true, LocalDateTime.parse("2020-07-02T10:42:36.283"),  LocalDateTime.parse("2020-07-02T09:12:34.135")));
@@ -51,12 +53,12 @@ public class GcwebxApplication implements CommandLineRunner{
 		userRepository.save(new WebsiteUser("moderator","$2y$12$4zdceAF0Q95ot.TeaXqEzubqITfpIgvXNS02qKylWrDkIHzE0nTQm",true,false,false,true,false));
 
 
-/*
 		memberRepository.save(new Member("Name1","twitter.com","youtube.com","ash.jpg"));
 		memberRepository.save(new Member("Name2","twitter.com","youtube.com","iq.jpg"));
 		memberRepository.save(new Member("Name3","twitter.com","youtube.com","mute.jpg"));
-*/
-
+		memberRepository.save(new Member("Name1","twitter.com","youtube.com","blitz.jpg"));
+		memberRepository.save(new Member("Name2","twitter.com","youtube.com","blackbeard.jpg"));
+		memberRepository.save(new Member("Name3","twitter.com","youtube.com","mute.jpg"));
 		final List<Member> members = new ArrayList<>();
 		memberRepository.findById(1L).ifPresent(member -> members.add(member));
 		memberRepository.findById(2L).ifPresent(member -> members.add(member));

@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json --ssl --ssl-key '../src/main/resources/keystore/cschillingtschuehly.p12' --ssl-cert '../src/main/resources/keystore/myCert.crt'",
+    "start": "ng serve --proxy-config src/proxy.conf.json --ssl --ssl-key '../src/main/resources/keystore/cschillingtschuehly.p12' --ssl-cert '../src/main/resources/keystore/myCert.crt'",
+    "docker-start": "ng serve",
     "build": "ng build",
     "build:app": "ng build --prod --build-optimizer",
     "test": "ng test",

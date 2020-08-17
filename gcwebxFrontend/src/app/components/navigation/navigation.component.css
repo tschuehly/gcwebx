@@ -1,5 +1,5 @@
 .nav a{
-  font-size: 1.4em;
+  font-size: 1.5em;
   padding: 4px;
 }
 .dropdown-toggle::after {
@@ -10,8 +10,6 @@
 }
 .navbar-dark .navbar-nav .nav-link{
   color: white;
-  text-shadow:
-    1px 1px 3px black,1px 1px 3px black,1px 1px 5px black,1px 1px 4px black;
 }
 .navbar-collapse{
   z-index: 2000;
@@ -26,13 +24,17 @@ a:hover{
 .fa-twitter{
   color:white;
 }
-
+.fa-teamspeak{
+  color:white;
+}
 h5{
   line-height: inherit;
   margin: 0;
 
 }
-
+.nav_bg{
+  background-color: rgba(0, 0, 0, 0.6)
+}
 .socials a{
   display:block;
   text-align:center;

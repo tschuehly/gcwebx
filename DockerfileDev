@@ -1,0 +1,4 @@
+FROM maven:3.6.3-openjdk-15 as build
+WORKDIR /usr/src/gcwebx
+COPY pom.xml /usr/src/gcwebx
+ENTRYPOINT ["mvn", "spring-boot:run"]

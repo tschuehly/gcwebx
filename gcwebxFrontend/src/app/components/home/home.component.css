@@ -1,23 +1,23 @@
-ngb-carousel{
-  background-color: black;
-  max-height: 600px;
-  overflow-y: hidden;
+.bg_pic{
+  background-image: url("https://ts.xperience-gaming.de/preview/images/background.jpg");
+  min-height: 75vh!important;
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-position: center center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-ngb-carousel .picsum-img-wrapper {
-  position: relative;
-  height: 0;
-  padding-top: 55%; /* Keep ratio for 900x500 images */
-}
-
-ngb-carousel .picsum-img-wrapper>img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-
+.overlay {
+  opacity: 0;
+  transition: .5s linear;
 }
 
-.centered{
-
+.container-fluid:hover .overlay {
+  opacity: 1;
+}
+.card{
+  min-height: 350px;
 }

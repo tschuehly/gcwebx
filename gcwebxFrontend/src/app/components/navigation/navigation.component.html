@@ -1,62 +1,56 @@
-<nav class="navbar bg-transparent navbar-expand-sm navbar-dark nav-fill p-0 fixed-top d-none d-md-block">
-  <div  class=" navbar-nav text-light my-auto">
-    <ul ngbNav #nav="ngbNav" class=" navbar-nav mx-auto">
-      <li ngbNavItem class="my-auto">
-        <a  ngbNavLink class="navbar-brand pt-2 mr-0" routerLink="home" >
-          <img src="https://i.imgur.com/D5mrccA.png" height="40">
+<nav class="navbar navbar-bg navbar-expand-sm navbar-dark nav-fill p-0 fixed-top d-none d-md-block">
+  <div  class="navbar-nav text-light">
+
+    <ul ngbNav #nav="ngbNav" class="navbar-nav mx-auto">
+        <li ngbNavItem class="my-auto py-2">
+          <a  ngbNavLink class="navbar-brand mr-0" routerLink="home" >
+            <img src="https://i.imgur.com/D5mrccA.png" height="40">
+          </a>
+        </li>
+        <li class="nav-item nav-link my-auto p-0" ngbDropdown ngbDropdownToggle>
+          <a class="nav-link">Teams</a>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem routerLink="esport/rainbowsix">Rainbow Six Siege</button>
+            <button ngbDropdownItem routerLink="esport/valorant">Valorant</button>
+          </div>
+        </li>
+        <li ngbNavItem class="my-auto p-0">
+          <a ngbNavLink  routerLink="logo">Logo</a>
+        </li>
+        <li ngbNavItem class="my-auto p-0">
+          <a ngbNavLink routerLink="teamspeak">TS3 Viewer</a>
+        </li>
+        <li ngbNavItem class="my-auto p-0">
+          <a ngbNavLink routerLink="news">News</a>
+        </li>
+        <li ngbNavItem class="my-auto p-0">
+          <a ngbNavLink routerLink="news">Shop</a>
+        </li>
+        <li *ngIf="this.currentRoles  && (this.currentRoles.roleAdmin || this.currentRoles.roleModerator || this.currentRoles.roleSupport)" ngbNavItem class="my-auto">
+          <a ngbNavLink routerLink="memberTable">Membertable</a>
+        </li>
+        <li *ngIf="this.currentRoles && this.currentRoles.roleAdmin" ngbNavItem class="my-auto">
+          <a ngbNavLink routerLink="userTable">Usertable</a>
+        </li>
+        <li *ngIf="this.currentRoles && (this.currentRoles.roleAdmin || this.currentRoles.roleEditor)" ngbNavItem class="my-auto">
+          <a ngbNavLink routerLink="edit">Editor</a>
+        </li>
+        <li *ngIf="this.currentRoles" ngbNavItem class="my-auto">
+          <a ngbNavLink routerLink="home" (click)="logout()">Logout</a>
+        </li>
+      <li class="my-auto">
+        <a class="ml-2" href="ts3server://xperience">
+          <div class="btn btn-dark">
+            <i class="fab fa-2x fa-teamspeak"></i>
+          </div>
         </a>
       </li>
-      <li ngbNavItem class="my-auto p-0">
-        <a ngbNavLink routerLink="home">Home</a>
-      </li>
-      <li class="nav-item nav-link my-auto p-0" ngbDropdown ngbDropdownToggle>
-        <a class="nav-link">Esport</a>
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <button ngbDropdownItem routerLink="esport/rainbowsix">Rainbow Six Siege</button>
-          <button ngbDropdownItem routerLink="esport/valorant">Valorant</button>
-        </div>
-      </li>
-
-      <li ngbNavItem class="my-auto p-0">
-        <a ngbNavLink  routerLink="logo">Logo</a>
-      </li>
-      <!--      <li ngbNavItem class="my-auto p-0">-->
-      <!--        <a ngbNavLink>Über</a>-->
-      <!--      </li>-->
-      <li ngbNavItem class="my-auto p-0">
-        <a ngbNavLink routerLink="teamspeak">Teamspeak</a>
-      </li>
-      <li ngbNavItem class="my-auto p-0">
-        <a ngbNavLink routerLink="news">News</a>
-      </li>
-      <!--      <li ngbNavItem class="my-auto p-0">-->
-      <!--        <a ngbNavLink>Events</a>-->
-      <!--      </li>-->
-      <!--      <li ngbNavItem class="my-auto p-0">-->
-      <!--        <a ngbNavLink>Partner</a>-->
-      <!--      </li>-->
-
-      <li *ngIf="this.currentRoles  && (this.currentRoles.roleAdmin || this.currentRoles.roleModerator || this.currentRoles.roleSupport)" ngbNavItem class="my-auto">
-        <a ngbNavLink routerLink="memberTable">Membertable</a>
-      </li>
-      <li *ngIf="this.currentRoles && this.currentRoles.roleAdmin" ngbNavItem class="my-auto">
-        <a ngbNavLink routerLink="userTable">Usertable</a>
-      </li>
-      <li *ngIf="this.currentRoles && (this.currentRoles.roleAdmin || this.currentRoles.roleEditor)" ngbNavItem class="my-auto">
-        <a ngbNavLink routerLink="edit">Editor</a>
-      </li>
-      <li *ngIf="this.currentRoles" ngbNavItem class="my-auto">
-        <a ngbNavLink routerLink="home" (click)="logout()">Logout</a>
-      </li>
-      <li *ngIf="!this.currentRoles" ngbNavItem class="my-auto">
-        <a ngbNavLink routerLink="login">Login</a>
-      </li>
-
-
-
     </ul>
+
+
   </div>
 </nav>
+
 
 <nav class="navbar navbar-expand-lg navbar-dark position-absolute d-sm-flex d-md-none m-0 p-0 h-100 w-100">
   <div class="container-fluid fixed-top ">
@@ -128,7 +122,7 @@
 <router-outlet></router-outlet>
 
 
-<footer class="bg-dark fixed-bottom">
+<footer class="nav_bg mt-5">
   <div class="container-fluid">
     <div class="align-items-center row">
 
@@ -141,7 +135,8 @@
     <h5 class="text-center text-light my-auto">
       <a class="text-light" routerLink="impressum">Impressum</a> &nbsp; | &nbsp;
       <a class="text-light" routerLink="datenschutz">Datenschutz</a>&nbsp; | &nbsp;
-      <a class="text-light" routerLink="regeln">Regeln</a>
+      <a class="text-light" routerLink="regeln">Regeln</a>&nbsp; | &nbsp;
+      <a class="text-light" *ngIf="!this.currentRoles" routerLink="login">Login</a>
     </h5>
       </span>
       </div>

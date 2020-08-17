@@ -1,29 +1,9 @@
 <div class='container-fluid p-0'>
-  <ngb-carousel>
-    <ng-template ngbSlide>
-      <video class="col-12 p-0  img-fluid mx-auto" playsinline="playsinline" autoplay="autoplay" [muted]="true" loop="loop">
-        <source src="assets/tournamentofchampionscropped.webm">
-      </video>
-      <div class="position-absolute ">
-        <div class="w-100 text-white mt-auto mb-1">
-          <h1 class="display-3">Video Header</h1>
-          <p class="lead mb-0">With HTML5 Video and Bootstrap 4</p>
-        </div>
-      </div>
-    </ng-template>
-      <ng-template *ngFor="let imgsrc of images" ngbSlide >
-        <div  class="picsum-img-wrapper">
-          <img class="img-fluid mx-auto" src="{{imgsrc}}">
-          {{imgsrc}}
-
-        </div>
-        <div class="carousel-caption">
-          <h1>Xperience Gaming Clan</h1>
-        </div>
-      </ng-template>
-
-  </ngb-carousel>
-
+  <div class="container-fluid bg_pic p-0">
+    <div class="overlay">
+      <div class="h1 align-bottom">Willkommen bei Xperience Gaming</div>
+    </div>
+  </div>
 
   <div class="row container-fluid">
     <ng-container  *ngFor="let contentobj of contentList$ | async" >
@@ -34,12 +14,12 @@
     </ng-container>
 
   </div>
-  <div class="row container-fluid">
+  <div class="row card_container mx-auto">
 
     <ng-container  *ngFor="let contentobj of newsList$ | async; let i=index">
-      <div *ngIf="contentobj.news && i<4"  class="mx-auto">
+      <div *ngIf="contentobj.news && i<4"  class="col-md-4 col-sm-6 mx-auto">
         <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="https://ts.xperience-gaming.de/preview/images/logo.png" alt="Card image cap">
+          <img class="card-img-top p-2" src="https://i.imgur.com/D5mrccA.png" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">{{contentobj.title}}</h5>
             <p class="card-text" [innerHTML]="contentobj.text"></p>

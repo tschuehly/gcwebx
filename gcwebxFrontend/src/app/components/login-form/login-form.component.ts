@@ -39,6 +39,7 @@ export class LoginFormComponent implements OnInit {
       this.router.navigateByUrl('/home');
       this.authenticationService.getRole();
     });
+
     this.successfulLogin = false;
     return false;
   }
