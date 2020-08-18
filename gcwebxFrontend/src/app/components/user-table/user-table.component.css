@@ -22,13 +22,13 @@
 {
   background-color: #F5F5F5;
 }
-#backgroundimg{
+.backgroundimg{
   background-image: url('https://i.imgur.com/0XjfMHg.png');
   /* Full height */
   height: 100%;
 
   /* Center and scale the image nicely */
-  background-attachment: local;
+  background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

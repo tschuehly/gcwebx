@@ -1,5 +1,5 @@
-<div>
-  <div class="container-fluid topspace"></div>
+<div class="row backgroundimg">
+  <div class="container my-auto mt-2">
   <div class="container-fluid">
     <ng-container *ngFor="let team of teams" >
       <ng-container *ngIf="page == team.game">
@@ -45,5 +45,43 @@
     </ng-container>
 
 
+  </div>
+  <div *ngIf="page == 'teammanagement'">
+    <h1 class="text-light">Teamverwaltung</h1>
+      <div class="container my-auto mt-2">
+        <div class="container-fluid ">
+          <div class="row pl-2 py-2">
+            <div class="col-4 ml-auto">
+              <button class="btn btn-outline-light" (click)="createTeam()">Create New User</button>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="table-responsive">
+              <table class="table table-borderless text-light">
+                <cdk-virtual-scroll-viewport itemSize='5' class="viewport" minBufferPx="1200" maxBufferPx="1500">
+                  <thead class="thead">
+                  <tr>
+                    <th>Name</th>
+                    <th>Userrole</th>
+                    <th>Editorrole</th>
+                    <th>Supportrole</th>
+                    <th>Moderatorrole</th>
+                    <th>Adminrole</th>
+                  </tr>
+                  </thead>
+
+                  <tbody>
+                  <tr >
+                  </tr>
+
+                  </tbody>
+                </cdk-virtual-scroll-viewport>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

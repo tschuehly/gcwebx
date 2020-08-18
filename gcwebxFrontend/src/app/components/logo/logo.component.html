@@ -1,19 +1,16 @@
-
-<div class="bg_pic">
+<div class="backgroundimg">
   <div class="container-fluid topspace"></div>
 
-    <div class="container-fluid ">
-        <div id="logo" class="logocontainer align-items-center">
-          <p>{{logoName}}</p>
-        </div>
-    </div>
-    <div class="container-fluid">
-      <div class="m-auto">
-        <input [(ngModel)]="logoName" type="text">
-        <button (click)="downloadLogo()" class="btn btn-primary">Generiere Bild</button>
-
+  <div class="container d-flex justify-content-center align-items-center">
+      <div id="logo" class="logocontainer">
+        <p>{{logoName}}</p>
       </div>
-          </div>
+    <div class="form-group p-3">
+      <input class="form-control m-2" [(ngModel)]="logoName" type="text">
+      <button (click)="downloadLogo()" class="btn btn-primary m-2">Generiere Bild</button>
+
+    </div>
+  </div>
 
 </div>
 

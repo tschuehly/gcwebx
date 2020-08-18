@@ -12,9 +12,6 @@
 .fa-twitter:hover,.fa-youtube:hover{
   color: darkgrey;
 }
-body {
-  background-image: url('https://i.imgur.com/DOwZgVP.jpg');
-}
 .card-img-overlay:hover{
   backdrop-filter: brightness(0.5) blur(4px);
 }
@@ -24,4 +21,15 @@ body {
 }
 .card-img-overlay div{
   display: none;
+}
+.backgroundimg{
+  background-image: url('https://i.imgur.com/DOwZgVP.jpg');
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

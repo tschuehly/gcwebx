@@ -1,11 +1,7 @@
+<div class="backgroundimg">
+  <div class="container-fluid topspace"></div>
 
-
-
-
-
-
-<div class="row">
-  <div class="container-fluid mt-auto mb-0">
+  <div class="container-fluid">
     <div class="col-3 mr-3 ml-auto">
       <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="showNews" >
         <label ngbButtonLabel class="btn-primary">
@@ -16,40 +12,23 @@
         </label>
       </div>
     </div>
-
-
   </div>
 
   <div class="container mb-5 mt-auto  mx-auto">
-
     <div class="pb-sm-4  my-center">
-
     </div>
-
-    <!--<label *ngFor="let contentItem of contentList">
-
-      <div *ngIf="contentItem.news"><h3 class="label font">News</h3></div>
-      <div *ngIf="!contentItem.news"><h3 class="label font">Static</h3></div>
-
-      <br>
-    </label>
-  -->
     <label *ngFor="let contentItem of contentList">
       <button *ngIf="contentItem.news && showNews" type="button" class="btn btn-dark ml-2 mb-2" (click)="getContentByID(contentItem.id)">
-
-        <div><span class="label font">News</span></div>
+        <div><span class="label font">News | ID:{{contentItem.id}}</span></div>
         <h3>{{contentItem.title}}</h3>
       </button>
 
       <button *ngIf="!contentItem.news && !showNews" type="button" class="btn btn-dark ml-2 mb-2" (click)="getContentByID(contentItem.id)">
-
-        <div *ngIf="!contentItem.news && !showNews"><span class="label font ">Static</span></div>
+        <div *ngIf="!contentItem.news && !showNews"><span class="label font ">Static | ID:{{contentItem.id}}</span></div>
         <h3>{{contentItem.title}}</h3>
-
       </button>
       <br>
     </label>
-
 
 
     <form class="form" [formGroup]="EditContent" >
@@ -63,11 +42,6 @@
 
         <button type="button" class="btn btn-dark m-1" (click)="updateContent()">Update</button>
         <button *ngIf="showNews"  type="button m-1" class="btn btn-dark" (click)="deleteContent()">Delete</button>
-
-
-
-
-
         <ng-template #content let-modal>
           <div class="modal-header">
             <h4 class="modal-title" id="modal-basic-title">Erstelle neuen Inhalt</h4>
@@ -92,14 +66,9 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-outline-dark" (click)="createContent()">Create</button>
           </div>
-
         </ng-template>
-
         <button class="btn btn btn-dark m-1" (click)="open(content)">Create</button>
-
         <hr>
-
-
       </div>
     </form>
   </div>

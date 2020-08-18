@@ -36,4 +36,7 @@ export class EsportComponent implements OnInit {
     });
     console.log(this.teams);
   }
+
+  createTeam(){}
+
 }

@@ -3,7 +3,7 @@
   min-height: 75vh!important;
   background-blend-mode: multiply;
   background-size: cover;
-  background-position: center center;
+  background-position: center top;
   color: white;
   display: flex;
   flex-direction: column;

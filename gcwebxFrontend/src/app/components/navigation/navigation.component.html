@@ -12,6 +12,7 @@
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <button ngbDropdownItem routerLink="esport/rainbowsix">Rainbow Six Siege</button>
             <button ngbDropdownItem routerLink="esport/valorant">Valorant</button>
+            <button *ngIf="this.currentRoles && this.currentRoles.roleAdmin" ngbDropdownItem routerLink="esport/teammanagement">Teamverwaltung</button>
           </div>
         </li>
         <li ngbNavItem class="my-auto p-0">
@@ -122,7 +123,7 @@
 <router-outlet></router-outlet>
 
 
-<footer class="nav_bg mt-5">
+<footer class="nav_bg">
   <div class="container-fluid">
     <div class="align-items-center row">
 
