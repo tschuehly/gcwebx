@@ -29,6 +29,7 @@ import {DateFormat} from './services/date-format.pipe';
 import {NgModule} from '@angular/core';
 import {SafeHtml} from './services/safe-Html.pipe';
 import { LogoComponent } from './components/logo/logo.component';
+import { EditTeamComponent } from './components/edit-team/edit-team.component';
 
 export const routerConfig: Routes = [
   {path: 'memberTable', component: MemberTableComponent},
@@ -63,7 +64,8 @@ export const routerConfig: Routes = [
     DateFormat,
     SafeHtml,
     LogoComponent,
-    EsportComponent
+    EsportComponent,
+    EditTeamComponent
   ],
   exports: [MemberTableComponent, HomeComponent],
   imports: [

@@ -1,5 +1,6 @@
 <div class="backgroundimg">
-  <div class="d-flex flex-wrap">
+  <div class="container-fluid topspace"></div>
+  <div class="d-flex flex-wrap justify-content-center">
       <ng-container  *ngFor="let contentobj of newsList$ | async">
         <div *ngIf="contentobj.news" class="p-2 ">
           <div class="card mx-auto" style="width: 18rem;">

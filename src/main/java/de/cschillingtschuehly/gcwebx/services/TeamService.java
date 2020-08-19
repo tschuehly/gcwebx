@@ -12,6 +12,7 @@ import java.util.List;
 @Service
 public class TeamService {
     @Autowired
+    private
     TeamRepository teamRepository;
 
     public List<Team> getTeams(){

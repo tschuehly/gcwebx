@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Member} from '../model/member';
 import {User} from '../model/user';
 import {Content} from '../model/content';
+import {Team} from '../model/team';
 
 @Injectable({
   providedIn: 'root'
@@ -57,4 +58,17 @@ export class BackendService {
   deleteUser(user: User): Observable<any>{
     return this.http.post(this.backendUrl + '/deleteUser', user );
   }
+  updateTeam(team: Team): Observable<any>{
+    return this.http.put(this.backendUrl + '/updateTeam', team);
+  }
+  createTeam(team: Team): Observable<any>{
+    return this.http.post(this.backendUrl + '/createTeam', team);
+  }
+  deleteTeam(team: Team): Observable<any>{
+    return this.http.post(this.backendUrl + '/createTeam', team);
+  }
+  addMemberToTeam(team: Team): Observable<any>{
+    return this.http.post(this.backendUrl + '/createTeam', team);
+  }
+
 }

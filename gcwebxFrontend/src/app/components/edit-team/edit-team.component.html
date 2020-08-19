@@ -1,0 +1,81 @@
+<ng-template #deletemodal let-modal>
+  <div class="modal-body">
+    <p><strong>Are you sure you want to delete Team <span class="text-danger">{{team.teamName}}</span></strong></p>
+  </div>
+  <div class="modal-footer">
+    <div class="mr-auto">
+      <button type="button" class="btn btn-outline-secondary float-left" (click)="modal.dismiss('cancel click')">Cancel</button>
+    </div>
+    <div class="">
+      <button type="button" class="btn btn-danger" (click)="deleteTeam(modal)">Delete</button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #addMemberModal let-modal>
+  <div class="modal-body">
+    <p>Type in the ID of the member you want to add:</p>
+    <input type="text" class="form-text" formControlName="memberIdToAdd">
+  </div>
+  <div class="modal-footer">
+    <div class="mr-auto">
+      <button type="button" class="btn btn-outline-secondary float-left" (click)="modal.dismiss('cancel click')">Cancel</button>
+    </div>
+    <div class="">
+      <button type="button" class="btn btn-success" (click)="addMemberToTeam()">Add Member to Team {{team.teamName}}</button>
+    </div>
+  </div>
+</ng-template>
+
+<div *ngIf="team || create == true">
+  <div class="modal-header">
+    <h4 class="modal-title" *ngIf="team.teamName">Edit Team: {{team.teamName}}</h4>
+    <h4 class="modal-title" *ngIf="create == true">Create New Team</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container-fluid">
+      <label class="form">
+        <form [formGroup]="EditForm" class="form-group">
+
+          <div class="form-row">
+            <div class="col-lg-4">
+              <label>Name:</label>
+              <input class="form-control" type="text" formControlName="teamName">
+            </div>
+            <div class="col-lg-4">
+              <label>Game:</label>
+              <input class="form-control" type="text" formControlName="game">
+            </div>
+            <div class="col-lg-12">
+              <label>Member:</label>
+              <h5><span *ngFor="let member of team.members" class="badge badge-light text">{{member.name}}</span></h5>
+              <button type="button" class="btn btn-primary" (click)="openConfirm(addMemberModal)">Member hinzufügen</button>
+            </div>
+            <div class="col-lg-12">
+              <label>Generelle Info:</label>
+              <textarea rows="3" class="form-control" type="text" formControlName="generalInfo"></textarea>
+            </div>
+          </div>
+
+        </form>
+      </label>
+
+      <form [formGroup]="EditForm"></form>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="ml-0">
+      <button type="button" class="btn btn-danger" (click)="openConfirm(deletemodal)">Delete Team</button>
+    </div>
+    <div class="m-auto">
+      <button type="button" class="btn btn-info" (click)="activeModal.close('Close click')">Close</button>
+    </div>
+    <button *ngIf="create; else elseBlock" type="button" class="btn btn-success" (click)="createTeam()">Create Team</button>
+    <ng-template #elseBlock >
+      <button type="button" class="btn btn-success" (click)="updateTeam()">Save Team</button>
+    </ng-template>
+  </div>
+</div>

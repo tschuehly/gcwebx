@@ -70,7 +70,7 @@ export class MemberTableComponent implements OnInit{
   logout() {
     this.authenticationService.logout();
   }
-updateMemberTable(){
+  updateMemberTable(){
     this.memberTable$ = this.backendService.getMemberTable();
     console.log('UpdateMember was called');
 
