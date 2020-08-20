@@ -4,7 +4,7 @@
       <ng-container  *ngFor="let contentobj of newsList$ | async">
         <div *ngIf="contentobj.news" class="p-2 ">
           <div class="card mx-auto" style="width: 18rem;">
-            <img class="card-img-top" src="https://ts.xperience-gaming.de/preview/images/logo.png" alt="Card image cap">
+            <img class="card-img-top p-2" src="https://i.imgur.com/D5mrccA.png" alt="Card image cap">
             <div class="card-body">
               <h3 class="card-title text-light">{{contentobj.title}}</h3>
               <p class="card-text text-light" [innerHTML]="contentobj.text| first20words"></p>

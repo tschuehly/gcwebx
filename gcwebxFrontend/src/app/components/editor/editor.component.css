@@ -1,14 +1,5 @@
 .backgroundimg{
-  background-image: url('https://images.wallpapersden.com/image/download/mozzie-rainbow-six-siege_65092_2560x1440.jpg');
-  /* Full height */
-  height: 100%;
-
-  /* Center and scale the image nicely */
-  background-attachment: scroll;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  overflow: hidden;
+  background-image: url('https://static-dm.akamaized.net/siege/prod/r6s-burnthorizon-bg-y4pass.jpg');
 }
 .btn.active{
   background-color: chocolate!important;

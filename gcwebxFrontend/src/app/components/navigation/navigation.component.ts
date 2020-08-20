@@ -38,7 +38,7 @@ export class NavigationComponent implements OnInit {
     this.router.navigateByUrl('/home');
     this.authenticationService.getRole();
   }
-
+/*
   @HostListener("window:scroll",[])
   onWindowScroll(){
     const number = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
@@ -52,5 +52,5 @@ export class NavigationComponent implements OnInit {
         nav.classList.add('bg-transparent');
         nav.classList.remove('nav_bg');
       })}
-  }
+  }*/
 }

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-bg navbar-expand-sm navbar-dark nav-fill p-0 fixed-top d-none d-md-block">
+<nav class="navbar nav_bg navbar-bg navbar-expand-sm navbar-dark nav-fill p-0 fixed-top d-none d-md-block">
   <div  class="navbar-nav text-light">
 
     <ul ngbNav #nav="ngbNav" class="navbar-nav mx-auto">
@@ -41,11 +41,19 @@
         </li>
       <li class="my-auto">
         <a class="ml-2" href="ts3server://xperience">
-          <div class="btn btn-dark">
+          <div class="btn">
             <i class="fab fa-2x fa-teamspeak"></i>
           </div>
         </a>
       </li>
+      <li class="my-auto">
+        <a class="ml-2" href="https://twitter.com/Xperience_Orga">
+          <div class="btn">
+            <i class="fab fa-2x fa-twitter"></i>
+          </div>
+        </a>
+      </li>
+
     </ul>
 
 
@@ -128,23 +136,31 @@
     <div class="align-items-center row">
 
       <div class="col-md-4 p-3">
-        <h5 class="text-center text-light align-middle">© {{date|dateFormat}} Xperience Gaming e.V.</h5>
+        <h6 class="text-center text-light align-middle">© {{date|dateFormat}} Xperience Gaming e.V.</h6>
 
       </div>
       <div class="col-md-4 p-3">
     <span class=" align-middle">
-    <h5 class="text-center text-light my-auto">
+    <h6 class="text-center text-light my-auto">
       <a class="text-light" routerLink="impressum">Impressum</a> &nbsp; | &nbsp;
       <a class="text-light" routerLink="datenschutz">Datenschutz</a>&nbsp; | &nbsp;
       <a class="text-light" routerLink="regeln">Regeln</a>&nbsp; | &nbsp;
       <a class="text-light" *ngIf="!this.currentRoles" routerLink="login">Login</a>
-    </h5>
+    </h6>
       </span>
       </div>
       <div class="col-md-4 p-2">
-        <div class="mx-auto socials">
-          <a href="https://twitter.com/Xperience_Orga" target="_blank"><i class="fab fa-twitter fa-2x "></i></a>
-        </div>
+          <a class="ml-2" href="ts3server://xperience">
+            <div class="btn">
+              <i class="fab fa-2x fa-teamspeak"></i>
+            </div>
+          </a>
+          <a class="ml-2" href="https://twitter.com/Xperience_Orga">
+            <div class="btn">
+              <i class="fab fa-2x fa-twitter"></i>
+            </div>
+          </a>
+
 
 
 

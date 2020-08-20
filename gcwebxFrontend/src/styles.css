@@ -6,8 +6,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body {
 }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
+body {}
 
 .topspace{
   height: 5em;
+}
+.backgroundimg {
+  min-height: 100vh;
+  /* Center and scale the image nicely */
+  background-attachment: fixed, scroll;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
