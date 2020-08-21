@@ -16,7 +16,17 @@
 }
 .card{
   min-height: 350px;
-}
-.card{
   background-color: rgba(0,0,0,0.5);
+}
+
+.parallax-image {
+  background-image: url("https://i.imgur.com/0XjfMHg.png");
+  min-height: 60vh;
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-attachment: local;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
