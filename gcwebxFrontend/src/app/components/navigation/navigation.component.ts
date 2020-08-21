@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit, SimpleChanges,HostListener,Inject} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges, HostListener, Inject, Input} from '@angular/core';
 import {Routes} from '@angular/router';
 import {MemberTableComponent} from '../member-table/member-table.component';
 import {HomeComponent} from '../home/home.component';
@@ -17,13 +17,20 @@ declare const window: any;
   styleUrls: ['./navigation.component.css']
 })
 
+
+
 export class NavigationComponent implements OnInit {
   public isMenuCollapsed = true;
   public currentRoles: Roles;
+  public currentRoute: String;
+
   constructor(private router: Router, public authenticationService: AuthenticationService) {
     this.authenticationService.currentRoles$.subscribe( value => {
       this.currentRoles = value;
     });
+    router.events.subscribe(val => {
+      this.currentRoute = location.pathname;
+    })
 
   }
   date :Date;
@@ -31,7 +38,12 @@ export class NavigationComponent implements OnInit {
   ngOnInit(): void {
     this.authenticationService.getRole();
     this.date = new Date();
+    // this.active_page = window.location.pathname;
   }
+
+  // ngOnChanges(changes: SimpleChanges) {
+  //   this.active_page = window.location.pathname;
+  // }
 
   logout(){
     this.authenticationService.logout();

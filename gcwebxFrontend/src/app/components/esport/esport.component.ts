@@ -27,7 +27,7 @@ export class EsportComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
+    (params => {
       console.log(params['game']);
       this.page = params['game'];
 

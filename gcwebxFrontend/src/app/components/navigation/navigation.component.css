@@ -1,6 +1,6 @@
 .nav a{
-  font-size: 1.5em;
-  padding: 4px;
+  font-size: 1.2em;
+  padding: 20px;
 }
 .dropdown-toggle::after {
   display:none;
@@ -10,6 +10,11 @@
 }
 .navbar-dark .navbar-nav .nav-link{
   color: white;
+  font-weight: lighter;
+}
+.nav-link >div{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 .navbar-collapse{
   z-index: 2000;
@@ -42,4 +47,27 @@ h5{
 svg {
   display: inline-block;
   vertical-align: middle;
+}
+.icon-center {
+  display:block;
+  text-align:center
+  }
+
+.active-page {
+  border-bottom-style: solid;
+
+  color: aqua !important;
+}
+.nav-items li:hover > a>div{
+  color: aqua !important;
+
+}
+
+.not-active {
+  color: white;
+  font-weight: lighter;
+}
+
+.img-hover {
+  list-style: unset;
 }
