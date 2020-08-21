@@ -48,11 +48,9 @@ export class HomeComponent implements OnInit {
     this.backendService.getContent().
     subscribe(data => {
       this.contentList = data;
-      console.log(data);
-      console.log(this.contentList);
-
-      this.staticText1 = this.sanitizer.bypassSecurityTrustHtml(this.contentList[0].text);
-      this.staticTitle1 = this.sanitizer.bypassSecurityTrustHtml(this.contentList[0].title);
+      const homeText: Content = this.contentList.filter(obj => obj.id === 1).pop();
+      this.staticText1 = this.sanitizer.bypassSecurityTrustHtml(homeText.text);
+      this.staticTitle1 = this.sanitizer.bypassSecurityTrustHtml(homeText.title);
       this.sortNewsArray();
 
     });

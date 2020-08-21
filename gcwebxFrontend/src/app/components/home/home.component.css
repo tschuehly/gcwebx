@@ -1,9 +1,8 @@
 .home_pic{
-  background-image: url("https://ts.xperience-gaming.de/preview/images/background.jpg");
   min-height: 75vh!important;
   background-blend-mode: multiply;
   background-size: cover;
-  background-position: center top;
+  background-position: center;
   color: white;
   display: flex;
   flex-direction: column;
@@ -11,13 +10,13 @@
   justify-content: center;
 }
 .overlay {
-  opacity: 0;
-  transition: .5s linear;
-}
-
-.container-fluid:hover .overlay {
-  opacity: 1;
+  margin-right:auto;
+  margin-top: 4%;
+  margin-left: 4%;
 }
 .card{
   min-height: 350px;
+}
+.card{
+  background-color: rgba(0,0,0,0.5);
 }

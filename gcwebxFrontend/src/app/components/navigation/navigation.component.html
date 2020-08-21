@@ -1,12 +1,14 @@
 <nav class="navbar nav_bg navbar-bg navbar-expand-sm navbar-dark nav-fill p-0 fixed-top d-none d-md-block">
   <div  class="navbar-nav text-light">
 
-    <ul ngbNav #nav="ngbNav" class="navbar-nav mx-auto">
+    <ul ngbNav #nav="ngbNav" class="navbar-nav ml-4 mr-auto">
         <li ngbNavItem class="my-auto py-2">
           <a  ngbNavLink class="navbar-brand mr-0" routerLink="home" >
             <img src="https://i.imgur.com/D5mrccA.png" height="40">
           </a>
         </li>
+    </ul>
+    <ul ngbNav #nav="ngbNav" class="navbar-nav mr-2 ml-auto">
         <li class="nav-item nav-link my-auto p-0" ngbDropdown ngbDropdownToggle>
           <a class="nav-link">Teams</a>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
@@ -19,7 +21,7 @@
           <a ngbNavLink  routerLink="logo">Logo</a>
         </li>
         <li ngbNavItem class="my-auto p-0">
-          <a ngbNavLink routerLink="teamspeak">TS3 Viewer</a>
+          <a ngbNavLink routerLink="teamspeak">Teamspeak</a>
         </li>
         <li ngbNavItem class="my-auto p-0">
           <a ngbNavLink routerLink="news">News</a>
@@ -47,7 +49,7 @@
         </a>
       </li>
       <li class="my-auto">
-        <a class="ml-2" href="https://twitter.com/Xperience_Orga">
+        <a class="ml-2" href="https://twitter.com/Xperience_Orga" target="_blank">
           <div class="btn">
             <i class="fab fa-2x fa-twitter"></i>
           </div>
@@ -155,7 +157,7 @@
               <i class="fab fa-2x fa-teamspeak"></i>
             </div>
           </a>
-          <a class="ml-2" href="https://twitter.com/Xperience_Orga">
+          <a class="ml-2" href="https://twitter.com/Xperience_Orga" target="_blank">
             <div class="btn">
               <i class="fab fa-2x fa-twitter"></i>
             </div>

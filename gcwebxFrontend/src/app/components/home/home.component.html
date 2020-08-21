@@ -1,33 +1,40 @@
 <div class='container-fluid p-0'>
-  <div class="container-fluid home_pic p-0">
+  <div class="container-fluid home_pic p-0" style="background-image: url(/assets/SI2020_RoadToSI_05.jpg)">
     <div class="overlay">
-      <div class="h1 align-bottom">Willkommen bei Xperience Gaming</div>
+      <div class="h1 align-bottom">Willkommen bei</div>
+      <div class="h1 align-bottom">Xperience Gaming</div>
     </div>
   </div>
 
-  <div class="row container-fluid">
+  <div class="container-fluid p-0" style="background-attachment:fixed;background-color: #3cf9f5;
+    background-blend-mode: hard-light;  background-image: url(/assets/background_solo.png);background-repeat: no-repeat; background-size: cover;background-position: center top;">
     <ng-container  *ngFor="let contentobj of contentList$ | async" >
-      <div *ngIf="contentobj.id == 1" class="mx-auto p-2">
-        <h2><strong  [innerHTML]="staticTitle1"></strong></h2>
-        <p  [innerHTML]="staticText1"></p>
+      <div *ngIf="contentobj.id == 1" class="mx-auto p-4 text-light">
+        <h2 class="d-flex justify-content-center"><strong  [innerHTML]="staticTitle1"></strong></h2>
+        <p  class="d-flex flex-column align-items-center" [innerHTML]="staticText1"></p>
       </div>
     </ng-container>
 
   </div>
-  <div class="row card_container mx-auto">
 
-    <ng-container  *ngFor="let contentobj of newsList$ | async; let i=index">
-      <div *ngIf="contentobj.news && i<4"  class="col-md-4 col-sm-6 mx-auto">
-        <div class="card" style="width: 18rem;">
-          <img class="card-img-top p-2" src="https://i.imgur.com/D5mrccA.png" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">{{contentobj.title}}</h5>
-            <p class="card-text" [innerHTML]="contentobj.text"></p>
-            <a routerLink="/news" class="btn btn-info">mehr lesen..</a>
-          </div>
+  <div class="news m-3">
+    <div class="container-fluid d-flex justify-content-center">
+      <h5>Latest News</h5>
+    </div>
+    <hr>
+    <ng-container  *ngFor="let contentobj of newsList$ | async ; let i=index">
+      <div class="container-fluid">
+        <div *ngIf="contentobj.news && i<4" class="p-2 d-flex justify-content-between">
+          <a class="p-0 text-dark" routerLink="news">
+            <h3>{{contentobj.title}}</h3>
+          </a>
+          <div [innerHTML]="contentobj.text| first20words"></div>
 
         </div>
+
       </div>
     </ng-container>
   </div>
+
+
 </div>

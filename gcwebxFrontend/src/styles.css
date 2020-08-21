@@ -19,3 +19,8 @@ body {}
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.btn-info{
+  background-color: #24f8f3;
+  border-color: #24f8f3;
+}
