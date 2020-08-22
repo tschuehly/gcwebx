@@ -18,12 +18,16 @@ export class EsportComponent implements OnInit {
   public team: Team;
   public teams$: Observable<Team[]>;
   public page: string;
+  public currentTeam: Team;
   constructor(
     private route: ActivatedRoute,
     private backendService: BackendService,
     private modalService: NgbModal,
   ) {
     this.teams$ = backendService.getTeams();
+    this.teams$.subscribe(teams => {
+       this.currentTeam = teams.pop();
+    });
   }
 
   ngOnInit(): void {

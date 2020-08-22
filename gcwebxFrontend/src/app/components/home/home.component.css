@@ -30,3 +30,13 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.news_title{
+  color: white;
+}
+.news_preview{
+  height: 3rem;
+  overflow: hidden;
+  font-size: 1.3em;
+  font-weight: 400!important;
+}

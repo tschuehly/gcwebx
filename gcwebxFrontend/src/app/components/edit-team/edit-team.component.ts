@@ -39,6 +39,7 @@ export class EditTeamComponent implements OnInit {
     console.log('team: ' + JSON.stringify(this.team));
     this.editTeam = this.team;
     this.editTeam = (this.EditForm.value as Team);
+    this.editTeam.members = null;
     console.log('editteam: ' + JSON.stringify(this.editTeam));
     this.backendService.updateTeam(this.editTeam).subscribe( data => {
       console.log(data);

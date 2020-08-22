@@ -1,5 +1,12 @@
 import {Component, ElementRef, OnInit,  ViewChild} from '@angular/core';
-import {NgbCarousel, NgbCarouselConfig, NgbSlideEvent, NgbSlideEventSource} from '@ng-bootstrap/ng-bootstrap';
+import {
+  ModalDismissReasons,
+  NgbCarousel,
+  NgbCarouselConfig,
+  NgbModal,
+  NgbSlideEvent,
+  NgbSlideEventSource
+} from '@ng-bootstrap/ng-bootstrap';
 import {Router} from '@angular/router';
 import {Content} from '../../model/content';
 import {Observable} from 'rxjs';
@@ -31,11 +38,11 @@ export class HomeComponent implements OnInit {
   contentList$: Observable<Content[]>;
   newsList$: Observable<Content[]>;
   staticTitle1: SafeHtml;
-
+  closeResult = '';
   index: number;
   staticText1: SafeHtml;
 
-  constructor(config: NgbCarouselConfig, private backendService: BackendService, private sanitizer: DomSanitizer) {
+  constructor(config: NgbCarouselConfig, private backendService: BackendService, private sanitizer: DomSanitizer, private modalService: NgbModal) {
     config.interval = 20000;
     config.wrap = true;
     config.pauseOnHover = false;
@@ -80,16 +87,27 @@ export class HomeComponent implements OnInit {
     this.paused = !this.paused;
   }
 
-  onSlide(slideEvent: NgbSlideEvent) {
-    if (this.unpauseOnArrow && slideEvent.paused &&
-      (slideEvent.source === NgbSlideEventSource.ARROW_LEFT || slideEvent.source === NgbSlideEventSource.ARROW_RIGHT)) {
-      this.togglePaused();
-    }
-    if (this.pauseOnIndicator && !slideEvent.paused && slideEvent.source === NgbSlideEventSource.INDICATOR) {
-      this.togglePaused();
-    }
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title', size: 'xl', centered: true}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
   }
 
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+  closeModal(){
+    console.log('close modal');
+    this.modalService.dismissAll();
+  }
 }
 
 
