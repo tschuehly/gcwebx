@@ -56,21 +56,27 @@ public class GcwebxApplication implements CommandLineRunner{
 		memberRepository.save(new Member("Name1","twitter.com","youtube.com","ash.jpg"));
 		memberRepository.save(new Member("Name2","twitter.com","youtube.com","iq.jpg"));
 		memberRepository.save(new Member("Name3","twitter.com","youtube.com","mute.jpg"));
-		memberRepository.save(new Member("Name1","twitter.com","youtube.com","blitz.jpg"));
-		memberRepository.save(new Member("Name2","twitter.com","youtube.com","blackbeard.jpg"));
-		memberRepository.save(new Member("Name3","twitter.com","youtube.com","mute.jpg"));
+		memberRepository.save(new Member("Name4","twitter.com","youtube.com","blitz.jpg"));
+		memberRepository.save(new Member("Name5","twitter.com","youtube.com","blackbeard.jpg"));
+		memberRepository.save(new Member("Name6","twitter.com","youtube.com","mute.jpg"));
+		memberRepository.save(new Member("Name7","twitter.com","youtube.com","mute.jpg"));
+		memberRepository.save(new Member("Name8","twitter.com","youtube.com","mute.jpg"));
+		memberRepository.save(new Member("Name9","twitter.com","youtube.com","mute.jpg"));
+		memberRepository.save(new Member("Name10","twitter.com","youtube.com","mute.jpg"));
+		memberRepository.save(new Member("Name11","twitter.com","youtube.com","mute.jpg"));
+		memberRepository.save(new Member("Name12","twitter.com","youtube.com","mute.jpg"));
 		final List<Member> members = new ArrayList<>();
-		memberRepository.findById(1L).ifPresent(member -> members.add(member));
-		memberRepository.findById(2L).ifPresent(member -> members.add(member));
-		memberRepository.findById(3L).ifPresent(member -> members.add(member));
-		teamRepository.save(new Team(1L,"Silentpeak","rainbowsix",members));
+		memberRepository.findById(201L).ifPresent(member -> members.add(member));
+		memberRepository.findById(202L).ifPresent(member -> members.add(member));
+		memberRepository.findById(203L).ifPresent(member -> members.add(member));
+		teamRepository.save(new Team(1L,"Silentpeak","rainbowsix","",members));
 		members.clear();
 
-		memberRepository.findById(4L).ifPresent(member -> members.add(member));
-		memberRepository.findById(5L).ifPresent(member -> members.add(member));
-		memberRepository.findById(6L).ifPresent(member -> members.add(member));
+		memberRepository.findById(204L).ifPresent(member -> members.add(member));
+		memberRepository.findById(205L).ifPresent(member -> members.add(member));
+		memberRepository.findById(206L).ifPresent(member -> members.add(member));
 
-		teamRepository.save(new Team(2L,"xp.exe","valorant",members));
+		teamRepository.save(new Team(2L,"xp.exe","valorant","",members));
 		/*System.out.println(teamRepository.findAll());*/
 
 

@@ -2,6 +2,7 @@ package de.cschillingtschuehly.gcwebx.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import de.cschillingtschuehly.gcwebx.modell.Member;
+import de.cschillingtschuehly.gcwebx.modell.Team;
 import de.cschillingtschuehly.gcwebx.modell.WebsiteUser;
 import de.cschillingtschuehly.gcwebx.services.MemberService;
 import de.cschillingtschuehly.gcwebx.services.TeamService;
@@ -82,8 +83,26 @@ public class WebController {
     @GetMapping("/api/getTeams")
     public ResponseEntity getTeams(){
         return ResponseEntity.ok().body(teamService.getTeams());
-
     }
 
-
+    @PostMapping(value="/api/createTeam",produces = {"application/json"})
+    public ResponseEntity createTeam(@RequestBody Team team) throws JsonProcessingException {
+        String createdTeam = teamService.createTeam(team);
+        return ResponseEntity.ok().body(createdTeam);
+    }
+    @PutMapping(value="/api/updateTeam",produces = {"application/json"})
+    public ResponseEntity editTeam(@RequestBody Team team) throws JsonProcessingException {
+        String updatedTeam = teamService.updateTeam(team);
+        return ResponseEntity.ok().body(updatedTeam);
+    }
+    @PostMapping(value="/api/deleteTeam",produces = {"application/json"})
+    public ResponseEntity deleteTeam(@RequestBody Team team) throws JsonProcessingException {
+        teamService.deleteTeam(team);
+        return ResponseEntity.ok().body("{\"teamDeleted\":\"true\"}");
+    }
+    @PostMapping(value="/api/addMemberToTeam/{teamId}",produces = {"application/json"})
+    public ResponseEntity addMember(@RequestBody Member member,@PathVariable Long teamId) throws JsonProcessingException {
+        String updatedTeam = teamService.addMember(teamId,member);
+        return ResponseEntity.ok().body(updatedTeam);
+    }
 }

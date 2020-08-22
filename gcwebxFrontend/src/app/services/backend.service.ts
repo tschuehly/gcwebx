@@ -15,9 +15,6 @@ export class BackendService {
   constructor(
     private http: HttpClient
   ) { }
-  getTeams(): Observable<any>{
-    return this.http.get(this.backendUrl + '/getTeams');
-  }
 
   getMemberTable(): Observable<any>{
     return this.http.get(this.backendUrl + '/getMembers');
@@ -28,6 +25,7 @@ export class BackendService {
   createMember(member: Member): Observable<any>{
     return this.http.post(this.backendUrl + '/createMember', member);
   }
+
 
   getContentById(id: number): Observable<any>{
     return this.http.post(this.backendUrl + '/getContentByID', id);
@@ -46,6 +44,8 @@ export class BackendService {
   deleteContent(id: number): Observable<any>{
     return this.http.delete(`${this.backendUrl + '/deleteContent/'}${id}`);
   }
+
+
   getUserTable(): Observable<any>{
     return this.http.get(this.backendUrl + '/getUsers');
   }
@@ -58,6 +58,10 @@ export class BackendService {
   deleteUser(user: User): Observable<any>{
     return this.http.post(this.backendUrl + '/deleteUser', user );
   }
+
+  getTeams(): Observable<any>{
+    return this.http.get(this.backendUrl + '/getTeams');
+  }
   updateTeam(team: Team): Observable<any>{
     return this.http.put(this.backendUrl + '/updateTeam', team);
   }
@@ -65,10 +69,10 @@ export class BackendService {
     return this.http.post(this.backendUrl + '/createTeam', team);
   }
   deleteTeam(team: Team): Observable<any>{
-    return this.http.post(this.backendUrl + '/createTeam', team);
+    return this.http.post(this.backendUrl + '/deleteTeam', team);
   }
-  addMemberToTeam(team: Team): Observable<any>{
-    return this.http.post(this.backendUrl + '/createTeam', team);
+  addMemberToTeam(member: Member, teamId: number): Observable<any>{
+    return this.http.post(this.backendUrl + '/addMemberToTeam/' + teamId, member);
   }
 
 }

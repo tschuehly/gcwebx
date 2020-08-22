@@ -1,6 +1,8 @@
 .nav a{
   font-size: 1.2em;
-  padding: 20px;
+  padding: 1em;
+  padding-bottom: 0.7em;
+  padding-top: 0.7em;
 }
 .dropdown-toggle::after {
   display:none;
@@ -26,11 +28,11 @@ a:hover{
   text-decoration: none;
 }
 
-.fa-twitter{
+.fa-twitter,.fa-teamspeak{
   color:white;
 }
-.fa-teamspeak{
-  color:white;
+.btn:hover > i{
+  color: aqua !important;
 }
 h5{
   line-height: inherit;
@@ -58,10 +60,6 @@ svg {
 
   color: aqua !important;
 }
-.nav-items li:hover > a>div{
-  color: aqua !important;
-
-}
 
 .not-active {
   color: white;
@@ -70,4 +68,8 @@ svg {
 
 .img-hover {
   list-style: unset;
+}
+.dropdown-menu{
+  padding-top: 0.5em!important;
+  padding-bottom: 0.5em!important;
 }

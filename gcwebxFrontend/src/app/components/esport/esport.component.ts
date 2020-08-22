@@ -27,7 +27,7 @@ export class EsportComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    (params => {
+    this.route.params.subscribe(params => {
       console.log(params['game']);
       this.page = params['game'];
 
@@ -48,7 +48,7 @@ export class EsportComponent implements OnInit {
     const  modalRef = this.modalService.open(EditTeamComponent, {size: 'xl'});
     modalRef.componentInstance.team = team;
     modalRef.componentInstance.create = false;
-    modalRef.componentInstance.memberUpdated.subscribe((data) => {
+    modalRef.componentInstance.teamUpdated.subscribe((data) => {
       if (data === true) {window.location.reload(); }
     });
   }

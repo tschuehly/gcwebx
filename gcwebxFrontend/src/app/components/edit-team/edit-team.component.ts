@@ -17,7 +17,7 @@ export class EditTeamComponent implements OnInit {
   editTeam: Team;
   EditForm: FormGroup;
   closeResult = '';
-  memberIdToAdd: FormControl;
+  AddMemberForm: FormGroup;
   constructor(public activeModal: NgbActiveModal, private backendService: BackendService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -27,6 +27,9 @@ export class EditTeamComponent implements OnInit {
       game: new FormControl(null),
       generalInfo: new FormControl(),
       members: new FormControl(),
+    });
+    this.AddMemberForm = new FormGroup({
+      memberId: new FormControl()
     });
     this.EditForm.patchValue(this.team);
   }
@@ -55,8 +58,12 @@ export class EditTeamComponent implements OnInit {
   addMemberToTeam(){
     this.editTeam = this.team;
     this.editTeam = (this.EditForm.value as Team);
-    this.editTeam.members.push({'memberId': this.memberIdToAdd.value} as Member);
-    console.log('editteam: ' + JSON.stringify(this.editTeam));
+    const member = this.AddMemberForm.value as Member;
+    this.backendService.addMemberToTeam(member, this.editTeam.teamId).subscribe( data =>{
+      console.log(data);
+      this.teamUpdated.emit(true);
+    });
+    console.log('member: ' + JSON.stringify(member) + 'to Team: ' + this.editTeam.teamId);
   }
   deleteTeam(modal) {
     modal.close();

@@ -21,6 +21,7 @@ public class Team {
     @NotEmpty
     private String teamName;
     private String game;
+    private String generalInfo;
     @OneToMany(cascade = CascadeType.ALL, targetEntity = Member.class ,orphanRemoval = true,fetch = FetchType.EAGER)
     private List members;
 
