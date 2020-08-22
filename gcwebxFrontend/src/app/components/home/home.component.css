@@ -1,5 +1,5 @@
 .home_pic{
-  min-height: 75vh!important;
+  min-height: 50vh!important;
   background-blend-mode: multiply;
   background-size: cover;
   background-position: center;
@@ -8,6 +8,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-image: url(/assets/SI2020_RoadToSI_05.jpg);
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-attachment: local;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .overlay {
   margin-right:auto;
@@ -18,19 +26,26 @@
   min-height: 350px;
   background-color: rgba(0,0,0,0.5);
 }
-
-.parallax-image {
-  background-image: url(/assets/SI2020_RoadToSI_05.jpg);
-  min-height: 60vh;
-  height: 100%;
-
-  /* Center and scale the image nicely */
-  background-attachment: local;
-  background-position: center;
+.welcome_text{
+  min-height: 50vh!important;
+  background-attachment:fixed;
+  background-color: #249896;
+  background-blend-mode: hard-light;
+  background-image: url(/assets/background_solo.png);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center top;
 }
-
+.news{
+  min-height: 50vh!important;
+  background-attachment:fixed;
+  background-image: url(/assets/valorant_agents_grey.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  background-color: #3cf9f5;
+  background-blend-mode: multiply;
+}
 .news_title{
   color: white;
 }
