@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://db:5432/postgres # jdbc:postgresql://db:5432/postgres for deployment  ||  jdbc:postgresql://localhost:5432/postgres for development
+    url: jdbc:postgresql://localhost:5432/postgres # jdbc:postgresql://db:5432/postgres for deployment  ||  jdbc:postgresql://localhost:5432/postgres for development
     username: postgres
     password: password
   profiles:

@@ -56,9 +56,9 @@ public class GcwebxApplication implements CommandLineRunner{
 		memberRepository.save(new Member("Name1","twitter.com","youtube.com","ash.jpg"));
 		memberRepository.save(new Member("Name2","twitter.com","youtube.com","iq.jpg"));
 		memberRepository.save(new Member("Name3","twitter.com","youtube.com","mute.jpg"));
-		memberRepository.save(new Member("Name4","twitter.com","youtube.com","blitz.jpg"));
-		memberRepository.save(new Member("Name5","twitter.com","youtube.com","blackbeard.jpg"));
-		memberRepository.save(new Member("Name6","twitter.com","youtube.com","mute.jpg"));
+		memberRepository.save(new Member("Name4","twitter.com","youtube.com","viper.png"));
+		memberRepository.save(new Member("Name5","twitter.com","youtube.com","sage.png"));
+		memberRepository.save(new Member("Name6","twitter.com","youtube.com","raze.png"));
 		memberRepository.save(new Member("Name7","twitter.com","youtube.com","mute.jpg"));
 		memberRepository.save(new Member("Name8","twitter.com","youtube.com","mute.jpg"));
 		memberRepository.save(new Member("Name9","twitter.com","youtube.com","mute.jpg"));

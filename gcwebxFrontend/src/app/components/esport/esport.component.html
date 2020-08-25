@@ -1,4 +1,4 @@
-<div class="row backgroundimg">
+<div class="row backgroundimg" [ngClass]="page == 'valorant' ? 'valorant_bg':'rainbow_bg'">
   <div class="container-fluid topspace"></div>
 
   <div class="container m-auto mt-5 ">
@@ -19,10 +19,10 @@
       <ng-container *ngFor="let member of currentTeam.members;index as i">
         <div class="card bg-dark m-3">
           <ng-container *ngIf="member.cardImg == null; else cardImg">
-            <img #cardImg class="card-img-top" src="assets/operators/ash.jpg" alt="Card image cap">
+            <img #cardImg class="card-img-top " src="assets/operators/ash.jpg" alt="Card image cap">
           </ng-container>
           <ng-template #cardImg>
-            <img  class="card-img-top" src="assets/operators/{{member.cardImg}}" alt="Card image cap">
+            <img  class="card-img-top" [ngStyle]="page == 'valorant' ? {'object-position': 'top'}:''" src="assets/operators/{{member.cardImg}}" alt="Card image cap">
           </ng-template>
           <!--
           <div class="card-img-overlay text-light d-flex flex-column justify-content-between">
