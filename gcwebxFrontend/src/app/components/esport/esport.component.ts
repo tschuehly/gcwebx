@@ -2,11 +2,13 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {BackendService} from '../../services/backend.service';
 import {Team} from '../../model/team';
-import {Observable} from 'rxjs';
+import {combineLatest, Observable} from 'rxjs';
 import {EditMemberComponent} from '../edit-member/edit-member.component';
 import {Member} from '../../model/member';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {EditTeamComponent} from '../edit-team/edit-team.component';
+import {FormControl} from '@angular/forms';
+import {map, startWith} from 'rxjs/operators';
 
 @Component({
   selector: 'app-esport',
@@ -17,23 +19,31 @@ import {EditTeamComponent} from '../edit-team/edit-team.component';
 export class EsportComponent implements OnInit {
   public team: Team;
   public teams$: Observable<Team[]>;
-  public page: string;
-  public currentTeam: Team;
+  public game: FormControl;
+  gamefilter$: Observable<string>;
+  currentTeam: Team;
+  public filteredTeams$: Observable<Team[]>;
   constructor(
     private route: ActivatedRoute,
     private backendService: BackendService,
     private modalService: NgbModal,
   ) {
     this.teams$ = backendService.getTeams();
-    this.teams$.subscribe(teams => {
-       this.currentTeam = teams.pop();
-    });
+    this.game = new FormControl('');
+    this.gamefilter$ = this.game.valueChanges.pipe(startWith(''));
+    this.filteredTeams$ = combineLatest([this.teams$, this.route.params]).pipe(map(([teams, gameRoute]) =>
+      teams.filter(team => team.game === gameRoute['game'])));
   }
 
   ngOnInit(): void {
+    console.log('ngOnInit');
     this.route.params.subscribe(params => {
-      console.log(params['game']);
-      this.page = params['game'];
+      this.game.setValue(params['game']);
+      console.log(this.game.value);
+
+      this.filteredTeams$.subscribe(teams => {
+        this.currentTeam = teams[0];
+      });
 
     });
   }

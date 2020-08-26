@@ -51,32 +51,50 @@ public class GcwebxApplication implements CommandLineRunner{
 		userRepository.save(new WebsiteUser("editor","$2y$12$U1m4vvqWq6zyyK/1zT7QoOmM9ha9wQ06SoASuuypfkElMKksubDJu",true,true,false,false,false));
 		userRepository.save(new WebsiteUser("support","$2y$12$f3mE0G1qwzxGpqmQLVqUMuwmDfePU0d4wHFRqmp2hXxR.ckm/Ic.u",true,false,true,false,false));
 		userRepository.save(new WebsiteUser("moderator","$2y$12$4zdceAF0Q95ot.TeaXqEzubqITfpIgvXNS02qKylWrDkIHzE0nTQm",true,false,false,true,false));
+		memberRepository.deleteAll();
 
-
-		memberRepository.save(new Member("Name1","twitter.com","youtube.com","ash.jpg"));
-		memberRepository.save(new Member("Name2","twitter.com","youtube.com","iq.jpg"));
-		memberRepository.save(new Member("Name3","twitter.com","youtube.com","mute.jpg"));
-		memberRepository.save(new Member("Name4","twitter.com","youtube.com","viper.png"));
+		memberRepository.save(new Member("Professor","twitter.com","youtube.com","ash.jpg"));
+		memberRepository.save(new Member("Klatschko","twitter.com","youtube.com","iq.jpg"));
+		memberRepository.save(new Member("Cytex","twitter.com","youtube.com","mute.jpg"));
+		memberRepository.save(new Member("Fellow","twitter.com","youtube.com","rook.jpg"));
 		memberRepository.save(new Member("Name5","twitter.com","youtube.com","sage.png"));
 		memberRepository.save(new Member("Name6","twitter.com","youtube.com","raze.png"));
-		memberRepository.save(new Member("Name7","twitter.com","youtube.com","mute.jpg"));
-		memberRepository.save(new Member("Name8","twitter.com","youtube.com","mute.jpg"));
+		memberRepository.save(new Member("Name7","twitter.com","youtube.com","sage.png"));
+		memberRepository.save(new Member("Name8","twitter.com","youtube.com","sage.png"));
 		memberRepository.save(new Member("Name9","twitter.com","youtube.com","mute.jpg"));
 		memberRepository.save(new Member("Name10","twitter.com","youtube.com","mute.jpg"));
 		memberRepository.save(new Member("Name11","twitter.com","youtube.com","mute.jpg"));
 		memberRepository.save(new Member("Name12","twitter.com","youtube.com","mute.jpg"));
+		memberRepository.save(new Member("Thaiminater",  "https://twitter.com/Thaiminater" , "https://www.youtube.com/channel/UCF_1TbJprVWT6SsyqSEJ_Qg" ,"zofia.jpg" ));
+		memberRepository.save(new Member("T0XIC_BABE",  "https://twitter.com/Thaiminater" , "https://www.youtube.com/channel/UCF_1TbJprVWT6SsyqSEJ_Qg" ,"sledge.jpg") );
+		memberRepository.save(new Member("Trypled",  "https://twitter.com/Thaiminater", "https://www.youtube.com/channel/UCF_1TbJprVWT6SsyqSEJ_Qg","ash.jpg"));
+		memberRepository.save(new Member("SimpleElite",  "https://twitter.com/Thaiminater", "https://www.youtube.com/channel/UCF_1TbJprVWT6SsyqSEJ_Qg","iq.jpg"));
+		memberRepository.save(new Member("Sucuk",  "https://twitter.com/Thaiminater", "https://www.youtube.com/channel/UCF_1TbJprVWT6SsyqSEJ_Qg","jackal.jpg"));
+		memberRepository.save(new Member("ORO",  "https://twitter.com/Thaiminater", "https://www.youtube.com/channel/UCF_1TbJprVWT6SsyqSEJ_Qg","ace.jpg"));
+
 		final List<Member> members = new ArrayList<>();
+		memberRepository.findById(213L).ifPresent(member -> members.add(member));
+		memberRepository.findById(214L).ifPresent(member -> members.add(member));
+		memberRepository.findById(215L).ifPresent(member -> members.add(member));
+		memberRepository.findById(216L).ifPresent(member -> members.add(member));
+		memberRepository.findById(217L).ifPresent(member -> members.add(member));
+		teamRepository.save(new Team(2L,"Silentpeak","rainbowsix","Das Team spielt in der DESBL Advanced League",members));
+		members.clear();
+
 		memberRepository.findById(201L).ifPresent(member -> members.add(member));
 		memberRepository.findById(202L).ifPresent(member -> members.add(member));
 		memberRepository.findById(203L).ifPresent(member -> members.add(member));
-		teamRepository.save(new Team(1L,"Silentpeak","rainbowsix","",members));
-		members.clear();
-
 		memberRepository.findById(204L).ifPresent(member -> members.add(member));
+
+		teamRepository.save(new Team(1L,"Xperience","rainbowsix","Das Team spielt in der Ascencion League Div.2",members));memberRepository.findById(201L).ifPresent(member -> members.add(member));
+		members.clear();
 		memberRepository.findById(205L).ifPresent(member -> members.add(member));
 		memberRepository.findById(206L).ifPresent(member -> members.add(member));
-
-		teamRepository.save(new Team(2L,"xp.exe","valorant","",members));
+		memberRepository.findById(207L).ifPresent(member -> members.add(member));
+		memberRepository.findById(208L).ifPresent(member -> members.add(member));
+		memberRepository.findById(209L).ifPresent(member -> members.add(member));
+		memberRepository.findById(210L).ifPresent(member -> members.add(member));
+		teamRepository.save(new Team(3L,"xp.exe","valorant","",members));
 		/*System.out.println(teamRepository.findAll());*/
 
 

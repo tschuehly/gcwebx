@@ -14,7 +14,7 @@
           <div class="modal-body">
             <form [formGroup]="UserForm" >
               <div class="input-group mb-3">
-                <input class="form-control" placeholder="Username" type="text" formControlName="username" (keydown.enter)="onEnterPressed()">
+                <input class="form-control" placeholder="Username" type="text" autofocus formControlName="username" (keydown.enter)="onEnterPressed()">
               </div>
               <div class="input-group">
                 <input class="form-control" placeholder="Password" type="password" formControlName="password" (keydown.enter)="onEnterPressed()">

@@ -39,18 +39,17 @@ export class LoginFormComponent implements OnInit {
       this.router.navigateByUrl('/home');
       this.authenticationService.getRole();
     });
-
-    this.successfulLogin = false;
+    setTimeout(() => this.successfulLogin = false, 2000);
     return false;
   }
 
   onEnterPressed() {
-    console.log("Enter pressed");
+    console.log('Enter pressed');
     this.logIn();
   }
 
   onSubmitClicked() {
-    console.log("Button clicked");
+    console.log('Button clicked');
     this.logIn();
   }
 

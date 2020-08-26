@@ -40,11 +40,6 @@
             <div [className]="currentRoute == '/news' ? 'active-page' : 'not-active'">News</div>
           </a>
         </li>
-        <li ngbNavItem class="my-auto p-0">
-          <a ngbNavLink routerLink="shop">
-            <div [className]="currentRoute == '/shop' ? 'active-page' : 'not-active'">Shop</div>
-          </a>
-        </li>
         <li *ngIf="this.currentRoles  && (this.currentRoles.roleAdmin || this.currentRoles.roleModerator || this.currentRoles.roleSupport)" ngbNavItem class="my-auto">
           <a ngbNavLink routerLink="memberTable">
             <div [className]="currentRoute == '/memberTable' ? 'active-page' : 'not-active'">Membertable</div>
@@ -64,12 +59,17 @@
           <a ngbNavLink routerLink="home" (click)="logout()">Logout</a>
         </li>
       <li class="my-auto">
-        <a class="px-1" href="ts3server://xperience">
+        <a class="px-1" (click)="connectToTeamspeack()">
           <div class="btn">
             <i class="fab fa-2x fa-teamspeak"></i>
           </div>
         </a>
       </li>
+      <ngb-toast class="position-absolute text-dark bg-light" style=" top: 7rem; right: 2rem;" *ngIf="showTsToast" [autohide]="false"  (hide)="showTsToast = false" header="Connecting to Teamspeak">
+        You will connect to the Xperience Teamspeak in 3 seconds
+        <br>
+        <h2 class="text-center"><span class="badge badge-dark text-light text-center">IP: xperience</span></h2>
+      </ngb-toast>
       <li class="my-auto">
         <a class="px-1" href="https://twitter.com/Xperience_Orga" target="_blank">
           <div class="btn">
@@ -151,16 +151,16 @@
   <div class="container-fluid">
     <div class="align-items-center row d-flex justify-content-around">
       <div class="p-1">
-        <h6 class="text-center text-light align-middle my-auto">© {{date|dateFormat}} Xperience Gaming</h6>
+        <h5 class="text-center text-light align-middle my-auto">© {{date|dateFormat}} Xperience Gaming</h5>
       </div>
       <div class="p-1">
         <span class=" align-middle">
-          <h6 class="text-center text-light my-auto">
+          <h5 class="text-center text-light my-auto">
           <a class="text-light" routerLink="impressum">Impressum</a> &nbsp; | &nbsp;
           <a class="text-light" routerLink="datenschutz">Datenschutz</a>&nbsp; | &nbsp;
           <a class="text-light" routerLink="regeln">Regeln</a>&nbsp; | &nbsp;
           <a class="text-light" *ngIf="!this.currentRoles" routerLink="login">Login</a>
-          </h6>
+          </h5>
         </span>
       </div>
       <div class="p-1 icon-center">

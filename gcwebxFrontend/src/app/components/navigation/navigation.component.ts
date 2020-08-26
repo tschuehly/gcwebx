@@ -8,7 +8,7 @@ import {UserService} from '../../services/user.service';
 import {Observable} from 'rxjs';
 import {AuthenticationService} from '../../services/authentication.service';
 import {Roles} from '../../model/roles';
-import {DOCUMENT} from "@angular/common";
+import {DOCUMENT} from '@angular/common';
 declare const window: any;
 
 @Component({
@@ -22,7 +22,8 @@ declare const window: any;
 export class NavigationComponent implements OnInit {
   public isMenuCollapsed = true;
   public currentRoles: Roles;
-  public currentRoute: String;
+  public currentRoute: string;
+  public showTsToast = false;
 
   constructor(private router: Router, public authenticationService: AuthenticationService) {
     this.authenticationService.currentRoles$.subscribe( value => {
@@ -30,10 +31,10 @@ export class NavigationComponent implements OnInit {
     });
     router.events.subscribe(val => {
       this.currentRoute = location.pathname;
-    })
+    });
 
   }
-  date :Date;
+  date: Date;
 
   ngOnInit(): void {
     this.authenticationService.getRole();
@@ -50,7 +51,13 @@ export class NavigationComponent implements OnInit {
     this.router.navigateByUrl('/home');
     this.authenticationService.getRole();
   }
-/*
+  connectToTeamspeack(){
+    this.showTsToast = true;
+    setTimeout(() => window.open('ts3server://xperience'), 2000);
+    setTimeout(() => this.showTsToast = false, 8000);
+  }
+  /*
+
   @HostListener("window:scroll",[])
   onWindowScroll(){
     const number = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;

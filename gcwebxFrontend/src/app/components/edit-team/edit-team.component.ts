@@ -26,7 +26,6 @@ export class EditTeamComponent implements OnInit {
       teamName: new FormControl(null, [Validators.required]),
       game: new FormControl(null),
       generalInfo: new FormControl(),
-      members: new FormControl(),
     });
     this.AddMemberForm = new FormGroup({
       memberId: new FormControl()
@@ -39,7 +38,6 @@ export class EditTeamComponent implements OnInit {
     console.log('team: ' + JSON.stringify(this.team));
     this.editTeam = this.team;
     this.editTeam = (this.EditForm.value as Team);
-    this.editTeam.members = null;
     console.log('editteam: ' + JSON.stringify(this.editTeam));
     this.backendService.updateTeam(this.editTeam).subscribe( data => {
       console.log(data);
@@ -50,7 +48,7 @@ export class EditTeamComponent implements OnInit {
   createTeam(){
     this.team = (this.EditForm.value as Team);
     console.log(this.team);
-    this.backendService.createTeam(this.team).subscribe( data =>{
+    this.backendService.createTeam(this.team).subscribe( data => {
       console.log(data);
       this.teamUpdated.emit(true);
     });
@@ -60,7 +58,7 @@ export class EditTeamComponent implements OnInit {
     this.editTeam = this.team;
     this.editTeam = (this.EditForm.value as Team);
     const member = this.AddMemberForm.value as Member;
-    this.backendService.addMemberToTeam(member, this.editTeam.teamId).subscribe( data =>{
+    this.backendService.addMemberToTeam(member, this.editTeam.teamId).subscribe( data => {
       console.log(data);
       this.teamUpdated.emit(true);
     });

@@ -52,7 +52,10 @@
             </div>
             <div class="col-lg-4">
               <label>Game:</label>
-              <input class="form-control" type="text" formControlName="game">
+              <select class="form-control overflow-auto"  formControlName="game">>
+                <option>rainbowsix</option>
+                <option>valorant</option>
+              </select>
             </div>
             <div class="col-lg-12" *ngIf="team.teamName">
               <label>Member:</label>
