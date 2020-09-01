@@ -28,8 +28,9 @@ import {FirstTwentyWords} from './services/first-twenty-words.pipe';
 import {DateFormat} from './services/date-format.pipe';
 import {NgModule} from '@angular/core';
 import {SafeHtml} from './services/safe-Html.pipe';
-import { LogoComponent } from './components/logo/logo.component';
 import { EditTeamComponent } from './components/edit-team/edit-team.component';
+import {NgxWigModule} from 'ngx-wig';
+import { StaticComponent } from './components/static/static.component';
 
 export const routerConfig: Routes = [
   {path: 'memberTable', component: MemberTableComponent},
@@ -41,7 +42,8 @@ export const routerConfig: Routes = [
   {path : 'userTable', pathMatch: 'full', component: UserTableComponent},
   {path : 'esport/:game',  component: EsportComponent},
   {path : 'news', pathMatch: 'full', component: NewsComponent},
-  {path : 'logo', pathMatch: 'full', component: LogoComponent}
+  {path : 'imprint', component: StaticComponent},
+  {path : 'logo', component: StaticComponent}
 ];
 
 @NgModule({
@@ -63,9 +65,9 @@ export const routerConfig: Routes = [
     FirstTwentyWords,
     DateFormat,
     SafeHtml,
-    LogoComponent,
     EsportComponent,
-    EditTeamComponent
+    EditTeamComponent,
+    StaticComponent
   ],
   exports: [MemberTableComponent, HomeComponent],
   imports: [
@@ -81,6 +83,7 @@ export const routerConfig: Routes = [
     ScrollingModule,
     RouterModule,
     EditorModule,
+    NgxWigModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'XSRF-TOKEN',
       headerName: 'X-XSRF-TOKEN'

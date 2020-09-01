@@ -1,19 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-
 import domtoimage from 'dom-to-image';
+import {ActivatedRoute, Router} from '@angular/router';
 @Component({
-  selector: 'app-logo',
-  templateUrl: './logo.component.html',
-  styleUrls: ['./logo.component.css']
+  selector: 'app-static',
+  templateUrl: './static.component.html',
+  styleUrls: ['./static.component.css']
 })
-export class LogoComponent implements OnInit {
-
+export class StaticComponent implements OnInit {
   public logoUrl;
   logoName: string;
-  constructor() { }
+  public page;
+  constructor(private router: Router) {
+  }
 
   ngOnInit(): void {
+    this.page = this.router.url;
+    console.log(this.router.url);
   }
+
   downloadLogo(){
     domtoimage.toPng(document.querySelector('#logo')).then((dataUrl) => {
       this.logoUrl = dataUrl;
@@ -24,6 +28,6 @@ export class LogoComponent implements OnInit {
       link.click();
       document.body.removeChild(link);
     });
-
   }
+
 }
