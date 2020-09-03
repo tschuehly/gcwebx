@@ -1,4 +1,4 @@
-<div class="backgroundimg" [ngClass]="page == 'logo' ? 'logo_bg':'imprint_bg'">
+<div class="backgroundimg" [ngClass]="page == '/logo' ? 'logo_bg':'imprint_bg'">
   <div class="container-fluid topspace"></div>
 
   <div *ngIf="page == '/logo'" class="container d-flex flex-column align-items-center ">
@@ -13,14 +13,8 @@
   </div>
 
   <div *ngIf="page == '/imprint'" class="imprint container  text-light">
-    <h1>eRecht24 GmbH & Co. KG</h1>
-    <p style="word-wrap: break-word"><br>
-      Lietzenburger Str. 94<br>
-      10719 Berlin<br>
-
-      Handelsregister: HRA 54365 B<br>
-      Amtsgericht Charlottenburg<br>
-      UST-ID: DE242329852<br></p>
+    <h1>IMPRESSUM</h1>
+    <p></p>
   </div>
 
 </div>

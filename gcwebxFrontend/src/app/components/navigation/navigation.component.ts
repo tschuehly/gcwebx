@@ -53,7 +53,7 @@ export class NavigationComponent implements OnInit {
   }
   connectToTeamspeack(){
     this.showTsToast = true;
-    setTimeout(() => window.open('ts3server://xperience'), 2000);
+    setTimeout(() => window.open('ts3server://xperience'), 1000);
     setTimeout(() => this.showTsToast = false, 8000);
   }
   /*

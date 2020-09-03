@@ -24,3 +24,6 @@ body {}
   background-color: #24f8f3;
   border-color: #24f8f3;
 }
+.bg-light{
+  background-color: rgb(204 204 204)!important;
+}

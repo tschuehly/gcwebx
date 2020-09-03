@@ -30,10 +30,25 @@
 .rainbow_bg{
   background-image: url('https://i.imgur.com/tQ6Tu5P.jpg');
 }
+.card-img-top{
+  background-color: black;
+}
 .card-body >h2{
   color: aqua;
   font-weight: 300;
 }
 .teamselection{
   background-color: rgba(0,0,0,0.7);
+}
+@media (min-width: 1200px){
+  .container{
+    max-width: 990px;
+  }
+
+}
+@media (min-width: 1400px){
+  .container{
+    max-width: 1310px;
+  }
+
 }

@@ -21,7 +21,7 @@
             <img #cardImg class="card-img-top" src="assets/operators/ash.jpg" alt="Card image cap">
           </ng-container>
           <ng-template #cardImg>
-            <img class="card-img-top" [ngStyle]="game.value == 'valorant' ? {'object-position': 'top'}:''" src="assets/operators/{{member.cardImg}}" alt="Card image cap">
+            <img class="card-img-top" [ngStyle]="game.value == 'valorant' ? {'object-position': 'top','padding-top': '1rem','padding-left': '0.5rem','padding-right': '0.5rem'}:''" src="assets/operators/{{member.cardImg}}" alt="Card image cap">
           </ng-template>
           <!--
           <div class="card-img-overlay text-light d-flex flex-column justify-content-between">

@@ -37,11 +37,11 @@
 .news{
   min-height: 50vh!important;
   background-attachment:fixed;
-  background-image: url(/assets/valorant_agents_grey.jpg);
+  background-image: url(/assets/Bind.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center top;
-  background-color: #3cf9f5;
+  background-color: #2e6b6a;
   background-blend-mode: multiply;
 }
 .news_title{
@@ -52,4 +52,9 @@
   font-size: 1.3em;
   font-weight: 400!important;
   white-space: nowrap!important;
+}
+
+.games_container img{
+  padding: 20px;
+  height: 320px;
 }
