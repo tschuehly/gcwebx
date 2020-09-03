@@ -15,4 +15,4 @@ COPY --from=build ${DEPENDENCY}/META-INF /gcwebx/META-INF
 COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /gcwebx
 
 EXPOSE 8080 8080
-ENTRYPOINT ["java","-cp","gcwebx:gcwebx/lib/*","de.cschillingtschuehly.gcwebx.GcwebxApplication"]
+ENTRYPOINT ["java","-Dspring.profiles.active=production","-cp","gcwebx:gcwebx/lib/*","de.cschillingtschuehly.gcwebx.GcwebxApplication"]
