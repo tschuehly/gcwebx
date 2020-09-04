@@ -17,15 +17,15 @@
     </ng-container>
 
   </div>
-  <div class="container-fluid text-center d-flex flex-column games_container py-3 bg-light">
-    <h1 class="m-0 p-3">Games</h1>
-    <div class="flex-row">
-        <a routerLink="/esport/rainbowsix"  >
-          <img src="assets/rainbow_six_main.jfif">
-        </a>
-        <a routerLink="/esport/valorant">
-          <img  src="assets/Jett_Feature.jpg">
-        </a>
+  <div class="container-fluid text-center py-3 bg-light">
+    <h1 class="m-0 pb-3">Games</h1>
+    <div class="row flex-wrap d-flex justify-content-around games_container" >
+      <div class="col-10 col-md-6 rainbow pb-4">
+        <a routerLink="/esport/rainbowsix"><img src="/assets/rainbow_six_main.png"></a>
+      </div>
+      <div class="col-10 col-md-6 valorant pb-4">
+        <a routerLink="/esport/valorant"><img src="/assets/Jett_Feature.jpg"></a>
+      </div>
     </div>
   </div>
 
