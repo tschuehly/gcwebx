@@ -34,6 +34,9 @@ a:hover{
 .btn:hover > i{
   color: aqua !important;
 }
+.nav-link:hover .nav-link-test {
+  color: aqua !important;
+}
 h5{
   line-height: inherit;
   margin: 0;
