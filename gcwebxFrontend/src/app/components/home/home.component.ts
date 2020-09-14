@@ -22,11 +22,6 @@ import {map} from 'rxjs/operators';
 
 export class HomeComponent implements OnInit {
 
-
-  images = ['https://ts.xperience-gaming.de/preview/images/background.jpg',
-            'https://i.imgur.com/fTa59Lw.jpg',
-            'https://i.imgur.com/W5Tq6YD.jpg',
-            'https://i.imgur.com/0Nqqv5J.jpg'];
   paused = false;
   unpauseOnArrow = false;
   pauseOnIndicator = false;

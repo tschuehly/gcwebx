@@ -14,15 +14,19 @@
   color: white;
   font-weight: lighter;
 }
-
 .navbar{
   border-top: #0ff!important;
   border-top-width: 10px!important;
   border-top-style: solid!important;
 }
+.nav-link{
+  padding-bottom: 0!important;
+  padding-top: 0!important;
+}
 .nav-link >div{
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+
+  padding-top: 1.3rem;
+  padding-bottom: 1.3rem;
 }
 .navbar-collapse{
   z-index: 2000;
@@ -40,7 +44,7 @@ a:hover{
 .btn:hover > i{
   color: aqua !important;
 }
-.nav-link:hover .nav-link-test {
+.nav-link:hover> .nav-link-text {
   color: aqua !important;
 }
 h5{
@@ -49,7 +53,7 @@ h5{
 
 }
 .nav_bg{
-  background-color: #13151b;
+  background-color: rgba(0, 0, 0, 0.7)
 }
 .socials a{
   display:block;
@@ -81,4 +85,20 @@ svg {
 .dropdown-menu{
   padding-top: 0.5em!important;
   padding-bottom: 0.5em!important;
+  width: 100vw;
+  margin: 0;
+  border-radius: 0;
+}
+.border-bottom{
+  border-color: aqua!important;
+}
+.dropdown-menu.show{
+  display: flex;
+  justify-content: space-around;
+}
+.btn-teamselection{
+  border-radius: 0;
+}
+.teamselection-container{
+  background-color: black;
 }

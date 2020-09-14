@@ -11,8 +11,8 @@
   <div class="container d-flex justify-content-center align-items-center welcome_text" >
     <ng-container  *ngFor="let contentobj of contentList$ | async" >
       <div *ngIf="contentobj.id == 1" class="mx-auto p-4 text-light" >
-        <h2 class="d-flex justify-content-center"><strong  [innerHTML]="staticTitle1"></strong></h2>
-        <p  class="d-flex flex-column align-items-center" style=" font-weight: 500;font-size: 1.2em;" [innerHTML]="staticText1"></p>
+        <h2 class="d-flex justify-content-center pb-3"><strong  [innerHTML]="staticTitle1"></strong></h2>
+        <p  class="d-flex flex-column align-items-center text-justify" style=" font-weight: 500;font-size: 1.2em;" [innerHTML]="staticText1"></p>
       </div>
     </ng-container>
 
@@ -45,7 +45,6 @@
             <div class="btn bg-primary text-dark font-weight-bold text-wrap" (click)="open(content)">READ MORE</div>
           </div>
         </div>
-
         <ng-template #content let-modal >
           <div class="modal-header">
             <h1 class="modal-title" id="modal-basic-title">{{contentobj.title}}</h1>
@@ -70,7 +69,7 @@
 
   <div>
     <div class="container-fluid d-flex justify-content-center py-3">
-      <h1 class="text-light">Partner</h1>
+      <h1 class="text-light"><i class="far fa-handshake"></i>  Partner</h1>
     </div>
     <div class="container-fluid justify-content-center pb-3">
       <a href="https://gamertransfer.com/" target="_blank" class="col-3">
