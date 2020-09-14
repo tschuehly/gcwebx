@@ -6,13 +6,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body {
 }
-body {}
+body {
+  background-color: #0c0d11;
+}
 
 .topspace{
   height: 8em;
 }
 .backgroundimg {
-  min-height: 100vh;
+  min-height: 94vh;
   /* Center and scale the image nicely */
   background-attachment: fixed, scroll;
   background-position: center;
@@ -25,5 +27,9 @@ body {}
   border-color: #24f8f3;
 }
 .bg-light{
-  background-color: rgb(204 204 204)!important;
+  background-color: #13151b!important;
+}
+
+.bg-primary{
+  background-color: #00ffff!important;
 }

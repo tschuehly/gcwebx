@@ -14,6 +14,12 @@
   color: white;
   font-weight: lighter;
 }
+
+.navbar{
+  border-top: #0ff!important;
+  border-top-width: 10px!important;
+  border-top-style: solid!important;
+}
 .nav-link >div{
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -43,7 +49,7 @@ h5{
 
 }
 .nav_bg{
-  background-color: rgba(0, 0, 0, 0.6)
+  background-color: #13151b;
 }
 .socials a{
   display:block;
