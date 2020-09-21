@@ -78,7 +78,8 @@
     <div class="position-absolute teamselection-container border-0" display="dynamic" container="body" #teamSelection="ngbDropdown" ngbDropdown ngbDropdownMenu aria-labelledby="dropdownBasic1" (mouseleave)="$event.stopPropagation(); teamSelection.close()">
       <button class="btn btn-teamselection text-light flex-grow-1 border-right" routerLink="esport/rainbowsix"><img height="80px" src="/assets/rainbow_logo.png"></button>
       <button class="btn btn-teamselection text-light flex-grow-1 border-right" routerLink="esport/valorant"><img height="80px" src="/assets/valorant_logo_white.png"></button>
-      <button *ngIf="this.currentRoles && this.currentRoles.roleAdmin" routerLink="esport/teammanagement">Teamverwaltung</button>
+      <button class="btn btn-outline-light m-3" *ngIf="this.currentRoles && this.currentRoles.roleAdmin" routerLink="esport/teammanagement">Teammanagement</button>
+      <button class="btn btn-outline-light m-3" *ngIf="this.currentRoles && (this.currentRoles.roleAdmin || this.currentRoles.roleEditor)"  routerLink="esport/matchmanagement">Matchmanagement</button>
     </div>
   </div>
 </nav>

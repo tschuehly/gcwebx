@@ -9,6 +9,8 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {EditTeamComponent} from '../edit-team/edit-team.component';
 import {FormControl} from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
+import {Match} from '../../model/match';
+import {EditMatchComponent} from '../edit-match/edit-match.component';
 
 @Component({
   selector: 'app-esport',
@@ -19,6 +21,7 @@ import {map, startWith} from 'rxjs/operators';
 export class EsportComponent implements OnInit {
   public team: Team;
   public teams$: Observable<Team[]>;
+  public matches$: Observable<Match[]>;
   public game: FormControl;
   gamefilter$: Observable<string>;
   currentTeam: Team;
@@ -33,6 +36,7 @@ export class EsportComponent implements OnInit {
     this.gamefilter$ = this.game.valueChanges.pipe(startWith(''));
     this.filteredTeams$ = combineLatest([this.teams$, this.route.params]).pipe(map(([teams, gameRoute]) =>
       teams.filter(team => team.game === gameRoute['game'])));
+    this.matches$ = backendService.getMatches();
   }
 
   ngOnInit(): void {
@@ -63,6 +67,18 @@ export class EsportComponent implements OnInit {
     modalRef.componentInstance.team = team;
     modalRef.componentInstance.create = false;
     modalRef.componentInstance.teamUpdated.subscribe((data) => {
+      if (data === true) {window.location.reload(); }
+    });
+  }
+  createMatch(){
+    this.teams$.subscribe( (team) => {
+      console.log(team);
+      modalRef.componentInstance.teams = team;
+    });
+    const modalRef = this.modalService.open(EditMatchComponent, {size: 'xl'});
+    const match: Match = {} as Match;
+    modalRef.componentInstance.match = match;
+    modalRef.componentInstance.matchUpdated.subscribe((data) => {
       if (data === true) {window.location.reload(); }
     });
   }

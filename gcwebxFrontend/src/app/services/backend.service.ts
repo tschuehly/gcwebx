@@ -5,6 +5,7 @@ import {Member} from '../model/member';
 import {User} from '../model/user';
 import {Content} from '../model/content';
 import {Team} from '../model/team';
+import {Match} from '../model/match';
 
 @Injectable({
   providedIn: 'root'
@@ -74,5 +75,13 @@ export class BackendService {
   addMemberToTeam(member: Member, teamId: number): Observable<any>{
     return this.http.post(this.backendUrl + '/addMemberToTeam/' + teamId, member);
   }
-
+  getMatches(): Observable<any>{
+    return this.http.get(this.backendUrl + '/getMatches');
+  }
+  createMatch(match: Match): Observable<any>{
+    return this.http.post(this.backendUrl + '/createMatch', match);
+  }
+  deleteMatch(match: Match): Observable<any>{
+    return this.http.post(this.backendUrl + '/deleteMatch', match);
+  }
 }

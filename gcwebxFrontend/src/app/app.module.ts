@@ -31,6 +31,7 @@ import {SafeHtml} from './services/safe-Html.pipe';
 import { EditTeamComponent } from './components/edit-team/edit-team.component';
 import {NgxWigModule} from 'ngx-wig';
 import { StaticComponent } from './components/static/static.component';
+import { EditMatchComponent } from './components/edit-match/edit-match.component';
 
 export const routerConfig: Routes = [
   {path: 'memberTable', component: MemberTableComponent},
@@ -67,7 +68,8 @@ export const routerConfig: Routes = [
     SafeHtml,
     EsportComponent,
     EditTeamComponent,
-    StaticComponent
+    StaticComponent,
+    EditMatchComponent
   ],
   exports: [MemberTableComponent, HomeComponent],
   imports: [

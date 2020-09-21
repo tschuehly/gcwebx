@@ -7,9 +7,15 @@
   max-height: 300px;
   object-fit: cover;
 
+  border: 0.2rem;
+  border-color: white;
+  border-top: 0;
+  border-bottom: 0;
+  border-style: solid;
+  border-radius: 0;
 }
 .fa-twitter,.fa-youtube{
-  color: aqua;
+  color: #343a40;
 }
 .fa-twitter:hover,.fa-youtube:hover{
   color: white;
@@ -32,9 +38,8 @@
 .card-img-top{
   background-color: black;
 }
-.card-body >h2{
-  color: aqua;
-  font-weight: 300;
+.card-body>h2{
+  font-weight: 500;
 }
 .teamselection{
   background-color: rgba(0,0,0,0.7);
