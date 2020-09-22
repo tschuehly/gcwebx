@@ -157,7 +157,7 @@
       <div class="p-1">
         <span class=" align-middle">
           <h5 class="text-center text-light my-auto">
-          <a class="text-light" routerLink="imprint">Impressum</a> &nbsp; | &nbsp; <a class="text-light" *ngIf="!this.currentRoles" routerLink="login">Login</a>
+          <a class="text-light" routerLink="imprint">Impressum</a><ng-container *ngIf="!this.currentRoles"> &nbsp; | &nbsp; <a class="text-light"  routerLink="login">Login</a></ng-container>
           </h5>
         </span>
       </div>
