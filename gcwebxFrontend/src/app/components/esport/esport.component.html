@@ -24,7 +24,7 @@
 
       <div *ngIf="currentTeam" class="d-flex justify-content-center flex-wrap">
         <table class="table table-dark table-striped">
-          <tr style="border: thick/">
+          <tr>
             <th>Name</th>
             <th>Rolle</th>
             <th>Social Media</th>
@@ -124,18 +124,22 @@
             <tr>
               <th>ID:</th>
               <th>Name</th>
+              <th>Team:</th>
+              <th>Gegner:</th>
               <th>Game</th>
-              <th>Generelle Info</th>
+              <th>Datum:</th>
+              <th>Löschen:</th>
             </tr>
             <tr *ngFor="let match of matches$ | async">
               <td>{{match.id}}</td>
-              <td>
-                <button type="button" class="btn btn-outline-light">
-                  {{match.title}}
-                </button>
-              </td>
-              <td>{{match.team}}</td>
+              <td>{{match.title}}</td>
+              <td>{{match.hometeam.teamName}} </td>
               <td>{{match.opponent}}</td>
+              <td>{{match.hometeam.game}}</td>
+              <td>{{match.date | date :'dd.MM.yy HH:mm'}}</td>
+              <td><div class="btn" (click)="deleteMatch(match)">
+                <i class="text-light fa fa-trash"></i>
+              </div></td>
             </tr>
           </table>
         </div>

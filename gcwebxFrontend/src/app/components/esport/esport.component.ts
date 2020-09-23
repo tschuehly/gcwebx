@@ -82,6 +82,11 @@ export class EsportComponent implements OnInit {
       if (data === true) {window.location.reload(); }
     });
   }
+  deleteMatch(match: Match){
+    this.backendService.deleteMatch(match).subscribe( (data) => {
+      if (data === true){window.location.reload(); }
+    });
+  }
 
 }
 

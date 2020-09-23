@@ -34,8 +34,27 @@
       <div class="container-fluid d-flex pt-3">
         <h1>LATEST NEWS</h1>
       </div>
+      <div class="container-fluid row d-flex justify-content-around my-3">
+        <ng-container *ngFor="let match of matches$ | async ; let i=index">
+          <div *ngIf="i<2" class="matchtile m-2 col-12 col-lg-5 p-2 text-center">
+            <h2>{{match.title}}</h2>
+            <div class="d-flex justify-content-around my-4">
+              <img src="https://i.imgur.com/D5mrccA.png" height="60px">
+              <h1 >{{match.scoreHome}} - {{match.scoreOpponent}}</h1>
+              <img src="{{match.opponentLogo}}" height="60px">
+            </div>
+            <div>
+              <h4>{{match.date | date :'dd.MM.yy HH:mm'}}</h4>
+            </div>
+
+          </div>
+
+        </ng-container>
+      </div>
+
+
       <ng-container  *ngFor="let contentobj of newsList$ | async ; let i=index">
-        <div *ngIf="contentobj.news && i<2"  class="container-fluid text-center news_object">
+        <div *ngIf="contentobj.news && i<2"  class="container-fluid text-center news_object mt-5">
           <a class="news_title mr-2 col-3" routerLink="">
             <h2 class="m-0">{{contentobj.title}}</h2>
           </a>

@@ -14,6 +14,7 @@ import {BackendService} from '../../services/backend.service';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 declare let html2canvas: any;
 import {map} from 'rxjs/operators';
+import {Match} from '../../model/match';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -36,8 +37,10 @@ export class HomeComponent implements OnInit {
   closeResult = '';
   index: number;
   staticText1: SafeHtml;
+  matches$: Observable<Match[]>;
 
-  constructor(config: NgbCarouselConfig, private backendService: BackendService, private sanitizer: DomSanitizer, private modalService: NgbModal) {
+  constructor(config: NgbCarouselConfig, private backendService: BackendService,
+              private sanitizer: DomSanitizer, private modalService: NgbModal) {
     config.interval = 20000;
     config.wrap = true;
     config.pauseOnHover = false;
@@ -56,6 +59,7 @@ export class HomeComponent implements OnInit {
       this.sortNewsArray();
 
     });
+    this.matches$ = this.backendService.getMatches();
 
   }
 
