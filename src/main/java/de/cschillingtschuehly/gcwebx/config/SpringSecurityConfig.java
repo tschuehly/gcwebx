@@ -76,7 +76,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers( "/login").permitAll()
                 .antMatchers( "/h2-console/**").permitAll()
                 //.antMatchers( "/getMembers").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")//hasAnyRole("ADMIN", "USER")
-                .antMatchers( "/api/getMembers","/api/updateMember","/api/createMember","/api/deleteMember").hasAnyRole("ADMIN", "MODERATOR","SUPPORT")
+                .antMatchers( "/api/getMembers","/api/updateMember","/api/createMember","/api/deleteMember","/api/deleteMatch").hasAnyRole("ADMIN", "MODERATOR","SUPPORT")
                 .antMatchers( "/api/getUsers","/api/updateUser","/api/createUser","/api/deleteUser").hasAnyRole("ADMIN")
                 .antMatchers( "/api/admin").hasRole("ADMIN")
                 //.anyRequest().authenticated()

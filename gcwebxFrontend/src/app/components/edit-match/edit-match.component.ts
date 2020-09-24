@@ -23,10 +23,10 @@ export class EditMatchComponent implements OnInit {
 
   ngOnInit(): void {
     this.EditForm = new FormGroup({
-      id: new FormControl(null, [Validators.required]),
-      date: new FormControl(),
+      id: new FormControl(null),
+      date: new FormControl(this.match.date, Validators.required),
       hometeam: new FormControl(),
-      title: new FormControl(),
+      title: new FormControl(this.match.title, Validators.required),
       opponent: new FormControl(),
       opponentLogo: new FormControl(),
       scoreHome: new FormControl(0),
@@ -37,8 +37,10 @@ export class EditMatchComponent implements OnInit {
 
   createMatch(){
     console.log(this.EditForm.value);
+
     this.match = (this.EditForm.value as Match);
     console.log(this.match);
+
     this.backendService.createMatch(this.match).subscribe( data => {
       console.log(data);
       this.matchUpdated.emit(true);

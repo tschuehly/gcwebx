@@ -13,6 +13,7 @@ public class MatchService {
     @Autowired
     MatchRepository matchRepository;
     public Match createMatch(Match pMatch){
+        System.out.println(pMatch);
         Match match = matchRepository.save(pMatch);
         return match;
     }

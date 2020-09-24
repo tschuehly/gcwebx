@@ -16,9 +16,11 @@ spring:
       ddl-auto: create
     console:
       enabled: true
-logging:
-  level:
-    org.springframework.security: DEBUG
+
+spring.jackson.time-zone: Europe/Berlin
+#logging:
+ # level:
+  #  org.springframework.security: DEBUG
 ---
 spring:
   profiles: production
