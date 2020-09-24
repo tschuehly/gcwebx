@@ -33,3 +33,7 @@ body {
 .bg-primary{
   background-color: #00ffff!important;
 }
+
+.text-primary{
+  color: cyan!important;
+}

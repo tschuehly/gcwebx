@@ -68,3 +68,7 @@
   border-top-style: solid!important;
 
 }
+.matchtile_logo{
+  max-height: 60px;
+  object-fit: contain;
+}

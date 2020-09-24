@@ -41,18 +41,45 @@
             </tr>
           </ng-container>
         </table>
+        <div class="text-center container-fluid">
+          <h1 class="text-primary">LATEST MATCHES</h1>
+
+          <ng-container *ngFor="let match of matches$ | async" >
+            <div  *ngIf="match.hometeam.teamId == currentTeam.teamId">
+              <div class=" match_container text-light row py-3 my-5">
+                <div class="col-6  align-items-center">
+                  <div class="row align-items-center">
+                    <div class="col-4">
+                      <img class="matchtile_logo" src="https://i.imgur.com/D5mrccA.png">
+                      <h6 class="pt-4" >{{match.hometeam.teamName}}</h6>
+                    </div>
+                    <div class="col-4">
+                      <h3>{{match.scoreHome}} - {{match.scoreOpponent}}</h3>
+                    </div>
+                    <div class="col-4">
+                      <img *ngIf="match.opponentLogo == null" class="matchtile_logo" src="/assets/r6logo.png">
+                      <img *ngIf="match.opponentLogo !=  null" class="matchtile_logo" src="{{match.opponentLogo}}">
+                      <h6 class="pt-4" >{{match.opponent}}</h6>
+                    </div>
+
+                  </div>
+                </div>
+
+
+
+                <div class="col-6 align-self-center">
+                  <h4>{{match.title}}</h4>
+                  <h4>{{match.date | date :'dd.MM.yy HH:mm'}}</h4>
+                </div>
+              </div>
+            </div>
+
+
+          </ng-container>
+        </div>
       </div>
 
-      <div>
-        <h1 class="text-primary">LATEST MATCHES</h1>
-        <ng-container *ngFor="let match of matches$ | async" >
-          <div  *ngIf="match.hometeam.teamId == currentTeam.teamId">
-            <h2>{{match.title}}</h2>
-          </div>
 
-
-        </ng-container>
-      </div>
     </div>
 
     <div *ngIf="game.value == 'teammanagement'" class="m-auto text-center ">
