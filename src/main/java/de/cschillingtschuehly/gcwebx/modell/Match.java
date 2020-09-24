@@ -16,7 +16,7 @@ public class Match {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Date date;
+    private LocalDateTime date;
     @OneToOne
     private Team hometeam;
     private String title;

@@ -1,13 +1,7 @@
 package de.cschillingtschuehly.gcwebx;
 
-import de.cschillingtschuehly.gcwebx.modell.Content;
-import de.cschillingtschuehly.gcwebx.modell.Member;
-import de.cschillingtschuehly.gcwebx.modell.Team;
-import de.cschillingtschuehly.gcwebx.modell.WebsiteUser;
-import de.cschillingtschuehly.gcwebx.repositories.ContentRepository;
-import de.cschillingtschuehly.gcwebx.repositories.MemberRepository;
-import de.cschillingtschuehly.gcwebx.repositories.TeamRepository;
-import de.cschillingtschuehly.gcwebx.repositories.UserRepository;
+import de.cschillingtschuehly.gcwebx.modell.*;
+import de.cschillingtschuehly.gcwebx.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -28,6 +22,8 @@ public class GcwebxApplication implements CommandLineRunner{
 	@Autowired
 	private ContentRepository contentRepository;
 	@Autowired
+	private MatchRepository matchRepository;
+	@Autowired
 	private
 	TeamRepository teamRepository;
 	public static void main(String[] args) {
@@ -37,6 +33,9 @@ public class GcwebxApplication implements CommandLineRunner{
 	public void run(String... args){
 		userRepository.deleteAll();
 		contentRepository.deleteAll();
+		matchRepository.deleteAll();
+
+
 
 		contentRepository.save(new Content(1, "Willkommen bei Xperience Gaming", "<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>", false, LocalDateTime.parse("2020-07-02T10:51:48.283"),  LocalDateTime.parse("2020-07-09T11:55:56.135")));
 		contentRepository.save(new Content(2, "Aufstieg für Silentpeak ", "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.", true, LocalDateTime.parse("2020-07-02T10:53:48.283"),  LocalDateTime.parse("2020-07-02T11:46:56.135")));
@@ -96,8 +95,15 @@ public class GcwebxApplication implements CommandLineRunner{
 		memberRepository.findById(210L).ifPresent(member -> members.add(member));
 		teamRepository.save(new Team(3L,"xp.exe","valorant","",members));
 		/*System.out.println(teamRepository.findAll());*/
+		System.out.println(teamRepository.findAll());
 
+		teamRepository.findById(6L).ifPresent(team ->matchRepository.save(new Match(1,LocalDateTime.parse("2020-09-24T20:44:37.283"),team,"DESBL Advanced League #1","eWave","https://www.sponsoo.de/uploads/profile-images/logo/ewaveesports-ae0c1d.png",2,0)));
+		teamRepository.findById(6L).ifPresent(team ->matchRepository.save(new Match(2,LocalDateTime.parse("2020-09-24T20:44:37.283"),team,"DESBL Advanced League #1","eWave","https://www.sponsoo.de/uploads/profile-images/logo/ewaveesports-ae0c1d.png",2,0)));
+		teamRepository.findById(6L).ifPresent(team ->matchRepository.save(new Match(3,LocalDateTime.parse("2020-09-24T20:44:37.283"),team,"DESBL Advanced League #1","eWave","https://www.sponsoo.de/uploads/profile-images/logo/ewaveesports-ae0c1d.png",2,0)));
 
+		teamRepository.findById(7L).ifPresent(team -> matchRepository.save(new Match(4,LocalDateTime.parse("2020-09-23T10:44:37.283"),team,"Ascenion League Div 2","eWave",null,2,0)));
+		teamRepository.findById(7L).ifPresent(team -> matchRepository.save(new Match(5,LocalDateTime.parse("2020-09-23T10:44:37.283"),team,"Ascenion League Div 2","eWave",null,2,0)));
+		teamRepository.findById(7L).ifPresent(team -> matchRepository.save(new Match(6,LocalDateTime.parse("2020-09-23T10:44:37.283"),team,"Ascenion League Div 2","eWave",null,2,0)));
 
 	}
 
