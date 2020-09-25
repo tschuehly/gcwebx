@@ -37,21 +37,24 @@
       <div class="container-fluid row d-flex justify-content-around my-3">
         <ng-container *ngFor="let match of matches$ | async ; let i=index">
           <div *ngIf="i<2" class="matchtile m-2 col-12 col-lg-5 p-2 text-center">
-            <h2>{{match.title}}</h2>
+            <h3 class="my-2">{{match.title}}</h3>
             <div class="d-flex justify-content-around mt-4 mb-2 row-cols-3">
-              <img class="col-4 matchtile_logo" src="https://i.imgur.com/D5mrccA.png">
-              <h1 class="col-4">{{match.scoreHome}} - {{match.scoreOpponent}}</h1>
-              <img *ngIf="match.opponentLogo == null" class="col-4 matchtile_logo" src="/assets/r6logo.png">
+              <div class="col-4">
+                <img class="matchtile_logo" src="https://i.imgur.com/D5mrccA.png">
+                <h6 class="">{{match.hometeam.teamName}}</h6>
+              </div>
+              <div class="col-4">
+                <h1 class=" m-0">{{match.scoreHome}} - {{match.scoreOpponent}}</h1>
+              </div>
+              <div class="col-4">
+                <img *ngIf="match.opponentLogo == null" class="matchtile_logo" src="/assets/r6logo.png">
+                <img *ngIf="match.opponentLogo !=  null" class="matchtile_logo" src="{{match.opponentLogo}}">
+                <h6 class="">{{match.opponent}}</h6>
+              </div>
 
-              <img *ngIf="match.opponentLogo !=  null" class="col-4 matchtile_logo" src="{{match.opponentLogo}}">
-            </div>
-            <div class="row d-flex justify-content-around">
-              <h6 class="col-4">{{match.hometeam.teamName}}</h6>
-              <span class="col-2"></span>
-              <h6 class="col-4">{{match.opponent}}</h6>
-            </div>
+              </div>
             <div>
-              <h4>{{match.date | date :'dd.MM.yy HH:mm'}}</h4>
+              <h5>{{match.date | date :'dd.MM.yy HH:mm'}}</h5>
             </div>
 
           </div>

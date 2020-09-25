@@ -37,8 +37,7 @@
 
 
       <div class="bg-light">
-
-        <p-editor formControlName="text" [style]="{'height':'320px'}"></p-editor>
+        <ngx-wig  formControlName="text"></ngx-wig>
 
         <button type="button" class="btn btn-dark m-1" (click)="updateContent()">Update</button>
         <button *ngIf="showNews"  type="button m-1" class="btn btn-dark" (click)="deleteContent()">Delete</button>

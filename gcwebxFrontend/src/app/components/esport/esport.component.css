@@ -42,9 +42,15 @@
   font-weight: 500;
 }
 .teamselection{
-  background-color: rgba(0,0,0,0.7);
+  background-color: #13151b;
+  border-top: 0.3rem solid cyan;
+  border-radius: 0.3rem;
 }
-
+.teamselector{
+  border-top: 0.1rem solid cyan;
+  border-radius: 0px;
+  padding: 1rem;
+}
 
 @media (min-width: 1200px){
   .container{
@@ -66,5 +72,19 @@
 .matchtile_logo{
   max-height: 60px;
   object-fit: contain;
+  max-width: 100%;
+}
+.dropdown-menu.show {
+  display: contents;
+}
+.dropdown-menu.show  a:first-child {
+  margin-top: 1rem;
+}
+.dropdown-menu{
+  padding-top: 0.5em!important;
+  padding-bottom: 0.5em!important;
+  width: 100vw;
+  margin: 0;
+  border-radius: 0;
   max-width: 100%;
 }

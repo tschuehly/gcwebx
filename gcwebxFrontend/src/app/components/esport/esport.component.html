@@ -6,15 +6,15 @@
          class="container-fluid p-2 mt-4 teamselection d-flex flex-column justify-content-end text-light">
       <div class="row">
         <div class="col justify-content-end d-flex">
-          <div ngbDropdown class="d-inline-block btn text-light">
-              <a class="h1" ngbDropdownToggle id="dropdownTeams">{{currentTeam.teamName | uppercase}}</a>
+          <div ngbDropdown class="d-inline-block btn text-light w-100">
+              <a class="h1 mb-2" ngbDropdownToggle id="dropdownTeams">{{currentTeam.teamName | uppercase}}</a>
 
              <div ngbDropdownMenu aria-labelledby="dropdownTeams">
 
               <ng-container *ngFor="let team of filteredTeams$ | async">
-                <button class="btn-dark" ngbDropdownItem>
-                  <a class="" (click)="currentTeam = team"><h5 class="text-dark m-0">{{team.teamName}}</h5></a>
-                </button>
+                  <a ngbDropdownItem class="btn text-center teamselector" (click)="currentTeam = team">
+                    <h5 class="text-light m-0">{{team.teamName}}</h5>
+                  </a>
               </ng-container>
             </div>
           </div>

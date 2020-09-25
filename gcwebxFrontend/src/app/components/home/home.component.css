@@ -71,4 +71,7 @@
 .matchtile_logo{
   max-height: 60px;
   object-fit: contain;
+  height: 60px;
+  margin-bottom: 1rem;
+  max-width: 100%;
 }
