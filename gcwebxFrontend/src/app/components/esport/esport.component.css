@@ -98,7 +98,9 @@
   border-top-style: hidden;
 
 }
-
+.dropdown-toggle{
+  cursor: pointer;
+}
 .table tr{
   border-color: cyan;
 }
@@ -107,6 +109,9 @@
   vertical-align: inherit;
   border-top: 2px solid cyan;
 }
+.dropdown-item {
+   color: white!important;
+ }
 
 .dropdown-item:focus, .dropdown-item:hover {
   color: black!important;

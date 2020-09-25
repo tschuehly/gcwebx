@@ -44,6 +44,8 @@
   font-size: 1.3em;
   font-weight: 400!important;
   text-align: justify;
+  border-radius: 15px;
+  background-color: #13151b ;
 }
 .matchtile{
   background-color: #13151b ;
@@ -66,7 +68,6 @@
   border-top: #0ff!important;
   border-top-width: 1px!important;
   border-top-style: solid!important;
-
 }
 .matchtile_logo{
   max-height: 60px;

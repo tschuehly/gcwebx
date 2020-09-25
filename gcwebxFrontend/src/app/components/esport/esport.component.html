@@ -6,14 +6,19 @@
          class="container-fluid mt-4 teamselection d-flex flex-column justify-content-end text-light">
       <div class="row">
         <div class="col justify-content-end d-flex">
-          <div ngbDropdown class="d-inline-block btn text-light w-100 pb-0">
-              <a class="h1 mb-2" ngbDropdownToggle id="dropdownTeams">{{currentTeam.teamName | uppercase}}</a>
+          <div ngbDropdown class="d-inline-block text-light w-100 py-3">
+            <div class="d-flex justify-content-between">
+              <img *ngIf="currentTeam.game == 'rainbowsix'" height="80px" src="/assets/rainbow_logo.png">
+              <img *ngIf="currentTeam.game == 'valorant'" height="80px" src="/assets/valorant_logo_white.png">
+              <a class="h1 mb-0 align-self-center" ngbDropdownToggle id="dropdownTeams">{{currentTeam.teamName}}</a>
+            </div>
+
 
              <div ngbDropdownMenu aria-labelledby="dropdownTeams">
 
               <ng-container *ngFor="let team of filteredTeams$ | async">
                   <a ngbDropdownItem class="btn text-center teamselector" (click)="currentTeam = team">
-                    <h5 class="text-light m-0">{{team.teamName}}</h5>
+                    <h5 class="m-0">{{team.teamName}}</h5>
                   </a>
               </ng-container>
             </div>

@@ -31,17 +31,18 @@ import { EditTeamComponent } from './components/edit-team/edit-team.component';
 import {NgxWigModule} from 'ngx-wig';
 import { StaticComponent } from './components/static/static.component';
 import { EditMatchComponent } from './components/edit-match/edit-match.component';
+import {AuthGuard} from './services/auth.guard';
 
 export const routerConfig: Routes = [
   {path: 'memberTable', component: MemberTableComponent},
   {path: 'home', component: HomeComponent},
   {path: 'teamspeak', component: TeamspeakComponent},
   {path: 'login', component: LoginFormComponent},
-  {path: 'edit', component: EditorComponent},
-  {path: '', pathMatch: 'full', component: HomeComponent},
-  {path : 'userTable', pathMatch: 'full', component: UserTableComponent},
+  {path: 'edit', component: EditorComponent, canActivate: [AuthGuard]},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path : 'userTable', component: UserTableComponent, canActivate: [AuthGuard]},
   {path : 'esport/:game',  component: EsportComponent},
-  {path : 'news', pathMatch: 'full', component: NewsComponent},
+  {path : 'news', component: NewsComponent},
   {path : 'imprint', component: StaticComponent},
   {path : 'logo', component: StaticComponent}
 ];
@@ -89,7 +90,7 @@ export const routerConfig: Routes = [
       headerName: 'X-XSRF-TOKEN'
     })
   ],
-  providers: [AuthenticationService,
+  providers: [AuthenticationService, AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthIntercept, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpXsrfInterceptor, multi: true }

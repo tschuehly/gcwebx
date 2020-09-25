@@ -39,12 +39,7 @@ export class NavigationComponent implements OnInit {
   ngOnInit(): void {
     this.authenticationService.getRole();
     this.date = new Date();
-    // this.active_page = window.location.pathname;
   }
-
-  // ngOnChanges(changes: SimpleChanges) {
-  //   this.active_page = window.location.pathname;
-  // }
 
   logout(){
     this.authenticationService.logout();
@@ -56,20 +51,4 @@ export class NavigationComponent implements OnInit {
     setTimeout(() => window.open('ts3server://xperience'), 1000);
     setTimeout(() => this.showTsToast = false, 8000);
   }
-  /*
-
-  @HostListener("window:scroll",[])
-  onWindowScroll(){
-    const number = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    if (number > 20) {
-      document.querySelectorAll('.navbar').forEach((nav) => {
-        nav.classList.remove('bg-transparent');
-        nav.classList.add('nav_bg');
-      })
-    } else if (number < 20) {
-      document.querySelectorAll('.navbar').forEach((nav) => {
-        nav.classList.add('bg-transparent');
-        nav.classList.remove('nav_bg');
-      })}
-  }*/
 }

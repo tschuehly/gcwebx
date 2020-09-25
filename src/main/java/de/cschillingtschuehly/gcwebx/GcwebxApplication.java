@@ -94,8 +94,6 @@ public class GcwebxApplication implements CommandLineRunner{
 		memberRepository.findById(209L).ifPresent(member -> members.add(member));
 		memberRepository.findById(210L).ifPresent(member -> members.add(member));
 		teamRepository.save(new Team(3L,"xp.exe","valorant","",members));
-		/*System.out.println(teamRepository.findAll());*/
-		System.out.println(teamRepository.findAll());
 
 		teamRepository.findById(6L).ifPresent(team ->matchRepository.save(new Match(1,LocalDateTime.parse("2020-09-24T20:44:37.283"),team,"DESBL Advanced League #1","eWave","https://www.sponsoo.de/uploads/profile-images/logo/ewaveesports-ae0c1d.png",2,0)));
 		teamRepository.findById(6L).ifPresent(team ->matchRepository.save(new Match(2,LocalDateTime.parse("2020-09-24T20:44:37.283"),team,"DESBL Advanced League #1","eWave","https://www.sponsoo.de/uploads/profile-images/logo/ewaveesports-ae0c1d.png",2,0)));

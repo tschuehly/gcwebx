@@ -34,7 +34,7 @@
       <div class="container-fluid d-flex pt-3">
         <h1>LATEST MATCHES</h1>
       </div>
-      <div class="container-fluid row d-flex justify-content-around my-3">
+      <div class="container-fluid row d-flex justify-content-around my-3 mx-0">
         <ng-container *ngFor="let match of matches$ | async ; let i=index">
           <div *ngIf="i<2" class="matchtile m-2 col-12 col-lg-5 p-2 text-center">
             <h3 class="my-2">{{match.title}}</h3>
@@ -64,34 +64,18 @@
 
 
       <ng-container  *ngFor="let contentobj of newsList$ | async ; let i=index">
-        <div *ngIf="contentobj.news && i<2"  class="container-fluid text-center news_object mt-5">
-          <a class="news_title mr-2 col-3" routerLink="">
-            <h2 class="m-0">{{contentobj.title}}</h2>
-          </a>
+        <div *ngIf="contentobj.news && i<2"  class=" news_object container-fluid text-center mt-5">
 
-          <div class="news_preview align-self-center ml-2 font-weight-bolder" [innerHTML]="contentobj.text"></div>
+
+            <h2 class="m-0 news_title py-4">{{contentobj.title}}</h2>
+
+          <div class="news_preview align-self-center ml-2 font-weight-bolder p-4" [innerHTML]="contentobj.text">
+
+          </div>
           <div  class="py-4 d-flex justify-content-end">
-            <div class="btn bg-primary text-dark font-weight-bold text-wrap" (click)="open(content)">READ MORE</div>
+            <div class="btn bg-primary text-dark font-weight-bold text-wrap" routerLink="/news">READ MORE</div>
           </div>
         </div>
-        <ng-template #content let-modal >
-          <div class="modal-header">
-            <h1 class="modal-title" id="modal-basic-title">{{contentobj.title}}</h1>
-            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form>
-
-              <div [innerHTML]="contentobj.text "></div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-dark" (click)="closeModal()">Close</button>
-          </div>
-
-        </ng-template>
       </ng-container>
     </div>
   </div>
