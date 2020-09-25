@@ -14,7 +14,6 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import {RouterModule, Routes} from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { TeamspeakComponent } from './components/teamspeak/teamspeak.component';
-import {EditorModule} from 'primeng/editor';
 import {XhrInterceptor} from './services/interceptor.service';
 import {BasicAuthIntercept} from './services/interceptor.service';
 import {HttpXsrfInterceptor} from './services/interceptor.service';
@@ -84,7 +83,6 @@ export const routerConfig: Routes = [
     NoopAnimationsModule,
     ScrollingModule,
     RouterModule,
-    EditorModule,
     NgxWigModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'XSRF-TOKEN',

@@ -34,9 +34,6 @@
     "html2canvas": "^1.0.0-rc.5",
     "ngx-virtual-scroller": "^4.0.3",
     "ngx-wig": "^10.0.1",
-    "od-virtualscroll": "^1.1.0",
-    "primeicons": "^4.0.0-rc.2",
-    "primeng": "^9.1.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

@@ -3,10 +3,10 @@
 
   <div *ngIf="game.value != 'teammanagement'" class="container m-auto mt-5 ">
     <div *ngIf="currentTeam"
-         class="container-fluid p-2 mt-4 teamselection d-flex flex-column justify-content-end text-light">
+         class="container-fluid mt-4 teamselection d-flex flex-column justify-content-end text-light">
       <div class="row">
         <div class="col justify-content-end d-flex">
-          <div ngbDropdown class="d-inline-block btn text-light w-100">
+          <div ngbDropdown class="d-inline-block btn text-light w-100 pb-0">
               <a class="h1 mb-2" ngbDropdownToggle id="dropdownTeams">{{currentTeam.teamName | uppercase}}</a>
 
              <div ngbDropdownMenu aria-labelledby="dropdownTeams">

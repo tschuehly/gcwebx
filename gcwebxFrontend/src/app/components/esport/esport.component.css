@@ -88,3 +88,27 @@
   border-radius: 0;
   max-width: 100%;
 }
+
+.table{
+  background-color: #13151b;
+  color: white;
+  border-radius: 10px;
+}
+.table tr:first-child{
+  border-top-style: hidden;
+
+}
+
+.table tr{
+  border-color: cyan;
+}
+.table td, .table th {
+  padding: .75rem;
+  vertical-align: inherit;
+  border-top: 2px solid cyan;
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+  color: black!important;
+  background-color: cyan;
+}
