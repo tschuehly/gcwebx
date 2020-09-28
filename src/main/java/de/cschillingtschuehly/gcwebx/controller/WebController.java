@@ -29,14 +29,11 @@ public class WebController {
     }
     @PutMapping(value="/api/updateMember",produces = {"application/json"})
     public ResponseEntity editMember(@RequestBody Member member) throws JsonProcessingException {
-        System.out.println(member);
-
         String updatedMember = memberService.updateMember(member);
         return ResponseEntity.ok().body(updatedMember);
     }
     @PostMapping(value="/api/createMember",produces = {"application/json"})
     public ResponseEntity createMember(@RequestBody Member member) throws JsonProcessingException {
-        System.out.println(member);
         String createdMember = memberService.createMember(member);
         return ResponseEntity.ok().body(createdMember);
     }

@@ -31,7 +31,7 @@
             <div class="nav-link-text" [ngClass]="currentRoute == '/teamspeak' ? 'active-page' : 'not-active'">Teamspeak</div>
           </a>
         </li>
-        <li ngbNavItem class="my-auto p-0">
+        <li ngbNavItem class="my-auto p-0" *ngIf="this.currentRoles  && (this.currentRoles.roleAdmin || this.currentRoles.roleModerator || this.currentRoles.roleSupport)">
           <a ngbNavLink routerLink="news">
             <div class="nav-link-text" [ngClass]="currentRoute == '/news' ? 'active-page' : 'not-active'">News</div>
           </a>

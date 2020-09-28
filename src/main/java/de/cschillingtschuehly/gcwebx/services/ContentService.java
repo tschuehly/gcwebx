@@ -32,7 +32,6 @@ public class ContentService {
 
     public List<Content> getContent(){
         List<Content> contentList = contentRepository.findAll();
-        System.out.println(contentList);
         return contentList;
     }
 
@@ -44,12 +43,10 @@ public class ContentService {
     public Content createContent(Content content) throws JsonProcessingException {
         contentRepository.save(content);
         Content savedcontent = contentRepository.findById(content.getId()).get();
-        System.out.println(savedcontent.toString());
         return savedcontent;
     }
     public void deleteContent(Integer contentId){
         contentRepository.deleteById(contentId);
-        System.out.println("deleted element" + contentId);
 
     }
 

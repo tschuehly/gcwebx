@@ -44,8 +44,11 @@
   font-size: 1.3em;
   font-weight: 400!important;
   text-align: justify;
-  border-radius: 15px;
+  border-radius: 4px;
   background-color: #13151b ;
+  border-bottom: #0ff!important;
+  border-bottom-width: 4px!important;
+  border-bottom-style: solid!important;
 }
 .matchtile{
   background-color: #13151b ;

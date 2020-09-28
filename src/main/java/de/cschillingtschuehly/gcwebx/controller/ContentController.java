@@ -23,26 +23,21 @@ public class ContentController {
     @PostMapping(value = "/api/getContentByID",produces = {"application/json"})
     public ResponseEntity getContentById(@RequestBody Integer id){
         Content content = contentService.getContentById(id);
-        System.out.println(content);
         return ResponseEntity.ok().body(content);
     }
 
     @GetMapping(value = "/api/getContent",produces = {"application/json"})
     public ResponseEntity getContent(){
         List<Content> contentList = contentService.getContent();
-        System.out.println(contentList);
         return ResponseEntity.ok().body(contentList);
     }
     @PutMapping(value="/api/updateContent",produces = {"application/json"})
     public ResponseEntity editContent(@RequestBody Content content) throws JsonProcessingException {
-        System.out.println(content);
         Content updatedContent = contentService.updateContent(content);
-        System.out.println(updatedContent);
         return ResponseEntity.ok().body(updatedContent);
     }
     @PostMapping(value="/api/createContent",produces = {"application/json"})
     public ResponseEntity createContent(@RequestBody Content content) throws JsonProcessingException {
-        System.out.println(content);
         Content createdContent = contentService.createContent(content);
         return ResponseEntity.ok().body(createdContent);
     }

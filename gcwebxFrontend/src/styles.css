@@ -7,7 +7,9 @@ body { margin: 0; font-family:  code_boldregular, Roboto, "Helvetica Neue", sans
 html, body {
 }
 body {
-  background-color: #0c0d11;
+  background-image: url("/assets/webb.png");
+  background-blend-mode: color-burn;
+  background-color: #0c0d11  ;
 }
 
 .topspace{
@@ -16,10 +18,6 @@ body {
 .backgroundimg {
   min-height: 94vh;
   /* Center and scale the image nicely */
-  background-attachment: fixed, scroll;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .btn-info{
@@ -36,4 +34,21 @@ body {
 
 .text-primary{
   color: cyan!important;
+}
+::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+  width: 8px;
+  height: 8px;
+  background: transparent url('src/assets/transparent.png');
+}
+
+::-webkit-scrollbar-thumb
+{
+  background-color: #000000;
 }

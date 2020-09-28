@@ -51,11 +51,8 @@ public class TeamService {
         ObjectMapper jacksonMapper = mapperService.jacksonMapper();
         Mapper dozerMapper = mapperService.dozerMapper();
         Member member = memberRepository.findById(pmember.getMemberId()).get();
-        System.out.println("Member: "+ member);
         Team team = teamRepository.findById(teamId).get();
-        System.out.println("Team1: "+ team);
         team.addMember(member);
-        System.out.println("Team2: "+ team);
         teamRepository.save(team);
         return jacksonMapper.writeValueAsString(team);
     }

@@ -17,14 +17,12 @@ public class MatchController {
 
     @PostMapping(value = "/api/createMatch",produces = {"application/json"})
     public ResponseEntity createMatch(@RequestBody Match match){
-        System.out.println(match);
         Match createdMatch = matchService.createMatch(match);
         return ResponseEntity.ok().body(createdMatch);
     }
     @GetMapping(value = "/api/getMatches",produces = {"application/json"})
     public ResponseEntity getMatches(){
         List<Match> contentList = matchService.getMatches();
-        System.out.println(contentList);
         return ResponseEntity.ok().body(contentList);
     }
 }
