@@ -77,7 +77,7 @@ public class GcwebxApplication implements CommandLineRunner{
 		memberRepository.findById(215L).ifPresent(member -> members.add(member));
 		memberRepository.findById(216L).ifPresent(member -> members.add(member));
 		memberRepository.findById(217L).ifPresent(member -> members.add(member));
-		teamRepository.save(new Team(2L,"Silentpeak","rainbowsix","Das Team spielt in der DESBL Advanced League",members));
+		teamRepository.save(new Team(2L,"Silentpeak","rainbowsix","Das Team Silentpeak spielt in der DESBL Advanced League",members));
 		members.clear();
 
 		memberRepository.findById(201L).ifPresent(member -> members.add(member));

@@ -1,7 +1,7 @@
 .logocontainer{
   position: relative;
   display: inline-block;
-  background-image: url("https://i.imgur.com/GYW5mo3.png");
+  background-image: url(/assets/xp_logo.png);
   width: 500px;
   height: 500px;
   min-width: 500px;

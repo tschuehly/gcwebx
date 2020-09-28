@@ -11,14 +11,14 @@
   <div class="container d-flex justify-content-center align-items-center welcome_text" >
     <ng-container  *ngFor="let contentobj of contentList$ | async" >
       <div *ngIf="contentobj.id == 1" class="mx-auto p-4 text-light" >
-        <h2 class="d-flex justify-content-center pb-3"><strong  [innerHTML]="staticTitle1"></strong></h2>
+        <h2 class="d-flex justify-content-center pb-3 text-center"><strong  [innerHTML]="staticTitle1"></strong></h2>
         <p  class="d-flex flex-column align-items-center text-justify" style=" font-weight: 500;font-size: 1.2em;" [innerHTML]="staticText1"></p>
       </div>
     </ng-container>
 
   </div>
   <div class="container  text-light">
-    <h1 class="pt-3 m-0">CURRENT TEAMS</h1>
+    <h1 class="pt-3 m-0 text-center">CURRENT TEAMS</h1>
     <div class="row flex-wrap d-flex justify-content-around games_container" >
       <div class="col-10 col-md-6 rainbow py-3">
         <a routerLink="/esport/rainbowsix"><img src="/assets/rainbow_six_main.png"></a>
@@ -31,7 +31,7 @@
 
   <div class="news d-flex align-items-center">
     <div class="container py-5 px-0 text-light">
-      <div class="container-fluid d-flex pt-3">
+      <div class="container-fluid d-flex pt-3 justify-content-center">
         <h1>LATEST MATCHES</h1>
       </div>
       <div class="container-fluid row d-flex justify-content-around my-3 mx-0">
@@ -82,14 +82,14 @@
 
   <div>
     <div class="container-fluid d-flex justify-content-center py-3">
-      <h1 class="text-light"><i class="far fa-handshake"></i>  Partner</h1>
+      <h1 class="text-light mb-0"><i class="far fa-handshake"></i>  Partner</h1>
     </div>
-    <div class="container pb-3">
-      <a href="https://gamertransfer.com/" target="_blank" class="col-3">
-        <img src="assets/gamertransfer-logo-transparent-w.png" style="max-width: 25%;height: auto;">
+    <div class="container-fluid row d-flex justify-content-center mx-0">
+      <a href="https://gamertransfer.com/" target="_blank" class="mb-3 col-12 col-md-5 d-flex">
+        <img class="mx-auto partner_img" src="assets/gamertransfer-logo-transparent-w.png">
       </a>
-      <a href="https://www.ammerseedatenrettung.de/" target="_blank" class="col-3">
-        <img src="assets/ammerseedatenrettung.png" style="max-width: 25%;height: auto;">
+      <a href="https://www.ammerseedatenrettung.de/" target="_blank" class="mb-3 col-12 col-md-5 d-flex">
+        <img class="mx-auto partner_img" src="assets/ammerseedatenrettung.png">
       </a>
 
     </div>
