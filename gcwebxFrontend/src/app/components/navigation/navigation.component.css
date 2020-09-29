@@ -1,6 +1,6 @@
 .nav a{
   font-size: 1.2em;
-  padding: 1em;
+  padding: 0.5em;
   padding-bottom: 0.7em;
   padding-top: 0.7em;
 }
@@ -18,10 +18,12 @@
   border-top: #0ff!important;
   border-top-width: 10px!important;
   border-top-style: solid!important;
+  z-index: 2000;
 }
 .nav-link{
   padding-bottom: 0!important;
   padding-top: 0!important;
+  text-align: center;
 }
 .nav-link >div{
 
@@ -47,7 +49,7 @@ h5{
 
 }
 .nav_bg{
-  background-color: rgba(0, 0, 0, 0.7)
+  background-color: rgba(0, 0, 0, 0.8)
 }
 .socials a{
   display:block;
@@ -96,4 +98,24 @@ svg {
 }
 .teamselection-container{
   background-color: black;
+}
+
+.navbar-collapse{
+  justify-content: flex-end;
+}
+.navbar-nav{
+  flex-wrap: wrap;
+}
+.navbar-toggler{
+  font-size: 2rem;
+  padding-top: .4rem;
+}
+@media (max-width: 576px) {
+  .navbar-collapse {
+    justify-content: center;
+  }
+
+  .teamselection-container{
+    flex-direction: column;
+  }
 }

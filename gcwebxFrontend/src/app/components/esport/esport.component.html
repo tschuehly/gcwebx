@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col justify-content-end d-flex">
           <div ngbDropdown class="d-inline-block text-light w-100 py-3">
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-around flex-wrap">
               <a class="h2 ml-4 mb-0 align-self-center" ngbDropdownToggle id="dropdownTeams">{{currentTeam.teamName}}</a>
               <img *ngIf="currentTeam.game == 'rainbowsix'" height="80px" src="/assets/rainbow_logo.png">
               <img *ngIf="currentTeam.game == 'valorant'" height="80px" src="/assets/valorant_logo_white.png">
@@ -195,3 +195,4 @@
     </div>
 
   </div>
+</div>
