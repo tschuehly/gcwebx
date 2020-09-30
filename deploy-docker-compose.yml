@@ -1,4 +1,8 @@
 version: '3.8'
+volumes:
+  certs:
+  vhosts:
+  html:
 services:
   gcwebx:
     image: docker.pkg.github.com/tschuehly/gcwebx/gcwebxbackend:latest
@@ -6,14 +10,16 @@ services:
       - "8080"
     depends_on:
       - db
-
   gcwebxfrontend:
     image: docker.pkg.github.com/tschuehly/gcwebx/gcwebxfrontend:latest
-    ports:
-      - "80:80"
     depends_on:
       - gcwebx
     command: [nginx-debug, '-g', 'daemon off;']
+    environment:
+      VIRTUAL_HOST:  #Your Domain here
+      VIRTUAL_PORT: 80
+      LETSENCRYPT_HOST:  #Your Domain here
+      LETSENCRYPT_EMAIL: thomas.schuehly@outlook.com #Your
   db:
     image: postgres
     environment:
@@ -22,5 +28,32 @@ services:
       - 5432:5432
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
-    #expose:
-     # - "5432"
+  nginxproxy:
+    image: jwilder/nginx-proxy
+    container_name: nginxproxy
+    hostname: nginxproxy
+    restart:
+      unless-stopped
+    volumes:
+      - certs:/etc/nginx/certs:ro
+      - vhosts:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    ports:
+      - 80:80
+      - 443:443
+    labels:
+      - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy
+  nginxproxy_comp:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    container_name: nginxproxy_comp
+    hostname: nginxproxy_comp
+    restart:
+      unless-stopped
+    depends_on:
+      - nginxproxy
+    volumes:
+      - certs:/etc/nginx/certs
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - vhosts:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
