@@ -95,11 +95,12 @@ svg {
 }
 .btn-teamselection{
   border-radius: 0;
+
 }
 .teamselection-container{
   background-color: black;
+  position: absolute;
 }
-
 .navbar-collapse{
   justify-content: flex-end;
 }
@@ -117,5 +118,13 @@ svg {
 
   .teamselection-container{
     flex-direction: column;
+    position: relative;
+  }
+  .btn-teamselection{
+    border-bottom: cyan 2px solid;
+  }
+
+  .navbar-nav{
+    width: 100%;
   }
 }

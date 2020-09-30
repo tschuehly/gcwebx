@@ -24,7 +24,8 @@ export class NavigationComponent implements OnInit {
   public currentRoles: Roles;
   public currentRoute: string;
   public showTsToast = false;
-public navbarCollapsed = true;
+  public navbarCollapsed = true;
+  public teamSelection = 'ngbDropdown';
   constructor(private router: Router, public authenticationService: AuthenticationService) {
     this.authenticationService.currentRoles$.subscribe( value => {
       this.currentRoles = value;
