@@ -1,24 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import domtoimage from 'dom-to-image';
 import {ActivatedRoute, Router} from '@angular/router';
+import 'twitch-player';
+import {TwitchEmbed, TwitchEmbedLayout} from 'twitch-player';
+
 @Component({
   selector: 'app-static',
   templateUrl: './static.component.html',
   styleUrls: ['./static.component.css']
 })
+
 export class StaticComponent implements OnInit {
   public logoUrl;
   logoName: string;
   public page;
+
   constructor(private router: Router) {
   }
 
   ngOnInit(): void {
     this.page = this.router.url;
     console.log(this.router.url);
+    console.log(window.window.innerWidth);
   }
 
-  downloadLogo(){
+
+downloadLogo() {
     domtoimage.toPng(document.querySelector('#logo')).then((dataUrl) => {
       this.logoUrl = dataUrl;
       const link = document.createElement('a');

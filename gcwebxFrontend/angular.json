@@ -107,7 +107,7 @@
               "src/styles.css",
               "./node_modules/@fortawesome/fontawesome-free/css/fontawesome.css"
             ],
-            "scripts": []
+            "scripts": ["https://embed.twitch.tv/embed/v1.js"]
           }
         },
         "lint": {

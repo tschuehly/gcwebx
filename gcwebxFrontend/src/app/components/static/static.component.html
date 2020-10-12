@@ -12,6 +12,38 @@
     </div>
   </div>
 
+  <div *ngIf="page == '/streamer'" class="container text-center  text-light">
+    <h1 class="py-2">Unsere Streamer</h1>
+    <div class="row">
+      <div class="col-12 col-lg-6">
+        <h1 class="py-2">Samur3m</h1>
+        <div class="streamercontainer" >
+          <iframe class="twitchIframe"
+                  src="https://player.twitch.tv/?channel=samur3m&parent=localhost&muted=true"
+                  height="1080"
+                  width="1920"
+                  frameborder="0"
+                  scrolling="no"
+                  allowfullscreen="true">
+          </iframe>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <h1 class="py-2">Zero21by9</h1>
+        <div class="streamercontainer" >
+          <iframe class="twitchIframe"
+                  src="https://player.twitch.tv/?channel=zero21by9&parent=localhost&muted=true"
+                  height="1080"
+                  width="1920"
+                  frameborder="0"
+                  scrolling="no"
+                  allowfullscreen="true">
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+  </div>
   <div *ngIf="page == '/imprint'" class="imprint container  text-light">
     <h1>IMPRESSUM</h1>
     <p></p>

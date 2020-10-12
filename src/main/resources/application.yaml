@@ -10,6 +10,7 @@ spring:
     username: sa
     password: password
     initialization-mode: always
+    data: classpath:dev-init.sql
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:

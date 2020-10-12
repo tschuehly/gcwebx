@@ -53,7 +53,7 @@ export class EsportComponent implements OnInit {
   }
 
   createTeam(){
-    const modalRef = this.modalService.open(EditTeamComponent, {size: 'xl'});
+    const modalRef = this.modalService.open(EditTeamComponent, {size: 'xl', centered: true});
     const team: Team = {} as Team;
     modalRef.componentInstance.create = true;
     modalRef.componentInstance.team = team;
@@ -63,7 +63,7 @@ export class EsportComponent implements OnInit {
   }
 
   editTeam(team: Team){
-    const  modalRef = this.modalService.open(EditTeamComponent, {size: 'xl'});
+    const  modalRef = this.modalService.open(EditTeamComponent, {size: 'xl', centered: true});
     modalRef.componentInstance.team = team;
     modalRef.componentInstance.create = false;
     modalRef.componentInstance.teamUpdated.subscribe((data) => {
@@ -75,7 +75,7 @@ export class EsportComponent implements OnInit {
       console.log(team);
       modalRef.componentInstance.teams = team;
     });
-    const modalRef = this.modalService.open(EditMatchComponent, {size: 'xl'});
+    const modalRef = this.modalService.open(EditMatchComponent, {size: 'xl', centered: true});
     const match: Match = {} as Match;
     modalRef.componentInstance.match = match;
     modalRef.componentInstance.matchUpdated.subscribe((data) => {

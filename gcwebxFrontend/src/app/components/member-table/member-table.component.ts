@@ -48,7 +48,7 @@ export class MemberTableComponent implements OnInit{
   }
 
   editMember(member: Member){
-    const  modalRef = this.modalService.open(EditMemberComponent, {size: 'xl'});
+    const  modalRef = this.modalService.open(EditMemberComponent, {size: 'xl', centered: true});
     modalRef.componentInstance.member = member;
     modalRef.componentInstance.create = false;
     modalRef.componentInstance.memberUpdated.subscribe((data) => {
@@ -76,7 +76,7 @@ export class MemberTableComponent implements OnInit{
 
   }
   createMember() {
-    const modalRef = this.modalService.open(EditMemberComponent, {size: 'xl'});
+    const modalRef = this.modalService.open(EditMemberComponent, {size: 'xl', centered: true});
     const member: Member = {} as Member;
     modalRef.componentInstance.create = true;
     modalRef.componentInstance.member = member;

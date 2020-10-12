@@ -44,7 +44,8 @@ export const routerConfig: Routes = [
   {path : 'esport/:game',  component: EsportComponent},
   {path : 'news', component: NewsComponent},
   {path : 'imprint', component: StaticComponent},
-  {path : 'logo', component: StaticComponent}
+  {path : 'logo', component: StaticComponent},
+  {path : 'streamer', component: StaticComponent}
 ];
 
 @NgModule({

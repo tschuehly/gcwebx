@@ -38,7 +38,7 @@ export class UserTableComponent implements OnInit{
   }
 
   editUser(user: User){
-    const  modalRef = this.modalService.open(EditUserComponent, {size: 'xl'});
+    const  modalRef = this.modalService.open(EditUserComponent, {size: 'xl', centered: true});
     modalRef.componentInstance.user = user;
     modalRef.componentInstance.create = false;
     modalRef.componentInstance.userUpdated.subscribe((data) => {
@@ -59,7 +59,7 @@ export class UserTableComponent implements OnInit{
 
   }
   createUser() {
-    const modalRef = this.modalService.open(EditUserComponent, {size: 'xl'});
+    const modalRef = this.modalService.open(EditUserComponent, {centered: true, size: 'xl'});
     const user: User = {} as User;
     modalRef.componentInstance.create = true;
     modalRef.componentInstance.user = user;

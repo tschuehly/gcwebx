@@ -60,8 +60,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .csrf()
-                //.disable() //TODO: für h2 console
-                .csrfTokenRepository(tokenRepository).and()
+                .disable() //TODO: für h2 console
+                //.csrfTokenRepository(tokenRepository).and()
                 .cors().
                 and().
                 headers().frameOptions().disable().and().
