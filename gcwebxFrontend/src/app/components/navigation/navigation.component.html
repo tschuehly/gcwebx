@@ -7,20 +7,18 @@
     <i class="fas fa-bars"></i>
   </button>
 
-  <div ngbNav [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse" [ngClass]="">
+  <div ngbNav [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
     <ul class="navbar-nav">
-      <li ngbNavItem class="my-auto">
+      <li ngbNavItem  [ngClass]="currentRoute == '/home' ? 'active-page' : 'not-active'" >
         <a ngbNavLink routerLink="home" (click)="isMenuCollapsed = true">
-          <div class="nav-link-text" [ngClass]="currentRoute == '/home' ? 'active-page' : 'not-active'" >Home</div>
+          <div class="nav-link-text">Home</div>
         </a>
       </li>
-      <li class="nav-item nav-link my-auto p-0" ngbDropdown ngbDropdownToggle (mouseover)="$event.stopPropagation();teamSelection.open();">
+      <li class="nav-item nav-link p-0" [ngClass]="currentRoute.includes('/esport/') ? 'active-page' : 'not-active'"  ngbDropdown ngbDropdownToggle (mouseover)="$event.stopPropagation();teamSelection.open();">
         <a class="nav-link" *ngIf="currentRoute" (click)="$event.stopPropagation();teamSelection.toggle()">
-          <div class="nav-link-text" [ngClass]="currentRoute.includes('/esport/') ? 'active-page' : 'not-active'">Teams<i class="pl-2 fas fa-caret-down "></i></div>
+          <div class="nav-link-text" >Teams<i class="pl-2 fas fa-caret-down "></i></div>
         </a>
-
       </li>
-
       <div class="teamselection-container border-0" display="dynamic" container="body" #teamSelection="ngbDropdown" ngbDropdown ngbDropdownMenu aria-labelledby="dropdownBasic1" (click)="$event.stopPropagation();teamSelection.close(); isMenuCollapsed=true;" (mouseleave)="$event.stopPropagation();teamSelection.close()">
         <button class="btn btn-teamselection text-light flex-grow-1" routerLink="esport/rainbowsix"><img height="80px" src="/assets/rainbow_logo.png"></button>
         <button class="btn btn-teamselection text-light flex-grow-1" routerLink="esport/valorant"><img height="80px" src="/assets/valorant_logo_white.png"></button>
@@ -28,39 +26,39 @@
         <button class="btn btn-outline-light m-3" *ngIf="this.currentRoles && (this.currentRoles.roleAdmin || this.currentRoles.roleEditor)"  routerLink="esport/matchmanagement">Matchmanagement</button>
       </div>
 
-      <li ngbNavItem class="my-auto p-0">
+      <li ngbNavItem [ngClass]="currentRoute == '/logo' ? 'active-page' : 'not-active'">
         <a ngbNavLink  routerLink="logo" (click)="isMenuCollapsed = true">
-          <div class="nav-link-text" [ngClass]="currentRoute == '/logo' ? 'active-page' : 'not-active'">Logo</div>
+          <div class="nav-link-text">Logo</div>
         </a>
       </li>
-      <li ngbNavItem class="my-auto p-0">
+      <li ngbNavItem [ngClass]="currentRoute == '/teamspeak' ? 'active-page' : 'not-active'">
         <a ngbNavLink routerLink="teamspeak" (click)="isMenuCollapsed = true">
-          <div class="nav-link-text" [ngClass]="currentRoute == '/teamspeak' ? 'active-page' : 'not-active'">Teamspeak</div>
+          <div class="nav-link-text" >Teamspeak</div>
         </a>
       </li>
-      <li ngbNavItem class="my-auto p-0" *ngIf="this.currentRoles  && (this.currentRoles.roleAdmin || this.currentRoles.roleModerator || this.currentRoles.roleSupport)">
+      <li ngbNavItem [ngClass]="currentRoute == '/news' ? 'active-page' : 'not-active'" *ngIf="this.currentRoles  && (this.currentRoles.roleAdmin || this.currentRoles.roleModerator || this.currentRoles.roleSupport)">
         <a ngbNavLink routerLink="news" (click)="isMenuCollapsed = true">
-          <div class="nav-link-text" [ngClass]="currentRoute == '/news' ? 'active-page' : 'not-active'">News</div>
+          <div class="nav-link-text">News</div>
         </a>
       </li>
-      <li ngbNavItem class="my-auto p-0">
+      <li ngbNavItem [ngClass]="currentRoute == '/streamer' ? 'active-page' : 'not-active'">
         <a ngbNavLink routerLink="streamer" (click)="isMenuCollapsed = true">
-          <div class="nav-link-text" [ngClass]="currentRoute == '/streamer' ? 'active-page' : 'not-active'">Streamer</div>
+          <div class="nav-link-text" >Streamer</div>
         </a>
       </li>
-      <li *ngIf="this.currentRoles  && (this.currentRoles.roleAdmin || this.currentRoles.roleModerator || this.currentRoles.roleSupport)" ngbNavItem class="my-auto">
+      <li *ngIf="this.currentRoles  && (this.currentRoles.roleAdmin || this.currentRoles.roleModerator || this.currentRoles.roleSupport)" ngbNavItem [ngClass]="currentRoute == '/memberTable' ? 'active-page' : 'not-active'">
         <a ngbNavLink routerLink="memberTable" (click)="isMenuCollapsed = true">
-          <div [ngClass]="currentRoute == '/memberTable' ? 'active-page' : 'not-active'">Membertable</div>
+          <div >Membertable</div>
         </a>
       </li>
-      <li *ngIf="this.currentRoles && this.currentRoles.roleAdmin" ngbNavItem class="my-auto">
+      <li *ngIf="this.currentRoles && this.currentRoles.roleAdmin" ngbNavItem [ngClass]="currentRoute == '/userTable' ? 'active-page' : 'not-active'">
         <a ngbNavLink routerLink="userTable" (click)="isMenuCollapsed = true">
-          <div [ngClass]="currentRoute == '/userTable' ? 'active-page' : 'not-active'">Usertable</div>
+          <div>Usertable</div>
         </a>
       </li>
-      <li *ngIf="this.currentRoles && (this.currentRoles.roleAdmin || this.currentRoles.roleEditor)" ngbNavItem class="my-auto">
+      <li *ngIf="this.currentRoles && (this.currentRoles.roleAdmin || this.currentRoles.roleEditor)" ngbNavItem [ngClass]="currentRoute == '/edit' ? 'active-page' : 'not-active'">
         <a ngbNavLink routerLink="edit" (click)="isMenuCollapsed = true">
-          <div [ngClass]="currentRoute == '/edit' ? 'active-page' : 'not-active'">Editor</div>
+          <div >Editor</div>
         </a>
       </li>
       <li *ngIf="this.currentRoles" ngbNavItem class="my-auto">

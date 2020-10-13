@@ -16,10 +16,10 @@ services:
       - gcwebx
     command: [nginx-debug, '-g', 'daemon off;']
     environment:
-      VIRTUAL_HOST:  #Your Domain here
+      VIRTUAL_HOST: beta.xperience-gaming.de #Your Domain here
       VIRTUAL_PORT: 80
-      LETSENCRYPT_HOST:  #Your Domain here
-      LETSENCRYPT_EMAIL: thomas.schuehly@outlook.com #Your
+      LETSENCRYPT_HOST: beta.xperience-gaming.de #Your Domain here
+      LETSENCRYPT_EMAIL: thaiminater@outlook.com #Your Email
   db:
     image: postgres
     environment:
