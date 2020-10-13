@@ -44,9 +44,9 @@
     </div>
 
   </div>
-  <div *ngIf="page == '/imprint'" class="imprint container  text-light">
-    <h1>IMPRESSUM</h1>
-    <p></p>
+  <div *ngIf="page == '/imprint'" class="imprint container text-center text-light">
+    <h1 [innerHTML]="staticTitle1"></h1>
+    <p [innerHTML]="staticText1"></p>
   </div>
 
 </div>

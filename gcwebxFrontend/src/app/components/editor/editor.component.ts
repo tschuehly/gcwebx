@@ -78,11 +78,13 @@ export class EditorComponent implements OnInit {
 
   deleteContent(){
     this.content = (this.EditContent.getRawValue() as Content);
-    console.log("zu löschendes Element" + JSON.stringify(this.content));
-    this.index = this.contentList.findIndex(content => content.id === this.content.id);
+    if (this.content.news){
+      console.log('zu löschendes Element' + JSON.stringify(this.content));
+      this.index = this.contentList.findIndex(content => content.id === this.content.id);
 
-    this.backendService.deleteContent(this.content.id).subscribe();
-    this.contentList.splice(this.index, 1);
+      this.backendService.deleteContent(this.content.id).subscribe();
+      this.contentList.splice(this.index, 1);
+    }
   }
 
   getContentByID(id:number){
