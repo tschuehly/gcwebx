@@ -14,17 +14,11 @@
           <div class="nav-link-text">Home</div>
         </a>
       </li>
-      <li class="nav-item nav-link p-0" [ngClass]="currentRoute.includes('/esport/') ? 'active-page' : 'not-active'"  ngbDropdown ngbDropdownToggle (mouseover)="$event.stopPropagation();teamSelection.open();">
-        <a class="nav-link" *ngIf="currentRoute" (click)="$event.stopPropagation();teamSelection.toggle()">
-          <div class="nav-link-text" >Teams<i class="pl-2 fas fa-caret-down "></i></div>
+      <li ngbNavItem [ngClass]="currentRoute.includes('/esport/') ? 'active-page' : 'not-active'" (click)="$event.stopPropagation();myDrop.toggle()">
+        <a ngbNavLink>
+          <div class="nav-link-text">Teams<i class="pl-2 fas fa-caret-down "></i></div>
         </a>
       </li>
-      <div class="teamselection-container border-0" display="dynamic" container="body" #teamSelection="ngbDropdown" ngbDropdown ngbDropdownMenu aria-labelledby="dropdownBasic1" (click)="$event.stopPropagation();teamSelection.close(); isMenuCollapsed=true;" (mouseleave)="$event.stopPropagation();teamSelection.close()">
-        <button class="btn btn-teamselection text-light flex-grow-1" routerLink="esport/rainbowsix"><img height="80px" src="/assets/rainbow_logo.png"></button>
-        <button class="btn btn-teamselection text-light flex-grow-1" routerLink="esport/valorant"><img height="80px" src="/assets/valorant_logo_white.png"></button>
-        <button class="btn btn-outline-light m-3" *ngIf="this.currentRoles && this.currentRoles.roleAdmin" routerLink="esport/teammanagement">Teammanagement</button>
-        <button class="btn btn-outline-light m-3" *ngIf="this.currentRoles && (this.currentRoles.roleAdmin || this.currentRoles.roleEditor)"  routerLink="esport/matchmanagement">Matchmanagement</button>
-      </div>
 
       <li ngbNavItem [ngClass]="currentRoute == '/logo' ? 'active-page' : 'not-active'">
         <a ngbNavLink  routerLink="logo" (click)="isMenuCollapsed = true">
@@ -87,9 +81,22 @@
         </a>
       </li>
     </ul>
-
+  </div>
+  <div ngbDropdown #myDrop="ngbDropdown">
+    <span id="dropdownManual" ngbDropdownAnchor></span>
+    <div class="teamselection-container" ngbDropdownMenu aria-labelledby="dropdownManual">
+      <button (click)="isMenuCollapsed = true" ngbDropdownItem class="btn btn-teamselection text-light text-center flex-grow-1 border-right" routerLink="esport/rainbowsix">
+        <img height="80px" src="/assets/rainbow_logo.png">
+      </button>
+      <button (click)="isMenuCollapsed = true" ngbDropdownItem class="btn btn-teamselection text-light text-center flex-grow-1" routerLink="esport/valorant">
+        <img class="jus" height="80px" src="/assets/valorant_logo_white.png">
+      </button>
+      <button (click)="isMenuCollapsed = true" ngbDropdownItem class="btn btn-outline-light m-3" *ngIf="this.currentRoles && this.currentRoles.roleAdmin" routerLink="esport/teammanagement">Teammanagement</button>
+      <button (click)="isMenuCollapsed = true" ngbDropdownItem class="btn btn-outline-light m-3" *ngIf="this.currentRoles && (this.currentRoles.roleAdmin || this.currentRoles.roleEditor)"  routerLink="esport/matchmanagement">Matchmanagement</button>
+    </div>
   </div>
 </nav>
+
 <router-outlet></router-outlet>
 
 
