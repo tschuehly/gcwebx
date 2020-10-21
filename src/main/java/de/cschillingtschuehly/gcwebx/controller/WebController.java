@@ -102,4 +102,9 @@ public class WebController {
         String updatedTeam = teamService.addMember(teamId,member);
         return ResponseEntity.ok().body(updatedTeam);
     }
+
+    @GetMapping(value = "/api/getStreamer",produces = {"application/json"})
+    public ResponseEntity getStreamer(){
+        return ResponseEntity.ok().body(memberService.getStreamer());
+    }
 }

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MemberService {
@@ -41,5 +42,9 @@ public class MemberService {
     public void deleteMember(Member memberParam){
         memberRepository.delete(memberParam);
 
+    }
+    public List<Member> getStreamer(){
+        return memberRepository.findAll().stream().filter(member -> member.getTwitch() != null).collect(Collectors.toList());
+        //TODO: Remove unwanted info
     }
 }
