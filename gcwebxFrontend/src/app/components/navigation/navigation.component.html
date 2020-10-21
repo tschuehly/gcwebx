@@ -91,8 +91,8 @@
       <button (click)="isMenuCollapsed = true" ngbDropdownItem class="btn btn-teamselection text-light text-center flex-grow-1" routerLink="esport/valorant">
         <img class="jus" height="80px" src="/assets/valorant_logo_white.png">
       </button>
-      <button (click)="isMenuCollapsed = true" ngbDropdownItem class="btn btn-outline-light m-3" *ngIf="this.currentRoles && this.currentRoles.roleAdmin" routerLink="esport/teammanagement">Teammanagement</button>
-      <button (click)="isMenuCollapsed = true" ngbDropdownItem class="btn btn-outline-light m-3" *ngIf="this.currentRoles && (this.currentRoles.roleAdmin || this.currentRoles.roleEditor)"  routerLink="esport/matchmanagement">Matchmanagement</button>
+      <button (click)="isMenuCollapsed = true"  class="btn btn-light m-3" *ngIf="this.currentRoles && this.currentRoles.roleAdmin" routerLink="esport/teammanagement">Teammanagement</button>
+      <button (click)="isMenuCollapsed = true"  class="btn btn-light m-3" *ngIf="this.currentRoles && (this.currentRoles.roleAdmin || this.currentRoles.roleEditor)"  routerLink="esport/matchmanagement">Matchmanagement</button>
     </div>
   </div>
 </nav>

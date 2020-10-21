@@ -83,8 +83,21 @@ export class EsportComponent implements OnInit {
     });
   }
   deleteMatch(match: Match){
-    this.backendService.deleteMatch(match).subscribe( (data) => {
+    this.backendService.deleteMatch(match.id).subscribe( (data) => {
       if (data === true){window.location.reload(); }
+    });
+  }
+
+  editMatch(match: Match){
+    this.teams$.subscribe( (team) => {
+      console.log(team);
+      modalRef.componentInstance.teams = team;
+    });
+    const  modalRef = this.modalService.open(EditMatchComponent, {size: 'xl', centered: true});
+    modalRef.componentInstance.match = match;
+    modalRef.componentInstance.create = false;
+    modalRef.componentInstance.matchUpdated.subscribe((data) => {
+      if (data === true) {window.location.reload(); }
     });
   }
 

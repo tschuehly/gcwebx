@@ -7,6 +7,7 @@ import {Observable} from 'rxjs';
 import {Content} from '../../model/content';
 import {BackendService} from '../../services/backend.service';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
+import {Member} from '../../model/member';
 @Component({
   selector: 'app-static',
   templateUrl: './static.component.html',
@@ -18,16 +19,16 @@ export class StaticComponent implements OnInit {
   logoName: string;
   public page;
   staticTitle1: SafeHtml;
+  streamer: Member[];
   contentList: Content[];
   staticText1: SafeHtml;
 
-  constructor(private router: Router, private backendService: BackendService
-              , private sanitizer: DomSanitizer) {
+  constructor(private router: Router, private backendService: BackendService,  private sanitizer: DomSanitizer) {
   }
 
   ngOnInit(): void {
     this.page = this.router.url;
-    console.log(this.router.url);
+    console.log(window.location.hostname);
     console.log(window.window.innerWidth);
     this.backendService.getContent().
     subscribe(data => {
@@ -37,6 +38,11 @@ export class StaticComponent implements OnInit {
       this.staticTitle1 = this.sanitizer.bypassSecurityTrustHtml(imprint.title);
 
     });
+    this.backendService.getStreamer().subscribe(data => {
+        this.streamer  = data;
+        console.log(this.streamer);
+      }
+    );
   }
 
 

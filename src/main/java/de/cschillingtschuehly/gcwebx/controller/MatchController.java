@@ -1,5 +1,6 @@
 package de.cschillingtschuehly.gcwebx.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import de.cschillingtschuehly.gcwebx.modell.Content;
 import de.cschillingtschuehly.gcwebx.modell.Match;
 import de.cschillingtschuehly.gcwebx.services.MatchService;
@@ -16,7 +17,7 @@ public class MatchController {
     private MatchService matchService;
 
     @PostMapping(value = "/api/createMatch",produces = {"application/json"})
-    public ResponseEntity createMatch(@RequestBody Match match){
+    public ResponseEntity createMatch(@RequestBody Match match) throws JsonProcessingException {
         Match createdMatch = matchService.createMatch(match);
         return ResponseEntity.ok().body(createdMatch);
     }
@@ -25,4 +26,22 @@ public class MatchController {
         List<Match> contentList = matchService.getMatches();
         return ResponseEntity.ok().body(contentList);
     }
+
+    @PostMapping(value = "/api/getMatchByID",produces = {"application/json"})
+    public ResponseEntity getMatchById(@RequestBody Integer id){
+        Match match = matchService.getMatchById(id);
+        return ResponseEntity.ok().body(match);
+    }
+
+    @PutMapping(value="/api/updateMatch",produces = {"application/json"})
+    public ResponseEntity editMatch(@RequestBody Match match) throws JsonProcessingException {
+        Match updatedMatch = matchService.updateMatch(match);
+        return ResponseEntity.ok().body(updatedMatch);
+    }
+    @DeleteMapping(value="/api/deleteMatch/{matchId}",produces = {"application/json"})
+    public ResponseEntity deleteMatch(@PathVariable Integer matchId) throws JsonProcessingException {
+        matchService.deleteMatch(matchId);
+        return ResponseEntity.ok().body("{\"matchDeleted\":\"true\"}");
+    }
+
 }

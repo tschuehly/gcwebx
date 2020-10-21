@@ -42,10 +42,14 @@
             <tr>
               <td>{{member.name}}</td>
               <td>{{member.generalInfo}}</td>
-              <td class=""><a href="{{member.twitter}}" target="_blank"><i style="color: white"
-                                                                           class="fab fa-twitter fa-2x mx-2"></i></a><a
-                href="{{member.youtube}}" target="_blank"><i style="color: white"
-                                                             class="fab fa-youtube fa-2x  mx-2"></i></a></td>
+              <td>
+                <a *ngIf="member.twitter" href="https://twitter.com/{{member.twitter}}" target="_blank">
+                  <i style="color: white" class="fab fa-twitter fa-2x mx-2"></i>
+                </a>
+                <a *ngIf="member.youtube" href="https://{{member.youtube}}" target="_blank">
+                  <i style="color: white" class="fab fa-youtube fa-2x  mx-2"></i>
+                </a>
+              </td>
             </tr>
           </ng-container>
         </table>
@@ -179,7 +183,7 @@
             </tr>
             <tr *ngFor="let match of matches$ | async">
               <td>{{match.id}}</td>
-              <td>{{match.title}}</td>
+              <td><button class="btn btn-outline-light" (click)="editMatch(match)">{{match.title}}</button></td>
               <td>{{match.hometeam.teamName}} </td>
               <td>{{match.opponent}}</td>
               <td>{{match.hometeam.game}}</td>

@@ -12,9 +12,11 @@
   </div>
 </ng-template>
 
-<div >
+<div *ngIf="match || create === true">
   <div class="modal-header">
-    <h4 class="modal-title">Create Match</h4>
+    <h4 class="modal-title" *ngIf="create">Create Match</h4>
+    <h4 class="modal-title" *ngIf="match.hometeam">Edit Match</h4>
+  </div>
   <div class="modal-body">
     <div class="container-fluid">
       <label class="form">
@@ -57,12 +59,14 @@
   </div>
   <div class="modal-footer">
     <div class="ml-0">
-      <button type="button" class="btn btn-danger" (click)="openConfirm(content)">Delete Member</button>
+      <button type="button" class="btn btn-danger" (click)="openConfirm(content)">Delete Match</button>
     </div>
     <div class="m-auto">
       <button type="button" class="btn btn-info" (click)="activeModal.close('Close click')">Close</button>
     </div>
-    <button type="button" class="btn btn-success" (click)="createMatch()">Create Match</button>
+    <button *ngIf="create; else elseBlock" type="button" class="btn btn-success" (click)="createMatch()">Create Match</button>
+    <ng-template #elseBlock >
+      <button type="button" class="btn btn-success" (click)="updateMatch()">Save Match</button>
+    </ng-template>
   </div>
-</div>
 </div>

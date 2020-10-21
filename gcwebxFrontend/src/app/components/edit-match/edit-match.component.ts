@@ -14,6 +14,7 @@ import {Team} from '../../model/team';
 export class EditMatchComponent implements OnInit {
   @Input() match: Match;
   @Input() teams: Team[];
+  @Input() create: boolean;
   @Output() matchUpdated = new EventEmitter<boolean>();
   editMatch: Match;
   EditForm: FormGroup;
@@ -50,10 +51,21 @@ export class EditMatchComponent implements OnInit {
   deleteMatch(modal) {
     modal.close();
     this.editMatch = (this.EditForm.value as Match);
-    this.backendService.deleteMatch(this.editMatch).subscribe(data => {
+    this.backendService.deleteMatch(this.editMatch.id).subscribe(data => {
       console.log(data);
       this.matchUpdated.emit(true);
     });
+    this.activeModal.close();
+  }
+  updateMatch(){
+    console.log('match: ' + JSON.stringify(this.match));
+    this.editMatch = this.match;
+    this.editMatch = (this.EditForm.value as Match);
+    console.log('editmatch: ' + JSON.stringify(this.editMatch));
+    this.backendService.updateMatch(this.editMatch).subscribe( data => {
+      console.log(data);
+      this.matchUpdated.emit(true);
+    } );
     this.activeModal.close();
   }
 

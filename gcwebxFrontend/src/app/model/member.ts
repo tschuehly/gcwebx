@@ -14,7 +14,8 @@ export interface Member {
   deleted: boolean;
   rank: string;
   cardImg: string;
-  twitter: URL;
-  youtube: URL;
+  twitter: string;
+  youtube: string;
+  twitch: string;
 
 }

@@ -1,5 +1,5 @@
 .viewport {
-  height: 500px;
+  height: 600px;
   width: 100%;
 
 }
@@ -21,7 +21,4 @@
 ::-webkit-scrollbar-thumb
 {
   background-color: #F5F5F5;
-}
-.backgroundimg{
-  background-image: url('https://i.imgur.com/0XjfMHg.png');
 }

@@ -81,7 +81,14 @@ export class BackendService {
   createMatch(match: Match): Observable<any>{
     return this.http.post(this.backendUrl + '/createMatch', match);
   }
-  deleteMatch(match: Match): Observable<any>{
-    return this.http.post(this.backendUrl + '/deleteMatch', match);
+  deleteMatch(matchId: number): Observable<any>{
+    return this.http.delete(this.backendUrl + '/deleteMatch/' + matchId);
+  }
+
+  updateMatch(editMatch: Match) {
+    return this.http.put(this.backendUrl + '/updateMatch', editMatch);
+  }
+  getStreamer(): Observable<any>{
+    return this.http.get(this.backendUrl + '/getStreamer');
   }
 }

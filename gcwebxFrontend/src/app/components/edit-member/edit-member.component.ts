@@ -31,7 +31,11 @@ export class EditMemberComponent implements OnInit {
       acceptanceDate: new FormControl(),
       editor: new FormControl(),
       warnings: new FormControl(),
-      gamerTag: new FormControl()
+      gamerTag: new FormControl(),
+      rank: new FormControl(),
+      twitch: new FormControl(),
+      twitter: new FormControl(),
+      youtube: new FormControl()
     });
     this.EditForm.patchValue(this.member);
   }
@@ -40,7 +44,7 @@ export class EditMemberComponent implements OnInit {
     this.editMember = this.member;
     this.editMember = (this.EditForm.value as Member);
     console.log('editmember: ' + JSON.stringify(this.editMember));
-    this.backendService.updateMember(this.editMember).subscribe( data =>{
+    this.backendService.updateMember(this.editMember).subscribe( data => {
       console.log(data);
       this.memberUpdated.emit(true);
     } );
@@ -50,7 +54,7 @@ export class EditMemberComponent implements OnInit {
     this.member = (this.EditForm.value as Member);
     this.member.deleted = false;
     console.log(this.member);
-    this.backendService.createMember(this.member).subscribe( data =>{
+    this.backendService.createMember(this.member).subscribe( data => {
       console.log(data);
       this.memberUpdated.emit(true);
     });
