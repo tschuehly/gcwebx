@@ -8,7 +8,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url(/assets/Banner_bg3.png);
+  background-image: url(/assets/home_bg.jpg);
+  filter: grayscale(100%);
   height: 100%;
   border-bottom: #0ff!important;
   border-bottom-width: 1px!important;

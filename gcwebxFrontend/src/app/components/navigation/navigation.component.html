@@ -66,7 +66,7 @@
         <h2 class="text-center"><span class="badge badge-dark text-light text-center">IP: xperience</span></h2>
       </ngb-toast>
       <li class="my-auto d-flex justify-content-center">
-        <a class="px-0" (click)="connectToTeamspeack()" (click)="isMenuCollapsed = true">
+        <a class="px-0" (click)="connectToTeamspeak()" (click)="isMenuCollapsed = true">
           <div class="btn">
             <i class="fab fa-2x fa-teamspeak"></i>
           </div>
@@ -85,12 +85,12 @@
   <div ngbDropdown #myDrop="ngbDropdown">
     <span id="dropdownManual" ngbDropdownAnchor></span>
     <div class="teamselection-container" ngbDropdownMenu aria-labelledby="dropdownManual">
-      <button (click)="isMenuCollapsed = true" ngbDropdownItem class="btn btn-teamselection text-light text-center flex-grow-1 border-right" routerLink="esport/rainbowsix">
+      <div (click)="isMenuCollapsed = true" ngbDropdownItem class="btn btn-teamselection text-center flex-grow-1 border-right" routerLink="esport/rainbowsix">
         <img height="80px" src="/assets/rainbow_logo.png">
-      </button>
-      <button (click)="isMenuCollapsed = true" ngbDropdownItem class="btn btn-teamselection text-light text-center flex-grow-1" routerLink="esport/valorant">
+      </div>
+      <div (click)="isMenuCollapsed = true" ngbDropdownItem class="btn btn-teamselection text-center flex-grow-1" routerLink="esport/valorant">
         <img class="jus" height="80px" src="/assets/valorant_logo_white.png">
-      </button>
+      </div>
       <button (click)="isMenuCollapsed = true"  class="btn btn-light m-3" *ngIf="this.currentRoles && this.currentRoles.roleAdmin" routerLink="esport/teammanagement">Teammanagement</button>
       <button (click)="isMenuCollapsed = true"  class="btn btn-light m-3" *ngIf="this.currentRoles && (this.currentRoles.roleAdmin || this.currentRoles.roleEditor)"  routerLink="esport/matchmanagement">Matchmanagement</button>
     </div>

@@ -47,7 +47,7 @@ export class NavigationComponent implements OnInit {
     this.router.navigateByUrl('/home');
     this.authenticationService.getRole();
   }
-  connectToTeamspeack(){
+  connectToTeamspeak(){
     this.showTsToast = true;
     setTimeout(() => window.open('ts3server://xperience'), 1000);
     setTimeout(() => this.showTsToast = false, 8000);
