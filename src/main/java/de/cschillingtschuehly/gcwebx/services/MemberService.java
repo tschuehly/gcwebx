@@ -49,7 +49,7 @@ public class MemberService {
 
     }
     public List<Member> getStreamer(){
-        return memberRepository.findAll().stream().filter(member -> member.getTwitch() != null).filter(member -> member.getDeleted() != null && member.getDeleted() != true).collect(Collectors.toList());
+        return memberRepository.findAll().stream().filter(member -> member.getTwitch() != null && member.getTwitch() != "").filter(member -> member.getDeleted() != null && member.getDeleted() != true).collect(Collectors.toList());
         //TODO: Remove unwanted info
     }
 }
