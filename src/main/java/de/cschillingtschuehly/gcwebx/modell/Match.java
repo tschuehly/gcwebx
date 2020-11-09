@@ -1,5 +1,6 @@
 package de.cschillingtschuehly.gcwebx.modell;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ import java.util.Date;
 @ToString
 @Getter
 @Setter
+@JsonView(View.External.class)
 public class Match {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

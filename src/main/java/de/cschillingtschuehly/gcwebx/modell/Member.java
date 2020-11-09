@@ -1,5 +1,6 @@
 package de.cschillingtschuehly.gcwebx.modell;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -14,11 +15,13 @@ import javax.validation.constraints.NotEmpty;
 @Getter
 @DynamicUpdate
 @SequenceGenerator(name = "seq",initialValue = 201)
+@JsonView(value = View.Internal.class)
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq")
     private Long memberId;
     @NotEmpty
+    @JsonView(value = View.External.class)
     private String name;
     private String teamspeakId;
     private String generalInfo;
@@ -27,14 +30,19 @@ public class Member {
     private LocalDate acceptanceDate;
     private String editor;
     private Integer warnings;
+    @JsonView(value = View.External.class)
     private String gamerTag;
     @Column(columnDefinition = "boolean default false")
     private Boolean deleted;
     private String rank;
+    @JsonView(value = View.External.class)
     private String twitter;
+    @JsonView(value = View.External.class)
     private String twitch;
+    @JsonView(value = View.External.class)
     private String youtube;
     private String cardImg;
+    @JsonView(value = View.External.class)
     private String playerRole;
 
     public Member(String name, String teamspeakId, LocalDate dateOfBirth, LocalDate joinDate,String twitter,String youtube) {

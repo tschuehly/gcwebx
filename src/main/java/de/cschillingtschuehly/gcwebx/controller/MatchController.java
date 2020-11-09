@@ -1,8 +1,10 @@
 package de.cschillingtschuehly.gcwebx.controller;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import de.cschillingtschuehly.gcwebx.modell.Content;
 import de.cschillingtschuehly.gcwebx.modell.Match;
+import de.cschillingtschuehly.gcwebx.modell.View;
 import de.cschillingtschuehly.gcwebx.services.MatchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +24,14 @@ public class MatchController {
         return ResponseEntity.ok().body(createdMatch);
     }
     @GetMapping(value = "/api/getMatches",produces = {"application/json"})
+    @JsonView(value = View.External.class)
     public ResponseEntity getMatches(){
         List<Match> contentList = matchService.getMatches();
         return ResponseEntity.ok().body(contentList);
     }
 
     @PostMapping(value = "/api/getMatchByID",produces = {"application/json"})
+    @JsonView(value = View.External.class)
     public ResponseEntity getMatchById(@RequestBody Integer id){
         Match match = matchService.getMatchById(id);
         return ResponseEntity.ok().body(match);

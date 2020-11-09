@@ -32,8 +32,6 @@ export class MemberTableComponent implements OnInit{
     this.backendService.getMemberTable().
     subscribe(memberTableResponse => {
       this.member = memberTableResponse[4];
-      console.log(memberTableResponse);
-      console.log(this.memberTable$);
     });
     this.searchFilter = new FormControl('');
     this.searchFilter$ = this.searchFilter.valueChanges.pipe(startWith(''));
@@ -74,7 +72,6 @@ export class MemberTableComponent implements OnInit{
   }
   updateMemberTable(){
     this.memberTable$ = this.backendService.getMemberTable();
-    console.log('UpdateMember was called');
 
   }
   createMember() {

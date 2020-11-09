@@ -55,8 +55,6 @@ export class UserTableComponent implements OnInit{
   }
   updateUserTable(){
     this.userTable$ = this.backendService.getUserTable();
-    console.log('UpdateUser was called');
-
   }
   createUser() {
     const modalRef = this.modalService.open(EditUserComponent, {centered: true, size: 'xl'});

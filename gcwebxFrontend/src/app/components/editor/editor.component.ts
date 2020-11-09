@@ -46,32 +46,27 @@ export class EditorComponent implements OnInit {
     this.backendService.getContent().
     subscribe(data => {
       this.contentList = data;
-      console.log(data);
-      console.log(this.contentList);
     });
 
   }
 
 
   updateContent(){
-    console.log('content: ' + JSON.stringify(this.EditContent.getRawValue()));
     this.editContent = this.EditContent.getRawValue() as Content;
     this.lastUpdatedDate = new Date();
     this.editContent.lastUpdatedDate = this.lastUpdatedDate;
-    this.backendService.updateContent(this.editContent).subscribe( data => console.log(data));
+    this.backendService.updateContent(this.editContent).subscribe( data => {});
 
   }
 
   createContent(){
     this.creationDate = new Date();
     this.lastUpdatedDate = new Date();
-    console.log('Date = ' + this.lastUpdatedDate);
     this.EditContent.patchValue({id: 'null'});
     this.newContent = this.EditContent.getRawValue() as Content;
     this.newContent.news = this.news;
     this.newContent.creationDate = this.creationDate;
     this.newContent.lastUpdatedDate = this.lastUpdatedDate;
-    console.log((this.EditContent.getRawValue() as Content));
     this.backendService.createContent(this.newContent).subscribe( data => this.contentList.push(data));
     this.modalService.dismissAll();
   }
@@ -79,7 +74,6 @@ export class EditorComponent implements OnInit {
   deleteContent(){
     this.content = (this.EditContent.getRawValue() as Content);
     if (this.content.news){
-      console.log('zu löschendes Element' + JSON.stringify(this.content));
       this.index = this.contentList.findIndex(content => content.id === this.content.id);
 
       this.backendService.deleteContent(this.content.id).subscribe();
@@ -90,7 +84,6 @@ export class EditorComponent implements OnInit {
   getContentByID(id: number){
     this.backendService.getContentById(id).subscribe(data => {
       this.content = data;
-      console.log(this.content);
       this.EditContent.setValue(this.content);
     });
   }

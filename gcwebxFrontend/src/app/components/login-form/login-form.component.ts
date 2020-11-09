@@ -33,7 +33,6 @@ export class LoginFormComponent implements OnInit {
 
   logIn() {
     this.credential = this.UserForm.value;
-    console.log(this.credential);
     this.authenticationService.authenticate(this.credential, () => {
       this.successfulLogin = true;
       this.router.navigateByUrl('/home');
@@ -44,12 +43,10 @@ export class LoginFormComponent implements OnInit {
   }
 
   onEnterPressed() {
-    console.log('Enter pressed');
     this.logIn();
   }
 
   onSubmitClicked() {
-    console.log('Button clicked');
     this.logIn();
   }
 

@@ -27,12 +27,16 @@
   min-height: 350px;
   background-color: rgba(0,0,0,0.5);
 }
-.welcome_text{
+.welcome_container{
   min-height: 50vh!important;
   height: 100%;
   border-bottom: #0ff!important;
   border-bottom-width: 1px!important;
   border-bottom-style: solid!important;
+}
+.welcome_text {
+  font-weight: 500!important;
+  font-size: 1.2em!important;
 }
 .news{
   min-height: 50vh!important;

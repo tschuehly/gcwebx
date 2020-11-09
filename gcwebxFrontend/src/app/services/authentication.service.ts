@@ -23,7 +23,6 @@ export class AuthenticationService {
   }
   authenticate(credentials, callback) {
     const authString = 'Basic ' + window.btoa(credentials.username + ':' + credentials.password);
-    console.log(authString);
     const headers = new HttpHeaders(credentials ? {
       authorization: authString
     } : {});
@@ -50,7 +49,6 @@ export class AuthenticationService {
       this.http.get(this.backendUrl + '/getRole/' + username ).subscribe(response => {
         this.currentRoles = response['roles'];
         this.currentRoles$.next(this.currentRoles);
-        console.log(this.currentRoles);
       });
     }
   }

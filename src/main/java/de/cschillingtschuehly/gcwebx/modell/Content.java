@@ -1,6 +1,7 @@
 package de.cschillingtschuehly.gcwebx.modell;
 
 
+import com.fasterxml.jackson.annotation.JsonView;
 import lombok.*;
 import org.hibernate.engine.jdbc.spi.ConnectionObserverAdapter;
 
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 @ToString
 @Getter
 @Setter
+@JsonView(View.External.class)
 public class Content{
 
     @Id

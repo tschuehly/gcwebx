@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import domtoimage from 'dom-to-image';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import 'twitch-player';
-import {TwitchEmbed, TwitchEmbedLayout} from 'twitch-player';
-import {Observable} from 'rxjs';
 import {Content} from '../../model/content';
 import {BackendService} from '../../services/backend.service';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
@@ -28,8 +26,6 @@ export class StaticComponent implements OnInit {
 
   ngOnInit(): void {
     this.page = this.router.url;
-    console.log(window.location.hostname);
-    console.log(window.window.innerWidth);
     this.backendService.getContent().
     subscribe(data => {
       this.contentList = data;
@@ -40,11 +36,9 @@ export class StaticComponent implements OnInit {
     });
     this.backendService.getStreamer().subscribe(data => {
         this.streamer  = data;
-        console.log(this.streamer);
       }
     );
   }
-
 
 downloadLogo() {
     domtoimage.toPng(document.querySelector('#logo')).then((dataUrl) => {
@@ -59,7 +53,6 @@ downloadLogo() {
   }
   getHost(name: string): SafeHtml{
     const url = 'https://player.twitch.tv/?channel=' + name + '&parent=' + window.location.hostname + '&muted';
-    console.log(url);
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }

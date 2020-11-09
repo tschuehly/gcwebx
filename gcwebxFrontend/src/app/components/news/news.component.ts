@@ -27,8 +27,6 @@ export class NewsComponent implements OnInit {
     this.backendService.getContent().
     subscribe(data => {
       this.contentList = data;
-      console.log(data);
-      console.log(this.contentList);
       this.sortNewsArray();
 
     });
@@ -36,7 +34,6 @@ export class NewsComponent implements OnInit {
 
   getFirstTwentyWords(){
     this.firstTwentyWords$ = this.contentList$;
-    console.log(this.firstTwentyWords$[1].split(''));
 
   }
 
@@ -50,14 +47,6 @@ export class NewsComponent implements OnInit {
       return data;
     }));
   }
-  /*
-   getContentByID(id:number){
-    this.backendService.getContentById(id).subscribe(data => {
-      this.content = data;
-      console.log(this.content.text);
-      this.EditContent.setValue(this.content);
-    });
-  }*/
 
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title', size: 'xl', centered: true}).result.then((result) => {
@@ -77,7 +66,6 @@ export class NewsComponent implements OnInit {
     }
   }
   closeModal(){
-    console.log('close modal');
     this.modalService.dismissAll();
   }
 

@@ -40,10 +40,8 @@ export class EsportComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('ngOnInit');
     this.route.params.subscribe(params => {
       this.game.setValue(params['game']);
-      console.log(this.game.value);
 
       this.filteredTeams$.subscribe(teams => {
         this.currentTeam = teams[0];
@@ -72,7 +70,6 @@ export class EsportComponent implements OnInit {
   }
   createMatch(){
     this.teams$.subscribe( (team) => {
-      console.log(team);
       modalRef.componentInstance.teams = team;
     });
     const modalRef = this.modalService.open(EditMatchComponent, {size: 'xl', centered: true});
@@ -90,7 +87,6 @@ export class EsportComponent implements OnInit {
 
   editMatch(match: Match){
     this.teams$.subscribe( (team) => {
-      console.log(team);
       modalRef.componentInstance.teams = team;
     });
     const  modalRef = this.modalService.open(EditMatchComponent, {size: 'xl', centered: true});

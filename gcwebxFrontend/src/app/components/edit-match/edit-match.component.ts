@@ -37,13 +37,9 @@ export class EditMatchComponent implements OnInit {
   }
 
   createMatch(){
-    console.log(this.EditForm.value);
-
     this.match = (this.EditForm.value as Match);
-    console.log(this.match);
 
     this.backendService.createMatch(this.match).subscribe( data => {
-      console.log(data);
       this.matchUpdated.emit(true);
     });
     this.activeModal.close();
@@ -52,18 +48,14 @@ export class EditMatchComponent implements OnInit {
     modal.close();
     this.editMatch = (this.EditForm.value as Match);
     this.backendService.deleteMatch(this.editMatch.id).subscribe(data => {
-      console.log(data);
       this.matchUpdated.emit(true);
     });
     this.activeModal.close();
   }
   updateMatch(){
-    console.log('match: ' + JSON.stringify(this.match));
     this.editMatch = this.match;
     this.editMatch = (this.EditForm.value as Match);
-    console.log('editmatch: ' + JSON.stringify(this.editMatch));
     this.backendService.updateMatch(this.editMatch).subscribe( data => {
-      console.log(data);
       this.matchUpdated.emit(true);
     } );
     this.activeModal.close();

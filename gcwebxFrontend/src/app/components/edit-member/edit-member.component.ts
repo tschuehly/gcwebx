@@ -41,12 +41,9 @@ export class EditMemberComponent implements OnInit {
     this.EditForm.patchValue(this.member);
   }
   updateMember(){
-    console.log('member: ' + JSON.stringify(this.member));
     this.editMember = this.member;
     this.editMember = (this.EditForm.value as Member);
-    console.log('editmember: ' + JSON.stringify(this.editMember));
     this.backendService.updateMember(this.editMember).subscribe( data => {
-      console.log(data);
       this.memberUpdated.emit(true);
     } );
     this.activeModal.close();
@@ -54,9 +51,7 @@ export class EditMemberComponent implements OnInit {
   createMember(){
     this.member = (this.EditForm.value as Member);
     this.member.deleted = false;
-    console.log(this.member);
     this.backendService.createMember(this.member).subscribe( data => {
-      console.log(data);
       this.memberUpdated.emit(true);
     });
     this.activeModal.close();
@@ -67,7 +62,6 @@ export class EditMemberComponent implements OnInit {
     this.editMember = (this.EditForm.value as Member);
     this.editMember.deleted = true;
     this.backendService.updateMember(this.editMember).subscribe( data => {
-      console.log(data);
       this.memberUpdated.emit(true);
     });
     this.activeModal.close();
@@ -78,7 +72,6 @@ export class EditMemberComponent implements OnInit {
     this.editMember = (this.EditForm.value as Member);
     this.editMember.deleted = true;
     this.backendService.deleteMember(this.editMember).subscribe( data => {
-      console.log(data);
       this.memberUpdated.emit(true);
     });
     this.activeModal.close();
@@ -88,7 +81,6 @@ export class EditMemberComponent implements OnInit {
     this.editMember = (this.EditForm.value as Member);
     this.editMember.deleted = false;
     this.backendService.updateMember(this.editMember).subscribe( data => {
-      console.log(data);
       this.memberUpdated.emit(true);
     });
     this.activeModal.close();

@@ -1,8 +1,10 @@
 package de.cschillingtschuehly.gcwebx.controller;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import de.cschillingtschuehly.gcwebx.modell.Member;
 import de.cschillingtschuehly.gcwebx.modell.Team;
+import de.cschillingtschuehly.gcwebx.modell.View;
 import de.cschillingtschuehly.gcwebx.modell.WebsiteUser;
 import de.cschillingtschuehly.gcwebx.services.MemberService;
 import de.cschillingtschuehly.gcwebx.services.TeamService;
@@ -78,6 +80,7 @@ public class WebController {
     }
 
     @GetMapping("/api/getTeams")
+    @JsonView(value = View.External.class)
     public ResponseEntity getTeams(){
         return ResponseEntity.ok().body(teamService.getTeams());
     }
@@ -104,6 +107,7 @@ public class WebController {
     }
 
     @GetMapping(value = "/api/getStreamer",produces = {"application/json"})
+    @JsonView(value = View.External.class)
     public ResponseEntity getStreamer(){
         return ResponseEntity.ok().body(memberService.getStreamer());
     }

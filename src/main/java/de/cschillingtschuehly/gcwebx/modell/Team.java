@@ -1,5 +1,6 @@
 package de.cschillingtschuehly.gcwebx.modell;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -14,6 +15,7 @@ import java.util.List;
 @Setter
 @Getter
 @DynamicUpdate
+@JsonView(View.External.class)
 public class Team {
     @Id
     @GeneratedValue

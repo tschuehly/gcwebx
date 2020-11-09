@@ -34,17 +34,14 @@ export class EditUserComponent implements OnInit {
     this.EditForm.patchValue(this.user);
   }
   updateUser(){
-    console.log('user: ' + JSON.stringify(this.user));
     this.editUser = this.user;
     this.editUser = (this.EditForm.value as User);
     if (this.editUser.password != null){
       const salt = bcrypt.genSaltSync(10);
       this.editUser.password = bcrypt.hashSync(this.editUser.password, 10);
     }
-    console.log('edituser: ' + JSON.stringify(this.editUser));
     this.backendService.updateUser(this.editUser).subscribe(
       data => {
-        console.log(data);
         this.userUpdated.emit(true);
       });
     this.activeModal.close();
@@ -54,9 +51,7 @@ export class EditUserComponent implements OnInit {
     const salt = bcrypt.genSaltSync(10);
     this.user.password = bcrypt.hashSync(this.user.password, 10);
 
-    console.log(this.user);
     this.backendService.createUser(this.user).subscribe( data => {
-      console.log(data);
       this.userUpdated.emit(true);
     });
     this.activeModal.close();
@@ -66,7 +61,6 @@ export class EditUserComponent implements OnInit {
     modal.close();
     this.editUser = (this.EditForm.value as User);
     this.backendService.deleteUser(this.editUser).subscribe( data => {
-      console.log(data);
       this.userUpdated.emit(true);
       this.activeModal.close();
     });

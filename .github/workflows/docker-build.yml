@@ -1,0 +1,20 @@
+name: Docker Build and Deploy
+on:
+  push:
+    branches: actions_deploy
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: docker build
+        run: | 
+          docker build . -t docker.pkg.github.com/tschuehly/gcwebx/gcwebxbackend:latest
+          docker build ./gcwebxFrontend -t docker.pkg.github.com/tschuehly/gcwebx/gcwebxfrontend:latest
+      - name: docker push
+        run: |
+          docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY_OWNER} -p ${GITHUB_TOKEN}
+          docker push docker.pkg.github.com/tschuehly/gcwebx/gcwebxbackend:latest
+          docker push docker.pkg.github.com/tschuehly/gcwebx/gcwebxfrontend:latest

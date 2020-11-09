@@ -1,5 +1,6 @@
 package de.cschillingtschuehly.gcwebx.modell;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,6 +10,7 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 @Getter
 @Setter
+@JsonView(View.Internal.class)
 public class WebsiteUser {
 
 

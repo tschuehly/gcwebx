@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit,  ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {
   ModalDismissReasons,
   NgbCarousel,
@@ -18,7 +18,8 @@ import {Match} from '../../model/match';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 
 export class HomeComponent implements OnInit {
@@ -104,7 +105,6 @@ export class HomeComponent implements OnInit {
     }
   }
   closeModal(){
-    console.log('close modal');
     this.modalService.dismissAll();
   }
 }
