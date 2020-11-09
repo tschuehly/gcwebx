@@ -26,7 +26,9 @@ export class BackendService {
   createMember(member: Member): Observable<any>{
     return this.http.post(this.backendUrl + '/createMember', member);
   }
-
+  deleteMember(member: Member): Observable<any>{
+    return this.http.post(this.backendUrl + '/deleteMember', member);
+  }
 
   getContentById(id: number): Observable<any>{
     return this.http.post(this.backendUrl + '/getContentByID', id);

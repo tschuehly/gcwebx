@@ -22,15 +22,16 @@ public class Team {
     private String teamName;
     private String game;
     private String generalInfo;
-    @OneToMany(cascade = CascadeType.ALL, targetEntity = Member.class ,orphanRemoval = true,fetch = FetchType.EAGER)
-    private List members;
+    @OneToMany(cascade = CascadeType.ALL, targetEntity = Member.class,fetch = FetchType.EAGER)
+    private List<Member> members;
 
     public List<Member> addMember(Member pmember){
         this.members.add(pmember);
         return this.members;
     }
     public List<Member> removeMember(Member pmember){
-        this.members.remove(pmember);
+        members.stream().filter(member -> member.getMemberId().equals(pmember.getMemberId())).findFirst().ifPresent(member -> members.remove(member));
+        System.out.println(this.members);
         return this.members;
     }
 

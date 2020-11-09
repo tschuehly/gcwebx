@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface TeamRepository  extends CrudRepository<Team,Long> {
     List<Team> findAll();
+    Team findByMembersMemberId(Long memberId);
 
 }

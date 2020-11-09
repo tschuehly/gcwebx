@@ -57,5 +57,9 @@ downloadLogo() {
       document.body.removeChild(link);
     });
   }
-
+  getHost(name: string): SafeHtml{
+    const url = 'https://player.twitch.tv/?channel=' + name + '&parent=' + window.location.hostname + '&muted';
+    console.log(url);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
 }

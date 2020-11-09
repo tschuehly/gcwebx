@@ -13,9 +13,9 @@ export interface Member {
   uplayId: string;
   deleted: boolean;
   rank: string;
-  cardImg: string;
   twitter: string;
   youtube: string;
   twitch: string;
+  playerRole: string;
 
 }

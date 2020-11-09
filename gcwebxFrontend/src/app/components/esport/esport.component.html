@@ -41,7 +41,7 @@
           <ng-container *ngFor="let member of currentTeam.members;index as i">
             <tr>
               <td>{{member.name}}</td>
-              <td>{{member.generalInfo}}</td>
+              <td>{{member.playerRole}}</td>
               <td>
                 <a *ngIf="member.twitter" href="https://twitter.com/{{member.twitter}}" target="_blank">
                   <i style="color: white" class="fab fa-twitter fa-2x mx-2"></i>
@@ -62,7 +62,7 @@
                 <div class="col-6  align-items-center">
                   <div class="row align-items-center">
                     <div class="col-4">
-                      <img class="matchtile_logo" src="https://i.imgur.com/D5mrccA.png">
+                      <img class="matchtile_logo" src="/assets/xp_logo_transparent.png">
                       <h6 class="pt-4" >{{match.hometeam.teamName}}</h6>
                     </div>
                     <div class="col-4">

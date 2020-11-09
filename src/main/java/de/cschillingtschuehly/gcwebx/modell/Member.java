@@ -35,6 +35,7 @@ public class Member {
     private String twitch;
     private String youtube;
     private String cardImg;
+    private String playerRole;
 
     public Member(String name, String teamspeakId, LocalDate dateOfBirth, LocalDate joinDate,String twitter,String youtube) {
         this.name = name;

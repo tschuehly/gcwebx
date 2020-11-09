@@ -35,7 +35,8 @@ export class EditMemberComponent implements OnInit {
       rank: new FormControl(),
       twitch: new FormControl(),
       twitter: new FormControl(),
-      youtube: new FormControl()
+      youtube: new FormControl(),
+      playerRole: new FormControl()
     });
     this.EditForm.patchValue(this.member);
   }
@@ -61,10 +62,31 @@ export class EditMemberComponent implements OnInit {
     this.activeModal.close();
   }
 
+  setMemberDeleted(modal){
+    modal.close();
+    this.editMember = (this.EditForm.value as Member);
+    this.editMember.deleted = true;
+    this.backendService.updateMember(this.editMember).subscribe( data => {
+      console.log(data);
+      this.memberUpdated.emit(true);
+    });
+    this.activeModal.close();
+  }
+
   deleteMember(modal){
     modal.close();
     this.editMember = (this.EditForm.value as Member);
     this.editMember.deleted = true;
+    this.backendService.deleteMember(this.editMember).subscribe( data => {
+      console.log(data);
+      this.memberUpdated.emit(true);
+    });
+    this.activeModal.close();
+  }
+
+  removeFromDelted(){
+    this.editMember = (this.EditForm.value as Member);
+    this.editMember.deleted = false;
     this.backendService.updateMember(this.editMember).subscribe( data => {
       console.log(data);
       this.memberUpdated.emit(true);

@@ -24,6 +24,7 @@ export class MemberTableComponent implements OnInit{
   searchFilter$: Observable<string>;
   deletedFilter: FormControl;
   deletedFilter$: Observable<boolean>;
+  sortingArray: string[] = ['Owner', 'Techniker', 'Entwickler', 'Veteran', 'Stammspieler', 'Streamer', 'Member', 'Trial'];
   constructor(private backendService: BackendService,
               private modalService: NgbModal,
               private authenticationService: AuthenticationService) {
@@ -41,7 +42,8 @@ export class MemberTableComponent implements OnInit{
     this.filteredMemberTable$ = combineLatest([this.memberTable$, this.searchFilter$, this.deletedFilter$])
       .pipe(map(([members, filterString, filterBool]) =>
         members.filter(member => member.name.toLowerCase()
-          .indexOf(filterString.toLowerCase()) !== -1 && member.deleted === filterBool ))
+          .indexOf(filterString.toLowerCase()) !== -1 && member.deleted === filterBool )
+          .sort( (a, b) => this.sortingArray.indexOf(a.rank) - this.sortingArray.indexOf(b.rank)))
       );
   }
   ngOnInit(): void {

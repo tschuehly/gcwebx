@@ -21,10 +21,6 @@
 .logo_bg{
   background-image: url(/assets/Heaven.png);
 }
-.imprint_bg{
-  background-image: url('https://i.imgur.com/tQ6Tu5P.jpg');
-}
-
 .imprint{
   background-color: rgba(0,0,0,0.5);
   border-radius: 10px;

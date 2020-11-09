@@ -1,11 +1,11 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, Input, OnInit} from '@angular/core';
 import {BackendService} from '../../services/backend.service';
-import {Content} from "../../model/content";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Member} from "../../model/member";
-import {Observable} from "rxjs";
+import {Content} from '../../model/content';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Member} from '../../model/member';
+import {Observable} from 'rxjs';
 import {ModalDismissReasons, NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-//Init } from '@angular/core';
+// Init } from '@angular/core';
 
 @Component({
   selector: 'app-editor',
@@ -24,7 +24,7 @@ export class EditorComponent implements OnInit {
   creationDate: Date;
   lastUpdatedDate: Date;
   closeResult = '';
-  showNews: boolean = true;
+  showNews = true;
 
   public EditContent: FormGroup;
 
@@ -32,7 +32,7 @@ export class EditorComponent implements OnInit {
   constructor(private backendService: BackendService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
-      this.EditContent = new FormGroup({
+    this.EditContent = new FormGroup({
       id: new FormControl(''),
       title: new FormControl(''),
       text: new FormControl(''),
@@ -65,8 +65,8 @@ export class EditorComponent implements OnInit {
   createContent(){
     this.creationDate = new Date();
     this.lastUpdatedDate = new Date();
-    console.log("Date = " + this.lastUpdatedDate);
-    this.EditContent.patchValue({id: "null"});
+    console.log('Date = ' + this.lastUpdatedDate);
+    this.EditContent.patchValue({id: 'null'});
     this.newContent = this.EditContent.getRawValue() as Content;
     this.newContent.news = this.news;
     this.newContent.creationDate = this.creationDate;
@@ -87,7 +87,7 @@ export class EditorComponent implements OnInit {
     }
   }
 
-  getContentByID(id:number){
+  getContentByID(id: number){
     this.backendService.getContentById(id).subscribe(data => {
       this.content = data;
       console.log(this.content);

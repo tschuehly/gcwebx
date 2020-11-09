@@ -49,11 +49,17 @@ public class TeamService {
 
     public String addMember(Long teamId,Member pmember) throws JsonProcessingException {
         ObjectMapper jacksonMapper = mapperService.jacksonMapper();
-        Mapper dozerMapper = mapperService.dozerMapper();
         Member member = memberRepository.findById(pmember.getMemberId()).get();
         Team team = teamRepository.findById(teamId).get();
         team.addMember(member);
         teamRepository.save(team);
         return jacksonMapper.writeValueAsString(team);
+    }
+    public void removeMember(Member pmember){
+        Team team = teamRepository.findByMembersMemberId(pmember.getMemberId());
+        System.out.println(team);
+        System.out.println(team.removeMember(pmember));
+        System.out.println(team);
+        teamRepository.save(team);
     }
 }

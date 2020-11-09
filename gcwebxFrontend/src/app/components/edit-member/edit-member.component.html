@@ -1,15 +1,32 @@
 <ng-template #content let-modal>
-  <div class="modal-body">
-    <p><strong>Are you sure you want to delete Member <span class="text-danger">{{member.name}}</span></strong></p>
-  </div>
-  <div class="modal-footer">
-    <div class="mr-auto">
-      <button type="button" class="btn btn-outline-secondary float-left" (click)="modal.dismiss('cancel click')">Cancel</button>
-    </div>
-    <div class="">
-      <button type="button" class="btn btn-danger" (click)="deleteMember(modal)">Delete</button>
-    </div>
-  </div>
+
+    <ng-container *ngIf="!member.deleted else memberDelete">
+      <div class="modal-body">
+        <p><strong>Are you sure you want to move <span class="text-danger">{{member.name}}</span></strong> to the deleted list</p>
+      </div>
+      <div class="modal-footer">
+        <div class="mr-auto">
+          <button type="button" class="btn btn-outline-secondary float-left" (click)="modal.dismiss('cancel click')">Cancel</button>
+        </div>
+      <div class="">
+        <button type="button" class="btn btn-danger" (click)="setMemberDeleted(modal)">Move to Deleted</button>
+      </div>
+      </div>
+    </ng-container>
+    <ng-template #memberDelete>
+      <div class="modal-body">
+        <p><strong>Are you sure you want to delete Member <span class="text-danger">{{member.name}}</span></strong> unrecoverably?</p>
+      </div>
+      <div class="modal-footer">
+        <div class="mr-auto">
+          <button type="button" class="btn btn-outline-secondary float-left" (click)="modal.dismiss('cancel click')">Cancel</button>
+        </div>
+        <div class="">
+          <button type="button" class="btn btn-danger" (click)="deleteMember(modal)">Delete</button>
+        </div>
+      </div>
+    </ng-template>
+
 </ng-template>
 
 <div *ngIf="member || create == true">
@@ -53,7 +70,19 @@
             <input class="form-control" type="text" formControlName="gamerTag">
           </div>
           <div class="col-lg-4"><label>Rang:</label>
-            <input class="form-control" type="text" formControlName="rank">
+            <select class="form-control overflow-auto"    formControlName="rank">
+              <option>Owner</option>
+              <option>Techniker</option>
+              <option>Entwickler</option>
+              <option>Freunde</option>
+              <option>Moderator</option>
+              <option>Veteran</option>
+              <option>Member</option>
+              <option>Stammspieler</option>
+              <option>Streamer</option>
+              <option>Trial</option>
+
+            </select>
           </div>
           <div class="col-lg-4"><label>Twitch:</label>
             <input class="form-control" type="text" formControlName="twitch">
@@ -63,6 +92,9 @@
           </div>
           <div class="col-lg-4"><label>Youtubelink:</label>
             <input class="form-control" type="text" formControlName="youtube">
+          </div>
+          <div class="col-lg-4"><label>Spieler Rolle:</label>
+            <input class="form-control" type="text" formControlName="playerRole">
           </div>
           <div class="col-lg-12">
             <label>Generelle Info:</label>
@@ -84,8 +116,13 @@
     <button type="button" class="btn btn-info" (click)="activeModal.close('Close click')">Close</button>
   </div>
   <button *ngIf="create; else elseBlock" type="button" class="btn btn-success" (click)="createMember()">Create Member</button>
-  <ng-template #elseBlock >
-    <button type="button" class="btn btn-success" (click)="updateMember()">Save Member</button>
+  <ng-template #elseBlock>
+    <button *ngIf="!member.deleted else removeDeleted" type="button" class="btn btn-success" (click)="updateMember()">Save Member</button>
+    <ng-template #removeDeleted>
+    <button type="button" class="btn btn-success" (click)="removeFromDelted()">Remove From DeltedList</button>
   </ng-template>
+  </ng-template>
+    <ng-container></ng-container>
+
  </div>
 </div>
