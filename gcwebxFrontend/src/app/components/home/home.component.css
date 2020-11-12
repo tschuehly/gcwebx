@@ -9,7 +9,6 @@
   align-items: center;
   justify-content: center;
   background-image: url(/assets/home_bg.jpg);
-  filter: grayscale(100%);
   height: 100%;
   border-bottom: #0ff!important;
   border-bottom-width: 1px!important;
@@ -18,6 +17,12 @@
   /* Center and scale the image nicely */
   background-attachment: local;
   background-repeat: no-repeat;
+}
+
+@media screen and (min-width: 1300px) {
+  .home_pic{
+    background-position-y: -8vw;
+  }
 }
 .overlay {
   margin-right:auto;
