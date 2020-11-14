@@ -5,8 +5,8 @@ import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import javax.validation.constraints.NotEmpty;
+import java.time.LocalDate;
 @Entity
 @ToString
 @NoArgsConstructor
@@ -19,6 +19,7 @@ import javax.validation.constraints.NotEmpty;
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq")
+    @JsonView(value = View.External.class)
     private Long memberId;
     @NotEmpty
     @JsonView(value = View.External.class)

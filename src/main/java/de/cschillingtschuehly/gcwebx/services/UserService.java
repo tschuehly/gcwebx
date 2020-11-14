@@ -4,8 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import de.cschillingtschuehly.gcwebx.modell.WebsiteUser;
 import de.cschillingtschuehly.gcwebx.modell.AuthenticatedWebsiteUser;
+import de.cschillingtschuehly.gcwebx.modell.WebsiteUser;
 import de.cschillingtschuehly.gcwebx.repositories.UserRepository;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.management.relation.Role;
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;

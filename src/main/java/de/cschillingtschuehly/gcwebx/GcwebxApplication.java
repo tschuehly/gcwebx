@@ -1,11 +1,12 @@
 package de.cschillingtschuehly.gcwebx;
 
-import de.cschillingtschuehly.gcwebx.modell.*;
-import de.cschillingtschuehly.gcwebx.repositories.*;
+import de.cschillingtschuehly.gcwebx.modell.Content;
+import de.cschillingtschuehly.gcwebx.repositories.ContentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import java.time.LocalDateTime;
 @SpringBootApplication
 public class GcwebxApplication implements CommandLineRunner{

@@ -2,7 +2,6 @@ package de.cschillingtschuehly.gcwebx.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import de.cschillingtschuehly.gcwebx.modell.Content;
 import de.cschillingtschuehly.gcwebx.modell.Match;
 import de.cschillingtschuehly.gcwebx.modell.View;
 import de.cschillingtschuehly.gcwebx.services.MatchService;

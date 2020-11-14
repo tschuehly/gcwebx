@@ -1,6 +1,5 @@
 package de.cschillingtschuehly.gcwebx.repositories;
 
-import de.cschillingtschuehly.gcwebx.modell.Member;
 import de.cschillingtschuehly.gcwebx.modell.Team;
 import org.springframework.data.repository.CrudRepository;
 

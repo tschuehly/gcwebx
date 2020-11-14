@@ -77,6 +77,9 @@ export class BackendService {
   addMemberToTeam(member: Member, teamId: number): Observable<any>{
     return this.http.post(this.backendUrl + '/addMemberToTeam/' + teamId, member);
   }
+  removeMemberFromTeam(member: Member, teamId: number): Observable<any>{
+    return this.http.post(this.backendUrl + '/removeMemberFromTeam/' + teamId, member);
+  }
   getMatches(): Observable<any>{
     return this.http.get(this.backendUrl + '/getMatches');
   }

@@ -1,16 +1,13 @@
 package de.cschillingtschuehly.gcwebx.services;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import de.cschillingtschuehly.gcwebx.modell.Member;
 import org.dozer.DozerBeanMapper;
-import org.dozer.Mapper;
 import org.dozer.loader.api.BeanMappingBuilder;
 import org.springframework.stereotype.Service;
-import io.craftsman.Jdk8CompatibilityConverter;
 
 import java.util.Collections;
 

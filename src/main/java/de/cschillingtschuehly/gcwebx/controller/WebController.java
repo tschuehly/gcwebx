@@ -105,6 +105,11 @@ public class WebController {
         String updatedTeam = teamService.addMember(teamId,member);
         return ResponseEntity.ok().body(updatedTeam);
     }
+    @PostMapping(value="/api/removeMemberFromTeam/{teamId}",produces = {"application/json"})
+    public ResponseEntity removeMemberFromTeam(@RequestBody Member member,@PathVariable Long teamId) throws JsonProcessingException {
+        String updatedTeam = teamService.removeMemberFromTeam(teamId,member);
+        return ResponseEntity.ok().body(updatedTeam);
+    }
 
     @GetMapping(value = "/api/getStreamer",produces = {"application/json"})
     @JsonView(value = View.External.class)

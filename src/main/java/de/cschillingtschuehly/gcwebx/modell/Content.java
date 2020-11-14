@@ -3,10 +3,8 @@ package de.cschillingtschuehly.gcwebx.modell;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.*;
-import org.hibernate.engine.jdbc.spi.ConnectionObserverAdapter;
 
 import javax.persistence.*;
-import java.awt.*;
 import java.time.LocalDateTime;
 
 @Entity

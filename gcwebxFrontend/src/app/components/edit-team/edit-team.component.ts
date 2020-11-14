@@ -57,6 +57,13 @@ export class EditTeamComponent implements OnInit {
       this.teamUpdated.emit(true);
     });
   }
+  deleteMemberFromTeam(member: Member){
+    this.editTeam = this.team;
+    this.editTeam = (this.EditForm.value as Team);
+    this.backendService.removeMemberFromTeam(member, this.editTeam.teamId).subscribe( data => {
+      this.teamUpdated.emit(true);
+    });
+  }
   deleteTeam(modal) {
     modal.close();
     this.editTeam = (this.EditForm.value as Team);

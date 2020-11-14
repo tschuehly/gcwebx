@@ -4,9 +4,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.cschillingtschuehly.gcwebx.modell.Member;
 import de.cschillingtschuehly.gcwebx.modell.Team;
+import de.cschillingtschuehly.gcwebx.repositories.MatchRepository;
 import de.cschillingtschuehly.gcwebx.repositories.MemberRepository;
 import de.cschillingtschuehly.gcwebx.repositories.TeamRepository;
-import lombok.Setter;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +17,8 @@ import java.util.List;
 public class TeamService {
     @Autowired
     private MemberRepository memberRepository;
+    @Autowired
+    private MatchRepository matchRepository;
     @Autowired
     private MapperService mapperService;
     @Autowired
@@ -43,6 +45,7 @@ public class TeamService {
         return jacksonMapper.writeValueAsString(team);
     }
     public void deleteTeam(Team teamParam){
+        matchRepository.deleteByHometeam(teamParam);
         teamRepository.delete(teamParam);
 
     }
@@ -55,6 +58,19 @@ public class TeamService {
         teamRepository.save(team);
         return jacksonMapper.writeValueAsString(team);
     }
+
+    public String removeMemberFromTeam(Long teamId,Member pmember) throws JsonProcessingException {
+        System.out.println(teamId);
+        System.out.println(pmember);
+        ObjectMapper jacksonMapper = mapperService.jacksonMapper();
+        Member member = memberRepository.findById(pmember.getMemberId()).get();
+        Team team = teamRepository.findById(teamId).get();
+        team.removeMember(member);
+        teamRepository.save(team);
+        return jacksonMapper.writeValueAsString(team);
+    }
+
+
     public void removeMember(Member pmember){
         Team team = teamRepository.findByMembersMemberId(pmember.getMemberId());
         System.out.println(team);

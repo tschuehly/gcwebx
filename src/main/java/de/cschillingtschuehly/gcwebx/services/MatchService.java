@@ -1,9 +1,7 @@
 package de.cschillingtschuehly.gcwebx.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import de.cschillingtschuehly.gcwebx.modell.Content;
 import de.cschillingtschuehly.gcwebx.modell.Match;
-import de.cschillingtschuehly.gcwebx.repositories.ContentRepository;
 import de.cschillingtschuehly.gcwebx.repositories.MatchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
