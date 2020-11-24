@@ -19,12 +19,6 @@
           <div class="nav-link-text">Teams<i class="pl-2 fas fa-caret-down "></i></div>
         </a>
       </li>
-
-      <li ngbNavItem [ngClass]="currentRoute == '/logo' ? 'active-page' : 'not-active'">
-        <a ngbNavLink  routerLink="logo" (click)="isMenuCollapsed = true">
-          <div class="nav-link-text">Logo</div>
-        </a>
-      </li>
       <li ngbNavItem [ngClass]="currentRoute == '/teamspeak' ? 'active-page' : 'not-active'">
         <a ngbNavLink routerLink="teamspeak" (click)="isMenuCollapsed = true">
           <div class="nav-link-text" >Teamspeak</div>
@@ -109,7 +103,7 @@
       <div class="p-1">
         <span class=" align-middle">
           <h5 class="text-center text-light my-auto">
-          <a class="text-light" routerLink="imprint">Impressum</a><ng-container *ngIf="!this.currentRoles"></ng-container>
+          <a class="text-light" routerLink="imprint">Impressum</a>&nbsp; | &nbsp; <a class="text-light"  routerLink="logo">Logo</a>
           </h5>
         </span>
       </div>

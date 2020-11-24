@@ -35,7 +35,9 @@ export class EsportComponent implements OnInit {
     this.game = new FormControl('');
     this.gamefilter$ = this.game.valueChanges.pipe(startWith(''));
     this.filteredTeams$ = combineLatest([this.teams$, this.route.params]).pipe(map(([teams, gameRoute]) =>
-      teams.filter(team => team.game === gameRoute['game'])));
+      teams.filter(team => team.game === gameRoute['game']).sort((a: Team, b:Team) => {
+        return a.teamName.toLowerCase() === 'xperience' ? -1 : b.teamName.toLowerCase() === 'xperience' ? 1 : 0;
+      })));
     this.matches$ = backendService.getMatches();
   }
 

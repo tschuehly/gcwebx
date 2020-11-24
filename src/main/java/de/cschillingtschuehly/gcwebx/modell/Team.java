@@ -18,7 +18,7 @@ import java.util.List;
 @JsonView(View.External.class)
 public class Team {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long teamId;
     @NotEmpty
     private String teamName;
