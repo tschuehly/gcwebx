@@ -18,7 +18,7 @@ public class Content{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String title;
     @Lob
     @Column(columnDefinition = "text")

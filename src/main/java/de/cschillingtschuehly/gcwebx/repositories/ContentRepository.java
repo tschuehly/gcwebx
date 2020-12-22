@@ -1,11 +1,7 @@
 package de.cschillingtschuehly.gcwebx.repositories;
 
 import de.cschillingtschuehly.gcwebx.modell.Content;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-
-public interface ContentRepository extends CrudRepository<Content, Integer> {
-
-    List<Content> findAll();
+public interface ContentRepository extends JpaRepository<Content, Long> {
 }

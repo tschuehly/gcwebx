@@ -31,21 +31,21 @@ export class BackendService {
   }
 
   getContentById(id: number): Observable<any>{
-    return this.http.post(this.backendUrl + '/getContentByID', id);
+    return this.http.get(`${this.backendUrl + '/content/'}${id}`);
   }
 
   getContent(): Observable<any>{
-    return this.http.get(this.backendUrl + '/getContent');
+    return this.http.get(this.backendUrl + '/content');
   }
   updateContent(content: Content): Observable<any>{
-    return this.http.put(this.backendUrl + '/updateContent', content);
+    return this.http.put(this.backendUrl + '/content', content);
   }
   createContent(content: Content): Observable<any>{
-    return this.http.post(this.backendUrl + '/createContent', content);
+    return this.http.post(this.backendUrl + '/content', content);
   }
 
   deleteContent(id: number): Observable<any>{
-    return this.http.delete(`${this.backendUrl + '/deleteContent/'}${id}`);
+    return this.http.delete(`${this.backendUrl + '/content/'}${id}`);
   }
 
 

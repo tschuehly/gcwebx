@@ -17,11 +17,11 @@ public class GcwebxApplication implements CommandLineRunner{
 	private ContentRepository contentRepository;
 	@Override
 	public void run(String... args){
-		contentRepository.findById(1).ifPresentOrElse((content -> System.out.println("Welcometitle already asigned")),
-				() -> {contentRepository.save(new Content(1, "Welcometitle", "<p>Place the welcometext here in the editor</p>", false, LocalDateTime.now(), LocalDateTime.now()));
+		contentRepository.findById(1L).ifPresentOrElse((content -> System.out.println("Welcometitle already asigned")),
+				() -> {contentRepository.save(new Content(1L, "Welcometitle", "<p>Place the welcometext here in the editor</p>", false, LocalDateTime.now(), LocalDateTime.now()));
 					System.out.println("welcome does not exist");});
-		contentRepository.findById(2).ifPresentOrElse((content -> System.out.println("Imprint already asigned")),
-				() -> contentRepository.save(new Content(2, "Imprint", "<p>Place the imprint here in the editor</p>", false, LocalDateTime.now(),LocalDateTime.now())));
+		contentRepository.findById(2L).ifPresentOrElse((content -> System.out.println("Imprint already asigned")),
+				() -> contentRepository.save(new Content(2L, "Imprint", "<p>Place the imprint here in the editor</p>", false, LocalDateTime.now(),LocalDateTime.now())));
 
 	}
 
