@@ -27,5 +27,4 @@ public class WebController {
     public ResponseEntity<Object> getRole(@PathVariable String username){
         return ResponseEntity.ok().body("{\n \"roles\": \n" + userService.getRolesByUsername(username)+ "\n}");
     }
-
 }

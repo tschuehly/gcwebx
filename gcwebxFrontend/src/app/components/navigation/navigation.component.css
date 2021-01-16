@@ -40,7 +40,7 @@ a:hover{
   text-decoration: none;
 }
 
-.fa-twitter,.fa-teamspeak{
+.fa-twitter,.fa-teamspeak,.fa-discord{
   color:white;
 }
 .btn:hover > i{

@@ -42,3 +42,11 @@
   width: 100%;
   height: 100%;
 }
+
+.product-image {
+  max-width: 100%;
+  background-color: #13151b;
+
+  border-top: 0.3rem solid cyan;
+  border-radius: 0.3rem;
+}

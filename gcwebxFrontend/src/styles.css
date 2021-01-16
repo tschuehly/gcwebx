@@ -1,25 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body {
+body,html {
+  height: 100%;
 }
-body { margin: 0; font-family:  code_boldregular, Roboto, "Helvetica Neue", sans-serif; }
 
-html, body {
-}
 body {
   background-image: url("/assets/webb.png");
   background-blend-mode: color-burn;
-  background-color: #0c0d11  ;
+  background-color: #0c0d11 ;
+  margin: 0; font-family:  code_boldregular, Roboto, "Helvetica Neue", sans-serif;
 }
 
 .topspace{
-  height: 8em;
+  height: 7em;
 }
-.backgroundimg {
-  min-height: 94vh;
-  /* Center and scale the image nicely */
-}
-
 .btn-info{
   background-color: #24f8f3;
   border-color: #24f8f3;

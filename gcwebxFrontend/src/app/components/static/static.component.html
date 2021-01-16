@@ -1,41 +1,117 @@
-<div class="backgroundimg">
-  <div class="container-fluid topspace"></div>
 
-  <div *ngIf="page == '/logo'" class="container d-flex flex-column align-items-center ">
-    <div id="logo" class="logocontainer">
-      <p>{{logoName}}</p>
-    </div>
-    <div class="form-group p-3 formcontainer d-flex">
-      <input autofocus class="form-control m-2 col-6" [(ngModel)]="logoName" type="text">
-      <button (click)="downloadLogo()" class="btn btn-primary m-2 col-6">Generiere Bild</button>
+<div class="container-fluid topspace"></div>
 
-    </div>
+<div *ngIf="page == '/logo'" class="container d-flex flex-column align-items-center ">
+  <div id="logo" class="logocontainer">
+    <p>{{logoName}}</p>
   </div>
+  <div class="form-group p-3 formcontainer d-flex">
+    <input autofocus class="form-control m-2 col-6" [(ngModel)]="logoName" type="text">
+    <button (click)="downloadLogo()" class="btn btn-primary m-2 col-6">Erstelle Logo</button>
 
-  <div *ngIf="page == '/streamer'" class="container text-center  text-light">
-    <h1 class="py-2">Unsere Streamer</h1>
-    <div class="row">
-      <ng-container *ngFor="let stream of streamer">
-        <div class="col-12 col-lg-6">
-          <h1 class="py-2">{{stream.name}}</h1>
-          <div class="streamercontainer" >
-            <iframe class="twitchIframe"
-                    [src]="getHost(stream.twitch)"
-                    height="1080"
-                    width="1920"
-                    frameborder="0"
-                    scrolling="no"
-                    allowfullscreen="true">
-            </iframe>
-          </div>
+  </div>
+</div>
+
+<div *ngIf="page == '/streamer'" class="container text-center  text-light">
+  <h1 class="py-2">Unsere Streamer</h1>
+  <div class="row">
+    <ng-container *ngFor="let stream of streamer">
+      <div class="col-12 col-lg-6">
+        <h1 class="py-2">{{stream.name}}</h1>
+        <div class="streamercontainer" >
+          <iframe class="twitchIframe"
+                  [src]="getHost(stream.twitch)"
+                  height="1080"
+                  width="1920"
+                  frameborder="0"
+                  scrolling="no"
+                  allowfullscreen="true">
+          </iframe>
         </div>
-      </ng-container>
-    </div>
-
-  </div>
-  <div *ngIf="page == '/imprint'" class="imprint container text-center text-light">
-    <h1 [innerHTML]="staticTitle1"></h1>
-    <p [innerHTML]="staticText1"></p>
+      </div>
+    </ng-container>
   </div>
 
 </div>
+<div *ngIf="page == '/imprint'" class="imprint container text-center text-light">
+  <h1 [innerHTML]="staticTitle1"></h1>
+  <p [innerHTML]="staticText1"></p>
+</div>
+<div *ngIf="page == '/shop'" class="shop container text-center text-light">
+  <h1 class="mb-5">Shop</h1>
+  <div class="row">
+    <div class="col-4">
+      <a class="d-flex" href="https://www.xoose.de/produkt/jersey-xperience/" target="_blank">
+        <img class="product-image" src="assets/JERSEY_XPERIENCE_FRONT.png">
+      </a>
+      <h3 class="my-4">Jersey</h3>
+    </div>
+    <div class="col-4">
+      <a class="d-flex" href="https://www.xoose.de/produkt/gesichtsmaske-xperience/" target="_blank">
+        <img class="product-image" src="assets/FACEMASK_XPERIENCE.png">
+      </a>
+      <h3 class="my-4">Facemask</h3>
+    </div>
+    <div class="col-4">
+      <a class="d-flex" href="https://www.xoose.de/produkt/mousepad-xperience/" target="_blank">
+        <img class="product-image" src="assets/MPAD_XPERIENCE.png">
+      </a>
+      <h3 class="my-4">Mousepad</h3>
+    </div>
+    <div class="col-4">
+      <a class="d-flex" href="https://www.xoose.de/produkt/fp-t-shirt-xperience/" target="_blank">
+        <img class="product-image" src="assets/FP_T-SHIRT_XPERIENCE_FRONT.png">
+      </a>
+      <h3 class="my-4">T-Shirt</h3>
+    </div>
+    <div class="col-4">
+      <a class="d-flex" href="https://www.xoose.de/produkt/tasse-xperience/" target="_blank">
+        <img class="product-image" src="assets/TASSE_XPERIENCE.png">
+      </a>
+      <h3 class="my-4">Tasse</h3>
+    </div>
+    <div class="col-4">
+      <a class="d-flex" href="https://www.xoose.de/produkt/regenjacke-xperience/" target="_blank">
+        <img class="product-image" src="assets/REGENJACKE_XPERIENCE.png">
+      </a>
+      <h3 class="my-4">Regenjacke</h3>
+    </div>
+    <div class="col-4">
+      <a class="d-flex" href="https://www.xoose.de/produkt/hoodie-xperience-block/" target="_blank">
+        <img class="product-image" src="assets/HOODIE-B_XPERIENCE_BLOCK_BLACK.png">
+      </a>
+      <h3 class="my-4">Hoodie</h3>
+    </div>
+    <div class="col-4">
+      <a class="d-flex" href="https://www.xoose.de/produkt/hoodie-xperience/" target="_blank">
+        <img class="product-image" src="assets/HOODIE-B_XPERIENCE_LOGO_BLACK.png">
+      </a>
+      <h3 class="my-4">Hoodie</h3>
+    </div>
+    <div class="col-4">
+      <a class="d-flex" href="https://www.xoose.de/produkt/t-shirt-xperience-block/" target="_blank">
+        <img class="product-image" src="assets/T-SHIRT_XPERIENCE_BLOCK_BLACK.png">
+      </a>
+      <h3 class="my-4">Tshirt</h3>
+    </div>
+    <div class="col-4">
+      <a class="d-flex" href="https://www.xoose.de/produkt/t-shirt-xperience/" target="_blank">
+        <img class="product-image" src="assets/T-SHIRT_XPERIENCE_LOGO_BLACK.png">
+      </a>
+      <h3 class="my-4">Tshirt</h3>
+    </div>
+    <div class="col-4">
+      <a class="d-flex" href="https://www.xoose.de/produkt/jogginghose-xperience/" target="_blank">
+        <img class="product-image" src="assets/JOGGERS_XPERIENCE_LOGO_BLACK.png">
+      </a>
+      <h3 class="my-4">Jogginghose</h3>
+    </div>
+    <div class="col-4">
+      <a class="d-flex" href="https://www.xoose.de/produkt/shorts-xperience/" target="_blank">
+        <img class="product-image" src="assets/SHORTS-MESH_XPERIENCE_LOGO_BLACK.png">
+      </a>
+      <h3 class="my-4">Shorts</h3>
+    </div>
+  </div>
+</div>
+
