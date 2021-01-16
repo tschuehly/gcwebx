@@ -1,5 +1,6 @@
 package de.cschillingtschuehly.gcwebx.helpers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
@@ -34,7 +35,7 @@ public class RESTController<T,R extends JpaRepository<T,Long>,S extends CRUDServ
         }
     }
     @PutMapping
-    public T update(@RequestBody T object){
+    public T update(@RequestBody T object) throws JsonProcessingException {
         return service.save(object);
     }
 

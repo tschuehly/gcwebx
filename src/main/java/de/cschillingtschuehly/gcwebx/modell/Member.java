@@ -62,9 +62,4 @@ public class Member {
         this.cardImg = cardImg;
         this.deleted = false;
     }
-    /*
-    public long getMemberId(){
-        return memberId;
-    }*/
-
 }

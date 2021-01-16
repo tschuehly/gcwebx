@@ -26,7 +26,7 @@ export class AuthenticationService {
     const headers = new HttpHeaders(credentials ? {
       authorization: authString
     } : {});
-    this.http.get(this.backendUrl + '/user', {headers}).subscribe(response => {
+    this.http.get(this.backendUrl + '/login', {headers}).subscribe(response => {
       if (response['name']) {
         this.authenticated = true;
         sessionStorage.setItem('username', credentials.username);

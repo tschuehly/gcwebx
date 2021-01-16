@@ -88,8 +88,8 @@ svg {
 }
 .dropdown-item:hover{
   color: aqua !important;
+  background-color: aqua!important;
 }
-
 .dropdown-menu{
   padding-top: 0.5em!important;
   padding-bottom: 0.5em!important;

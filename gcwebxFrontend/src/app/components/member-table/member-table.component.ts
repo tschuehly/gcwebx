@@ -28,8 +28,8 @@ export class MemberTableComponent implements OnInit{
   constructor(private backendService: BackendService,
               private modalService: NgbModal,
               private authenticationService: AuthenticationService) {
-    this.memberTable$ = this.backendService.getMemberTable();
-    this.backendService.getMemberTable().
+    this.memberTable$ = this.backendService.getMembers();
+    this.backendService.getMembers().
     subscribe(memberTableResponse => {
       this.member = memberTableResponse[4];
     });
@@ -71,7 +71,7 @@ export class MemberTableComponent implements OnInit{
     this.authenticationService.logout();
   }
   updateMemberTable(){
-    this.memberTable$ = this.backendService.getMemberTable();
+    this.memberTable$ = this.backendService.getMembers();
 
   }
   createMember() {

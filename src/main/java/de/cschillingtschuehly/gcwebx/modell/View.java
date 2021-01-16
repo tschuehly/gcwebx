@@ -1,9 +1,12 @@
 package de.cschillingtschuehly.gcwebx.modell;
 
-public class View {
-    public static class External {
+public interface View {
+    public static interface External {
     }
-    public static class Internal extends External {
+    public static interface Internal extends External {
+    }
+    public static interface Prohibited extends Internal{
+
     }
 
 }

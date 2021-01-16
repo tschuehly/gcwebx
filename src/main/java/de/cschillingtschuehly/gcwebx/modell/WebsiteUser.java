@@ -1,5 +1,6 @@
 package de.cschillingtschuehly.gcwebx.modell;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,14 +13,13 @@ import javax.validation.constraints.NotEmpty;
 @Setter
 @JsonView(View.Internal.class)
 public class WebsiteUser {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false, unique = true)
     private String username;
     private String email;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     private boolean roleUser;
     private boolean roleEditor;
@@ -64,27 +64,25 @@ public class WebsiteUser {
 
     }
     public String getRoles() {
-        String returnString = "{\n \"roleUser\":"+this.roleUser + ",\"roleEditor\":"+this.roleEditor + ",\"roleSupport\":"+this.roleSupport +",\"roleModerator\":"+this.roleModerator +",\"roleAdmin\":"+this.roleAdmin+"\n}";
-        return returnString;
+
+        return "{\n \"roleUser\":"+this.roleUser + ",\"roleEditor\":"+this.roleEditor + ",\"roleSupport\":"+this.roleSupport +",\"roleModerator\":"+this.roleModerator +",\"roleAdmin\":"+this.roleAdmin+"\n}";
     }
 
-    public WebsiteUser(){
+    public WebsiteUser(){}
 
-    }
-
-    public WebsiteUser(@NotEmpty(message = "username is required") String username, @NotEmpty(message = "password is required") String password, boolean role_user, boolean role_editor, boolean role_support, boolean role_moderator, boolean role_admin) {
-        this.id = id;
+    public WebsiteUser(@NotEmpty(message = "username is required") String username,
+                       @NotEmpty(message = "password is required") String password,
+                       boolean roleUser,
+                       boolean roleEditor,
+                       boolean roleSupport,
+                       boolean roleModerator,
+                       boolean roleAdmin) {
         this.username = username;
         this.password = password;
-        this.roleUser = role_user;
-        this.roleEditor = role_editor;
-        this.roleSupport = role_support;
-        this.roleModerator = role_moderator;
-        this.roleAdmin = role_admin;
+        this.roleUser = roleUser;
+        this.roleEditor = roleEditor;
+        this.roleSupport = roleSupport;
+        this.roleModerator = roleModerator;
+        this.roleAdmin = roleAdmin;
     }
-    //public User(String username, String email, String password){
-        //this.username = username;
-        //this.email = email;
-        //this.password = password;
-    //}
 }

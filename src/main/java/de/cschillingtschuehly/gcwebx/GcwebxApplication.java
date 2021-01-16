@@ -2,6 +2,8 @@ package de.cschillingtschuehly.gcwebx;
 
 import de.cschillingtschuehly.gcwebx.modell.Content;
 import de.cschillingtschuehly.gcwebx.repositories.ContentRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -15,12 +17,16 @@ public class GcwebxApplication implements CommandLineRunner{
 	}
 	@Autowired
 	private ContentRepository contentRepository;
+
+	private final Logger logger = LoggerFactory.getLogger(GcwebxApplication.class);
+
 	@Override
 	public void run(String... args){
-		contentRepository.findById(1L).ifPresentOrElse((content -> System.out.println("Welcometitle already asigned")),
-				() -> {contentRepository.save(new Content(1L, "Welcometitle", "<p>Place the welcometext here in the editor</p>", false, LocalDateTime.now(), LocalDateTime.now()));
-					System.out.println("welcome does not exist");});
-		contentRepository.findById(2L).ifPresentOrElse((content -> System.out.println("Imprint already asigned")),
+		contentRepository.findById(1L).ifPresentOrElse((content -> logger.info("Welcometitle already asigned")),
+				() -> {
+					contentRepository.save(new Content(1L, "Welcometitle", "<p>Place the welcometext here in the editor</p>", false, LocalDateTime.now(), LocalDateTime.now()));
+					logger.info("welcome does not exist");});
+		contentRepository.findById(2L).ifPresentOrElse((content -> logger.info("Imprint already asigned")),
 				() -> contentRepository.save(new Content(2L, "Imprint", "<p>Place the imprint here in the editor</p>", false, LocalDateTime.now(),LocalDateTime.now())));
 
 	}

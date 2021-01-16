@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class Match {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private LocalDateTime date;
     @OneToOne
     private Team hometeam;

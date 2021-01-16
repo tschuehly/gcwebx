@@ -1,5 +1,6 @@
 package de.cschillingtschuehly.gcwebx.modell;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
@@ -24,7 +25,8 @@ public class Team {
     private String teamName;
     private String game;
     private String generalInfo;
-    @OneToMany(cascade = CascadeType.ALL, targetEntity = Member.class,fetch = FetchType.EAGER)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @OneToMany(targetEntity = Member.class,fetch = FetchType.EAGER)
     private List<Member> members;
 
     public List<Member> addMember(Member pmember){
@@ -33,7 +35,6 @@ public class Team {
     }
     public List<Member> removeMember(Member pmember){
         members.stream().filter(member -> member.getMemberId().equals(pmember.getMemberId())).findFirst().ifPresent(member -> members.remove(member));
-        System.out.println(this.members);
         return this.members;
     }
 

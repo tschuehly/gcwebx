@@ -5,7 +5,8 @@ import de.cschillingtschuehly.gcwebx.modell.Team;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 
-public interface MatchRepository extends JpaRepository<Match,Integer> {
+public interface MatchRepository extends JpaRepository<Match,Long> {
     @Transactional
     Long deleteByHometeam(Team team);
+
 }

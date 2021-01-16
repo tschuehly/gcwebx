@@ -63,15 +63,16 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/user").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/content","/api/getTeams","/api/getMatches","/api/getStreamer").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/login","/api/getRole/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/content","/api/getTeams","/api/team","/api/match","/api/member/getStreamer").permitAll()
                 .antMatchers( "/login","/h2-console/**").permitAll()
                 .antMatchers( "/api/getMembers",
                         "/api/updateMember",
                         "/api/createMember",
-                        "/api/deleteMember",
-                        "/api/deleteMatch").hasAnyRole("ADMIN", "MODERATOR","SUPPORT")
-                .antMatchers( "/api/getUsers","/api/updateUser","/api/createUser","/api/deleteUser").hasAnyRole("ADMIN")
+                        "/api/deleteMember"
+                       ).hasAnyRole("ADMIN", "MODERATOR","SUPPORT")
+                .antMatchers(HttpMethod.DELETE, "/api/match").hasAnyRole("ADMIN", "MODERATOR","SUPPORT")
+                .antMatchers( "/api/user").hasAnyRole("ADMIN")
                 .antMatchers( "/api/admin").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()

@@ -2,54 +2,40 @@ package de.cschillingtschuehly.gcwebx.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
+import de.cschillingtschuehly.gcwebx.helpers.CRUDService;
 import de.cschillingtschuehly.gcwebx.modell.Member;
 import de.cschillingtschuehly.gcwebx.repositories.MemberRepository;
-import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class MemberService {
+public class MemberService extends CRUDService<Member,MemberRepository> {
     @Autowired
     private MemberRepository memberRepository;
     @Autowired
     private MapperService mapperService;
     @Autowired
     private TeamService teamService;
-    public String getMemberTable(){
-        ObjectMapper mapper = mapperService.jacksonMapper();
-        List<Member> memberList = memberRepository.findAll();
-        ArrayNode memberTable = mapper.valueToTree(memberList);
-        return memberTable.toString();
-    }
-    public String updateMember(Member memberParam) throws JsonProcessingException {
+
+    public Member updateMember(Member memberParam) throws JsonProcessingException {
         ObjectMapper jacksonMapper = mapperService.jacksonMapper();
-        Mapper dozerMapper = mapperService.dozerMapper();
-        Member member = memberRepository.findById(memberParam.getMemberId()).get();
-        dozerMapper.map(memberParam,member);
-        memberRepository.save(member);
-        return jacksonMapper.writeValueAsString(member);
+        Member member = memberRepository.findById(memberParam.getMemberId())
+                .orElseThrow(EntityNotFoundException::new);
+        jacksonMapper.readerForUpdating(member).readValue(jacksonMapper.writeValueAsString(memberParam));
+        return memberRepository.save(member);
     }
 
-    public String createMember(Member memberParam) throws JsonProcessingException {
-        ObjectMapper jacksonMapper = mapperService.jacksonMapper();
-        memberRepository.save(memberParam);
-        Member member = memberRepository.findById(memberParam.getMemberId()).get();
-        return jacksonMapper.writeValueAsString(member);
-    }
     public void deleteMember(Member memberParam){
-        System.out.println(memberParam);
         teamService.removeMember(memberParam);
         memberRepository.delete(memberParam);
-        return;
-
     }
+
     public List<Member> getStreamer(){
-        return memberRepository.findAll().stream().filter(member -> member.getTwitch() != null && member.getTwitch() != "").filter(member -> member.getDeleted() != null && member.getDeleted() != true).collect(Collectors.toList());
-        //TODO: Remove unwanted info
+        return memberRepository.findAll().stream()
+                .filter(member -> member.getTwitch() != null && !member.getTwitch().equals(""))
+                .filter(member -> member.getDeleted() != null && !member.getDeleted()).collect(Collectors.toList());
     }
 }

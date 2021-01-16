@@ -17,18 +17,22 @@ export class BackendService {
     private http: HttpClient
   ) { }
 
-  getMemberTable(): Observable<any>{
-    return this.http.get(this.backendUrl + '/getMembers');
+  getMembers(): Observable<any>{
+    return this.http.get(this.backendUrl + '/member');
   }
   updateMember(member: Member): Observable<any>{
-    return this.http.put(this.backendUrl + '/updateMember', member);
+    return this.http.put(this.backendUrl + '/member', member);
   }
   createMember(member: Member): Observable<any>{
-    return this.http.post(this.backendUrl + '/createMember', member);
+    return this.http.post(this.backendUrl + '/member', member);
   }
   deleteMember(member: Member): Observable<any>{
-    return this.http.post(this.backendUrl + '/deleteMember', member);
+    return this.http.post(this.backendUrl + '/member/delete', member);
   }
+  getStreamer(): Observable<any>{
+    return this.http.get(this.backendUrl + '/member/getStreamer');
+  }
+
 
   getContentById(id: number): Observable<any>{
     return this.http.get(`${this.backendUrl + '/content/'}${id}`);
@@ -50,50 +54,50 @@ export class BackendService {
 
 
   getUserTable(): Observable<any>{
-    return this.http.get(this.backendUrl + '/getUsers');
+    return this.http.get(this.backendUrl + '/user');
   }
   updateUser(user: User): Observable<any>{
-    return this.http.put(this.backendUrl + '/updateUser', user);
+    return this.http.put(this.backendUrl + '/user', user);
   }
   createUser(user: User): Observable<any>{
-    return this.http.post(this.backendUrl + '/createUser', user);
+    return this.http.post(this.backendUrl + '/user', user);
   }
   deleteUser(user: User): Observable<any>{
-    return this.http.post(this.backendUrl + '/deleteUser', user );
+    return this.http.post(this.backendUrl + '/user', user );
   }
+
 
   getTeams(): Observable<any>{
-    return this.http.get(this.backendUrl + '/getTeams');
+    return this.http.get(this.backendUrl + '/team');
   }
   updateTeam(team: Team): Observable<any>{
-    return this.http.put(this.backendUrl + '/updateTeam', team);
+    return this.http.put(this.backendUrl + '/team', team);
   }
   createTeam(team: Team): Observable<any>{
-    return this.http.post(this.backendUrl + '/createTeam', team);
+    return this.http.post(this.backendUrl + '/team', team);
   }
   deleteTeam(team: Team): Observable<any>{
-    return this.http.post(this.backendUrl + '/deleteTeam', team);
+    return this.http.post(this.backendUrl + '/team/delete',team);
   }
   addMemberToTeam(member: Member, teamId: number): Observable<any>{
-    return this.http.post(this.backendUrl + '/addMemberToTeam/' + teamId, member);
+    return this.http.post(this.backendUrl + '/team/addMember/' + teamId, member);
   }
   removeMemberFromTeam(member: Member, teamId: number): Observable<any>{
-    return this.http.post(this.backendUrl + '/removeMemberFromTeam/' + teamId, member);
-  }
-  getMatches(): Observable<any>{
-    return this.http.get(this.backendUrl + '/getMatches');
-  }
-  createMatch(match: Match): Observable<any>{
-    return this.http.post(this.backendUrl + '/createMatch', match);
-  }
-  deleteMatch(matchId: number): Observable<any>{
-    return this.http.delete(this.backendUrl + '/deleteMatch/' + matchId);
+    return this.http.post(this.backendUrl + '/team/removeMember/' + teamId, member);
   }
 
+
+  getMatches(): Observable<any>{
+    return this.http.get(this.backendUrl + '/match');
+  }
+  createMatch(match: Match): Observable<any>{
+    return this.http.post(this.backendUrl + '/match', match);
+  }
+  deleteMatch(matchId: number): Observable<any>{
+    return this.http.delete(this.backendUrl + '/match/' + matchId);
+  }
   updateMatch(editMatch: Match) {
-    return this.http.put(this.backendUrl + '/updateMatch', editMatch);
+    return this.http.put(this.backendUrl + '/match', editMatch);
   }
-  getStreamer(): Observable<any>{
-    return this.http.get(this.backendUrl + '/getStreamer');
-  }
+
 }
