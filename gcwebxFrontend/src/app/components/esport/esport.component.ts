@@ -22,6 +22,7 @@ export class EsportComponent implements OnInit {
   public team: Team;
   public teams$: Observable<Team[]>;
   public matches$: Observable<Match[]>;
+  public sortedMatches$: Observable<Match[]>;
   public game: FormControl;
   gamefilter$: Observable<string>;
   currentTeam: Team;
@@ -39,6 +40,7 @@ export class EsportComponent implements OnInit {
         return a.teamName.toLowerCase() === 'xperience' ? -1 : b.teamName.toLowerCase() === 'xperience' ? 1 : 0;
       })));
     this.matches$ = backendService.getMatches();
+    this.sortMatches();
   }
 
   ngOnInit(): void {
@@ -52,6 +54,14 @@ export class EsportComponent implements OnInit {
     });
   }
 
+  sortMatches(){
+    this.sortedMatches$ = this.matches$.pipe(map((data) => {
+      data.sort((a, b) => {
+        return a.date > b.date ? -1 : 1;
+      });
+      return data;
+    }));
+  }
   createTeam(){
     const modalRef = this.modalService.open(EditTeamComponent, {size: 'xl', centered: true});
     const team: Team = {} as Team;

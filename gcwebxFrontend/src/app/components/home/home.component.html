@@ -32,7 +32,7 @@
         <h1>LATEST MATCHES</h1>
       </div>
       <div class="container-fluid row d-flex justify-content-around my-3 mx-0">
-        <ng-container *ngFor="let match of matches$ | async ; let i=index">
+        <ng-container *ngFor="let match of sortedMatches$ | async ; let i=index">
           <div *ngIf="i<2" class="matchtile m-2 col-12 col-lg-5 p-2 text-center">
             <h3 class="my-2">{{match.title}}</h3>
             <div class="d-flex justify-content-around mt-4 mb-2 row-cols-3">

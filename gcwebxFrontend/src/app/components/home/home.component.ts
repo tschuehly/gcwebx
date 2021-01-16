@@ -39,6 +39,7 @@ export class HomeComponent implements OnInit {
   index: number;
   staticText1: SafeHtml;
   matches$: Observable<Match[]>;
+  sortedMatches$: Observable<Match[]>;
 
   constructor(config: NgbCarouselConfig, private backendService: BackendService,
               private sanitizer: DomSanitizer, private modalService: NgbModal) {
@@ -61,7 +62,7 @@ export class HomeComponent implements OnInit {
 
     });
     this.matches$ = this.backendService.getMatches();
-
+    this.matches$.subscribe(data => this.sortMatches());
   }
 
   sortNewsArray(){
@@ -72,8 +73,15 @@ export class HomeComponent implements OnInit {
       });
       return data;
     }));
-    }
-
+  }
+  sortMatches(){
+    this.sortedMatches$ = this.matches$.pipe(map((data) => {
+      data.sort((a, b) => {
+        return a.date > b.date ? -1 : 1;
+      });
+      return data;
+    }));
+  }
 
 
 
