@@ -14,11 +14,10 @@ import java.time.LocalDate;
 @Setter
 @Getter
 @DynamicUpdate
-@SequenceGenerator(name = "seq",initialValue = 201)
 @JsonView(value = View.Internal.class)
 public class Member {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonView(value = View.External.class)
     private Long memberId;
     @NotEmpty
