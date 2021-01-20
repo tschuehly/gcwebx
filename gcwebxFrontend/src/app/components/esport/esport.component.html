@@ -54,7 +54,7 @@
           </ng-container>
         </table>
         <div class="text-center container-fluid">
-          <h1 class="text-primary">LATEST MATCHES</h1>
+          <h1 class="text-primary">LETZTE MATCHES</h1>
 
           <ng-container *ngFor="let match of sortedMatches$ | async" >
             <div  *ngIf="match.hometeam.teamId == currentTeam.teamId">
