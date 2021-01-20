@@ -7,6 +7,7 @@ import de.cschillingtschuehly.gcwebx.modell.Member;
 import de.cschillingtschuehly.gcwebx.repositories.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,6 +37,11 @@ public class MemberService extends CRUDService<Member,MemberRepository> {
     public List<Member> getStreamer(){
         return memberRepository.findAll().stream()
                 .filter(member -> member.getTwitch() != null && !member.getTwitch().equals(""))
+                .filter(member -> member.getDeleted() != null && !member.getDeleted()).collect(Collectors.toList());
+    }
+    public List<Member> getYoutuber(){
+        return memberRepository.findAll().stream()
+                .filter(member -> member.getYoutube() != null && !member.getYoutube().equals(""))
                 .filter(member -> member.getDeleted() != null && !member.getDeleted()).collect(Collectors.toList());
     }
 }

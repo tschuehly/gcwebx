@@ -32,6 +32,9 @@ export class BackendService {
   getStreamer(): Observable<any>{
     return this.http.get(this.backendUrl + '/member/getStreamer');
   }
+  getYoutuber(): Observable<any>{
+    return this.http.get(this.backendUrl + '/member/getYoutuber');
+  }
 
 
   getContentById(id: number): Observable<any>{

@@ -37,7 +37,7 @@
       </li>
       <li ngbNavItem [ngClass]="currentRoute == '/streamer' ? 'active-page' : 'not-active'">
         <a ngbNavLink routerLink="streamer" (click)="isMenuCollapsed = true">
-          <div class="nav-link-text" >Streamer</div>
+          <div class="nav-link-text" >Content</div>
         </a>
       </li>
       <li *ngIf="this.currentRoles  && (this.currentRoles.roleAdmin || this.currentRoles.roleModerator || this.currentRoles.roleSupport)" ngbNavItem [ngClass]="currentRoute == '/memberTable' ? 'active-page' : 'not-active'">

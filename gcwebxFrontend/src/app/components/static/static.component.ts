@@ -18,6 +18,7 @@ export class StaticComponent implements OnInit {
   public page;
   staticTitle1: SafeHtml;
   streamer: Member[];
+  youtuber: Member[];
   contentList: Content[];
   staticText1: SafeHtml;
 
@@ -38,6 +39,10 @@ export class StaticComponent implements OnInit {
         this.streamer  = data;
       }
     );
+    this.backendService.getYoutuber().subscribe(data => {
+        this.youtuber  = data;
+      }
+    );
   }
 
 downloadLogo() {
@@ -51,8 +56,18 @@ downloadLogo() {
       document.body.removeChild(link);
     });
   }
-  getHost(name: string): SafeHtml{
+  getTwitchURL(name: string): SafeHtml{
     const url = 'https://player.twitch.tv/?channel=' + name + '&parent=' + window.location.hostname + '&muted';
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+  getYoutubeURL(name: string): SafeHtml{
+    let url;
+    if (name.startsWith('UC')){
+      const channelId = name.replace('UC', 'UU');
+      url = 'http://www.youtube.com/embed/videoseries?list=' + channelId;
+    }else  {
+      url = 'http://www.youtube.com/embed?max-results=1&showinfo=0&rel=0&listType=user_uploads&list=' + name;
+    }
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }

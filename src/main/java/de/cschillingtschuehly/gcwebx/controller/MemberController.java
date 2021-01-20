@@ -38,4 +38,10 @@ public class MemberController extends RESTController<Member, MemberRepository, M
         return memberService.getStreamer();
     }
 
+    @GetMapping(value = "/getYoutuber",produces = {"application/json"})
+    @JsonView(value = View.External.class)
+    public List<Member> getYoutuber(){
+        return memberService.getYoutuber();
+    }
+
 }
