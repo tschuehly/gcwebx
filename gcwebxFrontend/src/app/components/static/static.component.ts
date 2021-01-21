@@ -64,9 +64,9 @@ downloadLogo() {
     let url;
     if (name.startsWith('UC')){
       const channelId = name.replace('UC', 'UU');
-      url = 'http://www.youtube.com/embed/videoseries?list=' + channelId;
+      url = 'https://www.youtube.com/embed/videoseries?list=' + channelId;
     }else  {
-      url = 'http://www.youtube.com/embed?max-results=1&showinfo=0&rel=0&listType=user_uploads&list=' + name;
+      url = 'https://www.youtube.com/embed?max-results=1&showinfo=0&rel=0&listType=user_uploads&list=' + name;
     }
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }

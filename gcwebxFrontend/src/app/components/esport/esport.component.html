@@ -46,9 +46,19 @@
                 <a *ngIf="member.twitter" href="https://twitter.com/{{member.twitter}}" target="_blank">
                   <i style="color: white" class="fab fa-twitter fa-2x mx-2"></i>
                 </a>
-                <a *ngIf="member.youtube" href="https://{{member.youtube}}" target="_blank">
-                  <i style="color: white" class="fab fa-youtube fa-2x  mx-2"></i>
-                </a>
+                <ng-container *ngIf="member.youtube">
+                  <a *ngIf="member.youtube.startsWith('UC'); else NoChannel"
+                     href="https://youtube.com/channel/{{member.youtube}}" target="_blank">
+                    <i style="color: white" class="fab fa-youtube fa-2x  mx-2"></i>
+                  </a>
+                  <ng-template #NoChannel>
+                    <a href="https://youtube.com/{{member.youtube}}" target="_blank">
+                      <i style="color: white" class="fab fa-youtube fa-2x  mx-2"></i>
+                    </a>
+                  </ng-template>
+                </ng-container>
+
+
               </td>
             </tr>
           </ng-container>
